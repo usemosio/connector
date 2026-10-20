@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Peluncuran aplikasi</title>
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Space Grotesk"; src: url("vendor/SpaceGrotesk-500.woff2"); font-weight: 500; }
+      @font-face { font-family: "Space Grotesk"; src: url("vendor/SpaceGrotesk-700.woff2"); font-weight: 700; }
+      /* Warna merek: ganti nilai ini. */
+      :root { --latar: #070b18; --panel: #111a33; --utama: #3159ff; --aksen: #73c8ff; --teks: #f2f5ff; --redup: #8d97b5; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--latar); }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--latar); color: var(--teks);
+        font-family: "Space Grotesk", sans-serif; }
+      .grid { position: absolute; inset: -200px; background-image: radial-gradient(color-mix(in srgb, var(--teks) 10%, transparent) 2px, transparent 2px);
+        background-size: 48px 48px; }
+      .glow { position: absolute; width: 1300px; height: 1300px; left: -110px; top: 420px; border-radius: 50%;
+        background: radial-gradient(circle, color-mix(in srgb, var(--utama) 34%, transparent), transparent 62%); }
+      .hook { position: absolute; left: 90px; right: 90px; top: 270px; font-size: 112px; font-weight: 700; line-height: 1.02; letter-spacing: -3px; }
+      .hook .line { display: block; overflow: hidden; }
+      .hook .line span { display: block; }
+      .strike { position: absolute; left: 90px; top: 400px; width: 760px; height: 14px; border-radius: 8px; background: #ff5d6c; transform-origin: 0 50%; }
+      .app { position: absolute; left: 90px; right: 90px; top: 580px; height: 720px; border-radius: 40px; background: var(--panel);
+        box-shadow: 0 0 0 2px color-mix(in srgb, var(--teks) 10%, transparent), 0 60px 120px -40px #000; overflow: hidden; }
+      .bar { height: 96px; display: flex; align-items: center; gap: 18px; padding: 0 40px; border-bottom: 2px solid color-mix(in srgb, var(--teks) 8%, transparent); }
+      .dot { width: 22px; height: 22px; border-radius: 50%; background: color-mix(in srgb, var(--teks) 18%, transparent); }
+      .bar b { margin-left: 16px; font-size: 40px; }
+      .rows { padding: 34px 40px; display: flex; flex-direction: column; gap: 18px; }
+      .row { display: flex; align-items: center; gap: 26px; height: 88px; padding: 0 30px; border-radius: 24px;
+        background: color-mix(in srgb, var(--teks) 5%, transparent); font-size: 42px; }
+      .check { width: 54px; height: 54px; border-radius: 50%; background: #34d399; color: #04210f; display: grid; place-items: center; font-size: 34px; font-weight: 700; }
+      .row em { margin-left: auto; font-style: normal; color: var(--redup); font-size: 36px; }
+      .stat { position: absolute; left: 40px; right: 40px; bottom: 30px; height: 140px; border-radius: 28px; padding: 0 40px; display: flex; align-items: center;
+        justify-content: space-between; background: color-mix(in srgb, var(--utama) 22%, transparent); }
+      .stat span { font-size: 40px; color: var(--redup); }
+      .stat b { font-size: 84px; color: var(--aksen); letter-spacing: -2px; }
+      .cursor { position: absolute; left: 700px; top: 1400px; width: 74px; height: 90px; }
+      .chips { position: absolute; left: 90px; right: 90px; top: 1325px; display: flex; flex-wrap: wrap; gap: 16px 18px; }
+      .chip { padding: 16px 28px; border-radius: 60px; font-size: 38px; background: color-mix(in srgb, var(--teks) 8%, transparent); }
+      .end { position: absolute; inset: 0; background: var(--utama); display: flex; flex-direction: column; align-items: center; justify-content: center;
+        text-align: center; padding: 0 90px; }
+      .end .logo { width: 170px; height: 170px; border-radius: 44px; background: var(--teks); }
+      .end .nama { margin-top: 48px; font-size: 130px; font-weight: 700; letter-spacing: -4px; }
+      .end .ajak { margin-top: 24px; font-size: 58px; font-weight: 500; }
+      .end .url { margin-top: 56px; padding: 26px 60px; border-radius: 80px; background: var(--latar); font-size: 52px; font-weight: 700; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="15" data-width="1080" data-height="1920" data-fps="30">
+      <div class="grid" id="grid"></div>
+      <div class="glow" id="glow"></div>
+      <div class="hook" id="hook">
+        <span class="line"><span>Masih catat</span></span>
+        <span class="line"><span>pesanan manual?</span></span>
+      </div>
+      <div class="strike" id="strike"></div>
+      <div class="app" id="app">
+        <div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><b>Pesanan hari ini</b></div>
+        <div class="rows">
+          <div class="row"><i class="check">✓</i>Bu Sari, 3 item<em>Lunas</em></div>
+          <div class="row"><i class="check">✓</i>Pak Didi, 1 item<em>Dikirim</em></div>
+          <div class="row"><i class="check">✓</i>Mbak Rani, 5 item<em>Lunas</em></div>
+          <div class="row"><i class="check">✓</i>Kak Bima, 2 item<em>Diproses</em></div>
+        </div>
+        <div class="stat"><span>Omzet hari ini</span><b id="omzet">Rp0</b></div>
+      </div>
+      <svg class="cursor" id="cursor" viewBox="0 0 37 45"><path d="M2 2 L2 36 L11 28 L17 42 L23 39 L17 26 L30 26 Z" fill="#ffffff" stroke="#070b18" stroke-width="3" stroke-linejoin="round" /></svg>
+      <div class="chips" id="chips">
+        <span class="chip">Stok otomatis</span><span class="chip">Struk via WA</span><span class="chip">Laporan harian</span>
+      </div>
+      <div class="end" id="end">
+        <div class="logo"></div>
+        <div class="nama">Kasirku</div>
+        <div class="ajak">Gratis 14 hari, tanpa kartu kredit</div>
+        <div class="url">kasirku.id</div>
+      </div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const fmt = (n) => "Rp" + Math.round(n).toLocaleString("id-ID");
+
+      // Latar hidup pelan sepanjang video.
+      tl.fromTo("#grid", { y: 0 }, { y: -160, duration: 15, ease: "none" }, 0)
+        .fromTo("#glow", { scale: 0.85 }, { scale: 1.12, duration: 15, ease: "sine.inOut" }, 0);
+
+      // Pembuka: masalah, lalu dicoret.
+      tl.from("#hook .line span", { yPercent: 110, duration: 0.7, ease: "expo.out", stagger: 0.12 }, 0.2)
+        .fromTo("#strike", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power3.inOut" }, 1.6)
+        .to("#hook", { y: -40, opacity: 0.35, duration: 0.6, ease: "power2.in" }, 2.3)
+        .to("#strike", { opacity: 0, duration: 0.3 }, 2.4);
+
+      // Aplikasi meluncur masuk, baris tercentang satu per satu.
+      tl.from("#app", { yPercent: 40, opacity: 0, scale: 0.92, duration: 0.8, ease: "expo.out" }, 2.4)
+        .from(".row", { x: 60, opacity: 0, duration: 0.5, ease: "power3.out", stagger: 0.28 }, 3.1)
+        .from(".check", { scale: 0, duration: 0.4, ease: "back.out(2)", stagger: 0.28 }, 3.35);
+
+      // Kursor menekan kartu omzet, angkanya naik.
+      const uang = { v: 0 };
+      const omzet = document.getElementById("omzet");
+      tl.from("#cursor", { x: 160, y: 220, opacity: 0, duration: 0.7, ease: "power3.out" }, 4.6)
+        .to("#cursor", { x: -40, y: -200, duration: 0.6, ease: "power2.inOut" }, 5.3)
+        .to("#cursor", { scale: 0.86, duration: 0.12, yoyo: true, repeat: 1, ease: "power1.inOut" }, 5.9)
+        .to(".stat", { scale: 1.03, duration: 0.18, yoyo: true, repeat: 1, ease: "power1.inOut" }, 5.95)
+        .to(uang, { v: 2480000, duration: 1.6, ease: "power3.out", onUpdate: () => { omzet.textContent = fmt(uang.v); } }, 6.0)
+        .to("#cursor", { opacity: 0, duration: 0.3 }, 7.4);
+
+      // Fitur sebagai chip, lalu penutup dengan wipe.
+      tl.from(".chip", { y: 50, opacity: 0, duration: 0.5, ease: "back.out(1.6)", stagger: 0.15 }, 7.6)
+        .fromTo("#end", { clipPath: "circle(0% at 50% 60%)" }, { clipPath: "circle(150% at 50% 60%)", duration: 0.9, ease: "expo.inOut" }, 10.2)
+        .from("#end > *", { y: 70, opacity: 0, duration: 0.55, ease: "power3.out", stagger: 0.12 }, 10.8)
+        .from(".end .logo", { rotation: -20, scale: 0.6, duration: 0.6, ease: "back.out(1.8)" }, 10.8)
+        .to(".end .url", { scale: 1.05, duration: 0.45, yoyo: true, repeat: 5, ease: "sine.inOut" }, 11.8)
+        .to("#root", { opacity: 0, duration: 0.5, ease: "power2.in" }, 14.5);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

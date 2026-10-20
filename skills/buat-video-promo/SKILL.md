@@ -8,9 +8,9 @@ metadata:
 
 # Membuat video promosi dengan Mosio
 
-Mosio membuat video promosi vertikal (Reels, TikTok, status WhatsApp) untuk usaha kecil di Indonesia dan merendernya di server. Ada dua cara, dan kamu boleh memakai keduanya:
+Mosio membuat video promosi untuk usaha kecil di Indonesia dan merendernya di server: vertikal untuk Reels, TikTok, dan status WhatsApp, serta (lewat komposisi) kotak, portrait, dan lebar untuk feed, iklan, dan YouTube. Ada dua cara, dan kamu boleh memakai keduanya:
 
-- **Rancang sendiri (utama).** Kamu menjadi sutradara: tulis videonya sebagai komposisi HTML dengan gaya yang cocok, sehingga setiap video unik dan terasa modern. Baca `get_composition_guide` (aturan, font, bahasa gerak, brand kit, dan contoh kode per gaya), tulis HTML-nya, lalu `preview_composition`. Pengguna menonton pratinjaunya dan menekan "Buat video". Pakai cara ini kalau pengguna ingin hasil yang khas, menyebut gaya, atau tidak ada template yang pas.
+- **Rancang sendiri (utama).** Kamu menjadi sutradara: tulis videonya sebagai komposisi HTML dengan gaya yang cocok, sehingga setiap video unik dan terasa modern. Susun brief dan storyboard singkat dulu dan minta persetujuan pengguna, baca `get_composition_guide` (aturan, ukuran, font, bahasa gerak, brand kit, dan contoh kode per gaya), tulis HTML-nya, lalu `preview_composition`. Pengguna menonton pratinjaunya dan menekan "Buat video". Pakai cara ini kalau pengguna ingin hasil yang khas, menyebut gaya, atau tidak ada template yang pas.
 - **Template siap isi (cepat).** Pilih template dan isi teksnya (alur di bawah). Cocok kalau pengguna memilih template dari galeri atau ingin cepat.
 
 Pengguna cukup menceritakan usahanya dalam satu-dua kalimat; kamu yang menyusun naskah, teks layar, dan desainnya. Jangan meminta pengguna mengisi kolom satu per satu. Tanyakan hanya fakta yang tidak boleh dikarang (harga, alamat, kontak, jam buka).

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Dasbor iklan</title>
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Archivo Black"; src: url("vendor/ArchivoBlack-400.woff2"); font-weight: 400; }
+      @font-face { font-family: "Space Grotesk"; src: url("vendor/SpaceGrotesk-500.woff2"); font-weight: 500; }
+      @font-face { font-family: "Space Grotesk"; src: url("vendor/SpaceGrotesk-700.woff2"); font-weight: 700; }
+      /* Warna merek: ganti nilai ini. */
+      :root { --latar: #07090c; --kartu: #12161c; --utama: #2ab8f8; --aksen: #c6f432; --bahaya: #ff5b5b; --teks: #f3f6f9; --redup: #8a94a3; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--latar); }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--latar); color: var(--teks);
+        font-family: "Space Grotesk", sans-serif; }
+      .glow { position: absolute; width: 1300px; height: 1300px; left: -110px; top: 300px; border-radius: 50%;
+        background: radial-gradient(circle, color-mix(in srgb, var(--utama) 22%, transparent), transparent 60%); }
+      .scene { position: absolute; inset: 0; }
+      .alert { position: absolute; left: 90px; right: 90px; top: 300px; height: 150px; border-radius: 30px; background: var(--kartu);
+        display: flex; align-items: center; gap: 30px; padding: 0 40px; font-size: 44px; font-weight: 700; }
+      .alert i { width: 76px; height: 76px; border-radius: 20px; background: var(--bahaya); }
+      .alert em { margin-left: auto; font-style: normal; color: var(--bahaya); font-family: "Archivo Black", sans-serif; }
+      .roas-label { position: absolute; left: 0; right: 0; top: 560px; text-align: center; font-size: 46px; letter-spacing: 12px; color: var(--redup); }
+      .roas { position: absolute; left: 0; right: 0; top: 620px; text-align: center; font-family: "Archivo Black", sans-serif; font-size: 300px; line-height: 1; }
+      .roas.turun { color: var(--bahaya); }
+      .tanya { position: absolute; left: 90px; right: 90px; top: 1180px; text-align: center; font-size: 104px; font-weight: 700; line-height: 1.05; }
+      .tanya .line { display: block; overflow: hidden; }
+      .tanya .line span { display: block; }
+      .tanya b { color: var(--utama); }
+      .platforms { position: absolute; left: 90px; right: 90px; top: 380px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+      .platforms h2 { grid-column: 1 / -1; font-size: 96px; line-height: 1.02; margin-bottom: 20px; }
+      .platforms h2 b { color: var(--utama); }
+      .pf { height: 230px; border-radius: 32px; background: var(--kartu); padding: 36px; display: flex; flex-direction: column; justify-content: flex-end; }
+      .pf b { font-size: 50px; }
+      .pf span { font-size: 34px; color: var(--redup); margin-top: 6px; }
+      .dash { position: absolute; left: 90px; right: 90px; top: 300px; }
+      .dash h3 { font-size: 46px; margin-bottom: 30px; }
+      .card { border-radius: 32px; background: var(--kartu); padding: 40px; }
+      .card small { font-size: 34px; letter-spacing: 6px; color: var(--redup); }
+      .big { font-family: "Archivo Black", sans-serif; font-size: 230px; line-height: 1; color: var(--aksen); margin-top: 10px; }
+      .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+      .pair b { display: block; margin-top: 14px; font-size: 64px; color: var(--aksen); }
+      .chart { margin-top: 30px; height: 420px; }
+      .chart svg { width: 100%; height: 100%; }
+      .end { position: absolute; inset: 0; background: var(--latar); display: flex; flex-direction: column; align-items: center; justify-content: center;
+        text-align: center; padding: 0 90px; }
+      .end .judul { font-family: "Archivo Black", sans-serif; font-size: 150px; line-height: 0.98; }
+      .end .judul b { color: var(--utama); font-weight: 400; }
+      .end .wa { margin-top: 70px; padding: 30px 70px; border-radius: 90px; background: var(--utama); color: var(--latar); font-size: 56px; font-weight: 700; }
+      .end .nama { margin-top: 40px; font-size: 44px; color: var(--redup); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="15" data-width="1080" data-height="1920" data-fps="30">
+      <div class="glow" id="glow"></div>
+
+      <div class="scene" id="s1">
+        <div class="alert" id="alert"><i></i>Saldo iklan habis<em>Rp0</em></div>
+        <div class="roas-label">ROAS</div>
+        <div class="roas turun" id="roas1">1.2x</div>
+        <div class="tanya" id="tanya">
+          <span class="line"><span>Iklan jalan…</span></span>
+          <span class="line"><span>omzet kok <b>diem?</b></span></span>
+        </div>
+      </div>
+
+      <div class="scene" id="s2">
+        <div class="platforms">
+          <h2>Semua platform,<br /><b>1 tim.</b></h2>
+          <div class="pf"><b>Meta Ads</b><span>Facebook &amp; Instagram</span></div>
+          <div class="pf"><b>Google Ads</b><span>Search &amp; YouTube</span></div>
+          <div class="pf"><b>TikTok Ads</b><span>TikTok &amp; GMV Max</span></div>
+          <div class="pf"><b>Marketplace</b><span>Shopee &amp; Tokopedia</span></div>
+        </div>
+      </div>
+
+      <div class="scene" id="s3">
+        <div class="dash">
+          <h3>Dasbor real-time</h3>
+          <div class="card"><small>ROAS</small><div class="big" id="roas2">1.2x</div></div>
+          <div class="pair">
+            <div class="card"><small>CPA</small><b id="cpa">Rp0</b></div>
+            <div class="card"><small>OMZET</small><b id="omzet">Rp0</b></div>
+          </div>
+          <div class="card chart">
+            <svg viewBox="0 0 800 300" preserveAspectRatio="none">
+              <path id="line" d="M10 260 L130 240 L250 250 L370 190 L490 170 L610 110 L730 40" fill="none" stroke="#2ab8f8" stroke-width="10"
+                stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="900" stroke-dashoffset="0" />
+              <circle id="titik" cx="730" cy="40" r="16" fill="#c6f432" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="end" id="end">
+        <div class="judul">AUDIT AKUN IKLAN <b>GRATIS</b></div>
+        <div class="wa">Chat WA sekarang</div>
+        <div class="nama">WA 0812-0000-0000 · Iklanku</div>
+      </div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const rp = (n) => "Rp" + Math.round(n).toLocaleString("id-ID");
+      const x = (n) => n.toFixed(1) + "x";
+
+      tl.fromTo("#glow", { scale: 0.9 }, { scale: 1.15, duration: 15, ease: "sine.inOut" }, 0);
+
+      // Adegan 1 (0–4 detik): masalah. ROAS turun.
+      const r1 = { v: 1.2 };
+      const roas1 = document.getElementById("roas1");
+      tl.from("#alert", { y: -60, opacity: 0, duration: 0.5, ease: "back.out(1.6)" }, 0.2)
+        .from("#roas1", { scale: 0.7, opacity: 0, duration: 0.5, ease: "expo.out" }, 0.5)
+        .to(r1, { v: 0.8, duration: 1.2, ease: "power2.inOut", onUpdate: () => { roas1.textContent = x(r1.v); } }, 0.8)
+        .from("#tanya .line span", { yPercent: 110, duration: 0.6, ease: "expo.out", stagger: 0.14 }, 1.6)
+        .to("#s1", { xPercent: -100, duration: 0.6, ease: "power3.inOut" }, 3.8);
+
+      // Adegan 2 (4–7 detik): semua platform.
+      tl.from("#s2", { xPercent: 100, duration: 0.6, ease: "power3.inOut" }, 3.8)
+        .from(".platforms h2", { y: 60, opacity: 0, duration: 0.6, ease: "expo.out" }, 4.3)
+        .from(".pf", { y: 70, opacity: 0, scale: 0.94, duration: 0.5, ease: "back.out(1.5)", stagger: 0.12 }, 4.6)
+        .to("#s2", { xPercent: -100, duration: 0.6, ease: "power3.inOut" }, 7.0);
+
+      // Adegan 3 (7–11 detik): dasbor, angka naik, garis grafik tergambar.
+      const r2 = { v: 1.2 }, cpa = { v: 0 }, omz = { v: 0 };
+      const roas2 = document.getElementById("roas2"), cpaEl = document.getElementById("cpa"), omzEl = document.getElementById("omzet");
+      tl.from("#s3", { xPercent: 100, duration: 0.6, ease: "power3.inOut" }, 7.0)
+        .to(r2, { v: 4.6, duration: 1.6, ease: "power3.out", onUpdate: () => { roas2.textContent = x(r2.v); } }, 7.5)
+        .to(cpa, { v: 32000, duration: 1.4, ease: "power3.out", onUpdate: () => { cpaEl.textContent = rp(cpa.v); } }, 7.7)
+        .to(omz, { v: 48900000, duration: 1.6, ease: "power3.out", onUpdate: () => { omzEl.textContent = "Rp" + (omz.v / 1e6).toLocaleString("id-ID", { maximumFractionDigits: 1 }) + " jt"; } }, 7.7)
+        .fromTo("#line", { attr: { "stroke-dashoffset": 900 } }, { attr: { "stroke-dashoffset": 0 }, duration: 1.6, ease: "power2.out" }, 7.8)
+        .from("#titik", { scale: 0, transformOrigin: "50% 50%", duration: 0.4, ease: "back.out(2.4)" }, 9.3);
+
+      // Penutup (11–15 detik): ajakan diam lebih dari 2 detik.
+      tl.fromTo("#end", { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.7, ease: "expo.inOut" }, 11.0)
+        .from("#end > *", { y: 70, opacity: 0, duration: 0.55, ease: "power3.out", stagger: 0.14 }, 11.4)
+        .to(".end .wa", { scale: 1.05, duration: 0.45, yoyo: true, repeat: 3, ease: "sine.inOut" }, 12.3)
+        .to("#root", { opacity: 0, duration: 0.5, ease: "power2.in" }, 14.5);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
