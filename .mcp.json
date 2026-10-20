@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "mosio": {
+      "type": "http",
+      "url": "https://mcp.mosio.me/mcp"
+    }
+  }
+}

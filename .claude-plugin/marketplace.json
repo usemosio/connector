@@ -1,0 +1,14 @@
+{
+  "name": "mosio",
+  "owner": {
+    "name": "Mosio"
+  },
+  "description": "Plugin Mosio untuk Claude",
+  "plugins": [
+    {
+      "name": "mosio",
+      "source": "./",
+      "description": "Video promosi UMKM dengan Mosio"
+    }
+  ]
+}

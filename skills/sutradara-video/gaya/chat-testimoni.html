@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Testimoni chat</title>
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Poppins"; src: url("vendor/Poppins-500.woff2"); font-weight: 500; }
+      @font-face { font-family: "Poppins"; src: url("vendor/Poppins-800.woff2"); font-weight: 800; }
+      @font-face { font-family: "Caveat"; src: url("vendor/Caveat-700.woff2"); font-weight: 700; }
+      /* Warna merek: ganti nilai ini. */
+      :root { --latar: #fde7ef; --utama: #e0457b; --tinta: #2a1720; --bubble: #ffffff; --bubble2: #ffd5e3; --bintang: #ffb400; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--latar); }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; color: var(--tinta); font-family: "Poppins", sans-serif;
+        background: linear-gradient(160deg, var(--latar), color-mix(in srgb, var(--utama) 22%, var(--latar))); }
+      .dot { position: absolute; border-radius: 50%; background: color-mix(in srgb, var(--utama) 25%, transparent); }
+      .judul { position: absolute; left: 90px; right: 90px; top: 220px; font-size: 76px; font-weight: 800; line-height: 1.1; }
+      .judul em { font-family: "Caveat"; font-style: normal; font-size: 96px; color: var(--utama); }
+      .chat { position: absolute; left: 90px; right: 90px; top: 450px; }
+      .who { display: flex; align-items: center; gap: 24px; margin-bottom: 30px; }
+      .ava { width: 110px; height: 110px; border-radius: 50%; background: var(--utama); color: #fff; font-weight: 800; font-size: 54px;
+        display: flex; align-items: center; justify-content: center; }
+      .who b { display: block; font-size: 48px; }
+      .who span { font-size: 36px; opacity: 0.6; }
+      .bub { position: relative; max-width: 820px; padding: 34px 44px; border-radius: 48px; font-size: 46px; line-height: 1.35;
+        background: var(--bubble); box-shadow: 0 16px 40px rgba(80, 20, 40, 0.12); margin-bottom: 30px; }
+      .bub.in { border-top-left-radius: 12px; }
+      .bub.out { margin-left: auto; border-top-right-radius: 12px; background: var(--bubble2); }
+      .typing { position: absolute; left: 0; top: 0; display: flex; gap: 14px; padding: 40px 44px; }
+      .typing i { width: 22px; height: 22px; border-radius: 50%; background: color-mix(in srgb, var(--tinta) 45%, transparent); }
+      .rating { position: absolute; left: 90px; right: 90px; top: 1150px; text-align: center; }
+      .stars { display: flex; justify-content: center; gap: 18px; }
+      .stars svg { width: 104px; height: 104px; }
+      .rating p { margin-top: 24px; font-size: 50px; font-weight: 500; }
+      .toko { position: absolute; left: 90px; right: 90px; top: 1370px; height: 130px; border-radius: 80px; background: var(--utama); color: #fff;
+        display: flex; align-items: center; justify-content: center; font-size: 44px; font-weight: 800; white-space: nowrap; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="15" data-width="1080" data-height="1920" data-fps="30">
+      <div class="dot" id="d1" style="width: 300px; height: 300px; left: -80px; top: 1500px"></div>
+      <div class="dot" id="d2" style="width: 200px; height: 200px; right: -40px; top: 180px"></div>
+      <div class="judul" id="judul">Kata mereka tentang <em>Kue Rumahan Bunda</em></div>
+      <div class="chat">
+        <div class="who" id="who"><div class="ava">S</div><div><b>Bu Sari</b><span>pelanggan sejak 2023</span></div></div>
+        <div class="bub in" id="b1">
+          <div class="typing" id="typing"><i></i><i></i><i></i></div>
+          <span id="t1">Kue lapisnya lembut banget, anak-anak sampai rebutan. Minggu depan pesan lagi ya!</span>
+        </div>
+        <div class="bub out" id="b2">Terima kasih, Bu Sari! Ditunggu pesanannya</div>
+      </div>
+      <div class="rating" id="rating">
+        <div class="stars" id="stars">
+          <svg viewBox="0 0 24 24"><path fill="#ffb400" d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z" /></svg>
+          <svg viewBox="0 0 24 24"><path fill="#ffb400" d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z" /></svg>
+          <svg viewBox="0 0 24 24"><path fill="#ffb400" d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z" /></svg>
+          <svg viewBox="0 0 24 24"><path fill="#ffb400" d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z" /></svg>
+          <svg viewBox="0 0 24 24"><path fill="#ffb400" d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z" /></svg>
+        </div>
+        <p id="skor">4,9 dari 1.200+ ulasan</p>
+      </div>
+      <div class="toko" id="toko">Pesan di WA 0812-3456-7890</div>
+    </div>
+    <script>
+      // Pesan diketik huruf demi huruf: setiap huruf jadi span, muncul berurutan di timeline.
+      const t1 = document.getElementById("t1");
+      // Per kata dibungkus nowrap supaya baris tetap patah di spasi.
+      const esc = (c) => (c === "&" ? "&amp;" : c === "<" ? "&lt;" : c);
+      t1.innerHTML = t1.textContent.split(" ").map((w) =>
+        "<span style='white-space: nowrap'>" + w.split("").map((c) => "<span class='ch'>" + esc(c) + "</span>").join("") + "</span>").join(" ");
+
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#d1", { y: 0 }, { y: -160, duration: 15, ease: "sine.inOut" }, 0)
+        .fromTo("#d2", { y: 0 }, { y: 120, duration: 15, ease: "sine.inOut" }, 0)
+        .from("#judul", { y: 60, opacity: 0, duration: 0.7, ease: "power3.out" }, 0.2)
+        .from("#who", { x: -60, opacity: 0, duration: 0.5, ease: "power3.out" }, 0.8)
+        .from("#b1", { scale: 0.6, opacity: 0, transformOrigin: "0% 0%", duration: 0.45, ease: "back.out(1.8)" }, 1.1)
+        // Titik "sedang mengetik" memantul, lalu hilang saat teks muncul.
+        .to("#typing i", { y: -14, duration: 0.2, yoyo: true, repeat: 5, ease: "sine.inOut", stagger: 0.1 }, 1.3)
+        .to("#typing", { opacity: 0, duration: 0.15 }, 2.6)
+        .from(".ch", { opacity: 0, duration: 0.01, stagger: 0.035 }, 2.65)
+        .from("#b2", { x: 120, opacity: 0, duration: 0.5, ease: "back.out(1.6)" }, 6.2)
+        .from("#stars svg", { scale: 0, rotation: -120, duration: 0.45, ease: "back.out(2.5)", stagger: 0.14 }, 7.2)
+        .from("#skor", { y: 30, opacity: 0, duration: 0.5, ease: "power3.out" }, 8.1)
+        .from("#toko", { y: 200, opacity: 0, duration: 0.7, ease: "expo.out" }, 8.6)
+        .to("#stars svg", { y: -16, duration: 0.3, yoyo: true, repeat: 1, ease: "power2.out", stagger: 0.08 }, 10)
+        .to("#toko", { scale: 1.04, duration: 0.5, yoyo: true, repeat: 5, ease: "sine.inOut" }, 10.4)
+        .to("#root", { opacity: 0, duration: 0.5, ease: "power2.in" }, 14.5);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
