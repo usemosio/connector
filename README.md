@@ -23,6 +23,10 @@ Then run `/mcp`, choose `mosio`, and sign in to Mosio.
 
 Claude.ai: Settings → Connectors → Add custom connector → `https://mcp.mosio.me/mcp`. The two skills under `skills/` can also be uploaded as skills on their own.
 
+## Documentation
+
+Guides and the REST API reference: https://docs.mosio.me
+
 ## Data sent to Mosio
 
 - The plugin runs nothing on your computer and reads no local files.
