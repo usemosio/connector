@@ -6,9 +6,9 @@
   "author": {
     "name": "Mosio"
   },
-  "homepage": "https://app.mosio.me",
+  "homepage": "https://mosio.me",
   "repository": "https://github.com/usemosio/connector",
-  "privacyPolicyUrl": "https://app.mosio.me/privasi",
+  "privacyPolicyUrl": "https://mosio.me/privasi/",
   "documentationUrl": "https://docs.mosio.me",
   "license": "UNLICENSED",
   "keywords": [
