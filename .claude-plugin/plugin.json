@@ -8,6 +8,7 @@
   },
   "homepage": "https://app.mosio.me",
   "repository": "https://github.com/usemosio/connector",
+  "privacyPolicyUrl": "https://app.mosio.me/privasi",
   "license": "UNLICENSED",
   "keywords": [
     "video",
