@@ -1,6 +1,6 @@
 ---
 name: buat-video-promo
-description: "Buat video promosi (Reels, TikTok, status WhatsApp) untuk usaha kecil Indonesia dengan Mosio: promo produk, diskon, menu makanan, jasa, testimoni, pembukaan toko, pengumuman. Pakai saat pengguna minta video promosi atau konten jualan. Use when the user asks for a promotional video or sales content for a small business."
+description: "Make a promo video (Reels, TikTok, WhatsApp Status) for a small business from a Mosio template: product promos, discounts, food menus, services, customer reviews, store openings, announcements. Use when the user asks for a promo video or sales content, in English or Indonesian (\"video promosi\", \"konten jualan\")."
 license: Proprietary
 metadata:
   brand: Mosio

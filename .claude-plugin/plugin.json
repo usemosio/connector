@@ -2,7 +2,7 @@
   "name": "mosio",
   "displayName": "Mosio",
   "version": "0.1.0",
-  "description": "Video promosi vertikal untuk usaha kecil: Claude merancang videonya (atau mengisi template), Mosio merendernya.",
+  "description": "Make short vertical promo videos for small businesses. Claude writes the video or fills in a Mosio template, and Mosio renders the MP4.",
   "author": {
     "name": "Mosio"
   },
@@ -11,10 +11,10 @@
   "license": "UNLICENSED",
   "keywords": [
     "video",
-    "promosi",
-    "umkm",
-    "indonesia",
+    "promo",
+    "small business",
     "reels",
-    "tiktok"
+    "tiktok",
+    "indonesia"
   ]
 }

@@ -3,12 +3,12 @@
   "owner": {
     "name": "Mosio"
   },
-  "description": "Plugin Mosio untuk Claude",
+  "description": "Mosio for Claude",
   "plugins": [
     {
       "name": "mosio",
       "source": "./",
-      "description": "Video promosi UMKM dengan Mosio"
+      "description": "Promo videos for small businesses, rendered by Mosio"
     }
   ]
 }

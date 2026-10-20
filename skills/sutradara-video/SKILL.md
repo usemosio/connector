@@ -1,6 +1,6 @@
 ---
 name: sutradara-video
-description: "Rancang video motion sendiri sebagai komposisi HTML yang dirender Mosio: kinetic type, produk, flash sale, menu, testimoni, angka. Pakai saat pengguna ingin video promosi yang khas atau modern, menyebut gaya, atau tidak ada template Mosio yang pas. Use when the user wants a custom, modern promotional video rendered by Mosio."
+description: "Write a promo video as an HTML composition that Mosio renders, starting from example styles: kinetic type, product hero, flash sale, menu board, chat testimonial, numbers and charts. Use when the user wants their own look, names a style, or no Mosio template fits."
 ---
 
 # Sutradara video Mosio
