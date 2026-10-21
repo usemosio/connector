@@ -33,8 +33,9 @@ Guides and the REST API reference: https://docs.mosio.me
 - Claude calls the Mosio server only for the tools you use. It sends the tool arguments: template id, on-screen text (for example a product name, a price, or a contact number you asked to show), the HTML composition Claude wrote, output size, and video id. The rest of the conversation is not sent.
 - Sign-in uses OAuth. This repository holds no passwords or tokens.
 - Videos are stored in your Mosio workspace. Download links expire after one hour.
-- Privacy policy: https://mosio.me/privasi/
+- Privacy policy: https://mosio.me/en/privacy/
+- Terms of service: https://mosio.me/en/terms/
 
 ## Bahasa Indonesia
 
-Plugin ini menghubungkan Claude dengan Mosio untuk membuat video promosi vertikal bagi usaha kecil. Pasang connector `https://mcp.mosio.me/mcp`, masuk dengan akun Mosio, lalu minta videonya lewat chat. Data yang dikirim hanya argumen tool seperti di atas. Kebijakan privasi: https://mosio.me/privasi/
+Plugin ini menghubungkan Claude dengan Mosio untuk membuat video promosi bagi usaha kecil (vertikal, kotak, portrait, atau lebar). Pasang connector `https://mcp.mosio.me/mcp`, masuk dengan akun Mosio, lalu minta videonya lewat chat. Data yang dikirim hanya argumen tool seperti di atas. Kebijakan privasi: https://mosio.me/en/privacy/ · Syarat layanan: https://mosio.me/en/terms/

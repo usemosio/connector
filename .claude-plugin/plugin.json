@@ -2,13 +2,14 @@
   "name": "mosio",
   "displayName": "Mosio",
   "version": "0.1.0",
-  "description": "Make short vertical promo videos for small businesses. Claude writes the video or fills in a Mosio template, and Mosio renders the MP4.",
+  "description": "Make short promo videos for small businesses: vertical for Reels, TikTok and WhatsApp Status, plus square, portrait and wide. Claude writes the video or fills in a Mosio template, and Mosio renders the MP4.",
   "author": {
     "name": "Mosio"
   },
   "homepage": "https://mosio.me",
   "repository": "https://github.com/usemosio/connector",
-  "privacyPolicyUrl": "https://mosio.me/privasi/",
+  "privacyPolicyUrl": "https://mosio.me/en/privacy/",
+  "termsOfServiceUrl": "https://mosio.me/en/terms/",
   "documentationUrl": "https://docs.mosio.me",
   "license": "UNLICENSED",
   "keywords": [

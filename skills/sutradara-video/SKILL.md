@@ -8,17 +8,34 @@ description: "Write a promo video as an HTML composition that Mosio renders, sta
 Kamu merancang videonya sendiri sebagai satu file HTML (komposisi Hyperframes): tata letak, tipografi, warna, dan gerak. Mosio memeriksanya, menampilkan pratinjau bergerak di kartu, lalu merendernya menjadi MP4 di server. Kamu sutradaranya; Mosio studio dan kameranya.
 
 ## Alur
-1. Pahami tujuannya: apa yang dijual atau diumumkan, untuk siapa, dan di mana diunggah (Reels, TikTok, status WhatsApp: vertikal 1080×1920). Jangan mengarang harga, alamat, kontak, atau jam buka; tanyakan kalau belum ada.
-2. Pilih gaya yang cocok dan baca contoh kodenya (`get_composition_guide` dengan `style`). Contoh itu titik awal, bukan cetakan: ubah teks, warna, ritme, bentuk, dan adegannya sesuai usaha pengguna.
-3. Tulis HTML lengkap lalu panggil `preview_composition`. Kalau ditolak, baca `details` (kode lint, pesan, saran perbaikan), perbaiki, kirim lagi.
-4. Pengguna menonton pratinjau di kartu dan menekan "Buat video" sendiri (memotong kredit sebesar durasi). Revisi lewat chat: ubah HTML-nya dan panggil `preview_composition` lagi.
-5. Di aplikasi tanpa kartu (terminal, skrip): setelah pengguna setuju, panggil `render_composition`, lalu `get_status` sampai `done`.
+1. Pahami tujuannya: apa yang dijual atau diumumkan, untuk siapa, dan di mana diunggah (lihat Ukuran; bawaan vertikal 1080×1920). Jangan mengarang harga, alamat, kontak, atau jam buka; tanyakan kalau belum ada.
+2. **Brief dan storyboard dulu, sebelum menulis HTML.** Tulis di chat, singkat:
+   - Brief: produk atau penawaran, untuk siapa, ajakan, kontak, ukuran, dan durasi.
+   - Storyboard: 3–6 adegan, masing-masing dengan rentang detik, teks di layar, dan geraknya.
+
+   Tanyakan apakah sudah pas, lalu revisi di tahap ini (gratis dan cepat). Mulai menulis HTML setelah pengguna setuju, kecuali pengguna meminta langsung dibuatkan.
+3. Pilih gaya yang cocok dan baca contoh kodenya (`get_composition_guide` dengan `style`). Contoh itu titik awal, bukan cetakan: ubah teks, warna, ritme, bentuk, dan adegannya sesuai usaha pengguna dan storyboard yang disetujui.
+4. Tulis HTML lengkap lalu panggil `preview_composition`. Kalau ditolak, baca `details` (kode lint, pesan, saran perbaikan), perbaiki, kirim lagi.
+5. Pengguna menonton pratinjau di kartu dan menekan "Buat video" sendiri (memotong kredit sebesar durasi). Revisi lewat chat: ubah HTML-nya dan panggil `preview_composition` lagi.
+6. Di aplikasi tanpa kartu (terminal, skrip): setelah pengguna setuju, panggil `render_composition`, lalu `get_status` sampai `done`.
+
+## Ukuran
+| Format | `data-width` × `data-height` | Untuk |
+| --- | --- | --- |
+| Vertikal 9:16 (bawaan) | 1080 × 1920 | Reels, TikTok, Shorts, status WhatsApp |
+| Portrait 4:5 | 1080 × 1350 | Feed Instagram, iklan |
+| Kotak 1:1 | 1080 × 1080 | Feed Instagram dan Facebook, marketplace |
+| Lebar 16:9 | 1920 × 1080 | YouTube, website, layar toko |
+
+- Satu brief bisa jadi beberapa ukuran: tulis satu komposisi per ukuran dengan urutan adegan dan durasi yang sama. Susun ulang tata letaknya untuk tiap ukuran (misalnya teks di samping visual pada 16:9), jangan sekadar diskalakan atau dipotong.
+- Setiap ukuran dirender terpisah dan masing-masing memotong kredit sebesar durasinya. Tawarkan dulu sebelum membuat beberapa ukuran sekaligus.
+- Video dirender tanpa suara. Kalau pengguna ingin musik, sarankan menambahkannya di aplikasi tempat video diunggah (Reels, TikTok).
 
 ## Pustaka sutradara
 `skill_library` berisi skill pihak ketiga yang bisa kamu baca: Hyperframes resmi (kontrak komposisi `hyperframes/hyperframes-core/SKILL.md`, aturan gerak, blueprint adegan, dan transisi di `hyperframes/hyperframes-animation/`, arahan kreatif di `hyperframes/hyperframes-creative/`, alur promo di `hyperframes/product-launch-video/`), motion graphic berbahasa Indonesia (`bang-motion/`), arah gerak dan komposisi 9:16 (`motion-design/`), struktur video pendek dan hitung mundur (`short-form/`), kinetic typography, GSAP, dan copywriting. Untuk efek siap pakai (teks kinetik, transisi, overlay, kartu UI, grafik), cari dulu di registry Hyperframes dengan `search_registry` (kata kunci bahasa Inggris) lalu `get_registry_item`, dan tempel ke komposisimu daripada membuat dari nol. Baca bagian yang relevan sebelum merancang. Kalau sebuah skill menyuruh menjalankan CLI, memakai media, atau framework lain, ikuti catatan di indeksnya. Aturan di bawah ini yang berlaku di Mosio.
 
 ## Aturan teknis (wajib, dicek sebelum render)
-- Satu dokumen HTML. Elemen akar: `<div id="root" data-composition-id="main" data-start="0" data-duration="15" data-width="1080" data-height="1920" data-fps="30">`. Durasi 6–30 detik, paling lama 60 detik. `html` dan `body` 1080×1920 px; `#root` `width: 100%; height: 100%; overflow: hidden` (ukuran kanvas dari `data-width`/`data-height`, jangan di-hardcode di `#root`).
+- Satu dokumen HTML. Elemen akar: `<div id="root" data-composition-id="main" data-start="0" data-duration="15" data-width="1080" data-height="1920" data-fps="30">`. Durasi yang disarankan 6–30 detik, paling lama 60 detik. `html` dan `body` seukuran `data-width` × `data-height` (misalnya 1080×1920 px), begitu juga `<meta name="viewport">`; `#root` `width: 100%; height: 100%; overflow: hidden` (ukuran kanvas dari `data-width`/`data-height`, jangan di-hardcode di `#root`).
 - Semua gerak ada di satu timeline GSAP yang di-pause dan didaftarkan; renderer memutarnya frame demi frame:
   ```js
   const tl = gsap.timeline({ paused: true });
@@ -57,8 +74,10 @@ Dua pilihan, sama di pratinjau dan render:
 
 Pakai paling banyak dua keluarga per video: satu untuk judul, satu untuk isi.
 
-## Tata letak layar HP
-- Jauhkan teks penting dari 250 px teratas, 420 px terbawah (tombol dan caption Reels/TikTok), dan 80 px di kiri dan kanan.
+## Tata letak dan zona aman
+- Vertikal 9:16: jauhkan teks penting dari 250 px teratas, 420 px terbawah (tombol dan caption Reels/TikTok), dan 80 px di kiri dan kanan.
+- Portrait 4:5 dan kotak 1:1: sisakan 80 px di setiap tepi.
+- Lebar 16:9: sisakan 120 px di kiri dan kanan serta 80 px di atas dan bawah; teks paling lebar sekitar setengah layar, sisanya untuk visual.
 - Judul 120–260 px, teks pendukung 54–80 px, terkecil 40 px. Paling banyak 7 kata di layar sekaligus.
 - Kontras cukup: teks di atas warna merek pakai `Mosio.readableOn` atau pilih manual yang jelas terbaca.
 
@@ -86,3 +105,6 @@ Baca contohnya sebelum menulis; jadikan titik awal, bukan cetakan.
 - [Papan menu](gaya/menu-board.html): Menu dan harga muncul berurutan seperti papan menu kafe. Cocok untuk usaha makanan dan minuman.
 - [Testimoni chat](gaya/chat-testimoni.html): Ulasan pelanggan sebagai gelembung chat yang diketik, lalu bintang dan nama usaha.
 - [Angka dan grafik](gaya/angka-capaian.html): Angka naik dan diagram batang tumbuh. Cocok untuk pencapaian, perbandingan, dan bukti sosial.
+- [Peluncuran aplikasi](gaya/peluncuran-aplikasi.html): Masalah dicoret, jendela aplikasi meluncur, kursor mengklik, dan angka naik. Cocok untuk aplikasi, SaaS, dan produk digital.
+- [Dasbor iklan](gaya/dasbor-iklan.html): Metrik turun lalu naik, kartu platform, dan garis grafik yang tergambar. Cocok untuk jasa iklan, agensi, dan layanan digital.
+- [Explainer isometrik (16:9)](gaya/explainer-isometrik.html): Panggung isometrik: masalah, beban kerja, lalu solusi dan grafik. Contoh layar lebar 1920×1080 untuk YouTube, website, dan layar toko.
