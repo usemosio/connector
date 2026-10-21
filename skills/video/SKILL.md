@@ -27,7 +27,7 @@ Mosio renders short, silent videos from HTML for small Indonesian businesses and
 7. **Preview.** `preview_template` or `preview_composition`. Both are free.
 8. **Render.** The user watches the preview card and presses "Buat video" themselves. Without a card (terminal, scripts), call `render_template` or `render_composition` only after the user agrees, then `get_status` until `done`.
 
-"Langsung buat aja": skip waiting for approval, but still write a short brief and storyboard as decisions, and still never guess facts.
+"Langsung buat aja" or "yang cepet": skip waiting for the storyboard approval and go straight to a preview, but still write a short brief and storyboard as decisions and never guess facts. The render still waits for the user: the preview is free, the render spends credits.
 
 ## Pick the type
 
