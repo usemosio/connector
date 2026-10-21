@@ -42,6 +42,7 @@ For each sentence, plan one row:
 | number ("paling sedikit.") | cells explode into wall bars, bars tint        | 4,56 / 4,00 / 3,72, "dinding" |
 | payoff ("Segi enam")       | pull back to the finished comb (bookend)       | none                          |
 
+- Usual roles: hook → fact → compare → number → payoff.
 - **Transitions, in order of preference**: a camera move inside the same world; a shared-element flight into the next picture; an in-place state change (a wall closes, a glow, a strike-through); a flat-to-isometric tilt, when depth is earned; a zoom fly-through with a colour flash; a dissolve with a small blur, only between unrelated worlds.
 - **Every motion lands on its word**: an event's time is its token's time from the caption plan (`at("token")`), within 2 frames. Nothing important moves during a phrase gap; idle motion (wing flaps, drift) always runs.
 - Answer "what's inside" or "why" by opening the object already on screen (a breakdown), never by cutting to a new diagram.

@@ -17,6 +17,7 @@ For videos that will run with budget on Meta Ads (Facebook, Instagram) or TikTok
 | Proof   | one real number, demo or result                | 9-12  | 18-25 |
 | CTA     | one action, matches the hook, held 2 s or more | 12-15 | 25-30 |
 
+- Usual roles: hook → problem → offer → proof → cta.
 - The hook trigger (key word or main image) must read before 2 s; viewers decide in one or two seconds.
 - 6 s bumper: hook 0-2, payoff 2-4, CTA 4-6. Drop context and proof.
 - Length guide: Meta Feed 6-15 s, Reels and Stories 8-15 s, TikTok In-Feed 15-30 s. Mosio default 10-20 s.

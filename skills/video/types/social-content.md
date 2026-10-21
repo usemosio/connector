@@ -34,6 +34,7 @@ One video, one idea. If the point does not fit in one sentence, it is not ready.
 | Answer | close the hook's question: product, price, result   | last body scene |
 | Ending | CTA, business name, contact, held 2 s or more       | 12-15           |
 
+- Usual roles: hook → fact → fact → payoff → cta. Tips use one `step` per tip; before/after uses `compare`.
 - A 30 s video grows the body. The hook stays about 1.5 s.
 - Never open with a lone logo, a greeting ("Halo kak"), or black for more than 0.3 s.
 

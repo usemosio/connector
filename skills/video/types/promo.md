@@ -27,6 +27,7 @@ Everything comes from the user; guess nothing: original and promo price (or orig
 | Code and deadline | code chip and deadline, held still                  | (merged into CTA) | 7-8              | 11-12.5 |
 | CTA               | "Belanja sekarang", shop, contact, held 2 s or more | 4-6               | 8-10             | 12.5-15 |
 
+- Usual roles: hook → offer → proof → number → cta. A sale with a strike-through price: hook → number → compare → offer → cta.
 - One beat, one job. The hook never grows; longer cuts give each beat more breath. The discount number is the biggest thing on screen (Archivo Black or Bebas Neue).
 - Frame by price: expensive items use percent ("40%" beats "Hemat Rp52.000"), cheap items use the amount ("Hemat Rp5.000" beats "22%").
 

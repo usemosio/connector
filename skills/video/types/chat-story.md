@@ -9,6 +9,8 @@ A story told in chat bubbles: one side asks, the other answers, and the last mes
 | FAQ                      | customer            | the shop                     | the 2-4 questions the shop's WhatsApp gets most      |
 | Content or education Q&A | learner or follower | the creator or expert        | "Kenapa roti cepat berjamur?" / "Karena lembap, Kak" |
 
+Usual roles: hook → problem → fact → proof → cta (the customer's question is `problem`, the shop's answer `fact`, a real review `proof`).
+
 ## Honesty (required)
 
 - A made-up shop chat is a **dramatisation**, not a testimonial. Show a small "Ilustrasi" label (at least 40 px, inside the safe zone, visible throughout); never title it "Kata pelanggan kami".

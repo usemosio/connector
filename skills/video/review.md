@@ -71,6 +71,9 @@ Not bans. Each is fine when chosen with a one-sentence reason for this business;
 - A new effect in every scene to show off technique.
 - A flat drawing followed by separate depth objects that pop in: often the same drawing could stand up in place and hand its key element over instead. Keep the cut if it is a deliberate new world.
 - House style as default: giant cropped words, circle wipes at every cut, typed titles with a caret, a dot that becomes the logo.
+- A storyboard with motion words ("slams in", "wipe", "zoom") instead of roles and subjects. The user approves content; techniques come from the style plan.
+- Content rewritten when only the style changed. Keep the approved beats; redo only the plan.
+- A second style built without being asked. Offer it in one line instead.
 
 ## Checklist every round
 
@@ -88,12 +91,13 @@ Mark each item **Pass** or **Fail**. A failed Critical item must be fixed before
 | 8   | Cuts follow the vector law (axis, direction, speed, cut mid-motion), no crossfades                                                                | Important   |
 | 9   | Motion by role: entrances decelerate, exits accelerate; no 4 identical entrances; at most one visible spring                                      | Important   |
 | 10  | Timing: text readable at least 1.2 s; no fully frozen frame (background too) over 0.6 s except designed pauses and the ending; scene lengths vary | Important   |
-| 11  | One system: one motion personality, one accent color, at most two font families                                                                   | Opportunity |
-| 12  | One screenshot-worthy frame, nameable by its second                                                                                               | Opportunity |
+| 11  | Storyboard: beats have roles and subjects, no motion words; content unchanged when only the style changed; no second style built unasked          | Important   |
+| 12  | One system: one motion personality, one accent color, at most two font families                                                                   | Opportunity |
+| 13  | One screenshot-worthy frame, nameable by its second                                                                                               | Opportunity |
 
-Before the preview: run items 1-10 on the storyboard and code (tween positions, text sizes, colors). After it: run all 12, then compare with the last round, marking each old failure Fixed, Partial or Still there.
+Before the preview: run items 1-11 on the storyboard and code (tween positions, text sizes, colors). After it: run all 13, then compare with the last round, marking each old failure Fixed, Partial or Still there.
 
-Report briefly in the user's language, e.g. "Review putaran 2: 10 dari 12 lulus. Gagal: #5 (kilat putih di 6,2 s karena `#root` tanpa latar), #9 (lima kartu menu masuk dengan fade-up yang sama). Saya perbaiki dua itu dulu." Fix at most the three worst failures per round, biggest impact first. Two or three rounds are usually enough; stop when fixes turn cosmetic.
+Report briefly in the user's language, e.g. "Review putaran 2: 11 dari 13 lulus. Gagal: #5 (kilat putih di 6,2 s karena `#root` tanpa latar), #9 (lima kartu menu masuk dengan fade-up yang sama). Saya perbaiki dua itu dulu." Fix at most the three worst failures per round, biggest impact first. Two or three rounds are usually enough; stop when fixes turn cosmetic.
 
 ## Adapted from
 

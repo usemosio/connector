@@ -4,7 +4,7 @@ description: "Entry point for any Mosio video: promo, sale, paid ad, social cont
 license: "MIT and Apache-2.0; see Adapted from in each file"
 metadata:
   author: Mosio
-  version: "0.2.0"
+  version: "0.3.0"
 ---
 
 # Making a video with Mosio
@@ -20,14 +20,16 @@ Mosio renders short, silent videos from HTML for small Indonesian businesses and
 
 1. **Understand the goal.** What is sold, taught or announced, for whom, where it is posted, and the one action after watching. Take everything the user already said; do not ask again.
 2. **Pick the type** (table below) and read `types/<type>.md`. Route once: match the deliverable, not a word said in passing.
-3. **Brief and storyboard** in chat, following `brief.md`: one batch of at most 5 questions, then the brief and a second-by-second storyboard. Wait for approval. Revisions here are free.
-4. **Pick the path**: template or custom composition (below).
-5. **Build.** Template: fill its variables. Composition: write the HTML.
-6. **Review** with `review.md` before the preview, and again after it.
-7. **Preview.** `preview_template` or `preview_composition`. Both are free.
-8. **Render.** The user watches the preview card and presses "Buat video" themselves. Without a card (terminal, scripts), call `render_template` or `render_composition` only after the user agrees, then `get_status` until `done`.
+3. **Brief and content storyboard** in chat, following `brief.md`: one batch of at most 5 questions, then the brief and the beats (role, text, subject, weight; no motion).
+4. **Show it** with `preview_storyboard` in 1-3 fitting styles (free). Wait for content approval, then the user picks a style. A later style change does not reopen the content.
+5. **Pick the path**: template or custom composition (below).
+6. **Build.** Template: fill its variables. Composition: `get_composition_guide` with the chosen style, then the HTML from the approved beats and that style's plan.
+7. **Review** with `review.md` before the preview, and again after it.
+8. **Preview.** `preview_template` or `preview_composition`. Both are free.
+9. **Render.** The user watches the preview card and presses "Buat video" themselves, or "Buka di Studio" to fine-tune it by hand. Without a card (terminal, scripts), call `render_template` or `render_composition` only after the user agrees, then `get_status` until `done`, and share the download link and `project_url` (the video's page, where Studio opens it).
+10. **Revise.** A change to a video that exists is a new version of the same video, never a new one: `get_project` (its HTML as it is now, with the user's Studio edits, and its `version`), change that HTML, then `preview_composition` and `render_composition` with `project_id` and `base_version`.
 
-"Langsung buat aja" or "yang cepet": skip waiting for the storyboard approval and go straight to a preview, but still write a short brief and storyboard as decisions and never guess facts. The render still waits for the user: the preview is free, the render spends credits.
+"Langsung buat aja" or "yang cepet": skip waiting for the storyboard approval and go straight to a preview in the best-fitting style, but still write a short brief and the beats as decisions and never guess facts. The render still waits for the user: the preview is free, the render spends credits.
 
 ## Pick the type
 

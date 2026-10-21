@@ -19,6 +19,8 @@ For a POS app, online shop, booking app, local SaaS, online course or a new feat
 | Proof    | (inside features) | 17-20 | A real number rises, or a clear "done" state                                  |
 | CTA      | 10.5-15           | 20-25 | Logo collapses into a button, cursor presses, name and contact hold 2 s+      |
 
+Usual roles: hook → fact → step → step → number → cta (the struck-out chore is the hook, the app reveal a fact, each feature a step).
+
 The claim must read within the first 10 s. If the result is instantly visible (receipt prints, chart rises), open on it for 2 s, then go back to the problem.
 
 ## Mock UI screens

@@ -58,6 +58,8 @@ Identical slow zoom-ins are the mark of an amateur slideshow. Vary direction, zo
 | Ending       | 2 s+ held                            | CTA, name, real contact                                                                        |
 | 15 s example | 1.2 + (3.0 + 3.0 + 4.2 + 2.6) + 2 s+ | opening, four photos, ending                                                                   |
 
+Usual roles: hook → offer → offer → offer → cta, one `offer` per photo; the hero photo gets weight `long`.
+
 ## Core code
 
 Each photo is a `.slide` (absolute, full screen, in order so the next stacks on top) holding an `img` and a `.cap` with masked spans.

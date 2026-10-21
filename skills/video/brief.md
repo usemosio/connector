@@ -1,12 +1,12 @@
 # Brief and storyboard
 
-Turn "buatkan video" into a short brief and a second-by-second storyboard in chat, before any HTML or template call. The guide's rules still apply and win on conflict. Start straight with the questions or the brief: no preamble, no explaining this skill.
+Turn "buatkan video" into a short brief and a content storyboard in chat, before any HTML or template call. The guide's rules still apply and win on conflict. Start straight with the questions or the brief: no preamble, no explaining this skill.
 
 ## Order
 
 1. Call `get_composition_guide` first. Its brand kit (business name, main color, background, contact) is already answered: show it in the brief, never ask it again. Fields marked "(belum diisi)" go on the question list.
 2. Take everything the user already said (product, price, topic, platform, duration, liked examples), then ask what is missing in **one batch of at most 5 questions** and wait.
-3. Write the brief and storyboard, ask "Sudah pas, atau ada yang diubah?", and after approval take the path chosen in `SKILL.md`.
+3. Write the brief and the content storyboard, show it with `preview_storyboard`, and wait for approval and a style pick. Then write the style plan and take the path chosen in `SKILL.md`.
 
 ## Needed before the storyboard
 
@@ -45,7 +45,7 @@ Adjectives and estimates are not answers. Offer two picturable options and their
 | User says                         | Reply with                                                                                                                                    |
 | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | "Yang kekinian aja"               | "Kekinian yang mana: kata besar bergantian cepat seperti promo sneakers, atau putih bersih dengan satu produk besar dan banyak ruang kosong?" |
-| "Sekitar 15 detikan"              | "Saya kunci 15 detik: 4 adegan, masing-masing 3 sampai 4 detik. Oke?"                                                                         |
+| "Sekitar 15 detikan"              | "Saya kunci 15 detik: 5 bagian, satu ide per bagian. Oke?"                                                                                    |
 | "Buat semua orang"                | "Siapa yang paling sering beli? Satu saja, nanti bahasanya saya sesuaikan."                                                                   |
 | "Biar viral"                      | "Kalau berhasil, penonton melakukan apa: chat WA, datang, simpan, atau follow?"                                                               |
 | "Masukin semua menu / semua tips" | "15 detik muat 3 yang terbaca. Mana 3 andalan? Sisanya bisa jadi video kedua."                                                                |
@@ -75,33 +75,60 @@ Brief
 - Ajakan: Pesan lewat WhatsApp · Kontak: [dari brand kit]
 - Ukuran: 9:16, 1080×1920 · Durasi: 15 detik · Rasa: hangat, santai
 Dari kamu dan brand kit: inti, untuk, ajakan, kontak, warna.
-Saran saya (perlu konfirmasi): 9:16 15 detik untuk Reels; gaya product-hero karena satu produk dengan harga.
+Saran saya (perlu konfirmasi): 9:16 15 detik untuk Reels; sketsa gaya product-hero dan kinetic-type karena satu produk dengan harga.
 ```
 
-## Storyboard format
+## Storyboard in two layers
 
-- 3-6 scenes (6-8 s: 3, 10-15 s: 4-5, 20-30 s: 5-6). Seconds with one decimal, contiguous: each scene starts where the last ended; the total equals the duration and later `data-duration`.
-- Scene 1 is the hook, 0-1.5 s: big motion, short text; not a lone logo, not a title fading in from an empty screen. Body scenes 2-4 s, one idea each, and each has one event (something changes from start to end). Text to read holds at least 1.2 s.
-- The last scene has the action, name and contact, holds at least 2 s, and exits in the final 0.5 s.
-- On-screen text exactly as it will appear, at most 7 words at once.
-- Motion as verb plus easing feel ("slams in", "counts up then bounces", "revealed from behind a line"). Transition: how it moves to the next scene (wipe, mask, zoom, slide, words out before new words in), never a plain appear and disappear.
+**Layer 1, the content storyboard**, is what the user approves. It is style-neutral: it says what each beat says and shows, never how it moves.
 
-| #   | Seconds   | On-screen text                         | Motion                                                 | Transition                  |
-| --- | --------- | -------------------------------------- | ------------------------------------------------------ | --------------------------- |
-| 1   | 0.0-1.5   | "Ngantuk jam 2 siang?"                 | words slam in one by one, big to normal                | words exit upward           |
-| 2   | 1.5-4.5   | "Es Kopi Susu Gula Aren"               | SVG glass rises, background gradient drifts            | diagonal wipe in main color |
-| 3   | 4.5-8.0   | "Cuma Rp18.000"                        | price counts up, lands with a small bounce             | zoom out of the number      |
-| 4   | 8.0-11.5  | "Gula aren asli, bukan sirup"          | two lines revealed from behind a line, "asli" accented | slide left                  |
-| 5   | 11.5-15.0 | "Pesan via WA · Kopi Senja · [kontak]" | button enters, then holds; fade out 14.5-15.0          | end                         |
+- 3-6 beats (6-8 s: 3, 10-15 s: 4-5, 20-30 s: 5-6; the tool takes at most 8). One idea per beat.
+- **Role**, one of: `hook` (stop the scroll), `problem` (the pain), `fact` (one statement), `step` (one step of a how-to), `compare` (two things: before and after, myth and fact, old and new price), `number` (one real figure), `proof` (a review, a detail, a result), `offer` (what is sold and the deal), `cta` (the one action and contact), `payoff` (the closing answer or lesson). The type file lists the usual sequence. Start with `hook`; end with `cta` when selling, `payoff` when teaching or telling.
+- **On-screen text**: exactly as it will show, at most 7 words, in quotes.
+- **Key word**: the word in that text where the beat lands.
+- **Data**: the facts or numbers from the user or brand kit that the beat uses. Nothing invented; missing means `[belum ada]` and the beat goes without it.
+- **Subject**: what is shown, an object or idea ("the iced coffee glass"), not how it moves.
+- **Weight**: `short`, `medium` or `long`. Hook usually short, ending long. The chosen style's tempo turns weights into seconds later.
+- No motion or transition words ("slams in", "wipe", "zoom", "counts up") and no exact seconds: those belong to layer 2.
 
-Illustrative only; prices and contacts come from the user. Below the table: "Total 15,0 detik. Sudah pas, atau ada yang diubah?"
+Promo example (illustrative; prices and contacts come from the user):
 
-## Approval, revisions, hand-off
+| #   | Role   | On-screen text                | Key word  | Data                     | Subject                         | Weight |
+| --- | ------ | ----------------------------- | --------- | ------------------------ | ------------------------------- | ------ |
+| 1   | hook   | "Ngantuk jam 2 siang?"        | Ngantuk   |                          | a sleepy afternoon at the desk  | short  |
+| 2   | offer  | "Es Kopi Susu Gula Aren"      | Gula Aren |                          | the iced coffee glass           | medium |
+| 3   | proof  | "Gula aren asli, bukan sirup" | asli      | real palm sugar (user)   | a palm sugar block by the glass | medium |
+| 4   | number | "Cuma Rp18.000"               | Rp18.000  | Rp18.000 (user)          | the price                       | medium |
+| 5   | cta    | "Pesan via WA · Kopi Senja"   | WA        | WA number from brand kit | the order button and contact    | long   |
 
-- A revision is not approval: show the new version and ask again. Changing one scene: change only it and shift later seconds so the total holds.
-- Several sizes: same storyboard, layout rebuilt per size. Offer first: each size costs its own credits.
-- Each scene start becomes a timeline label, e.g. `tl.addLabel("s3", 4.5)`, with scene 3 tweens at `"s3"` or `"s3+=0.2"`. Timeline duration equals the storyboard total.
-- Nearest style: one product and price `product-hero`, discount `flash-sale`, slogan `kinetic-type`, menu `menu-board`, testimonial `chat-testimoni`, numbers `angka-capaian`, app `peluncuran-aplikasi`, ad services `dasbor-iklan`, wide explainer `explainer-isometrik`. Big-word rhythm: `skill_library` path `hyperframes/hyperframes-animation/blueprints/kinetic-type-beats.md`.
+Education example ("3 cara kemeja putih tetap putih"): `hook` "Kemeja putihmu mulai kusam?", three `step` beats, each with the user's own instruction in Data (e.g. "rendam air dingin 30 menit") and the shirt as the subject, then a `payoff` "Simpan, coba minggu ini".
+
+## Show it and pick a style
+
+1. Call `preview_storyboard` with a short title, the beats, and 1-3 styles that fit the content (nearest style list below). It draws each beat as a hand-drawn sketch panel per style, with that style's timing. It is free and cheap: you send data, not HTML. Without a card (terminal, scripts), the same beats as a table in chat are enough.
+2. Ask in one line: "Isinya sudah pas? Mau gaya yang mana?" The user approves the content and picks a style, in the card or in chat.
+3. The card shows each style's total length. Far from the agreed duration: change weights or the number of beats, show again.
+
+Nearest style: one product and price `product-hero`, discount `flash-sale`, slogan `kinetic-type`, menu `menu-board`, testimonial `chat-testimoni`, numbers `angka-capaian`, app `peluncuran-aplikasi`, ad services `dasbor-iklan`, wide explainer `explainer-isometrik`, "why" story `visual-story`. Template path: the chosen template plays the role of the style.
+
+## Layer 2, the style plan
+
+After approval and the style pick, call `get_composition_guide` with that `style`. Its "Style plan" section maps each role to a technique and gives the tempo: seconds per weight, endings at least 2 s.
+
+- Each beat gets its role's technique, and its weight becomes seconds. Seconds are contiguous: each beat starts where the last ended, and the total becomes `data-duration`.
+- Add the motion and transitions here, never in layer 1: the event lands on the key word, and each beat moves into the next (wipe, mask, zoom, slide, words out before new words in), never a plain appear and disappear. Craft: `../video-composition/craft/`.
+- Frame 0 is already composed or moving. Text to read holds at least 1.2 s. The last beat holds at least 2 s and exits in the final 0.5 s.
+- Do not rewrite the content: text, key words, data and order stay as approved. If the plan seems to need a content change, ask first.
+- Each beat start becomes a timeline label, e.g. `tl.addLabel("b3", 4.6)`, with beat 3 tweens at `"b3"` or `"b3+=0.2"`.
+
+## Revisions
+
+- A revision is not approval: show the new version and ask again.
+- **Content edit** (text, data, order, a beat added or removed, a weight): change only those beats, call `preview_storyboard` again, ask again.
+- **Style change**, now or after the preview: keep the beats as they are and redo only the plan, with `get_composition_guide` for the new style. No new content approval.
+- **A second style**: offer it, never build it unasked. Read only the chosen style's guide.
+- **Several sizes**: same beats and plan, layout rebuilt per size. Offer first: each size costs its own credits.
+- Big-word rhythm: `skill_library` path `hyperframes/hyperframes-animation/blueprints/kinetic-type-beats.md`.
 
 ## Adapted from
 

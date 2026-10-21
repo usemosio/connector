@@ -24,6 +24,8 @@ Facts, numbers and examples come from the user. No source? Keep the claim qualit
 | Glossary          | term big, plain definition in 7 words or fewer, one example                                      | type as the hero               |
 | Did you know      | surprising claim or number, why it happens, what it means for the viewer                         | number or metaphor as the hero |
 
+Usual roles: hook → step → step → step → payoff. Myth vs fact: hook → compare → fact → payoff.
+
 One structure per video. Two topics means two videos. For myth vs fact, the fact gets the larger type and the last word on screen.
 
 ## Hook (first 2 s, text and motion)
