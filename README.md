@@ -7,7 +7,7 @@ Mosio renders short videos for small businesses and creators: promos, social con
 - The Mosio MCP server at `https://mcp.mosio.me/mcp`. You sign in with your Mosio account (OAuth).
 - `video`: the entry skill for any video: brief and storyboard, the choice between a template and a custom composition, a review checklist, and one guide per video type (`skills/video/types/`).
 - `video-template`: how to pick a Mosio template and write its on-screen text.
-- `video-composition`: how to write the video as an HTML composition, with 9 example styles in `skills/video-composition/styles/` and craft references in `skills/video-composition/craft/`.
+- `video-composition`: how to write the video as an HTML composition, with 10 example styles in `skills/video-composition/styles/` and craft references in `skills/video-composition/craft/`.
 
 The same skills are served to every assistant by the MCP server's `skill_library` tool under `mosio/`.
 

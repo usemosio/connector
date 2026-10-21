@@ -31,33 +31,35 @@ Mosio renders short, silent videos from HTML for small Indonesian businesses and
 
 ## Pick the type
 
-| Type            | When                                                                                                        | File                       |
-| --------------- | ----------------------------------------------------------------------------------------------------------- | -------------------------- |
-| Promo           | sale, discount, strikethrough price, one product with its price, menu, service, store opening, announcement | `types/promo.md`           |
-| Ad              | paid Meta or TikTok ads, hook and offer tested for cold audiences                                           | `types/ad.md`              |
-| Social content  | regular posts: tips, behind the scenes, series, trends; built to be watched to the end                      | `types/social-content.md`  |
-| Explainer       | education: how it works, steps, myth vs fact, before and after; must teach on mute                          | `types/explainer.md`       |
-| App launch      | app, SaaS or digital product launch, UI demo                                                                | `types/app-launch.md`      |
-| Chat story      | a story or testimonial told as chat bubbles                                                                 | `types/chat-story.md`      |
-| Photo slideshow | the user has product photos to show                                                                         | `types/photo-slideshow.md` |
+| Type            | When                                                                                                                                                       | File                       |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| Promo           | sale, discount, strikethrough price, one product with its price, menu, service, store opening, announcement                                                | `types/promo.md`           |
+| Ad              | paid Meta or TikTok ads, hook and offer tested for cold audiences                                                                                          | `types/ad.md`              |
+| Social content  | regular posts: tips, behind the scenes, series, trends; built to be watched to the end                                                                     | `types/social-content.md`  |
+| Explainer       | education: how it works, steps, myth vs fact, before and after; must teach on mute                                                                         | `types/explainer.md`       |
+| App launch      | app, SaaS or digital product launch, UI demo                                                                                                               | `types/app-launch.md`      |
+| Chat story      | a story or testimonial told as chat bubbles                                                                                                                | `types/chat-story.md`      |
+| Photo slideshow | the user has product photos to show                                                                                                                        | `types/photo-slideshow.md` |
+| Visual story    | a narrative "why / how" explainer that feels like a short film: one illustrated world, a moving camera, word-by-word captions, a computed number, a payoff | `types/visual-story.md`    |
 
 Ambiguous cases:
 
 - A promo posted as paid reach is an Ad. The same promo posted organically is a Promo.
 - "Tips" or "cara" that also sells a product: Explainer for structure, with the product as the example and the CTA at the end.
+- Explainer or Visual story: steps, how-to and tips are an Explainer; one "why" or "how come" question answered like a short film, with a number and a payoff, is a Visual story.
 - A customer review: Chat story when told as a conversation, otherwise Promo (template `testimoni`).
 - More than one type fits: pick the one whose success action matches the user's goal, say why in one line.
 
 ## Pick the path
 
-|      | Template (fast)                                                                                                                                                                             | Custom composition (default)                                                                                                                                                                             |
-| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| When | an existing Mosio template fits and the user only needs their text swapped, or picked a template in the gallery, or wants it quick                                                          | anything unique, anything that follows the storyboard, any type without a template                                                                                                                       |
-| How  | the `video-template` skill (in `skill_library`: the server instructions). Tools: `list_templates` (variables and limits), `show_templates` (gallery), `preview_template`, `render_template` | the `video-composition` skill: `get_composition_guide`, then `../video-composition/craft/` (motion, transitions, kinetic type, numbers, logo, sizes). Tools: `preview_composition`, `render_composition` |
-| Look | the template's design                                                                                                                                                                       | the closest style (`get_composition_guide` with `style`) or template as a reference, never a mold: change text, color, rhythm, shapes and scenes to fit                                                  |
+|      | Template (fast)                                                                                                                                                                             | Custom composition (default)                                                                                                                                                                                               |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| When | an existing Mosio template fits and the user only needs their text swapped, or picked a template in the gallery, or wants it quick                                                          | anything unique, anything that follows the storyboard, any type without a template                                                                                                                                         |
+| How  | the `video-template` skill (in `skill_library`: the server instructions). Tools: `list_templates` (variables and limits), `show_templates` (gallery), `preview_template`, `render_template` | the `video-composition` skill: `get_composition_guide`, then `../video-composition/craft/` (motion, transitions, kinetic type, captions, camera, numbers, logo, sizes). Tools: `preview_composition`, `render_composition` |
+| Look | the template's design                                                                                                                                                                       | the closest style (`get_composition_guide` with `style`) or template as a reference, never a mold: change text, color, rhythm, shapes and scenes to fit                                                                    |
 
 - Templates exist only for promo-type content today: `promo-produk`, `diskon-kilat`, `menu-fnb`, `menu-spesial`, `jasa-layanan`, `testimoni`, `buka-baru`, `pengumuman`. Social content, explainers, ads, app launches, chat stories and slideshows go through composition.
-- Style ids for reference: `kinetic-type`, `product-hero`, `flash-sale` (static deadline text, no countdown), `menu-board`, `chat-testimoni`, `angka-capaian`, `peluncuran-aplikasi`, `dasbor-iklan`, `explainer-isometrik`.
+- Style ids for reference: `kinetic-type`, `product-hero`, `flash-sale` (static deadline text, no countdown), `menu-board`, `chat-testimoni`, `angka-capaian`, `peluncuran-aplikasi`, `dasbor-iklan`, `explainer-isometrik`, `visual-story`.
 - Unsure which the user wants, or they ask what exists: `show_templates`. Do not list templates in chat when a card can show them.
 - For a ready effect (kinetic text, transition, overlay, UI card, chart), try `search_registry` (English keywords) and `get_registry_item` before hand-building it.
 

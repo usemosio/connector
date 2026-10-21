@@ -1,6 +1,6 @@
 ---
 name: video-composition
-description: "Write a video as an HTML composition that Mosio renders: the technical rules, sizes and safe zones, fonts, motion language, 9 example styles, and craft references for motion, transitions, kinetic type, numbers, logos and multiple sizes. Use for any custom video, after the brief and storyboard are approved."
+description: "Write a video as an HTML composition that Mosio renders: the technical rules, sizes and safe zones, fonts, motion language, 10 example styles, and craft references for motion, transitions, kinetic type, captions, the 2D camera, numbers, logos and multiple sizes. Use for any custom video, after the brief and storyboard are approved."
 license: "Proprietary; craft/ adapts MIT and Apache-2.0 works, see NOTICE.md"
 metadata:
   brand: Mosio
@@ -38,7 +38,7 @@ You design the video yourself as one HTML file (a Hyperframes composition): layo
 On-screen text follows the user's language: Indonesian by default for Indonesian businesses (prices as `Rp25.000`). Reply to the user in their language.
 
 ## Director's library
-`skill_library` starts with Mosio's own skills, which already follow the rules below: `mosio/video/` (the flow, brief, review, and video types: promo, ad, social content, explainer, app launch, chat story, photo slideshow) and `mosio/video-composition/craft/` (motion, transitions, kinetic type, numbers, logo, sizes). It also holds third-party skills you can read: official Hyperframes (the composition contract `hyperframes/hyperframes-core/SKILL.md`, motion rules, scene blueprints and transitions in `hyperframes/hyperframes-animation/`, creative direction in `hyperframes/hyperframes-creative/`), motion design, short-form structure, kinetic typography, GSAP, and copywriting. For ready-made effects (kinetic text, transitions, overlays, UI cards, charts), search the Hyperframes registry with `search_registry` (English keywords), fetch with `get_registry_item`, and paste it into your composition instead of starting from scratch. When a third-party skill says to run a CLI, use media, or another framework, follow the notes in the library index. The rules below are what apply on Mosio.
+`skill_library` starts with Mosio's own skills, which already follow the rules below: `mosio/video/` (the flow, brief, review, and video types: promo, ad, visual story, social content, explainer, app launch, chat story, photo slideshow) and `mosio/video-composition/craft/` (motion, transitions, kinetic type, captions, camera, numbers, logo, sizes). It also holds third-party skills you can read: official Hyperframes (the composition contract `hyperframes/hyperframes-core/SKILL.md`, motion rules, scene blueprints and transitions in `hyperframes/hyperframes-animation/`, creative direction in `hyperframes/hyperframes-creative/`), motion design, short-form structure, kinetic typography, GSAP, and copywriting. For ready-made effects (kinetic text, transitions, overlays, UI cards, charts), search the Hyperframes registry with `search_registry` (English keywords), fetch with `get_registry_item`, and paste it into your composition instead of starting from scratch. When a third-party skill says to run a CLI, use media, or another framework, follow the notes in the library index. The rules below are what apply on Mosio.
 
 ## Technical rules (required, checked before render)
 - One HTML document. Root element: `<div id="root" data-composition-id="main" data-start="0" data-duration="15" data-width="1080" data-height="1920" data-fps="30">`. Suggested duration 6-30 seconds, at most 60 seconds. `html` and `body` are `data-width` × `data-height` (e.g. 1080×1920 px), and so is `<meta name="viewport">`; `#root` is `width: 100%; height: 100%; overflow: hidden` (the canvas size comes from `data-width`/`data-height`; do not hard-code it on `#root`).
@@ -115,8 +115,11 @@ Read the example before writing; treat it as a starting point, not a mold.
 - [peluncuran-aplikasi](styles/peluncuran-aplikasi.html): The problem is struck out, the app window slides in, a cursor clicks, and numbers rise. For apps, SaaS and digital products.
 - [dasbor-iklan](styles/dasbor-iklan.html): Metrics drop then rise, platform cards, and a chart line drawing itself. For ad services, agencies and digital services.
 - [explainer-isometrik](styles/explainer-isometrik.html): An isometric stage: the problem, the workload, then the solution and a chart. A 1920×1080 wide example for YouTube, websites and in-store screens.
+- [visual-story](styles/visual-story.html): A short explainer that feels like a film: one illustrated 2D world under a moving camera, word-by-word captions with a selection box on key words, computed numbers. For education and 'why' facts.
 
 ## Craft
+- [camera.md](craft/camera.md): Camera: one 2D world
+- [captions.md](craft/captions.md): Captions: the word-by-word engine
 - [kinetic-type.md](craft/kinetic-type.md): Kinetic type
 - [logo.md](craft/logo.md): Logo and end card
 - [motion.md](craft/motion.md): Motion craft

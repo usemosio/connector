@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Visual story: kenapa sarang lebah segi enam?</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" />
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      /*
+        VISUAL STORY: a silent explainer told by one illustrated world and a moving camera.
+        Arc: hook question -> rule -> a number you can see -> consequence -> payoff (bookend).
+        Captions carry the script word by word on a reading clock (about 1.2x speaking pace).
+        Colour is semantic for the whole film: gold = the subject, red = worst, amber = middle,
+        green = best, slate = "the others".
+      */
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0d0a07; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: #0d0a07; font-family: "Inter", sans-serif; }
+      #film { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      .layer { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      /* warm dark world with a faint 40 px grid */
+      #bg { background: radial-gradient(ellipse 80% 55% at 50% 50%, #2a1d0e 0%, #140f09 55%, #0d0a07 100%); }
+      #bg::after { content: ""; position: absolute; inset: 0; background-size: 40px 40px;
+        background-image: linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px); }
+      #honeybg { background: radial-gradient(ellipse 90% 70% at 50% 42%, #d08408 0%, #6b3a05 58%, #2a1503 100%); }
+      #flash { background: radial-gradient(ellipse 70% 60% at 50% 48%, #ffe7a3 0%, #ffb300 45%, #a85f00 100%); }
+      #vignette { background: radial-gradient(ellipse 85% 70% at 50% 50%, transparent 55%, rgba(5,4,2,0.75) 100%); }
+      /* dark scrim behind the caption band so captions read over bright scenes */
+      #scrim { background: linear-gradient(to bottom, rgba(13,10,7,0.9) 0%, rgba(13,10,7,0.8) 22%, rgba(13,10,7,0) 30%); }
+
+      /* ---------- caption engine: one pre-laid line per reveal state ---------- */
+      #cap { position: absolute; left: 80px; top: 300px; width: 920px; height: 160px; }
+      .cl { position: absolute; left: 0; top: 0; width: 920px; text-align: center; font-size: 60px; line-height: 1.22; letter-spacing: -0.012em; opacity: 0; }
+      .w { display: inline-block; position: relative; font-weight: 400; color: rgba(255,255,255,0.45); }
+      .w.on { color: #ffffff; font-weight: 700; }
+      .w .tx { position: relative; }
+      /* Figma-style selection box on the key term (sits before the text in DOM order) */
+      .box { position: absolute; left: -9px; right: -9px; top: -3px; bottom: -5px; }
+      .box .fill { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: #151e36; }
+      .box .e { position: absolute; display: block; background: #2f66b8; }
+      .box .et { left: 0; top: 0; width: 100%; height: 2px; transform-origin: 0 50%; }
+      .box .er { right: 0; top: 0; width: 2px; height: 100%; transform-origin: 50% 0; }
+      .box .eb { left: 0; bottom: 0; width: 100%; height: 2px; transform-origin: 100% 50%; }
+      .box .el { left: 0; top: 0; width: 2px; height: 100%; transform-origin: 50% 100%; }
+      .box .h { position: absolute; display: block; width: 14px; height: 14px; border-radius: 50%; background: #257bff; box-shadow: 0 0 0 2px #ffffff; }
+      .box .h1 { left: -7px; top: -7px; }
+      .box .h2 { right: -7px; bottom: -7px; }
+
+      /* ---------- UI pieces in HTML (all text 40 px or larger) ---------- */
+      .plab { position: absolute; top: 1110px; width: 300px; text-align: center; font-size: 40px; font-weight: 700; color: rgba(255,255,255,0.62); }
+      .plab span { display: inline-block; }
+      .tag { position: absolute; left: 0; top: 560px; width: 1080px; display: flex; justify-content: center; align-items: center; gap: 18px; font-size: 44px; font-weight: 700; color: #ffffff; }
+      .pill { border: 3px solid #ff6369; color: #ff6369; font-size: 40px; letter-spacing: 0.06em; padding: 2px 16px; border-radius: 10px; }
+      .pin { position: absolute; font-size: 64px; line-height: 1; font-weight: 900; font-variant-numeric: tabular-nums; text-shadow: 0 2px 14px rgba(0,0,0,0.85); }
+      .label { position: absolute; left: 0; width: 1080px; text-align: center; font-size: 40px; font-weight: 700; color: rgba(255,255,255,0.78); }
+      .counter { position: absolute; left: 0; width: 1080px; text-align: center; font-size: 130px; line-height: 1; font-weight: 900; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+      #fcard { position: absolute; left: 120px; top: 840px; width: 840px; height: 230px; border-radius: 28px; background: rgba(26,16,6,0.74);
+        border: 2px solid rgba(255,214,140,0.35); box-shadow: 0 30px 70px rgba(0,0,0,0.45); }
+      #fcard .f { position: absolute; left: 0; top: 38px; width: 836px; text-align: center; font-size: 72px; font-weight: 700; color: #fff4dc; }
+      #fcard .fl { position: absolute; left: 0; top: 148px; width: 836px; text-align: center; font-size: 40px; color: rgba(255,240,210,0.72); }
+      #strike { position: absolute; display: block; left: 150px; top: 78px; width: 536px; height: 8px; border-radius: 4px; background: #ff4d55; transform-origin: 0 50%; }
+      /* the footnote is the only thing in the bottom 420 px */
+      #foot { position: absolute; left: 80px; top: 1790px; font-size: 40px; color: rgba(255,255,255,0.6); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="25.5" data-width="1080" data-height="1920" data-fps="30">
+      <div id="film"><div id="bg" class="layer"></div><div id="honeybg" class="layer"></div>
+        <svg id="world" class="layer" viewBox="0 0 1080 1920"><defs>
+            <!-- gradients come from the GRAD table in JS; the bee is one character reused with <use>, its wings flap in render(t) -->
+            <filter id="fBlur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5" /></filter>
+            <filter id="fGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8" /></filter>
+            <clipPath id="cpAbd"><ellipse cx="12" cy="2" rx="17" ry="12" /></clipPath><g id="beeDef">
+              <ellipse class="wing" cx="-6" cy="-15" rx="16" ry="8" transform="rotate(-28 -6 -15)" fill="rgba(225,240,255,0.42)" stroke="rgba(255,255,255,0.75)" stroke-width="1.2" />
+              <ellipse class="wing" cx="8" cy="-16" rx="15" ry="7.5" transform="rotate(22 8 -16)" fill="rgba(225,240,255,0.36)" stroke="rgba(255,255,255,0.7)" stroke-width="1.2" />
+              <path d="M-12 6 l-6 10 M-4 8 l-2 11 M4 8 l3 10" stroke="#2a1a08" stroke-width="2.2" stroke-linecap="round" fill="none" /><ellipse cx="12" cy="2" rx="17" ry="12" fill="url(#gBee)" />
+              <g clip-path="url(#cpAbd)" fill="#2a1806"><rect x="6" y="-12" width="4.5" height="28" /><rect x="15" y="-12" width="4.5" height="28" /><rect x="24" y="-12" width="5" height="28" /></g>
+              <circle cx="-6" cy="0" r="10" fill="#7a5420" /><circle cx="-19" cy="2" r="8" fill="#2a1a0b" /><circle cx="-23" cy="-1.5" r="1.1" fill="#fff" opacity="0.8" />
+              <path d="M-23 -5 q-6 -10 -12 -9 M-19 -6 q-3 -10 -8 -12" stroke="#2a1a08" stroke-width="1.8" fill="none" stroke-linecap="round" /></g></defs>
+          <!-- 1 HOOK under a 2D camera with parallax layers | the flying hero cell (shared element) | 2-4 STAGE: one pseudo-3D projection | 5 INSIDE | 6 FINALE -->
+          <g id="hook"><g id="bokeh"></g><g id="leavesFar"></g><g id="cam"></g><g id="fgBee" filter="url(#fBlur)"></g></g>
+          <g id="flyHero"></g><g id="stage"><g id="combG"></g><g id="tilesG"></g><g id="fxG"></g><g id="leadsG"></g><line id="level" x1="100" x2="980" stroke="#ffd36b" stroke-width="3" stroke-dasharray="14 10" /></g>
+          <g id="bubbles"></g><g id="finale"><g id="finCam"></g></g></svg>
+        <div id="vignette" class="layer"></div><div id="scrim" class="layer"></div>
+        <div class="plab" id="lab-tri" style="left: 70px"><span id="ln-tri">Segitiga</span></div><div class="plab" id="lab-sq" style="left: 390px"><span id="ln-sq">Persegi</span></div>
+        <div class="plab" id="lab-hex" style="left: 710px"><span id="ln-hex">Segi enam</span></div>
+        <div class="tag" id="tag"><span class="pill">UJI</span><span>madu sama</span></div>
+        <div class="pin" id="pin-tri" style="color: #ff6369">0.00</div><div class="pin" id="pin-sq" style="color: #f5a524">0.00</div><div class="pin" id="pin-hex" style="color: #3dd68c">0.00</div>
+        <div class="label" id="barsLabel" style="top: 1395px">dinding per sel · luas sama</div><div class="counter" id="pct" style="top: 1215px; color: #3dd68c">−0%</div>
+        <div class="label" id="pctLabel" style="top: 1365px">lilin lebih hemat dari sel persegi</div>
+        <div id="fcard"><div class="f">P = 2·√(2√3·A)</div><div class="fl">dinding tersedikit untuk luas A</div><span id="strike"></span></div>
+        <div id="flash" class="layer"></div><div id="foot">Ilustrasi · tidak sesuai skala</div><div id="cap"></div></div>
+    </div>
+    <script>
+      /* HOW TO ADAPT: (1) replace PHRASES (reading clock, about 1.2x speaking pace, 0.3 s or more between phrases); (2) cues are looked up
+         by word, so the beats follow the script; (3) swap the scene builders section by section. render(t) draws every frame from t alone;
+         GSAP handles opacity, filters and simple tweens.   0.0-2.9 1 HOOK: illustrated comb, camera pushes into the cell being built |
+         2.9-10.7 2 RULE: the hero cell flies into three tilings, gaps shut, each shape lights up | 10.7-16.0 3 TEST: centre cells rise into
+         prisms, fill with honey, walls explode into bars | 16.0-18.9 4 RESULT: the hexagon returns, the comb grows, -7 % | 18.9-21.3 5 INSIDE:
+         push into the honey, gold flash, formula struck through | 21.3-25.5 6 PAYOFF: the hook's comb finished, hold, fade out */
+      // ===== 0. SCRIPT on the reading clock (seconds). "_" = a no-break space inside one token; em = the token that gets the selection box =====
+      const DUR = 25.5, PHRASES = [
+        { em: 4, w: [["Kenapa", 0.1], ["sarang", 0.58], ["lebah", 0.92], ["bentuknya", 1.32], ["segi_enam?", 1.83]] },
+        { w: [["Cuma", 2.88], ["ada", 3.19], ["tiga", 3.41], ["bentuk", 3.72]] }, { w: [["yang", 4.52], ["bisa", 4.69], ["nutup", 4.88], ["rapat", 5.31]] },
+        { w: [["tanpa", 6.17], ["celah:", 6.5]] }, { w: [["segitiga,", 7.42], ["persegi,", 8.55]] }, { w: [["dan", 9.47], ["segi_enam.", 9.62]] },
+        { w: [["Buat", 10.74], ["nampung", 10.98], ["madu", 11.34], ["yang", 11.65], ["sama,", 11.77]] }, { w: [["segi_enam", 12.61], ["butuh", 13.21], ["dinding", 13.69]] },
+        { em: 0, w: [["paling_sedikit.", 14.47]] }, { w: [["Lilinnya", 15.99], ["lebih", 16.49], ["hemat,", 16.68]] }, { w: [["madunya", 17.53], ["lebih", 18.09], ["banyak.", 18.47]] },
+        { w: [["Lebah", 19.38], ["nggak", 19.83], ["perlu", 20.0], ["rumus.", 20.26]] }, { em: 0, w: [["Segi_enam", 21.28], ["udah", 21.93], ["paling", 22.2], ["efisien.", 22.77]] }];
+      const TOKENS = PHRASES.flatMap((p) => p.w), norm = (s) => s.toLowerCase().replace(/_/g, " ").replace(/[?.,:!]/g, "");
+      const at = (word, n = 1) => TOKENS.filter(([w]) => norm(w) === word)[n - 1][1]; // start of the n-th token that reads `word`
+      const C = { // every beat lands on its word
+        close: at("segi enam"), handoff: at("cuma"), pop: at("tiga"), //   1.83 builder closes the cell; 2.88 hero flies; 3.41 tilings pop
+        shut0: at("nutup"), shut1: at("rapat") + 0.15, seams: at("celah"), // 4.88-5.46 gaps shut; 6.50 seams flash
+        tri: at("segitiga"), sq: at("persegi"), hex: at("segi enam", 2), //  7.42 / 8.55 / 9.62 each tiling lights up
+        lift: at("buat"), same: at("sama"), focus: at("segi enam", 3), //  10.74 tilings stand up; 11.77 equal honey; 12.61 hexagon glows
+        explode: at("dinding"), measure: at("paling sedikit"), //            13.69 walls fly into bars; 14.47 tint + counters
+        back: at("lilinnya"), fill: at("madunya"), pct: at("lebih", 2), //  15.99 hexagon returns; 17.53 comb fills; 18.09 -7 %
+        cutIn: at("lebah", 2), strike: at("rumus"), cutOut: at("segi enam", 4) }; // 19.38 into the honey; 20.26 strike; 21.28 finale
+      Object.assign(C, { land: C.handoff + 0.5, grow: C.back + 0.7, dive: C.cutIn - 0.45 }); // hero lands; comb grows; push-in starts
+      // ===== helpers =====
+      const tl = gsap.timeline({ paused: true }), $ = (id) => document.getElementById(id), F = 1 / 30, D2R = Math.PI / 180, R3 = Math.sqrt(3);
+      const set = (e, attrs) => { for (const k in attrs) e.setAttribute(k, attrs[k]); return e; }, el = (tag, attrs, parent) => parent.appendChild(set(document.createElementNS("http://www.w3.org/2000/svg", tag), attrs));
+      const pts = (a) => a.map((p) => p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" "), clamp01 = (v) => Math.max(0, Math.min(1, v)), lerp = (a, b, u) => a + (b - a) * u;
+      const io = (u) => (u < 0.5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2), eOut = (u) => 1 - Math.pow(1 - u, 3), seg = (t, a, b, ease = io) => ease(clamp01((t - a) / (b - a)));
+      const backOut = (u) => (u <= 0 ? 0 : 1 + 2.70158 * Math.pow(u - 1, 3) + 1.70158 * Math.pow(u - 1, 2)), EASE = { io, lin: (u) => u, in5: (u) => u ** 5, out: eOut };
+      const mulberry32 = (a) => () => { a = (a + 0x6d2b79f5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; // seeded PRNG
+      function keyed(keys, t) { // interpolates every numeric field between time keys; `e` = the ease into that key
+        let i = 0, o = {}; while (i < keys.length - 1 && t >= keys[i + 1].t) i++;
+        const a = keys[i], b = keys[Math.min(i + 1, keys.length - 1)], u = b.t > a.t ? EASE[b.e || "io"](clamp01((t - a.t) / (b.t - a.t))) : 1;
+        for (const k in a) if (typeof a[k] === "number") o[k] = lerp(a[k], b[k], u); return o; }
+      const fadeIn = (n, t, d = 0.25) => tl.fromTo(n, { opacity: 0 }, { opacity: 1, duration: d, ease: "power2.out" }, t), fadeOut = (n, t, d = 0.2) => tl.to(n, { opacity: 0, duration: d, ease: "power2.in" }, t);
+      const counter = (node, to, t, dec, pre = "", suf = "") => { const o = { v: 0 }; tl.to(o, { v: to, duration: 0.5, ease: "power2.out", onUpdate: () => (node.textContent = pre + o.v.toFixed(dec) + suf) }, t); };
+      const hexVerts = (r) => Array.from({ length: 6 }, (_, j) => [r * Math.cos((Math.PI / 3) * j), r * Math.sin((Math.PI / 3) * j)]);
+      const GRAD = [ // materials: [id, "l" (diagonal) | "v" (vertical) | [cx, cy, r] (radial, %), stops [offset, colour, opacity?]]
+        ["gWax", "l", [[0, "#ffe9a8"], [0.45, "#ebb04a"], [1, "#b3721a"]]], ["gSlate", "l", [[0, "#e3e8f2"], [0.5, "#b3bccf"], [1, "#7d879c"]]], ["gLeaf", "l", [[0, "#7a9a46"], [1, "#2c4416"]]],
+        ["gBark", "v", [[0, "#8a5c34"], [0.45, "#5a3a1d"], [1, "#2c1a0b"]]], ["gHoney", [40, 35, 75], [[0, "#ffde70"], [0.5, "#f4aa1f"], [1, "#a65a00"]]],
+        ["gCap", [42, 38, 70], [[0, "#fff4d2"], [0.6, "#ebcc85"], [1, "#c3913e"]]], ["gEmpty", [58, 62, 70], [[0, "#1a0f05"], [0.7, "#3a2209"], [1, "#6a4413"]]],
+        ["gBee", [40, 35, 70], [[0, "#ffe58a"], [0.6, "#f2b11e"], [1, "#9a6100"]]], ["gBokeh", [50, 50, 50], [[0, "#ffcf7a", 0.35], [1, "#ffcf7a", 0]]], ["gShadow", [50, 50, 50], [[0, "#000", 0.5], [1, "#000", 0]]],
+        ["gBubble", [50, 50, 50], [[0, "#fff0c8", 0], [0.72, "#ffe6aa", 0.3], [0.92, "#fffae6", 0.9], [1, "#fffae6", 0]]]];
+      GRAD.forEach(([id, k, stops]) => {
+        const g = Array.isArray(k) ? el("radialGradient", { id, cx: k[0] + "%", cy: k[1] + "%", r: k[2] + "%" }, $("world").firstElementChild) : el("linearGradient", { id, x1: 0, y1: 0, x2: k === "v" ? 0 : 1, y2: 1 }, $("world").firstElementChild);
+        stops.forEach(([o, c, a = 1]) => el("stop", { offset: o, "stop-color": c, "stop-opacity": a }, g)); });
+      // ===== 1. HOOK: the illustrated comb on a branch (0 - 2.9 s) =====
+      const R = 70, CY = 1000, combPx = (q, r) => [540 + 1.5 * q * R, CY + R3 * (r + q / 2) * R], COMB_QR = []; // flat-top hex grid -> screen
+      for (let q = -3; q <= 3; q++) for (let r = -3; r <= 3; r++) { const ring = Math.max(Math.abs(q), Math.abs(r), Math.abs(q + r)); if (ring <= 3) COMB_QR.push({ q, r, ring }); }
+      const ring2 = (r) => "M" + pts(hexVerts(r)) + " Z M" + pts(hexVerts(r * 0.88)) + " Z", WAX_RIM = { "fill-rule": "evenodd", fill: "url(#gWax)", stroke: "rgba(90,52,10,0.55)", "stroke-width": 1.4 };
+      function cellArt(parent, cx, cy, state) { // one illustrated cell: content + wax rim
+        const g = el("g", { transform: `translate(${cx} ${cy})` }, parent);
+        el("polygon", { points: pts(hexVerts(R * 0.88)), fill: `url(#g${state[0].toUpperCase() + state.slice(1)})` }, g);
+        if (state === "honey") el("ellipse", { cx: -20, cy: -23, rx: 21, ry: 8, transform: "rotate(-24 -20 -23)", fill: "#fff", opacity: 0.5 }, g);
+        if (state === "cap") el("ellipse", { cx: -10, cy: -14, rx: 29, ry: 21, fill: "#fffaf0", opacity: 0.28 }, g);
+        return el("path", { d: ring2(R), ...WAX_RIM }, g), g; }
+      function branchArt(parent, y) {
+        el("path", { d: `M-60 ${y} C 300 ${y - 22}, 720 ${y + 14}, 1140 ${y - 12} L 1140 ${y + 54} C 720 ${y + 72}, 300 ${y + 40}, -60 ${y + 58} Z`, fill: "url(#gBark)" }, parent);
+        [[-20, 14, 380, 8], [200, 30, 520, 26], [560, 20, 900, 28], [760, 40, 1100, 24]].forEach(([x1, y1, x2, y2]) => el("path", { d: `M${x1} ${y + y1} Q ${(x1 + x2) / 2} ${y + y1 - 8} ${x2} ${y + y2}`, stroke: "rgba(25,14,5,0.55)", "stroke-width": 2.2, fill: "none" }, parent));
+        el("path", { d: `M300 ${y + 40} C 380 ${y + 80}, 700 ${y + 84}, 780 ${y + 40} Z`, fill: "#d9a243", opacity: 0.9 }, parent); }
+      const leaf = (parent, x, y, s, rot) => el("path", { d: "M0 0 C 40 -36, 120 -30, 160 0 C 120 30, 40 36, 0 0 Z", fill: "url(#gLeaf)", filter: "url(#fBlur)", transform: `translate(${x} ${y}) rotate(${rot}) scale(${s})` }, parent);
+      const bee = (parent) => { const g = el("g", {}, parent); el("use", { href: "#beeDef" }, g); return g; };
+      const beeT = (g, x, y, rot, s) => g.setAttribute("transform", `translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${rot.toFixed(1)}) scale(${s})`);
+      const orbit = (b, t, w, cy) => { const a = w * t + b.ph; beeT(b.g, 540 + b.rx * Math.cos(a), cy + b.ry * Math.sin(a) + 10 * Math.sin(9 * t + b.ph), Math.atan2(b.ry * Math.cos(a), -b.rx * Math.sin(a)) / D2R + 180, 0.95); };
+      function buildComb(parent, stateOf) { // shadow + branch + comb; stateOf(cell) -> "honey" | "cap" | "empty" | null (left out)
+        el("ellipse", { cx: 540, cy: CY + 40, rx: 460, ry: 480, fill: "url(#gShadow)" }, parent);
+        const branch = el("g", {}, parent), comb = el("g", {}, parent), cells = COMB_QR.map((c) => ({ ...c, st: stateOf(c), xy: combPx(c.q, c.r) })).filter((c) => c.st);
+        return cells.forEach((c) => (c.g = cellArt(comb, c.xy[0], c.xy[1], c.st))), branchArt(branch, 520), { branch, comb, cells }; }
+      const HERO = { q: 2, r: 0 }, [HX, HY] = combPx(HERO.q, HERO.r), cam = $("cam"), rndArt = mulberry32(5); // the hero = the cell being built
+      [[40, 600, 0.9, -160], [930, 560, 1.0, -20], [990, 640, 0.75, 25], [-30, 700, 0.7, -140]].forEach(([x, y, s, r]) => leaf($("leavesFar"), x, y, s, r));
+      for (let i = 0; i < 16; i++) el("circle", { cx: rndArt() * 1080, cy: 520 + rndArt() * 900, r: 10 + rndArt() * 34, fill: "url(#gBokeh)" }, $("bokeh"));
+      buildComb(cam, ({ q, r, ring }) => (q === HERO.q && r === HERO.r) || (ring === 3 && combPx(q, r)[0] > 650 && combPx(q, r)[1] > 1090) ? null // hero + an unfinished corner
+        : ring <= 1 ? (q === 1 && r === -1 ? "cap" : "honey") : ring === 2 ? ((q + 2 * r) % 3 === 0 ? "cap" : "honey") : (q + r) % 2 ? "empty" : "cap");
+      const heroCell = el("g", { transform: `translate(${HX} ${HY})` }, cam), HO = hexVerts(R), HI = hexVerts(R * 0.88), heroFloor = el("polygon", { points: pts(HI), fill: "url(#gEmpty)" }, heroCell);
+      const heroWalls = HO.map((p, k) => el("polygon", { points: pts([p, HO[(k + 1) % 6], HI[(k + 1) % 6], HI[k]]), ...WAX_RIM }, heroCell)); // six wall pieces
+      const heroGlow = el("polygon", { points: pts(HO.map(([x, y]) => [HX + x, HY + y])), fill: "none", stroke: "#ffd36b", "stroke-width": 10, filter: "url(#fGlow)" }, cam);
+      const crawlers = [[470, 930, -20], [640, 1010, 15], [400, 1120, 40], [585, 1255, -10]].map(([x, y, r]) => ({ g: bee(cam), x, y, r })), builder = { g: bee(cam), x: HX + 86, y: HY - 22, r: -55 };
+      const flyers = [0, 1].map((i) => ({ g: bee(cam), ph: i * Math.PI, rx: 430 - i * 60, ry: 220 + i * 30 })), fgBee = bee($("fgBee"));
+      const CAMK = [{ t: 0, fx: 540, fy: 1000, s: 1 }, { t: 1.25, fx: 540, fy: 1000, s: 1.06, e: "lin" }, // 2D camera (focus + scale): slow drift,
+        { t: C.close, fx: HX, fy: HY, s: 2.3 }, { t: C.handoff, fx: HX, fy: HY, s: 2.42, e: "lin" }]; //                         then a push into the hero cell
+      const camT = (fx, fy, s) => `translate(${(540 - fx * s).toFixed(2)} ${(1000 - fy * s).toFixed(2)}) scale(${s.toFixed(4)})`;
+      const fly = $("flyHero"), flyFill = el("polygon", { points: pts(HI), fill: "url(#gEmpty)" }, fly), flyRim = el("path", { d: ring2(R), ...WAX_RIM }, fly); // hero copy, same art
+      function renderHook(t) {
+        const c = keyed(CAMK, t), sl = 1 + (c.s - 1) * 0.45, sb = 1 + (c.s - 1) * 0.12; // parallax: leaves 0.45x the camera, bokeh 0.12x
+        set(cam, { transform: camT(c.fx, c.fy, c.s) }), set($("leavesFar"), { transform: camT(lerp(540, c.fx, 0.45), lerp(1000, c.fy, 0.45), sl) });
+        set($("bokeh"), { transform: `translate(0 ${(-14 * t).toFixed(1)}) ` + camT(540, 1000, sb) }), flyers.forEach((b) => orbit(b, t, 1.5, 950));
+        crawlers.forEach((b, i) => beeT(b.g, b.x + 6 * Math.sin(2.1 * t + i), b.y + 4 * Math.cos(1.7 * t + i * 2), b.r + 8 * Math.sin(3 * t + i), 1));
+        beeT(builder.g, builder.x + 3 * Math.sin(14 * t), builder.y + 2 * Math.cos(11 * t), builder.r + 10 * Math.sin(9 * t), 1.05);
+        beeT(fgBee, lerp(-220, 1300, clamp01(t / 1.6)), lerp(1330, 1150, clamp01(t / 1.6)) + 30 * Math.sin(5 * t), 190, 3.2); } // blurred bee close to the lens
+      function renderFly(t) { // hand-off: starts on the hero's pixels (camera focus = 540,1000), lands on the hexagon tile
+        const u = seg(t, C.handoff, C.land), s = lerp(keyed(CAMK, C.handoff).s, (RH * S_T) / R, u);
+        set(fly, { transform: `translate(${lerp(540, TILE_HEX[0], u).toFixed(2)} ${(lerp(1000, TILE_HEX[1], u) - 70 * Math.sin(Math.PI * u)).toFixed(2)}) scale(${s.toFixed(4)})` }); }
+      // ===== 2-4. STAGE: tilings, prisms, bars and comb through one pseudo-3D projection (2.9 - 19.4 s) =====
+      // Ground plane in px: x right, y toward the viewer, z up. Camera {pitch, yaw, ox, oy}: pitch 90 = a flat drawing, lower = walls stand up.
+      const projector = (cam) => { const ys = Math.sin(cam.yaw * D2R), yc = Math.cos(cam.yaw * D2R), ps = Math.sin(cam.pitch * D2R), pc = Math.cos(cam.pitch * D2R); return (x, y, z) => [cam.ox + x * yc - y * ys, cam.oy + (x * ys + y * yc) * ps - z * pc]; };
+      const RH = Math.sqrt(2 / (3 * R3)), TA = Math.sqrt(4 / R3), TH = (TA * R3) / 2; // "area 1" shapes: perimeter = wall per cell (4.56 / 4.00 / 3.72)
+      const SHAPE = { hex: hexVerts(RH), sq: [[-0.5, -0.5], [0.5, -0.5], [0.5, 0.5], [-0.5, 0.5]], triUp: [[0, (-2 * TH) / 3], [TA / 2, TH / 3], [-TA / 2, TH / 3]], triDown: [[0, (2 * TH) / 3], [-TA / 2, -TH / 3], [TA / 2, -TH / 3]] };
+      const S_T = 80, S_L = 150, S_C = 100, H_T = 22, H_L = 300, H_C = 52; // px per unit (tilings, lineup, comb); wall heights (tilings, lineup, comb)
+      const RGB = { slate: [167, 176, 196], wax: [232, 168, 58], tri: [229, 72, 77], sq: [245, 165, 36], hex: [48, 164, 108] }, rgb = (c, k) => `rgb(${c.map((v) => Math.round(Math.min(255, v * k))).join(",")})`;
+      const TILE_CAM = { pitch: 90, yaw: 0, ox: 540, oy: 960 }, LINE_CAM = { pitch: 35, yaw: 15, ox: 540, oy: 960 }, COMB_CAM = { pitch: 52, yaw: 0, ox: 540, oy: 870 };
+      const STAGE_CAMK = [{ t: 0, ...TILE_CAM }, { t: C.lift, ...TILE_CAM }, { t: C.lift + 0.55, ...LINE_CAM }, { t: C.back, ...LINE_CAM, yaw: 18, e: "lin" }, { t: C.back + 0.7, ...COMB_CAM }]; // tilt, orbit, comb view
+      const BARS = { x0: 120, y: { tri: 1110, sq: 1210, hex: 1310 }, th: 30, k: S_L };
+      function makePrism(parent, verts, kind) { // floor, inner walls, honey, outer walls, rim, glow
+        const n = verts.length, c = { verts, kind, n, base: kind === "hex" ? RGB.wax : RGB.slate, tintTo: RGB[kind], g: el("g", {}, parent) }, nx = (i) => verts[(i + 1) % n];
+        c.len = verts.map((v, i) => Math.hypot(nx(i)[0] - v[0], nx(i)[1] - v[1]));
+        c.nrm = verts.map((v, i) => { const mx = (v[0] + nx(i)[0]) / 2, my = (v[1] + nx(i)[1]) / 2, l = Math.hypot(mx, my); return [mx / l, my / l]; }); // outward normals
+        const wall = () => el("polygon", { stroke: "rgba(40,24,6,0.45)", "stroke-width": 1.2, "stroke-linejoin": "round" }, c.g);
+        Object.assign(c, { floor: el("polygon", { fill: "#2a1806" }, c.g), back: verts.map(wall), honeyG: el("g", {}, c.g) });
+        Object.assign(c, { hSide: verts.map(() => el("polygon", { fill: "#c7790a" }, c.honeyG)), hTop: el("polygon", { fill: "url(#gHoney)" }, c.honeyG), front: verts.map(wall) });
+        c.rimDark = el("polygon", { fill: "none", stroke: kind === "hex" ? "#6e420c" : "#4b5466", "stroke-width": 9.5, "stroke-linejoin": "round" }, c.g);
+        c.rim = el("polygon", { fill: "none", stroke: kind === "hex" ? "url(#gWax)" : "url(#gSlate)", "stroke-width": 6.6, "stroke-linejoin": "round" }, c.g);
+        c.glow = el("polygon", { fill: "none", stroke: "#ffd36b", "stroke-width": 14, filter: "url(#fGlow)", opacity: 0 }, c.g); return c; }
+      // st = {px (patch centre x), x, y, z, s (px/unit), h (px), fill 0-1, op, glow, E (explode 0-1), tint 0-1}. Each tiling tilts about its own centre (px).
+      // Walls facing the viewer are drawn in front of the honey,
+      // the others behind it. Explode-into-measure: each wall morphs from its quad into its own segment of the cell's bar (walls laid end to end).
+      function drawPrism(c, st, cam) {
+        if (set(c.g, { opacity: st.op.toFixed(3) }) && (st.op <= 0.001 || st.s <= 0.01)) return;
+        const pr = projector({ ...cam, ox: cam.ox + (st.px || 0) }), z0 = st.z || 0, E = st.E || 0, p = (v, k, z) => pr(st.x + v[0] * st.s * k, st.y + v[1] * st.s * k, z), T = c.verts.map((v) => p(v, 1, z0 + st.h));
+        [c.rim, c.rimDark].forEach((r) => set(r, { points: pts(T), opacity: clamp01(1 - 1.6 * E).toFixed(3) })); // the rim leaves with the first walls
+        const B = c.verts.map((v) => p(v, 1, z0)), hz = z0 + st.h * st.fill * 0.92, solid = st.h > 0.5, HB = c.verts.map((v) => p(v, 0.86, z0)), HT = c.verts.map((v) => p(v, 0.86, hz));
+        const ys = Math.sin(cam.yaw * D2R), yc = Math.cos(cam.yaw * D2R), col = c.base.map((v, i) => lerp(v, c.tintTo[i], st.tint || 0)), by = BARS.y[c.kind];
+        set(c.floor, { points: pts(B), opacity: solid ? 1 - E : 0 });
+        for (let i = 0, cum = 0; i < c.n; cum += c.len[i], i++) {
+          const j = (i + 1) % c.n, nx = c.nrm[i][0] * yc - c.nrm[i][1] * ys, front = c.nrm[i][0] * ys + c.nrm[i][1] * yc > 0, e = E > 0 ? io(clamp01(E * 1.5 - (i / c.n) * 0.5)) : 0; // staggered
+          let q = [B[i], B[j], T[j], T[i]], shade = front ? 0.8 - 0.25 * nx : 0.55 + 0.2 * nx; // light from the left
+          const bx = BARS.x0 + cum * BARS.k, bl = c.len[i] * BARS.k, bar = [[bx, by + BARS.th], [bx + bl, by + BARS.th], [bx + bl, by], [bx, by]]; // this wall's bar segment
+          if (e > 0) (q = q.map((pt, k) => [lerp(pt[0], bar[k][0], e), lerp(pt[1], bar[k][1], e) - 60 * Math.sin(Math.PI * e)])), (shade = lerp(shade, 1, e)); // small arc mid-flight
+          const on = front ? c.front[i] : c.back[i], side = front && st.fill > 0.01 && solid;
+          set(front ? c.back[i] : c.front[i], { opacity: 0 }), set(on, { points: pts(q), fill: rgb(col, shade), opacity: solid || e > 0 ? (front ? lerp(0.62, 1, e) : lerp(0.95, 1, e)).toFixed(3) : 0 });
+          set(c.hSide[i], side ? { points: pts([HB[i], HB[j], HT[j], HT[i]]), opacity: 1 } : { opacity: 0 }); }
+        set(c.hTop, { points: pts(HT), opacity: st.fill > 0.01 && solid ? 1 : 0 }), set(c.glow, { points: pts(T), opacity: (st.glow || 0).toFixed(3) }); }
+      // ---- 2 RULE: three tilings seen from straight above (2.9 - 10.7 s) ----
+      const PATCH = { tri: -320, sq: 0, hex: 320 }, tiles = [], fx = {}, leads = {};
+      const addTile = (kind, verts, ox, oy, lead) => tiles.push({ kind, verts, patch: PATCH[kind], off: [ox, oy], d: Math.hypot(ox, oy) / S_T, lead });
+      [[-1, [[-0.5, 1], [0.5, 0], [1.5, 1]]], [0, [[-1.5, 1], [-0.5, 0], [0.5, 1]]]].forEach(([j, row]) => // triangles: a 2-row parallelogram [x in half sides, up?]
+        row.forEach(([k, up]) => addTile("tri", up ? SHAPE.triUp : SHAPE.triDown, (k * TA * S_T) / 2, (j + (up ? 2 / 3 : 1 / 3)) * TH * S_T, j === -1 && k === 0.5)));
+      for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) addTile("sq", SHAPE.sq, i * S_T, j * S_T, i === 0 && j === 0);
+      addTile("hex", SHAPE.hex, 0, 0, true);
+      for (let k = 0; k < 6; k++) addTile("hex", SHAPE.hex, R3 * RH * S_T * Math.cos((30 + 60 * k) * D2R), R3 * RH * S_T * Math.sin((30 + 60 * k) * D2R), false);
+      const tileCam = projector(TILE_CAM), TILE_HEX = tileCam(PATCH.hex, 0, 0);
+      tiles.sort((a, b) => a.off[0] * 0.26 + a.off[1] - (b.off[0] * 0.26 + b.off[1])).forEach((t) => (t.cell = makePrism(t.lead ? $("leadsG") : $("tilesG"), t.verts, t.kind)) && t.lead && (leads[t.kind] = t)); // back to front
+      ["tri", "sq", "hex"].forEach((k) => (fx[k] = { glow: el("g", { filter: "url(#fGlow)" }, $("fxG")), seams: el("g", {}, $("fxG")) }));
+      tiles.forEach((t) => { // per-patch glow and seams, drawn once on the closed tiling
+        const P = pts(t.verts.map(([x, y]) => tileCam(t.patch + t.off[0] + x * S_T, t.off[1] + y * S_T, 0)));
+        el("polygon", { points: P, fill: "none", stroke: "#ffd36b", "stroke-width": 12 }, fx[t.kind].glow);
+        el("polygon", { points: P, fill: "none", stroke: "#ffffff", "stroke-width": 2 }, fx[t.kind].seams); });
+      function tileState(tile, t) { // pops in on "tiga" spread apart; the gaps shut on "nutup rapat"; the walls stand up on "Buat" as the camera tilts
+        const spread = lerp(1.22, 1, seg(t, C.shut0, C.shut1)), pop = tile.lead && tile.kind === "hex" ? 1 : backOut(clamp01((t - (C.pop + tile.d * 0.12)) / 0.35));
+        return { px: tile.patch, x: tile.off[0] * spread, y: tile.off[1] * spread, z: 0, s: S_T * pop, h: H_T * seg(t, C.lift, C.lift + 0.55), fill: 0, op: 1, glow: 0, E: 0, tint: 0 }; }
+      // ---- 3 TEST + 4 RESULT: the centre cells. Tilted tiling -> lifted out, tall -> equal honey -> bars -> (hexagon) back into the comb (10.7 - 16.7 s) ----
+      function leadState(kind, t) {
+        const st = tileState(leads[kind], t), o = { tri: 0, sq: 0.06, hex: 0.12 }[kind], u = seg(t, C.lift + 0.45 + o, C.lift + 1.1 + o); // lifts out from its own pixels
+        Object.assign(st, { x: lerp(st.x, 0, u), y: lerp(st.y, 0, u), z: 40 * Math.sin(Math.PI * u), s: lerp(st.s, S_L, u), h: lerp(st.h, H_L, u) });
+        st.op = kind === "hex" ? seg(t, C.land, C.land + 0.15, EASE.lin) : 1; // the hexagon takes over from the flying copy
+        Object.assign(st, { fill: 0.85 * seg(t, C.same - 0.15, C.same + 0.45), E: seg(t, C.explode, C.explode + 0.6), tint: seg(t, C.measure, C.measure + 0.25) - seg(t, C.back, C.back + 0.3) });
+        if (kind === "hex") st.glow = seg(t, C.focus, C.focus + 0.3) * (1 - seg(t, C.explode - 0.25, C.explode));
+        else st.op *= 1 - 0.55 * seg(t, C.focus, C.focus + 0.3) + 0.55 * seg(t, C.explode - 0.25, C.explode); // the others dim on "segi enam"
+        if (kind !== "hex") return (st.op *= 1 - seg(t, C.back, C.back + 0.4)), st;
+        const r = seg(t, C.back + 0.15, C.grow); // walls fly back, the hexagon flies to the comb centre, then hands off to the comb's own cell
+        return Object.assign(st, { E: st.E - seg(t, C.back, C.back + 0.5), px: lerp(st.px, 0, r), z: st.z + 80 * Math.sin(Math.PI * r), s: lerp(st.s, S_C, r), h: lerp(st.h, H_C, r), op: t >= C.grow ? 0 : st.op }); }
+      // the comb, drawn once with COMB_CAM, back to front; it grows ring by ring and fills with honey
+      const combCells = COMB_QR.map(({ q, r, ring }) => ({ ring, x: 1.5 * q * RH * S_C, y: R3 * (r + q / 2) * RH * S_C })).sort((a, b) => a.y - b.y || a.x - b.x).map((c) => {
+        const w = el("g", {}, $("combG")), cell = makePrism(w, SHAPE.hex, "hex");
+        return drawPrism(cell, { x: c.x, y: c.y, z: 0, s: S_C, h: H_C, fill: 0.85, op: 1 }, COMB_CAM), { ...c, w, cell }; });
+      const [HFX, HFY] = projector(COMB_CAM)(0, 0, H_C * 0.85 * 0.92); // the centre cell's honey surface: the fly-through target
+      const ZOOMK = [{ t: 0, s: 1, fx: 540, fy: 960 }, { t: C.land, s: 1, fx: 540, fy: 960 }, { t: C.lift, s: 1.03, fx: 540, fy: 960, e: "lin" }, { t: C.lift + 0.55, s: 1, fx: 540, fy: 960 },
+        { t: C.grow, s: 1, fx: HFX, fy: HFY }, { t: C.dive, s: 1.05, fx: HFX, fy: HFY, e: "lin" }, { t: C.cutIn, s: 16, fx: HFX, fy: HFY, e: "in5" }]; // alive while still; 5 the push in
+      function renderStage(t) {
+        const camNow = keyed(STAGE_CAMK, t), z = keyed(ZOOMK, t), tilesOn = t < C.focus + 0.05;
+        set($("stage"), { transform: `translate(${z.fx} ${z.fy}) scale(${z.s.toFixed(4)}) translate(${-z.fx} ${-z.fy})` });
+        tiles.forEach((tile) => !tile.lead && (tilesOn ? drawPrism(tile.cell, tileState(tile, t), camNow) : tile.cell.g.setAttribute("opacity", 0)));
+        ["tri", "sq", "hex"].forEach((k) => drawPrism(leads[k].cell, leadState(k, t), camNow)); }
+      const LEVEL_Y = LINE_CAM.oy - H_L * 0.85 * 0.92 * Math.cos(LINE_CAM.pitch * D2R); // the shared honey level (same volume)
+      set($("level"), { y1: LEVEL_Y, y2: LEVEL_Y });
+      // ===== 5. INSIDE: honey interior with rising bubbles at seeded positions (19.4 - 21.3 s) =====
+      const rndB = mulberry32(11), bubbles = Array.from({ length: 34 }, () => {
+        const b = { x: 60 + rndB() * 960, y0: rndB() * 2120, r: 8 + rndB() * 34, v: 110 + rndB() * 220, ph: rndB() * 6.28 };
+        return (b.g = el("g", {}, $("bubbles"))), el("circle", { r: b.r, fill: "url(#gBubble)" }, b.g), el("circle", { cx: -b.r * 0.35, cy: -b.r * 0.35, r: b.r * 0.18, fill: "#fffaf0", opacity: 0.7 }, b.g), b; });
+      const renderInside = (t) => bubbles.forEach((b) => {
+        const y = ((((b.y0 - b.v * (t - C.cutIn)) % 2120) + 2120) % 2120) - 100;
+        set(b.g, { transform: `translate(${(b.x + 14 * Math.sin(2 * t + b.ph)).toFixed(1)} ${y.toFixed(1)})`, opacity: clamp01((1480 - y) / 220).toFixed(3) }); }); // bottom zone stays clear
+      // ===== 6. PAYOFF: the hook's comb again, finished (21.3 - 25.5 s) =====
+      const finCam = $("finCam"), fin = buildComb(finCam, ({ q, r, ring }) => (ring === 3 && (q + r) % 2 === 0 ? "cap" : "honey"));
+      [[930, 560, 1.0, -20], [-30, 640, 0.8, -150]].forEach(([x, y, s, r]) => leaf(finCam, x, y, s, r));
+      fin.cells.forEach((c) => (c.hl = el("polygon", { points: pts(hexVerts(R * 0.94).map(([x, y]) => [c.xy[0] + x, c.xy[1] + y])), fill: "none", stroke: "#fff1b8", "stroke-width": 5, opacity: 0 }, fin.comb)));
+      const finBees = [[300, 820, 25, -200, 700], [760, 900, -15, 1300, 760], [520, 1330, 10, 1300, 1200]].map(([x, y, r, sx, sy]) => ({ g: bee(finCam), x, y, r, sx, sy }));
+      const finFlyers = [0, 1].map((i) => ({ g: bee(finCam), ph: i * Math.PI + 1, rx: 470 - i * 50, ry: 250 + i * 40 }));
+      function renderFinale(t) {
+        const k = t - C.cutOut, front = (k - 0.35) * 900; // pull out fast then keep breathing; a glow sweeps outward over the comb
+        set(finCam, { transform: camT(540, 1000, lerp(1.12, 1, eOut(clamp01(k / 1.1))) + 0.012 * Math.max(0, k - 1.1)) });
+        finBees.forEach((b, i) => { const u = seg(t, C.cutOut + 0.15 + i * 0.1, C.cutOut + 0.75 + i * 0.1, eOut); beeT(b.g, lerp(b.sx, b.x, u) + 4 * Math.sin(2 * t + i), lerp(b.sy, b.y, u) + (1 - u) * 20 * Math.sin(12 * t), b.r, 1.1); });
+        finFlyers.forEach((b) => orbit(b, t, 1.3, 960));
+        fin.cells.forEach((c) => set(c.hl, { opacity: (0.9 * Math.exp(-Math.pow((Math.hypot(c.xy[0] - 540, c.xy[1] - CY) - front) / 90, 2))).toFixed(3) })); }
+      // ===== render(t): each world draws only inside its window; outside it, the timeline keeps it hidden =====
+      const wings = document.querySelectorAll("#beeDef .wing");
+      function render(t) {
+        const flap = Math.round(t * 30) % 2; // the wings alternate every frame
+        set(wings[0], { ry: flap ? 2.4 : 8 }), set(wings[1], { ry: flap ? 2.4 : 7.5 });
+        if (t <= C.handoff + 0.4) renderHook(t); if (t >= C.handoff - 0.05 && t <= C.land + 0.3) renderFly(t); if (t >= C.handoff - 0.05 && t <= C.cutIn + 0.05) renderStage(t);
+        if (t >= C.cutIn - 0.05 && t <= C.cutOut + 0.05) renderInside(t); if (t >= C.cutOut - 0.05) renderFinale(t); }
+      // ===== timeline: which world is on screen, then the events of each section =====
+      gsap.set([$("stage"), fly, $("bubbles"), $("honeybg"), $("finale")], { opacity: 0 }), tl.set($("stage"), { opacity: 1 }, C.handoff).set($("stage"), { opacity: 0 }, C.cutIn);
+      tl.set([$("bubbles"), $("honeybg")], { opacity: 1 }, C.cutIn).set([$("bubbles"), $("honeybg")], { opacity: 0 }, C.cutOut).set($("finale"), { opacity: 1 }, C.cutOut);
+      // 1 HOOK: the builder closes the cell on "segi enam?"; hand-off = hide the original and show the copy on the same frame
+      [4, 5].forEach((k, i) => tl.fromTo(heroWalls[k], { opacity: 0, scale: 0.35, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.22, ease: "back.out(2.2)" }, C.close + i * 0.14));
+      tl.fromTo(heroGlow, { opacity: 0 }, { opacity: 1, duration: 0.18, ease: "power2.out" }, C.close + 0.3).to(heroGlow, { opacity: 0.35, duration: 0.4 }, C.close + 0.5);
+      tl.set([heroCell, heroGlow], { opacity: 0 }, C.handoff).set(fly, { opacity: 1 }, C.handoff).to($("hook"), { opacity: 0, duration: 0.3, ease: "power2.in" }, C.handoff);
+      tl.to(flyFill, { opacity: 0, duration: 0.25 }, C.handoff + 0.25).to(fly, { opacity: 0, duration: 0.15, ease: "none" }, C.land);
+      // 2 RULE: labels; seams flash on "celah"; each tiling lights up on its word
+      ["tri", "sq", "hex"].forEach((k, i) => {
+        fadeIn($("lab-" + k), C.pop + 0.3 + i * 0.08).fromTo(fx[k].glow, { opacity: 0 }, { opacity: 0.55, duration: 0.2 }, C[k]).to(fx[k].glow, { opacity: 0.18, duration: 0.4 }, C[k] + 0.3);
+        tl.fromTo($("ln-" + k), { color: "rgba(255,255,255,0.62)", scale: 1 }, { color: "#ffffff", scale: 1.12, duration: 0.2, ease: "back.out(2)" }, C[k]); });
+      const seams = ["tri", "sq", "hex"].map((k) => fx[k].seams);
+      tl.fromTo(seams, { opacity: 0 }, { opacity: 0.85, duration: 0.12, ease: "none" }, C.seams).to(seams, { opacity: 0, duration: 0.45 }, C.seams + 0.3);
+      fadeOut([fx.tri.glow, fx.sq.glow, fx.hex.glow], C.lift, 0.12), fadeOut([$("lab-tri"), $("lab-sq"), $("lab-hex")], C.lift, 0.25);
+      tl.fromTo($("tilesG"), { opacity: 1, filter: "blur(0px)" }, { opacity: 0.3, filter: "blur(3px)", duration: 0.5, ease: "power2.inOut" }, C.lift + 0.5).to($("tilesG"), { opacity: 0, duration: 0.3 }, C.focus - 0.3);
+      fadeIn($("level"), C.same + 0.35), fadeOut($("level"), C.explode - 0.2);
+      // 3 TEST: tag; counters pinned to the bar ends count up on "paling sedikit"
+      const PERIM = { tri: 3 * TA, sq: 4, hex: 6 * RH }, tagIn = fadeIn($("tag"), C.lift + 0.6);
+      ["tri", "sq", "hex"].forEach((k, i) => {
+        Object.assign($("pin-" + k).style, { left: BARS.x0 + PERIM[k] * BARS.k + 24 + "px", top: BARS.y[k] + BARS.th / 2 - 32 + "px" });
+        fadeIn($("pin-" + k), C.measure + i * 0.05, 0.12), counter($("pin-" + k), PERIM[k], C.measure + i * 0.05, 2); });
+      fadeIn($("barsLabel"), C.measure + 0.3), fadeOut([$("tag"), $("pin-tri"), $("pin-sq"), $("pin-hex"), $("barsLabel")], C.back, 0.25);
+      // 4 RESULT: the comb's centre cell takes over, the rings grow, honey fills, -7 % (hexagon vs square wall)
+      combCells.forEach((c) => {
+        if (c.ring === 0) return tl.fromTo(c.w, { opacity: 0 }, { opacity: 1, duration: F, ease: "none" }, C.grow - F);
+        tl.fromTo(c.w, { opacity: 0, y: 40, scale: 0.6, transformOrigin: "50% 50%" }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(1.6)" }, C.grow + (c.ring - 1) * 0.13 + Math.hypot(c.x, c.y) * 0.0002);
+        tl.fromTo(c.cell.honeyG, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, C.fill + c.ring * 0.08); });
+      tl.fromTo($("pct"), { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.6)" }, C.pct), counter($("pct"), (1 - (6 * RH) / 4) * 100, C.pct, 0, "−", "%");
+      fadeIn($("pctLabel"), C.pct + 0.15), fadeOut([$("pct"), $("pctLabel")], C.dive - 0.1, 0.18);
+      // 5 INSIDE: flash at the threshold, cut while it is fully up; the formula is struck on "rumus"; flash again out to the finale
+      tl.fromTo($("flash"), { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.in" }, C.cutIn - 0.2).to($("flash"), { opacity: 0, duration: 0.25, ease: "power2.out" }, C.cutIn);
+      tl.fromTo($("fcard"), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, C.cutIn + 0.12);
+      tl.fromTo($("strike"), { scaleX: 0 }, { scaleX: 1, duration: 0.24, ease: "power2.inOut" }, C.strike).to($("fcard"), { opacity: 0.5, duration: 0.25 }, C.strike + 0.4);
+      tl.to($("fcard"), { opacity: 0, duration: 0.15 }, C.cutOut - 0.2).to($("flash"), { opacity: 1, duration: 0.2, ease: "power2.in" }, C.cutOut - 0.2)
+        .to($("flash"), { opacity: 0, duration: 0.3, ease: "power2.out" }, C.cutOut);
+      // 6 PAYOFF: the branch settles in (the bees and the glow sweep live in renderFinale)
+      tl.fromTo(fin.branch, { y: -240 }, { y: 0, duration: 0.45, ease: "power3.out" }, C.cutOut + 0.05);
+      // ===== captions: one pre-laid line per reveal state; the new word blurs in, spent words dim, the em token gets the selection box =====
+      const BOX = '<span class="box"><span class="fill"></span><span class="e et"></span><span class="e er"></span><span class="e eb"></span><span class="e el"></span><span class="h h1"></span><span class="h h2"></span></span>';
+      PHRASES.forEach((p, pi) => {
+        const end = pi + 1 < PHRASES.length ? PHRASES[pi + 1].w[0][1] - 3 * F : DUR; // hard cut 3 frames before the next phrase
+        p.w.forEach(([, t], k) => {
+          const line = $("cap").appendChild(Object.assign(document.createElement("div"), { className: "cl" })), tNext = k + 1 < p.w.length ? p.w[k + 1][1] : end;
+          line.innerHTML = p.w.slice(0, k + 1).map(([w], i) => `<span class="w${i === k || i === p.em ? " on" : ""}">${i === p.em ? BOX : ""}<span class="tx">${w.replace(/_/g, "&nbsp;")}</span></span>`).join(" ");
+          const box = line.querySelector(".box"), q = (s) => box.querySelectorAll(s), t0 = p.w[p.em ?? 0][1] + 2 * F, active = line.children[k];
+          if (box) tl.fromTo(q(".h"), { scale: 0 }, { scale: 1, duration: 4 * F, ease: "back.out(2.4)" }, t0).fromTo(q(".et,.eb"), { scaleX: 0 }, { scaleX: 1, duration: 3 * F, ease: "none" }, t0 + 2 * F)
+            .fromTo(q(".er,.el"), { scaleY: 0 }, { scaleY: 1, duration: 3 * F, ease: "none" }, t0 + 5 * F).fromTo(q(".fill"), { opacity: 0 }, { opacity: 1, duration: 6 * F, ease: "none" }, t0 + 2 * F);
+          tl.set(line, { opacity: 1 }, t).set(line, { opacity: 0 }, tNext).fromTo(active, { filter: "blur(8px)", opacity: 0.6 }, { filter: "blur(0px)", opacity: 1, duration: 2 * F, ease: "none" }, t);
+          if (k + 1 < p.w.length && k !== p.em) tl.set(active, { color: "rgba(255,255,255,0.45)", fontWeight: 400 }, tNext - F); }); });
+      // ===== clock, ending, registration =====
+      const clock = { t: 0 }; tl.to(clock, { t: DUR, duration: DUR, ease: "none", onUpdate: () => render(clock.t) }, 0);
+      tl.to($("film"), { opacity: 0, duration: 0.5, ease: "power2.in" }, DUR - 0.5); // the ending holds, then fades out
+      render(0), tl.seek(0, false), (window.__timelines = window.__timelines || {}), (window.__timelines["main"] = tl);
+    </script>
+  </body>
+</html>

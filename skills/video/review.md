@@ -69,6 +69,7 @@ Not bans. Each is fine when chosen with a one-sentence reason for this business;
 - Every brief point gets an equal scene; nothing is "the point".
 - States, not events: everything appears, then sits.
 - A new effect in every scene to show off technique.
+- A flat drawing followed by separate depth objects that pop in: often the same drawing could stand up in place and hand its key element over instead. Keep the cut if it is a deliberate new world.
 - House style as default: giant cropped words, circle wipes at every cut, typed titles with a caret, a dot that becomes the logo.
 
 ## Checklist every round
