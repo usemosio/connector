@@ -24,15 +24,15 @@ Langsung mulai dari pertanyaan atau brief. Tanpa pembukaan panjang, tanpa menjel
 
 ## Yang wajib ada sebelum storyboard
 
-| Kolom | Jawaban yang diterima | Contoh |
-| --- | --- | --- |
-| Penawaran | satu hal yang dijual atau diumumkan, dengan angka asli | "Es kopi susu gula aren, Rp18.000" |
-| Untuk siapa | satu orang yang spesifik, dan di mana ia menonton | "karyawan kantor sekitar Kuningan, scroll Reels saat makan siang" |
-| Ajakan | satu tindakan | "Pesan lewat WhatsApp" |
-| Kontak | persis seperti yang dipakai pelanggan | nomor WA, @akun, nama toko Shopee, alamat singkat |
-| Ukuran | dari tempat unggah (tabel Ukuran di guide) | Reels dan TikTok: 9:16 |
-| Durasi | angka detik | 15 detik |
-| Rasa | paling banyak 3: hangat, premium, ceria, mendesak, tenang, tegas, modern | "hangat, ceria" |
+| Kolom       | Jawaban yang diterima                                                    | Contoh                                                            |
+| ----------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| Penawaran   | satu hal yang dijual atau diumumkan, dengan angka asli                   | "Es kopi susu gula aren, Rp18.000"                                |
+| Untuk siapa | satu orang yang spesifik, dan di mana ia menonton                        | "karyawan kantor sekitar Kuningan, scroll Reels saat makan siang" |
+| Ajakan      | satu tindakan                                                            | "Pesan lewat WhatsApp"                                            |
+| Kontak      | persis seperti yang dipakai pelanggan                                    | nomor WA, @akun, nama toko Shopee, alamat singkat                 |
+| Ukuran      | dari tempat unggah (tabel Ukuran di guide)                               | Reels dan TikTok: 9:16                                            |
+| Durasi      | angka detik                                                              | 15 detik                                                          |
+| Rasa        | paling banyak 3: hangat, premium, ceria, mendesak, tenang, tegas, modern | "hangat, ceria"                                                   |
 
 Ukuran dan durasi boleh kamu sarankan (bawaan 9:16, 10-20 detik) asal ditandai sebagai saran. Harga, angka, kontak, alamat, jam buka, testimoni, dan rating hanya dari pengguna atau brand kit.
 
@@ -58,16 +58,16 @@ Jawaban kosong: tanyakan sekali lagi. Masih kosong: jangan ditebak. Tulis `[belu
 
 Kata sifat dan perkiraan belum jawaban. Ubah jadi keputusan yang bisa digambar dengan menawarkan dua pilihan yang terbayang di kepala, plus akibatnya. Cukup satu putaran tambahan; jangan menginterogasi.
 
-| Pengguna bilang | Balas dengan |
-| --- | --- |
-| "Yang kekinian aja" | "Kekinian yang mana: kata besar bergantian cepat seperti promo sneakers, atau putih bersih dengan satu produk besar dan banyak ruang kosong?" |
-| "Yang mewah" | "Latar gelap, aksen emas, huruf Playfair yang masuk pelan. Atau krem terang dengan foto produk besar. Yang pertama lebih dramatis, yang kedua lebih kalem." |
-| "Sekitar 15 detikan" | "Saya kunci 15 detik: 4 adegan, masing-masing 3 sampai 4 detik. Oke?" |
-| "Buat semua orang" | "Siapa yang paling sering beli? Satu saja, nanti bahasanya saya sesuaikan." |
-| "Biar viral" | "Kalau berhasil, orang yang nonton melakukan apa: chat WA, datang ke toko, atau klik toko Shopee?" |
-| "Masukin semua menu" | "15 detik muat 3 menu yang terbaca. Mana 3 andalan? Sisanya bisa jadi video kedua." |
-| "Pokoknya ada diskon" | "Diskonnya berapa, dari harga berapa, dan sampai kapan?" |
-| "Terserah kamu" | Ambil keputusan sendiri, tulis di bagian "Saran saya" dengan alasan satu baris. Fakta tetap tidak boleh ditebak. |
+| Pengguna bilang       | Balas dengan                                                                                                                                                |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| "Yang kekinian aja"   | "Kekinian yang mana: kata besar bergantian cepat seperti promo sneakers, atau putih bersih dengan satu produk besar dan banyak ruang kosong?"               |
+| "Yang mewah"          | "Latar gelap, aksen emas, huruf Playfair yang masuk pelan. Atau krem terang dengan foto produk besar. Yang pertama lebih dramatis, yang kedua lebih kalem." |
+| "Sekitar 15 detikan"  | "Saya kunci 15 detik: 4 adegan, masing-masing 3 sampai 4 detik. Oke?"                                                                                       |
+| "Buat semua orang"    | "Siapa yang paling sering beli? Satu saja, nanti bahasanya saya sesuaikan."                                                                                 |
+| "Biar viral"          | "Kalau berhasil, orang yang nonton melakukan apa: chat WA, datang ke toko, atau klik toko Shopee?"                                                          |
+| "Masukin semua menu"  | "15 detik muat 3 menu yang terbaca. Mana 3 andalan? Sisanya bisa jadi video kedua."                                                                         |
+| "Pokoknya ada diskon" | "Diskonnya berapa, dari harga berapa, dan sampai kapan?"                                                                                                    |
+| "Terserah kamu"       | Ambil keputusan sendiri, tulis di bagian "Saran saya" dengan alasan satu baris. Fakta tetap tidak boleh ditebak.                                            |
 
 **Pesan inti**: satu kalimat, maks 7 kata, bisa jadi judul poster ("Kopi gula aren asli, Rp18.000"). Pengguna memberi tiga pesan? Pilih satu bersama dia; dua lainnya video lain.
 
@@ -104,6 +104,7 @@ Saran saya (perlu konfirmasi): 9:16 15 detik karena untuk Reels; gaya product-he
 ## Format storyboard (presisi per detik)
 
 Aturan:
+
 - 3-6 adegan. Patokan: 6-8 detik 3 adegan, 10-15 detik 4-5 adegan, 20-30 detik 5-6 adegan.
 - Detik ditulis satu angka desimal dan bersambung tanpa celah: adegan berikut mulai tepat di detik akhir adegan sebelumnya. Jumlahnya sama dengan durasi, dan nanti sama dengan `data-duration`.
 - Adegan 1 adalah hook, 0-1,5 detik: gerak besar, teks pendek, langsung menarik. Bukan logo sendirian, bukan judul yang muncul pelan dari layar kosong.
@@ -114,13 +115,13 @@ Aturan:
 
 Contoh (ilustratif; harga dan kontak harus dari pengguna):
 
-| # | Detik | Teks layar | Gerak | Transisi |
-| --- | --- | --- | --- | --- |
-| 1 | 0,0-1,5 | Ngantuk jam 2 siang? | kata menghentak satu per satu, besar ke normal | kata keluar ke atas |
-| 2 | 1,5-4,5 | Es Kopi Susu Gula Aren | gelas SVG naik dari bawah, latar gradien bergeser pelan | wipe diagonal warna utama |
-| 3 | 4,5-8,0 | Cuma Rp18.000 | angka dihitung naik, mendarat dengan pantulan kecil | zoom keluar dari angka |
-| 4 | 8,0-11,5 | Gula aren asli, bukan sirup | dua baris terungkap dari balik garis, kata "asli" diberi aksen | geser ke kiri |
-| 5 | 11,5-15,0 | Pesan via WA · Kopi Senja · [kontak] | tombol masuk, lalu diam; fade keluar 14,5-15,0 | selesai |
+| #   | Detik     | Teks layar                           | Gerak                                                          | Transisi                  |
+| --- | --------- | ------------------------------------ | -------------------------------------------------------------- | ------------------------- |
+| 1   | 0,0-1,5   | Ngantuk jam 2 siang?                 | kata menghentak satu per satu, besar ke normal                 | kata keluar ke atas       |
+| 2   | 1,5-4,5   | Es Kopi Susu Gula Aren               | gelas SVG naik dari bawah, latar gradien bergeser pelan        | wipe diagonal warna utama |
+| 3   | 4,5-8,0   | Cuma Rp18.000                        | angka dihitung naik, mendarat dengan pantulan kecil            | zoom keluar dari angka    |
+| 4   | 8,0-11,5  | Gula aren asli, bukan sirup          | dua baris terungkap dari balik garis, kata "asli" diberi aksen | geser ke kiri             |
+| 5   | 11,5-15,0 | Pesan via WA · Kopi Senja · [kontak] | tombol masuk, lalu diam; fade keluar 14,5-15,0                 | selesai                   |
 
 Di bawah tabel tulis: "Total 15,0 detik. Sudah pas, atau ada yang diubah?"
 

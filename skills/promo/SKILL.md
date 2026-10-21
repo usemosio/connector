@@ -17,6 +17,7 @@ Gaya dasar: `flash-sale` (persen meledak, pita berjalan). Untuk satu produk deng
 ## Yang ditanyakan sebelum mulai
 
 Semua dari pengguna, tidak ada yang ditebak:
+
 - Harga awal dan harga promo (atau harga awal dan persen diskon), dalam Rupiah.
 - Kode promo, kalau ada, ditulis persis.
 - Batas waktu: tanggal dan jam, atau syarat yang benar ("selama stok ada" hanya kalau memang begitu).
@@ -26,14 +27,14 @@ Kalau persen dan dua harga tidak cocok (Rp100.000 ke Rp70.000 disebut "diskon 50
 
 ## Urutan beat
 
-| Beat | Tugas | 6 detik | 10 detik | 15 detik |
-| --- | --- | --- | --- | --- |
-| Hook | momen dan nama toko menghentak ("PROMO GAJIAN") | 0-1 | 0-1,5 | 0-1,5 |
-| Diskon | angka besar mendarat ("40%") | 1-2,5 | 1,5-4 | 1,5-4,5 |
-| Harga coret | harga lama dicoret, harga baru turun | 2,5-4 | 4-7 | 4,5-8,5 |
-| Produk | satu visual produk | (dibuang) | di bawah harga, 4-7 | 8,5-11 |
-| Kode dan batas waktu | chip kode dan tenggat, diam | (digabung ke ajakan) | 7-8 | 11-12,5 |
-| Ajakan | "Belanja sekarang", toko, kontak, diam ≥2 detik | 4-6 | 8-10 | 12,5-15 |
+| Beat                 | Tugas                                           | 6 detik              | 10 detik            | 15 detik |
+| -------------------- | ----------------------------------------------- | -------------------- | ------------------- | -------- |
+| Hook                 | momen dan nama toko menghentak ("PROMO GAJIAN") | 0-1                  | 0-1,5               | 0-1,5    |
+| Diskon               | angka besar mendarat ("40%")                    | 1-2,5                | 1,5-4               | 1,5-4,5  |
+| Harga coret          | harga lama dicoret, harga baru turun            | 2,5-4                | 4-7                 | 4,5-8,5  |
+| Produk               | satu visual produk                              | (dibuang)            | di bawah harga, 4-7 | 8,5-11   |
+| Kode dan batas waktu | chip kode dan tenggat, diam                     | (digabung ke ajakan) | 7-8                 | 11-12,5  |
+| Ajakan               | "Belanja sekarang", toko, kontak, diam ≥2 detik | 4-6                  | 8-10                | 12,5-15  |
 
 - Satu beat, satu tugas. Jangan menumpuk dua.
 - Hook tidak pernah dipanjangkan. Yang memanjang di versi 15 detik adalah napas tiap beat.
@@ -57,14 +58,31 @@ Urutannya penting: coret dulu, baru harga baru turun. Coret dan hitung di detik 
   <div class="topeng"><div id="promo">Rp129.000</div></div>
 </div>
 ```
+
 ```css
-.lama { position: relative; opacity: .55; }
-#coret { position: absolute; left: -4%; right: -4%; top: 52%; height: 8px; background: var(--aksen); transform-origin: left center; }
-.topeng { overflow: hidden; }
-#promo { font-variant-numeric: tabular-nums; }
+.lama {
+  position: relative;
+  opacity: 0.55;
+}
+#coret {
+  position: absolute;
+  left: -4%;
+  right: -4%;
+  top: 52%;
+  height: 8px;
+  background: var(--aksen);
+  transform-origin: left center;
+}
+.topeng {
+  overflow: hidden;
+}
+#promo {
+  font-variant-numeric: tabular-nums;
+}
 ```
+
 ```js
-const HARGA = { awal: 129000, promo: 89000 };          // dari pengguna, satu-satunya tempat angka diketik
+const HARGA = { awal: 129000, promo: 89000 }; // dari pengguna, satu-satunya tempat angka diketik
 const persen = Math.round((1 - HARGA.promo / HARGA.awal) * 100);
 const rp = (n) => "Rp" + n.toLocaleString("id-ID");
 document.getElementById("awal").textContent = rp(HARGA.awal);
@@ -73,10 +91,19 @@ const elPromo = document.getElementById("promo");
 const o = { v: HARGA.awal };
 tl.fromTo("#coret", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, 4.0)
   .fromTo("#promo", { yPercent: 110 }, { yPercent: 0, duration: 0.5, ease: "expo.out" }, 4.3)
-  .to(o, { v: HARGA.promo, duration: 0.9, ease: "power3.out", onUpdate: () => {
-      // Bulat ke ribuan saat berjalan supaya tidak berkedip, angka persis di akhir.
-      elPromo.textContent = rp(o.v === HARGA.promo ? o.v : Math.round(o.v / 1000) * 1000);
-    } }, 4.3)
+  .to(
+    o,
+    {
+      v: HARGA.promo,
+      duration: 0.9,
+      ease: "power3.out",
+      onUpdate: () => {
+        // Bulat ke ribuan saat berjalan supaya tidak berkedip, angka persis di akhir.
+        elPromo.textContent = rp(o.v === HARGA.promo ? o.v : Math.round(o.v / 1000) * 1000);
+      },
+    },
+    4.3,
+  )
   .to("#promo", { scale: 1.1, duration: 0.15, yoyo: true, repeat: 1, ease: "power2.out" }, 5.2);
 ```
 
@@ -94,6 +121,7 @@ tl.fromTo("#coret", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out
 ## Batas waktu: teks, bukan jam
 
 Video ditonton kapan saja: besok, minggu depan, setelah promo selesai. Karena itu batas waktu ditulis sebagai teks yang tetap benar kapan pun ditonton:
+
 - "Berakhir Minggu, 23.59 WIB", "Hanya 12.12", "Sampai 31 Desember", "Hari ini saja" (kalau videonya memang untuk hari itu).
 - Tanpa jam yang berjalan dari waktu nyata. `Date.now()` dan `new Date()` juga dilarang guide.
 - Gaya `flash-sale` punya hitung mundur jam:menit:detik yang turun cepat. Itu dekorasi yang bisa menyesatkan; ganti dengan teks tenggat di atas. Kalau ingin ritme hitung mundur, pakai hitungan masuk "3, 2, 1, MULAI" di hook, bukan sisa waktu promo.

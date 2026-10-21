@@ -19,13 +19,13 @@ Skill ini untuk video yang akan dipasang dengan budget di Meta Ads atau TikTok A
 
 ## Anatomi iklan 15 detik
 
-| Beat | Tugas | Detik (15 dtk) | Detik (30 dtk) |
-| --- | --- | --- | --- |
-| Hook | hentikan jempol: masalah, kejutan, atau janji | 0-2,5 | 0-3 |
-| Konteks | buat penonton merasa masalahnya | 2,5-5 | 3-8 |
-| Payoff | produk sebagai jawaban, satu manfaat jelas | 5-9 | 8-18 |
-| Bukti | satu angka, demo, atau hasil yang nyata | 9-12 | 18-25 |
-| Ajakan | satu tindakan, cocok dengan hook, diam ≥2 detik | 12-15 | 25-30 |
+| Beat    | Tugas                                           | Detik (15 dtk) | Detik (30 dtk) |
+| ------- | ----------------------------------------------- | -------------- | -------------- |
+| Hook    | hentikan jempol: masalah, kejutan, atau janji   | 0-2,5          | 0-3            |
+| Konteks | buat penonton merasa masalahnya                 | 2,5-5          | 3-8            |
+| Payoff  | produk sebagai jawaban, satu manfaat jelas      | 5-9            | 8-18           |
+| Bukti   | satu angka, demo, atau hasil yang nyata         | 9-12           | 18-25          |
+| Ajakan  | satu tindakan, cocok dengan hook, diam ≥2 detik | 12-15          | 25-30          |
 
 - Pemicu hook (kata kunci atau gambar utama) harus sudah terbaca sebelum detik 2. Penonton memutuskan lanjut atau geser dalam satu sampai dua detik.
 - Iklan 6 detik (bumper): hook 0-2, payoff 2-4, ajakan 4-6. Konteks dan bukti dibuang.
@@ -35,6 +35,7 @@ Skill ini untuk video yang akan dipasang dengan budget di Meta Ads atau TikTok A
 ## Hook: satu kalimat, satu gambar
 
 Di Mosio video dirender tanpa suara, dan kebanyakan orang menonton iklan dalam mode senyap. Hook terdiri dari dua bagian yang saling melengkapi, bukan mengulang:
+
 - **Gerak visual** di 0-2 detik: produk jatuh ke frame, harga dicoret, chat masuk, kemeja kusut berubah rapi.
 - **Teks layar**: klaimnya, maks 7 kata, besar, di zona aman.
 
@@ -42,25 +43,25 @@ Jangan biarkan teks hanya mendeskripsikan gambar ("Ini kemeja" di atas gambar ke
 
 ### Jenis hook (contoh ilustratif, sesuaikan dengan fakta pengguna)
 
-| Jenis | Bentuk | Contoh UMKM | Cocok saat |
-| --- | --- | --- | --- |
-| Masalah dulu | sebut masalah yang dirasakan | "Kemeja kusut tiap Senin pagi?" (laundry) | masalahnya terasa tapi jarang disebut |
-| Pemutus pola | kalimat yang tidak disangka | "Jangan pesan katering ini dulu" | kategori ramai dan mirip-mirip |
-| Celah penasaran | tahan jawabannya | "Bahan rahasia sambal kami: bukan cabai" | penonton skeptis, suka tahu |
-| Manfaat langsung | hasil yang bisa diukur | "Laporan stok beres dalam 5 menit" (aplikasi kasir) | hasilnya jelas dan benar |
-| Panggil langsung | sebut segmennya | "Yang jualan di Shopee, berhenti rekap manual" | segmen tajam |
-| Pertanyaan | pertanyaan yang biasa diketik pembeli | "Cari kue ulang tahun di Depok?" | pencarian lokal |
-| POV | situasi yang sangat spesifik | "POV: tanggal tua, lapar, dompet tipis" | penonton muda, produk murah |
+| Jenis            | Bentuk                                | Contoh UMKM                                         | Cocok saat                            |
+| ---------------- | ------------------------------------- | --------------------------------------------------- | ------------------------------------- |
+| Masalah dulu     | sebut masalah yang dirasakan          | "Kemeja kusut tiap Senin pagi?" (laundry)           | masalahnya terasa tapi jarang disebut |
+| Pemutus pola     | kalimat yang tidak disangka           | "Jangan pesan katering ini dulu"                    | kategori ramai dan mirip-mirip        |
+| Celah penasaran  | tahan jawabannya                      | "Bahan rahasia sambal kami: bukan cabai"            | penonton skeptis, suka tahu           |
+| Manfaat langsung | hasil yang bisa diukur                | "Laporan stok beres dalam 5 menit" (aplikasi kasir) | hasilnya jelas dan benar              |
+| Panggil langsung | sebut segmennya                       | "Yang jualan di Shopee, berhenti rekap manual"      | segmen tajam                          |
+| Pertanyaan       | pertanyaan yang biasa diketik pembeli | "Cari kue ulang tahun di Depok?"                    | pencarian lokal                       |
+| POV              | situasi yang sangat spesifik          | "POV: tanggal tua, lapar, dompet tipis"             | penonton muda, produk murah           |
 
 Angka di hook (5 menit, 6 jam) hanya kalau pengguna memberikannya dan memang benar. Lebih banyak pola dan cara mendiagnosis hook yang gagal: `skill_library` path `copywriting/ad-creative/references/hook-system.md`.
 
 ## Message match: hook, ajakan, tempat mendarat
 
-| Hook menjanjikan | Ajakan di video | Yang harus ada setelah klik |
-| --- | --- | --- |
-| "Kemeja rapi besok pagi" | "Chat WA, jemput hari ini" | admin WA siap menjawab soal jemput dan harga per kg |
-| "Kue ulang tahun di Depok" | "Pesan di Shopee: [nama toko]" | listing kue ulang tahun, bukan halaman toko umum |
-| "Gratis ongkir se-Jabodetabek" | "Klik, ongkir kami tanggung" | syarat gratis ongkir terlihat di listing |
+| Hook menjanjikan               | Ajakan di video                | Yang harus ada setelah klik                         |
+| ------------------------------ | ------------------------------ | --------------------------------------------------- |
+| "Kemeja rapi besok pagi"       | "Chat WA, jemput hari ini"     | admin WA siap menjawab soal jemput dan harga per kg |
+| "Kue ulang tahun di Depok"     | "Pesan di Shopee: [nama toko]" | listing kue ulang tahun, bukan halaman toko umum    |
+| "Gratis ongkir se-Jabodetabek" | "Klik, ongkir kami tanggung"   | syarat gratis ongkir terlihat di listing            |
 
 - Nama produk, harga, dan promo di video harus sama persis dengan di WhatsApp atau listing marketplace. Beda sedikit saja membuat orang batal.
 - Untuk iklan klik-ke-WhatsApp, sarankan pengguna menyiapkan pesan sapaan yang menyambung janji hook.
@@ -91,12 +92,14 @@ Satu komposisi, satu bagian yang diganti. Tandai elemen yang diuji supaya varian
 ```
 
 Urutan uji:
+
 1. **Hook**: 3-5 hook berbeda jenis (dari tabel di atas) dengan badan dan ajakan yang sama.
 2. **Penawaran atau manfaat**: hook pemenang, ganti janji utamanya.
 3. **Ajakan**: hook dan penawaran pemenang, ganti kalimat ajakan (tetap cocok dengan hook).
 4. **Ukuran**: iklan pemenang dalam 9:16, 4:5, 1:1.
 
 Aturan Mosio untuk varian:
+
 - Durasi dan timeline sama persis; hanya teks yang berubah. Cek hook terpanjang tetap muat (maks 7 kata, tidak terpotong di zona aman).
 - Pratinjau tiap varian dengan `preview_composition`. Setiap render memotong kredit sebesar durasi, jadi tawarkan dulu jumlah varian dan ukurannya sebelum membuat semuanya.
 - Beri judul yang menyebut variabelnya, misalnya "Laundry Kilat, hook 2: pemutus pola", supaya hasil di Ads Manager mudah dicocokkan.

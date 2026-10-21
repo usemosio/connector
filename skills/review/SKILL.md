@@ -85,26 +85,27 @@ Ini bukan larangan. Masing-masing boleh kalau dipilih dengan alasan satu kalimat
 
 Tandai setiap butir **Lulus** atau **Gagal**. Butir Kritis yang gagal harus diperbaiki sebelum pengguna menekan "Buat video".
 
-| # | Butir | Tingkat |
-| --- | --- | --- |
-| 1 | Jujur: tidak ada harga, testimoni, angka, atau kontak karangan; ilustrasi berlabel "Contoh" | Kritis |
-| 2 | Tanpa suara: apa yang dijual, oleh siapa, dan apa yang harus dilakukan jelas di akhir | Kritis |
-| 3 | Penutup: ajakan, nama usaha, kontak diam minimal 2 detik, di zona aman, terbaca di ukuran HP | Kritis |
-| 4 | Teks di zona aman, paling banyak 7 kata sekaligus, tidak terpotong atau bertabrakan, termasuk saat transisi | Kritis |
-| 5 | Frame 0 sudah berupa komposisi atau sedang bergerak; tidak ada frame kosong lebih dari 3 frame dan tidak ada kilat putih di potongan | Kritis |
-| 6 | Tidak ada satu pun butir "jangan pernah dikirim" | Penting |
-| 7 | Satu hero per frame; dengan teks ditutup, setiap adegan masih menampilkan gambar | Penting |
-| 8 | Potongan mengikuti hukum vektor (sumbu, arah, kecepatan, dipotong di tengah gerak), tanpa crossfade | Penting |
-| 9 | Gerak per peran: masuk melambat, keluar mempercepat; tidak ada 4 elemen dengan masuk identik; paling banyak satu pegas terlihat | Penting |
-| 10 | Waktu: teks dibaca minimal 1,2 detik; tidak ada frame yang beku total (latar pun diam) lebih dari 0,6 detik selain jeda yang dirancang dan penutup; panjang adegan bervariasi | Penting |
-| 11 | Satu sistem: satu kepribadian gerak, satu aksen warna, paling banyak dua keluarga font | Peluang |
-| 12 | Ada satu frame layak screenshot dan bisa disebut detiknya | Peluang |
+| #   | Butir                                                                                                                                                                         | Tingkat |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| 1   | Jujur: tidak ada harga, testimoni, angka, atau kontak karangan; ilustrasi berlabel "Contoh"                                                                                   | Kritis  |
+| 2   | Tanpa suara: apa yang dijual, oleh siapa, dan apa yang harus dilakukan jelas di akhir                                                                                         | Kritis  |
+| 3   | Penutup: ajakan, nama usaha, kontak diam minimal 2 detik, di zona aman, terbaca di ukuran HP                                                                                  | Kritis  |
+| 4   | Teks di zona aman, paling banyak 7 kata sekaligus, tidak terpotong atau bertabrakan, termasuk saat transisi                                                                   | Kritis  |
+| 5   | Frame 0 sudah berupa komposisi atau sedang bergerak; tidak ada frame kosong lebih dari 3 frame dan tidak ada kilat putih di potongan                                          | Kritis  |
+| 6   | Tidak ada satu pun butir "jangan pernah dikirim"                                                                                                                              | Penting |
+| 7   | Satu hero per frame; dengan teks ditutup, setiap adegan masih menampilkan gambar                                                                                              | Penting |
+| 8   | Potongan mengikuti hukum vektor (sumbu, arah, kecepatan, dipotong di tengah gerak), tanpa crossfade                                                                           | Penting |
+| 9   | Gerak per peran: masuk melambat, keluar mempercepat; tidak ada 4 elemen dengan masuk identik; paling banyak satu pegas terlihat                                               | Penting |
+| 10  | Waktu: teks dibaca minimal 1,2 detik; tidak ada frame yang beku total (latar pun diam) lebih dari 0,6 detik selain jeda yang dirancang dan penutup; panjang adegan bervariasi | Penting |
+| 11  | Satu sistem: satu kepribadian gerak, satu aksen warna, paling banyak dua keluarga font                                                                                        | Peluang |
+| 12  | Ada satu frame layak screenshot dan bisa disebut detiknya                                                                                                                     | Peluang |
 
 Sebelum `preview_composition`: jalankan butir 1-10 pada storyboard dan kode (baca posisi waktu tween, ukuran teks, warna). Sesudah pratinjau: jalankan semuanya lagi, lalu bandingkan dengan putaran sebelumnya: setiap kegagalan lama ditandai Beres, Sebagian, atau Masih ada.
 
 Laporkan ke pengguna singkat, misalnya: "Review putaran 2: 10 dari 12 lulus. Gagal: #5 (kilat putih di 6,2 s karena `#root` tanpa latar), #9 (lima kartu menu masuk dengan fade-up yang sama). Saya perbaiki dua itu dulu." Perbaiki paling banyak tiga kegagalan terberat per putaran, berurutan dari yang paling berdampak. Dua sampai tiga putaran biasanya cukup; berhenti ketika perbaikan tinggal kosmetik.
 
 ## Diadaptasi dari
+
 - [Tejashmakwana/motionmaxxing](https://github.com/Tejashmakwana/motionmaxxing) (Apache-2.0, © Tejas Makwana), commit `8c8ec0f`: `SKILL.md`, `references/slop.md`.
 - [echris6/motion-video-kit](https://github.com/echris6/motion-video-kit) (MIT, © echris6), commit `e4b1c00`: `business-motion-film/SKILL.md`, `business-motion-film/references/quality-bar.md`, `business-motion-film/references/critic-prompts.md`.
 - [kylezantos/design-motion-principles](https://github.com/kylezantos/design-motion-principles) (MIT, © Kyle Zantos), commit `4a9ca87`: `skills/design-motion-principles/workflows/audit.md`, `skills/design-motion-principles/references/anti-checklist.md`, `skills/design-motion-principles/references/audit-checklist.md`.
