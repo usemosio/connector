@@ -30,12 +30,10 @@
       .tape .run { white-space: nowrap; font-family: "Archivo Black"; font-size: 70px; letter-spacing: 4px; }
       .t1 { top: 1280px; background: var(--utama); color: var(--latar); transform: rotate(-7deg); }
       .t2 { top: 1290px; background: var(--aksen); color: var(--teks); transform: rotate(5deg); }
-      .info { position: absolute; left: 80px; right: 80px; top: 1440px; text-align: center; }
-      .info .produk { font-size: 64px; font-weight: 700; }
-      .timer { display: inline-flex; gap: 14px; margin-top: 26px; }
-      .timer b { display: inline-block; min-width: 140px; padding: 14px 0; border-radius: 22px; background: color-mix(in srgb, var(--teks) 12%, transparent);
-        font-family: "Archivo Black"; font-weight: 400; font-size: 76px; text-align: center; }
-      .timer i { font-style: normal; font-size: 70px; line-height: 110px; }
+      .info { position: absolute; left: 80px; right: 80px; top: 1280px; text-align: center; }
+      .info .label { font-size: 56px; font-weight: 700; letter-spacing: 8px; text-transform: uppercase; color: var(--utama); }
+      .tenggat { display: inline-block; margin-top: 18px; padding: 16px 40px; border-radius: 26px; background: var(--utama); color: var(--latar);
+        font-family: "Archivo Black"; font-size: 80px; line-height: 1.1; white-space: nowrap; }
       .end { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
         background: var(--aksen); text-align: center; padding: 0 80px; }
       .end .toko { font-family: "Archivo Black"; font-size: 120px; line-height: 1; }
@@ -53,11 +51,12 @@
       </div>
       <div class="pct" id="pct">50%</div>
       <div class="off" id="off">OFF</div>
-      <div class="tape t2" id="t2"><div class="run" id="run2">HARI INI SAJA • HARI INI SAJA • HARI INI SAJA • HARI INI SAJA •</div></div>
+      <div class="tape t2" id="t2"><div class="run" id="run2">SAMPAI MINGGU • SAMPAI MINGGU • SAMPAI MINGGU • SAMPAI MINGGU •</div></div>
       <div class="tape t1" id="t1"><div class="run" id="run1">SEMUA SNEAKERS • SEMUA SNEAKERS • SEMUA SNEAKERS • SEMUA SNEAKERS •</div></div>
       <div class="info" id="info">
-        <div class="produk">Berakhir dalam</div>
-        <div class="timer"><b id="jam">03</b><i>:</i><b id="menit">00</b><i>:</i><b id="detik">00</b></div>
+        <div class="label" id="label">Berakhir</div>
+        <!-- Tenggat ditulis sebagai teks agar tetap benar kapan pun video ditonton. -->
+        <div class="tenggat" id="tenggat">Minggu, 23.59 WIB</div>
       </div>
       <div class="end" id="end">
         <div class="toko">LANGKAH SHOES</div>
@@ -67,7 +66,6 @@
     </div>
     <script>
       const tl = gsap.timeline({ paused: true });
-      const pad = (n) => String(n).padStart(2, "0");
 
       // Kilat pembuka, lalu judul menghentak huruf demi kata.
       tl.fromTo("#flash", { opacity: 1 }, { opacity: 0, duration: 0.35, ease: "power2.out" }, 0.05)
@@ -82,20 +80,11 @@
         .fromTo("#run1", { x: 0 }, { x: -900, duration: 9, ease: "none" }, 2.0)
         .fromTo("#run2", { x: -900 }, { x: 0, duration: 9, ease: "none" }, 2.2)
         .to(["#t1", "#t2"], { yPercent: -170, opacity: 0, duration: 0.4, ease: "power2.in" }, 4.6)
-        .from("#info", { y: 120, opacity: 0, duration: 0.6, ease: "power3.out" }, 5.0);
-
-      // Hitung mundur yang mengikuti timeline: 3 jam turun cepat agar terasa mendesak.
-      const sisa = { s: 3 * 3600 };
-      const jam = document.getElementById("jam"), menit = document.getElementById("menit"), detik = document.getElementById("detik");
-      tl.to(sisa, {
-        s: 2 * 3600 + 59 * 60 + 41, duration: 5.5, ease: "none",
-        onUpdate: () => {
-          const s = Math.round(sisa.s);
-          jam.textContent = pad(Math.floor(s / 3600)); menit.textContent = pad(Math.floor((s % 3600) / 60)); detik.textContent = pad(s % 60);
-        },
-      }, 5.4);
-
-      tl.fromTo("#end", { clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(75% at 50% 50%)", duration: 0.8, ease: "expo.inOut" }, 11)
+        // Tenggat dicap masuk dengan kilat kecil, lalu diam sampai penutup (sekitar 5 detik) supaya terbaca.
+        .from("#label", { y: 80, opacity: 0, duration: 0.5, ease: "power3.out" }, 5.0)
+        .from("#tenggat", { scale: 1.8, rotation: -6, opacity: 0, duration: 0.45, ease: "expo.out" }, 5.2)
+        .fromTo("#flash", { opacity: 0 }, { opacity: 0.35, duration: 0.06, yoyo: true, repeat: 1, ease: "none", immediateRender: false }, 5.25)
+        .fromTo("#end", { clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(75% at 50% 50%)", duration: 0.8, ease: "expo.inOut" }, 11)
         .from("#end > *", { y: 80, opacity: 0, duration: 0.5, ease: "power3.out", stagger: 0.12 }, 11.5)
         .to("#root", { opacity: 0, duration: 0.5, ease: "power2.in" }, 14.5);
 
