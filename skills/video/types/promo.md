@@ -123,7 +123,7 @@ Build one composition; per product change only the data: numbers in `HARGA`, mar
 ## Before you send
 
 - Prices exact in Rupiah from one source; strike first, price second. One offer, one code, one CTA; the discount is the biggest element.
-- The deadline is text that is true whenever watched, held 2 s or more. Prices, code, deadline and contact come from the user or brand kit.
+- The deadline is text that is true whenever watched, held 2 s or more. Prices, code, deadline and contact come from the user or the brand.
 
 More in `skill_library`: digit swaps `short-form/countdown-video/references/digit-flip.md`, count-up `hyperframes/hyperframes-animation/blueprints/dataviz-countup.md`, ticker tape `hyperframes/hyperframes-animation/blueprints/ticker-takeover.md`, CTA button `hyperframes/hyperframes-animation/blueprints/cta-morph-press.md`. Counting rules: `../../video-composition/craft/numbers.md`.
 

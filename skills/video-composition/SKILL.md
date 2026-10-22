@@ -1,6 +1,6 @@
 ---
 name: video-composition
-description: "Write a video as an HTML composition that Mosio renders: the technical rules, sizes and safe zones, fonts, motion language, 10 example styles, and craft references for motion, transitions, kinetic type, captions, the 2D camera, numbers, logos and multiple sizes. Use for any custom video, after the brief and storyboard are approved."
+description: "Write a video as an HTML composition that Mosio renders: the technical rules, sizes and safe zones, fonts, motion language, 10 recipes (example styles), and craft references for motion, transitions, kinetic type, captions, the 2D camera, numbers, logos and multiple sizes. Use for any custom video, after the brief and storyboard are approved."
 license: "Proprietary; craft/ adapts MIT and Apache-2.0 works, see NOTICE.md"
 metadata:
   brand: Mosio
@@ -10,14 +10,16 @@ metadata:
 
 You design the video yourself as one HTML file (a Hyperframes composition): layout, typography, colour and motion. Mosio checks it, shows a moving preview in the card, and renders it to MP4 on its servers. You are the director; Mosio is the studio and the camera.
 
+The Mosio dashboard and the cards call the styles you build from **recipes** (the Recipes page). A recipe id is what `style` and `styles` take; say "recipe" when you talk to the user. A recipe gives the structure; the brand and the approved storyboard make the video theirs (see Recipe and brand).
+
 ## Flow
 1. Understand the goal: what it is for (sell, teach, announce), who it is for, and where it will be posted (see Sizes; vertical 1080×1920 by default). Never invent prices, addresses, contacts, opening hours or numbers; ask when they are missing.
 2. **Brief and content storyboard first, before any HTML.** Write them in the chat, short:
    - Brief: the subject or offer, the audience, the call to action, the contact, the size(s) and the duration.
-   - Content storyboard: 3-6 beats, each with a role (hook, problem, fact, step, compare, number, proof, offer, cta, payoff), the on-screen text, the key word, the data, the subject (what is shown) and a weight (short, medium, long). No motion or seconds yet: those come from the style.
+   - Content storyboard: 3-6 beats, each with a role (hook, problem, fact, step, compare, number, proof, offer, cta, payoff), the on-screen text, the key word, the data, the subject (what is shown) and a weight (short, medium, long). No motion or seconds yet: those come from the recipe.
 
-   Show it with `preview_storyboard` (free; the server sketches it in 1-3 styles), ask whether it is right, and revise at this stage. Start the HTML once the user approves the content and picks a style, unless they asked for it to be made straight away. Changing the style later keeps the content. More: `skill_library` `mosio/video/brief.md`.
-3. Read the chosen style with `get_composition_guide` and `style`: its plan turns each beat's role into a technique and each weight into seconds (endings at least 2 s), and its example code is a starting point, not a mold: change the text, colours, rhythm, shapes and scenes to fit the user and the approved storyboard.
+   Show it with `preview_storyboard` (free; the server sketches it in 1-3 recipes). When the user already chose a recipe (the dashboard's prompt names it, e.g. "dengan recipe Produk utama (product-hero)"), sketch it in that recipe only and offer others only if asked. Ask whether the content is right, and revise at this stage. Start the HTML once the user approves the content and picks a recipe, unless they asked for it to be made straight away. Changing the recipe later keeps the content. More: `skill_library` `mosio/video/brief.md`.
+3. Read the chosen recipe with `get_composition_guide` and `style` (the recipe id): its plan turns each beat's role into a technique and each weight into seconds (endings at least 2 s), and its example code is a starting point, not a mold: change the text, colours, rhythm, shapes and scenes to fit the brand and the approved storyboard (see Recipe and brand).
 4. Write the full HTML and call `preview_composition`. If it is rejected, read `details` (lint code, message, suggested fix), fix it, and send it again.
 5. The user watches the preview in the card and presses "Buat video" themselves (this spends credits equal to the duration), or "Buka di Studio" to fine-tune it by hand (it becomes a video in their dashboard, and the card tells you its `project_id`). Revise through the chat: change the HTML and call `preview_composition` again, with the video's `project_id` once it has one.
 6. In apps without cards (a terminal, scripts): once the user agrees, call `render_composition`, then `get_status` until `done`, and share the download link and `project_url`.
@@ -79,7 +81,18 @@ Two options, identical in preview and render:
 | Noto Sans | 400 | `vendor/NotoSans-Regular.ttf` | neutral, a fallback for any text |
 | Noto Sans | 700 | `vendor/NotoSans-Bold.ttf` | neutral bold |
 
-Use at most two families per video: one for headlines, one for body text.
+Use at most two families per video: one for headlines, one for body text. When the brand names its fonts, use those.
+
+## The brand's logo
+When the brand has a logo, `get_brand` gives its path (`assets/brand/logo.png`, `.jpg`, `.webp` or `.svg`) and size. Show it with `<img src="assets/brand/logo.png" alt="...">` at that exact path and send the brand's `brand_id` with the composition; Mosio adds the file to the preview, Studio and the render. Keep its aspect ratio (set one of width or height), give it room, and do not recolour or distort it. Without a logo, set the business name as text; never draw a made-up logo.
+
+## Recipe and brand
+The recipe gives the structure: the scene order, the technique for each beat's role, and the tempo (seconds per weight). The brand makes the video theirs and wins over the example wherever the two differ:
+- Colours: put the brand's main, background and accent colours into the example's palette (most examples declare it on `:root` as `--utama`, `--latar` and `--aksen`), then check that all text still reads.
+- Fonts: the brand's headline and body fonts replace the example's.
+- Logo: the brand's logo on the ending (see The brand's logo), never the example's placeholder shape.
+- Words: on-screen text in the brand's voice (tone, how it addresses viewers, words to avoid), with its product names, prices and contact exactly as written.
+- Motion feel: the brand's motion style sets the easing and how lively each move is (calm: longer, softer eases and fewer things moving at once; energetic: snappier moves and pops; playful: bouncy eases; elegant: long smooth eases and masked reveals), inside the recipe's techniques and without changing the beat timings.
 
 ## Layout and safe zones
 - Vertical 9:16: keep important text out of the top 250 px, the bottom 420 px (Reels/TikTok buttons and captions), and 80 px on the left and right.
@@ -104,8 +117,8 @@ Use at most two families per video: one for headlines, one for body text.
 - Every element that appears later gets its initial state from `from`/`fromTo` on the timeline, not hidden with CSS.
 - The timeline length equals `data-duration`.
 
-## Styles
-Read the example before writing; treat it as a starting point, not a mold.
+## Recipes
+The styles the dashboard and the cards call recipes (`style` ids). Read the recipe's example before writing; treat it as a starting point, not a mold.
 
 - [kinetic-type](styles/kinetic-type.html): Big words take turns on a rhythm. For slogans, calls to action and announcements.
 - [product-hero](styles/product-hero.html): One product shown big with light, its name, and a price that counts up. For selling one product.

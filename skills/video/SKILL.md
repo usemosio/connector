@@ -4,12 +4,12 @@ description: "Entry point for any Mosio video: promo, sale, paid ad, social cont
 license: "MIT and Apache-2.0; see Adapted from in each file"
 metadata:
   author: Mosio
-  version: "0.3.0"
+  version: "0.4.0"
 ---
 
 # Making a video with Mosio
 
-Mosio renders short, silent videos from HTML for small Indonesian businesses and creators. You direct; Mosio checks, previews and renders. The hard rules live in `get_composition_guide` and win over anything here.
+Mosio renders short, silent videos from HTML for small Indonesian businesses and creators. You direct; Mosio checks, previews and renders. The hard rules live in `get_composition_guide` and win over anything here. The looks you build from are called **recipes** in the dashboard and the cards (a recipe id is the `style` value); say "recipe" to the user.
 
 ## Language
 
@@ -18,18 +18,19 @@ Mosio renders short, silent videos from HTML for small Indonesian businesses and
 
 ## Flow
 
-1. **Understand the goal.** What is sold, taught or announced, for whom, where it is posted, and the one action after watching. Take everything the user already said; do not ask again.
-2. **Pick the type** (table below) and read `types/<type>.md`. Route once: match the deliverable, not a word said in passing.
-3. **Brief and content storyboard** in chat, following `brief.md`: one batch of at most 5 questions, then the brief and the beats (role, text, subject, weight; no motion).
-4. **Show it** with `preview_storyboard` in 1-3 fitting styles (free). Wait for content approval, then the user picks a style. A later style change does not reopen the content.
-5. **Pick the path**: template or custom composition (below).
-6. **Build.** Template: fill its variables. Composition: `get_composition_guide` with the chosen style, then the HTML from the approved beats and that style's plan.
-7. **Review** with `review.md` before the preview, and again after it.
-8. **Preview.** `preview_template` or `preview_composition`. Both are free.
-9. **Render.** The user watches the preview card and presses "Buat video" themselves, or "Buka di Studio" to fine-tune it by hand. Without a card (terminal, scripts), call `render_template` or `render_composition` only after the user agrees, then `get_status` until `done`, and share the download link and `project_url` (the video's page, where Studio opens it).
-10. **Revise.** A change to a video that exists is a new version of the same video, never a new one: `get_project` (its HTML as it is now, with the user's Studio edits, and its `version`), change that HTML, then `preview_composition` and `render_composition` with `project_id` and `base_version`.
+1. **Find the brand.** `list_brands`; with several, ask which one unless the request already names it (a prompt from the dashboard carries `brand_id`). Read `get_brand`: voice, colours, fonts, logo, contact, products and prices. Never ask for what it already says, and pass the same `brand_id` to every tool that makes the video.
+2. **Understand the goal.** What is sold, taught or announced, for whom, where it is posted, and the one action after watching. Take everything the user already said; do not ask again.
+3. **Pick the type** (table below) and read `types/<type>.md`. Route once: match the deliverable, not a word said in passing.
+4. **Brief and content storyboard** in chat, following `brief.md`: one batch of at most 5 questions, then the brief and the beats (role, text, subject, weight; no motion).
+5. **Show it** with `preview_storyboard` (free) in 1-3 fitting recipes, or only the recipe the user already chose (a prompt from the dashboard's Recipes names it, e.g. "dengan recipe Produk utama (product-hero)"). Wait for content approval, then the user picks a recipe. A later recipe change does not reopen the content.
+6. **Pick the path**: template or custom composition (below).
+7. **Build.** Template: fill its variables. Composition: `get_composition_guide` with the chosen recipe as `style`, then the HTML from the approved beats and that recipe's plan. The recipe gives the structure; the brand wins on colours, fonts, logo, words and motion feel (the guide's "Recipe and brand").
+8. **Review** with `review.md` before the preview, and again after it.
+9. **Preview.** `preview_template` or `preview_composition`. Both are free.
+10. **Render.** The user watches the preview card and presses "Buat video" themselves, or "Buka di Studio" to fine-tune it by hand. Without a card (terminal, scripts), call `render_template` or `render_composition` only after the user agrees, then `get_status` until `done`, and share the download link and `project_url` (the video's page, where Studio opens it).
+11. **Revise.** A change to a video that exists is a new version of the same video, never a new one: `get_project` (its HTML as it is now, with the user's Studio edits, and its `version`), change that HTML, then `preview_composition` and `render_composition` with `project_id` and `base_version`.
 
-"Langsung buat aja" or "yang cepet": skip waiting for the storyboard approval and go straight to a preview in the best-fitting style, but still write a short brief and the beats as decisions and never guess facts. The render still waits for the user: the preview is free, the render spends credits.
+"Langsung buat aja" or "yang cepet": skip waiting for the storyboard approval and go straight to a preview in the recipe the user chose, or the best-fitting one, but still write a short brief and the beats as decisions and never guess facts. The render still waits for the user: the preview is free, the render spends credits.
 
 ## Pick the type
 
@@ -58,10 +59,10 @@ Ambiguous cases:
 | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | When | an existing Mosio template fits and the user only needs their text swapped, or picked a template in the gallery, or wants it quick                                                          | anything unique, anything that follows the storyboard, any type without a template                                                                                                                                         |
 | How  | the `video-template` skill (in `skill_library`: the server instructions). Tools: `list_templates` (variables and limits), `show_templates` (gallery), `preview_template`, `render_template` | the `video-composition` skill: `get_composition_guide`, then `../video-composition/craft/` (motion, transitions, kinetic type, captions, camera, numbers, logo, sizes). Tools: `preview_composition`, `render_composition` |
-| Look | the template's design                                                                                                                                                                       | the closest style (`get_composition_guide` with `style`) or template as a reference, never a mold: change text, color, rhythm, shapes and scenes to fit                                                                    |
+| Look | the template's design                                                                                                                                                                       | the chosen recipe (`get_composition_guide` with `style`) or a template as a reference, never a mold: change text, color, rhythm, shapes and scenes to fit the brand and the storyboard                                     |
 
 - Templates exist only for promo-type content today: `promo-produk`, `diskon-kilat`, `menu-fnb`, `menu-spesial`, `jasa-layanan`, `testimoni`, `buka-baru`, `pengumuman`. Social content, explainers, ads, app launches, chat stories and slideshows go through composition.
-- Style ids for reference: `kinetic-type`, `product-hero`, `flash-sale` (static deadline text, no countdown), `menu-board`, `chat-testimoni`, `angka-capaian`, `peluncuran-aplikasi`, `dasbor-iklan`, `explainer-isometrik`, `visual-story`.
+- Recipe ids (the `style` values): `kinetic-type`, `product-hero`, `flash-sale` (static deadline text, no countdown), `menu-board`, `chat-testimoni`, `angka-capaian`, `peluncuran-aplikasi`, `dasbor-iklan`, `explainer-isometrik`, `visual-story`.
 - Unsure which the user wants, or they ask what exists: `show_templates`. Do not list templates in chat when a card can show them.
 - For a ready effect (kinetic text, transition, overlay, UI card, chart), try `search_registry` (English keywords) and `get_registry_item` before hand-building it.
 
@@ -91,4 +92,4 @@ Each render costs credits equal to its duration, and each size is its own render
 
 - [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) (Apache-2.0, © HeyGen and HyperFrames contributors), commit `908f2d0`: `skills/hyperframes/SKILL.md`.
 
-Changes by Mosio: kept only the routing idea (one entry point, route once by the requested deliverable, first matching row, explicit tie-breakers) and rewrote it for Mosio's video types and its two paths, template or composition, with Mosio's composition rules (paused GSAP timeline, no audio, no CDN). Dropped project state, CLI install and usage checks, media, audio and Studio routing. Added the flow, the language, truth and credit rules. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.
+Changes by Mosio: kept only the routing idea (one entry point, route once by the requested deliverable, first matching row, explicit tie-breakers) and rewrote it for Mosio's video types and its two paths, template or composition, with Mosio's composition rules (paused GSAP timeline, no audio, no CDN). Dropped project state, CLI install and usage checks, media, audio and Studio routing. Added the flow (with the brand step and recipes), the language, truth and credit rules. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.

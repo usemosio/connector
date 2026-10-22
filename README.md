@@ -7,7 +7,7 @@ Mosio renders short videos for small businesses and creators: promos, social con
 - The Mosio MCP server at `https://mcp.mosio.me/mcp`. You sign in with your Mosio account (OAuth).
 - `video`: the entry skill for any video: brief and storyboard, the choice between a template and a custom composition, a review checklist, and one guide per video type (`skills/video/types/`).
 - `video-template`: how to pick a Mosio template and write its on-screen text.
-- `video-composition`: how to write the video as an HTML composition, with 10 example styles in `skills/video-composition/styles/` and craft references in `skills/video-composition/craft/`.
+- `video-composition`: how to write the video as an HTML composition, with the 10 recipes (example styles) in `skills/video-composition/styles/` and craft references in `skills/video-composition/craft/`.
 
 The same skills are served to every assistant by the MCP server's `skill_library` tool under `mosio/`.
 
@@ -34,6 +34,7 @@ Guides and the REST API reference: https://docs.mosio.me
 
 - The plugin runs nothing on your computer and reads no local files.
 - Claude calls the Mosio server only for the tools you use. It sends the tool arguments: template id, on-screen text (for example a product name, a price, or a contact number you asked to show), the HTML composition Claude wrote, output size, and video id. The rest of the conversation is not sent.
+- Posting to social media (only when you ask): captions, planned times and drafts are stored in your Mosio workspace. When a post is published or scheduled, the video or the photos you uploaded, the caption and the chosen accounts go from Mosio to the platforms you connected (Instagram, Threads, TikTok) through Mosio's publishing partner. Accounts are connected and files uploaded in the Mosio dashboard, never in the chat.
 - Sign-in uses OAuth. This repository holds no passwords or tokens.
 - Videos are stored in your Mosio workspace. Download links expire after one hour.
 - Privacy policy: https://mosio.me/en/privacy/

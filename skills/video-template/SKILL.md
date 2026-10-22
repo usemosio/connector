@@ -13,7 +13,7 @@ A ready-made Mosio template filled with the user's text: fast, with a tested lay
 The user chooses through the cards, not a text list. Do not write a list of templates in the chat or ask the user to pick one in the chat; in apps that support it, the interactive card shows the options. Only in apps without cards (a terminal, for example) summarise the options as text.
 
 1. Call `list_templates` to read each template's variables and length limits. This is data for you; do not summarise it to the user.
-2. If the user does not know what they want, or asks which styles and templates exist, call `show_templates` (a moving gallery of design styles and templates, optionally filtered by `category`). The user's pick arrives as the next message: a style means you write a custom composition in that style, a template means the steps below.
+2. If the user does not know what they want, or asks which recipes and templates exist, call `show_templates` (a moving gallery of recipes and templates, optionally filtered by `category`). The user's pick arrives as the next message: a recipe means you write a custom composition with that recipe, a template means the steps below.
 3. When the content is clear, pick the best-fitting template:
    - a product with a price or a struck-through price: `promo-produk`
    - a time-limited discount: `diskon-kilat`
@@ -29,5 +29,5 @@ The user chooses through the cards, not a text list. Do not write a list of temp
 - Template variables are on-screen text: write them in the user's language (Indonesian by default for Indonesian businesses), friendly and short, the way a shop owner talks to customers. No piles of exclamation marks, no claims that cannot be proven ("termurah se-Indonesia").
 - Respect each variable's length limit; text that is too long is rejected. Shorter reads better on a phone.
 - Prices in Rupiah format: `Rp25.000`. A struck-through price only when there really is an old price.
-- Never invent prices, addresses, contact numbers or opening hours. Ask first, or leave optional variables empty.
-- The business name, colours and contact come from the workspace brand kit when not sent. Send them only when the user wants something different.
+- Never invent prices, addresses, contact numbers or opening hours. Take them from `get_brand` (products and prices, contact), ask first, or leave optional variables empty.
+- The business name, colours and contact come from the chosen brand (`brand_id`) when not sent. Send them only when the user wants something different. Write the copy in the brand's voice.

@@ -54,7 +54,7 @@ Numbers in a hook (5 menit, 6 jam) only if the user gave them and they are true.
 
 - Product name, price and promo must match the WhatsApp chat or listing exactly; a small mismatch loses the sale.
 - For click-to-WhatsApp ads, suggest a greeting message that continues the hook's promise.
-- Contact and shop name come from the brand kit or the user. No URL needed on screen when the ad button already links there.
+- Contact and shop name come from the brand or the user. No URL needed on screen when the ad button already links there.
 
 ## Honest proof
 
@@ -89,7 +89,7 @@ Test order: (1) **hook**, 3-5 hooks of different types with the same body and CT
 
 - Hook trigger reads before 2 s; the first scene moves from frame one.
 - CTA pays off the hook and matches the WhatsApp chat or listing.
-- Each variant differs in one part only. Every number, price, testimonial and contact comes from the user or brand kit.
+- Each variant differs in one part only. Every number, price, testimonial and contact comes from the user or the brand.
 - Fully understood muted; text in the safe zone and the central square. Ending held 2 s or more; timeline length equals `data-duration`.
 
 ## Adapted from
