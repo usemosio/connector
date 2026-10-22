@@ -1,6 +1,6 @@
 # App launch and UI demo
 
-For a POS app, online shop, booking app, local SaaS, online course or a new feature. The product screen is redrawn as HTML/SVG mock UI, and an oversized cursor walks the eye: every click causes the next state. Start from the `peluncuran-aplikasi` style (struck-out problem, sliding window, cursor, rising number) or `dasbor-iklan` (metrics, platform cards, line chart).
+For a POS app, online shop, booking app, local SaaS, online course or a new feature. The product screen is redrawn as HTML/SVG mock UI, and an oversized cursor walks the eye: every click causes the next state. Start from the `peluncuran-aplikasi` recipe (struck-out problem, sliding window, cursor, rising number) or `dasbor-iklan` (metrics, platform cards, line chart).
 
 ## Before the storyboard
 

@@ -1,10 +1,9 @@
 ---
 name: video
-description: "Entry point for any Mosio video: promo, sale, paid ad, social content (tips, behind the scenes, series), education and explainers, app launch, announcement, chat story, or photo slideshow. Runs the flow from goal to brief and storyboard, picks the video type and the recipe (a fill-in recipe with a fixed design, or one to compose an HTML video from), then build, self-review and preview. Use whenever the user asks to make, plan or revise a video (bikin video, buat video promo, konten, iklan, video edukasi, storyboard)."
-license: "MIT and Apache-2.0; see Adapted from in each file"
+description: "Entry point for any Mosio video: promo, sale, paid ad, social content (tips, behind the scenes, series), education and explainers, app launch, announcement, chat story, photo slideshow, or a short visual story. Runs the flow from goal to brief and storyboard, picks the video type and the recipe (a fill-in recipe with a fixed design, or one to compose an HTML video from), then build, self-review and preview. Use whenever the user asks to make, plan or revise a video (bikin video, buat video promo, konten, iklan, video edukasi, storyboard)."
+license: "Proprietary; adapted parts are MIT or Apache-2.0, see NOTICE.md and Adapted from in each file"
 metadata:
   author: Mosio
-  version: "0.5.0"
 ---
 
 # Making a video with Mosio

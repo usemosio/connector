@@ -1,16 +1,16 @@
 # Review before and after the preview
 
-Self-critique, twice per round: before `preview_composition` or `preview_recipe` (on the storyboard and code) and after the preview shows or the user comments. Technical rules stay in the guide and the lint; this judges whether the video is good, honest and does its job.
+Self-critique, twice per round: on the storyboard and code before you build, and on the stills from `inspect_composition` before the user sees `preview_composition` (and again after the user comments). Technical rules stay in the guide and the lint; this judges whether the video is good, honest and does its job.
 
 ## How to look
 
 Passing lint is not good. A clean, smooth version still fails if it feels generic, empty or slow. Judge as a stranger watching once, on a phone, on mute, while scrolling.
 
-1. **Judge what shows, not what you meant.** If the preview returns frame images, look at them. If not, walk the timeline at key times: frame 0, each cut (0.1 s before and after), the middle of each scene, the last 2 s. Ask: what is on screen at that second?
+1. **Judge what shows, not what you meant.** Call `inspect_composition` with `at` at the middle of each beat and look at the contact sheet it returns: one still per time plus the last frame, made by the same engine as the render. Read its findings too (text outside its box, covered text, off-canvas, contrast), each with a fix hint; an effect you meant gets `data-layout-allow-overflow` or `data-layout-allow-overlap` instead of a fix. Need a cut or a single moment up close? Inspect again with just those times. Where the tool is not available, walk the timeline in your head at frame 0, each cut, the middle of each scene and the last 2 s. Ask: what is on screen at that second?
 2. **Describe each scene in one sentence:** what is on screen, what the hero is, and whether it would pass as a slide or a web page. No one-sentence answer means no hero; "a card on a flat color" is a slide.
 3. **Four looks:** thumbnail size (still readable?), cover the logo (fits a competitor too?), cover the text (any picture left?), a mid-cut frame (two half states, an empty frame, a white flash?).
 4. **Fix in order:** wrong or broken, then idea and message, then links between scenes, then hierarchy and scale, then timing, then polish. No easing tweaks while the idea is unclear.
-5. **Never certify your own work.** Tell the user what you checked and what is still weak; never "sudah sempurna" or "terverifikasi".
+5. **At most two inspection rounds**, then show the preview: the user's eyes are the next check. Tell the user in one line what you checked and what is still weak; never "sudah sempurna" or "terverifikasi".
 
 ## Never ship
 

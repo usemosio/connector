@@ -104,11 +104,11 @@ Education example ("3 cara kemeja putih tetap putih"): `hook` "Kemeja putihmu mu
 
 ## Show it and pick a recipe
 
-1. Call `preview_storyboard` with a short title, the beats, and in `recipes` 1-3 recipes that fit the content (nearest recipe list below). When the user already chose a recipe (a prompt from the dashboard's Recipes names it, e.g. "dengan recipe Papan menu (menu-board)"), send only that one and offer another only if asked. It draws each beat as a hand-drawn sketch panel per recipe, with that recipe's timing. It is free and cheap: you send data, not HTML. Without a card (terminal, scripts), the same beats as a table in chat are enough.
+1. Call `preview_storyboard` with a short title, the beats, and in `recipes` 1-3 recipes that fit the content (how to pick them below). When the user already chose a recipe (a prompt from the dashboard's Recipes names it, e.g. "dengan recipe Papan menu (menu-board)"), send only that one and offer another only if asked. It draws each beat as a hand-drawn sketch panel per recipe, with that recipe's timing. It is free and cheap: you send data, not HTML. Without a card (terminal, scripts), the same beats as a table in chat are enough.
 2. Ask in one line: "Isinya sudah pas? Mau recipe yang mana?" (one recipe: "Isinya sudah pas?"). The user approves the content and picks a recipe, in the card or in chat.
 3. The card shows each recipe's total length. Far from the agreed duration: change weights or the number of beats, show again.
 
-Nearest recipe: one product and price `product-hero`, discount `flash-sale`, slogan `kinetic-type`, menu `menu-board`, testimonial `chat-testimoni`, numbers `angka-capaian`, app `peluncuran-aplikasi`, ad services `dasbor-iklan`, wide explainer `explainer-isometrik`, "why" story `visual-story`. Fill-in path: the chosen fill-in recipe plays the role of the recipe.
+Nearest recipe: `list_recipes` says what each recipe is for (its description, tags and size); pick by the content, the size and the feel, and `types/<type>.md` names the usual starting point for its type. Fill-in path: the chosen fill-in recipe plays the role of the recipe.
 
 ## Layer 2, the recipe plan
 

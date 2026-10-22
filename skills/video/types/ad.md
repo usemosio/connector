@@ -58,7 +58,7 @@ Numbers in a hook (5 menit, 6 jam) only if the user gave them and they are true.
 
 ## Honest proof
 
-The strongest proof can be checked: units sold, ratings, real testimonials, the user's own before/after photos, a demo of the product working. All of it **only from the user**. No data? Show the process (dough, washing machine, app screen) or skip the proof beat. Styles: `chat-testimoni` for reviews, `angka-capaian` for numbers, `peluncuran-aplikasi` for app demos, `dasbor-iklan` for ad or agency results. Health, beauty and finance claims are restricted by Meta and TikTok policy: avoid outcome promises ("kulit putih 7 hari") and suggest the user checks the policy.
+The strongest proof can be checked: units sold, ratings, real testimonials, the user's own before/after photos, a demo of the product working. All of it **only from the user**. No data? Show the process (dough, washing machine, app screen) or skip the proof beat. Recipes: `chat-testimoni` for reviews, `angka-capaian` for numbers, `peluncuran-aplikasi` for app demos, `dasbor-iklan` for ad or agency results. Health, beauty and finance claims are restricted by Meta and TikTok policy: avoid outcome promises ("kulit putih 7 hari") and suggest the user checks the policy.
 
 ## Readable with sound off
 

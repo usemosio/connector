@@ -17,7 +17,7 @@ Photos are allowed only as `data:` images inside the composition, and the whole 
 ## Handling the photos
 
 - Ask for the best 3-5 photos, one product or one angle each. **With a code tool** (Python sandbox or similar): shrink them there as preparation, not as part of the render, e.g. Pillow `im.thumbnail((720, 1280)); im.save(buf, "WEBP", quality=62)`. Check the base64 length; lower quality or size until it fits. Use the user's real photos unaltered.
-- **Without a code tool** (plain chat): the assistant cannot shrink photos or write base64 reliably. Never type base64 by hand. Offer instead a Mosio template, which needs no photos (`promo-produk`, `diskon-kilat`, `menu-fnb`, `menu-spesial`, `jasa-layanan`; see `list_templates`, then `preview_template`), or an illustrated product card in SVG/CSS (shapes, brand colours, name, price) that clearly reads as an illustration, never as a product photo. Mosio makes and edits no images with AI models. Never promise "enhanced photos" or automatic background removal.
+- **Without a code tool** (plain chat): the assistant cannot shrink photos or write base64 reliably. Never type base64 by hand. Offer instead a fill-in recipe, which needs no photos (`list_recipes` with `kind: "fill_in"` or the `show_recipes` gallery, then `preview_recipe`), or an illustrated product card in SVG/CSS (shapes, brand colours, name, price) that clearly reads as an illustration, never as a product photo. Mosio makes and edits no images with AI models. Never promise "enhanced photos" or automatic background removal.
 
 ## One rule: no two photos move alike
 

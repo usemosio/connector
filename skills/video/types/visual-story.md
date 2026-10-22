@@ -1,6 +1,6 @@
 # Visual story
 
-A short vertical explainer that feels like a film, not slides: one illustrated world, a camera that moves through it, and the story told word by word in captions. It answers one "why" or "how come" question with a true number and a payoff. Run `../brief.md` first; technical rules come from `get_composition_guide`. Starting code: the `visual-story` style (`get_composition_guide` with `style: "visual-story"`), a silent 2D film about why bees build hexagons. Craft: `mosio/video-composition/craft/captions.md` (the caption engine) and `mosio/video-composition/craft/camera.md` (the 2D camera, flights, breakdowns).
+A short vertical explainer that feels like a film, not slides: one illustrated world, a camera that moves through it, and the story told word by word in captions. It answers one "why" or "how come" question with a true number and a payoff. Run `../brief.md` first; technical rules come from `get_composition_guide`. Starting code: the `visual-story` recipe (`get_composition_guide` with `recipe: "visual-story"`), a silent 2D film about why bees build hexagons. Craft: `mosio/video-composition/craft/captions.md` (the caption engine) and `mosio/video-composition/craft/camera.md` (the 2D camera, flights, breakdowns).
 
 ## When to use
 

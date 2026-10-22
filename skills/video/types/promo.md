@@ -6,11 +6,11 @@ A 6-15 s spot that announces **one offer** and gets people to act now: the disco
 
 | Need                                                | Path                                                                                                         |
 | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| One product with price and old price, standard look | fill-in recipe `promo-produk` (`judul`, `harga`, `harga_coret`, `badge`, `ajakan`)                           |
-| Time-limited discount in percent                    | fill-in recipe `diskon-kilat` (`nama_usaha`, `persen`, `judul`, `produk`, `berlaku`, `ajakan`)               |
+| One product with price and old price, standard look | fill-in recipe `promo-produk`                                                                                |
+| Time-limited discount in percent                    | fill-in recipe `diskon-kilat`                                                                                |
 | Custom look, promo code, counting price             | composition from recipe `flash-sale` (percent blast, ticker tape) or `product-hero` (one product, big price) |
 
-Fill-in path: `show_recipes`, then `preview_recipe` with the full id (e.g. `promo-produk@1`), then `render_recipe`. Neither compose recipe ships a strike-through price or a code chip: add them from the recipes below.
+Fill-in path: `show_recipes`, then `preview_recipe` with the full id and the variables from `list_recipes`, then `render_recipe`. Neither compose recipe ships a strike-through price or a code chip: add them from the recipes below.
 
 ## Ask before you start
 
@@ -103,7 +103,7 @@ tl.fromTo("#coret", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out
 
 People watch any time, even after the promo ends, so the deadline is text that stays true: "Berakhir Minggu, 23.59 WIB", "Hanya 12.12", "Sampai 31 Desember", "Hari ini saja" (only if the video is for that day).
 
-- The `flash-sale` style has a static deadline block: "Berakhir" plus a chip such as "Minggu, 23.59 WIB", stamped in and then held. Replace the chip with the user's deadline and make the ribbon match (it reads "SAMPAI MINGGU"), or remove the block if there is none. Never add a countdown clock (no ticking hours, minutes, seconds). For countdown energy, use a "3, 2, 1, MULAI" count-in in the hook.
+- The `flash-sale` recipe has a static deadline block: "Berakhir" plus a chip such as "Minggu, 23.59 WIB", stamped in and then held. Replace the chip with the user's deadline and make the ribbon match (it reads "SAMPAI MINGGU"), or remove the block if there is none. Never add a countdown clock (no ticking hours, minutes, seconds). For countdown energy, use a "3, 2, 1, MULAI" count-in in the hook.
 - Urgency must be real ("Stok tinggal 5" only if the user said so). Hold the deadline 2 s or more; never blink it.
 
 ## Motion: energetic, not chaotic
