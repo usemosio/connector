@@ -1,14 +1,15 @@
 {
   "name": "mosio",
   "owner": {
-    "name": "Mosio"
+    "name": "Mosio",
+    "url": "https://mosio.me"
   },
   "description": "Mosio for Claude",
   "plugins": [
     {
       "name": "mosio",
       "source": "./",
-      "description": "Short videos for small businesses and creators, rendered by Mosio"
+      "description": "Short motion videos for small businesses and creators, rendered by Mosio"
     }
   ]
 }

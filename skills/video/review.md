@@ -1,6 +1,6 @@
 # Review before and after the preview
 
-Self-critique, twice per round: before `preview_composition` or `preview_template` (on the storyboard and code) and after the preview shows or the user comments. Technical rules stay in the guide and the lint; this judges whether the video is good, honest and does its job.
+Self-critique, twice per round: before `preview_composition` or `preview_recipe` (on the storyboard and code) and after the preview shows or the user comments. Technical rules stay in the guide and the lint; this judges whether the video is good, honest and does its job.
 
 ## How to look
 
@@ -32,7 +32,7 @@ The source caps the end card at 1.4 s. Not in Mosio: the ending holds at least 2
 
 1. **The idea belongs to this business:** its real product, how it is served, its materials, the place, the owner's own phrases. Cover the logo: if it still fits the shop next door, the idea came from the category.
 2. **The viewer sees something happen.** Claims are shown, not written: ice poured, a WA order arrives then gets packed, before and after, a step done on screen. One specific, real case from the user.
-3. **Each beat causes the next.** Objects carry across cuts, motion direction stays consistent (see `../video-composition/craft/motion.md`).
+3. **Each beat causes the next.** Objects carry across cuts, motion direction stays consistent (see `mosio/video-composition/craft/motion.md`).
 4. **Emphasis is rationed.** One hero per frame, at most three focal points; big needs small around it; at most a quarter of beats are "the point".
 5. **Time breathes.** A short pause before what matters, enough reading time, stop before the idea runs out.
 6. **One world.** One logic of light, material and color throughout; the background is a surface (gradient, light, shape, texture), not a swatch.
@@ -71,9 +71,9 @@ Not bans. Each is fine when chosen with a one-sentence reason for this business;
 - A new effect in every scene to show off technique.
 - A flat drawing followed by separate depth objects that pop in: often the same drawing could stand up in place and hand its key element over instead. Keep the cut if it is a deliberate new world.
 - House style as default: giant cropped words, circle wipes at every cut, typed titles with a caret, a dot that becomes the logo.
-- A storyboard with motion words ("slams in", "wipe", "zoom") instead of roles and subjects. The user approves content; techniques come from the style plan.
-- Content rewritten when only the style changed. Keep the approved beats; redo only the plan.
-- A second style built without being asked. Offer it in one line instead.
+- A storyboard with motion words ("slams in", "wipe", "zoom") instead of roles and subjects. The user approves content; techniques come from the recipe plan.
+- Content rewritten when only the recipe changed. Keep the approved beats; redo only the plan.
+- A second recipe built without being asked. Offer it in one line instead.
 
 ## Checklist every round
 
@@ -91,7 +91,7 @@ Mark each item **Pass** or **Fail**. A failed Critical item must be fixed before
 | 8   | Cuts follow the vector law (axis, direction, speed, cut mid-motion), no crossfades                                                                | Important   |
 | 9   | Motion by role: entrances decelerate, exits accelerate; no 4 identical entrances; at most one visible spring                                      | Important   |
 | 10  | Timing: text readable at least 1.2 s; no fully frozen frame (background too) over 0.6 s except designed pauses and the ending; scene lengths vary | Important   |
-| 11  | Storyboard: beats have roles and subjects, no motion words; content unchanged when only the style changed; no second style built unasked          | Important   |
+| 11  | Storyboard: beats have roles and subjects, no motion words; content unchanged when only the recipe changed; no second recipe built unasked        | Important   |
 | 12  | One system: one motion personality, one accent color, at most two font families                                                                   | Opportunity |
 | 13  | One screenshot-worthy frame, nameable by its second                                                                                               | Opportunity |
 

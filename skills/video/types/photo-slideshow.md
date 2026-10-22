@@ -45,7 +45,7 @@ Identical slow zoom-ins are the mark of an amateur slideshow. Vary direction, zo
 
 - Per photo: product name (2-4 words) plus a price or one benefit, at most 7 words. Prices only from the user; ask.
 - Same position on every photo, e.g. y 1250-1480 in 9:16, clear of the guide's safe zones. Name 90-130 px, text 54-80 px, on a colour band or card so it reads over any photo.
-- Captions stay still while the photo moves. In 0.3 s after the photo shows (masked `yPercent: 110` reveal), out 0.3 s before it changes. A price may count up per `../../video-composition/craft/numbers.md`, landing exactly on the real price.
+- Captions stay still while the photo moves. In 0.3 s after the photo shows (masked `yPercent: 110` reveal), out 0.3 s before it changes. A price may count up per `mosio/video-composition/craft/numbers.md`, landing exactly on the real price.
 
 ## Silent pacing
 
@@ -121,8 +121,8 @@ document.querySelectorAll(".slide").forEach((s, i) => {
 
 ## Opening, ending, other sizes
 
-- Opening: shop name or a short promise ("Koleksi Lebaran baru") with a masked reveal, or the first photo enters on a slightly faster zoom-out (1.2 s). Ending: the last photo dims or wipes to the brand colour; CTA, name and contact hold 2 s+; 0.5 s fade. For the ending and price, borrow from the `product-hero` and `menu-board` styles.
-- 4:5 and 1:1: wider box, so more landscape photos suit `cover`; caption on a bottom band. 16:9: photo on the left two thirds, name and price on the right third, so portrait photos show whole. See `../../video-composition/craft/sizes.md`.
+- Opening: shop name or a short promise ("Koleksi Lebaran baru") with a masked reveal, or the first photo enters on a slightly faster zoom-out (1.2 s). Ending: the last photo dims or wipes to the brand colour; CTA, name and contact hold 2 s+; 0.5 s fade. For the ending and price, borrow from the `product-hero` and `menu-board` recipes.
+- 4:5 and 1:1: wider box, so more landscape photos suit `cover`; caption on a bottom band. 16:9: photo on the left two thirds, name and price on the right third, so portrait photos show whole. See `mosio/video-composition/craft/sizes.md`.
 
 ## Check before sending
 

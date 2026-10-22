@@ -1,142 +1,29 @@
 ---
 name: video-composition
-description: "Write a video as an HTML composition that Mosio renders: the technical rules, sizes and safe zones, fonts, motion language, 10 recipes (example styles), and craft references for motion, transitions, kinetic type, captions, the 2D camera, numbers, logos and multiple sizes. Use for any custom video, after the brief and storyboard are approved."
-license: "Proprietary; craft/ adapts MIT and Apache-2.0 works, see NOTICE.md"
+description: "Write a video as an HTML composition that Mosio renders: one file, one paused GSAP timeline, the brand's colours and fonts, a recipe's plan and example. Use for any custom motion video after the brief and storyboard are approved, or when the user shares HTML to turn into a video. The rules come from the Mosio server."
+license: Proprietary
 metadata:
   brand: Mosio
 ---
 
 # Mosio video composition
 
-You design the video yourself as one HTML file (a Hyperframes composition): layout, typography, colour and motion. Mosio checks it, shows a moving preview in the card, and renders it to MP4 on its servers. You are the director; Mosio is the studio and the camera.
+You design the video yourself as one HTML file (a Hyperframes composition): layout, typography, colour and motion. Mosio checks it, shows a moving preview in the card, and renders it to MP4 on its servers. The looks you build from are **recipes** (10 today; `list_recipes` has the current list). Say "recipe" to the user.
 
-The Mosio dashboard and the cards call the styles you build from **recipes** (the Recipes page). A recipe id is what `style` and `styles` take; say "recipe" when you talk to the user. A recipe gives the structure; the brand and the approved storyboard make the video theirs (see Recipe and brand).
+Everything below is read from the Mosio server when you need it, so it is always current. Do not work from memory of an earlier version.
 
 ## Flow
-1. Understand the goal: what it is for (sell, teach, announce), who it is for, and where it will be posted (see Sizes; vertical 1080×1920 by default). Never invent prices, addresses, contacts, opening hours or numbers; ask when they are missing.
-2. **Brief and content storyboard first, before any HTML.** Write them in the chat, short:
-   - Brief: the subject or offer, the audience, the call to action, the contact, the size(s) and the duration.
-   - Content storyboard: 3-6 beats, each with a role (hook, problem, fact, step, compare, number, proof, offer, cta, payoff), the on-screen text, the key word, the data, the subject (what is shown) and a weight (short, medium, long). No motion or seconds yet: those come from the recipe.
 
-   Show it with `preview_storyboard` (free; the server sketches it in 1-3 recipes). When the user already chose a recipe (the dashboard's prompt names it, e.g. "dengan recipe Produk utama (product-hero)"), sketch it in that recipe only and offer others only if asked. Ask whether the content is right, and revise at this stage. Start the HTML once the user approves the content and picks a recipe, unless they asked for it to be made straight away. Changing the recipe later keeps the content. More: `skill_library` `mosio/video/brief.md`.
-3. Read the chosen recipe with `get_composition_guide` and `style` (the recipe id): its plan turns each beat's role into a technique and each weight into seconds (endings at least 2 s), and its example code is a starting point, not a mold: change the text, colours, rhythm, shapes and scenes to fit the brand and the approved storyboard (see Recipe and brand).
-4. Write the full HTML and call `preview_composition`. If it is rejected, read `details` (lint code, message, suggested fix), fix it, and send it again.
-5. The user watches the preview in the card and presses "Buat video" themselves (this spends credits equal to the duration), or "Buka di Studio" to fine-tune it by hand (it becomes a video in their dashboard, and the card tells you its `project_id`). Revise through the chat: change the HTML and call `preview_composition` again, with the video's `project_id` once it has one.
-6. In apps without cards (a terminal, scripts): once the user agrees, call `render_composition`, then `get_status` until `done`, and share the download link and `project_url`.
-7. Changing a video that already exists: `get_project` first (its HTML as it is now, including edits made in Studio, and its `version`). Edit that HTML, keep element ids (Studio's moves and resizes are matched by id), and send it with `project_id` and `base_version`.
+1. Follow the `video` skill first: brand (`list_brands`, `get_brand`), goal, type, brief and content storyboard, `preview_storyboard`, the user's approval and recipe pick.
+2. Call `get_composition_guide` with the `brand_id` and the chosen `recipe`. It returns the technical rules (root element, sizes and safe zones, the one paused GSAP timeline, what is not allowed, assets and fonts), the brand brief, the recipe's plan (a technique per beat role and seconds per weight) and its example code. The rules in it win over anything you remember.
+3. For craft beyond the guide, read `skill_library`: `mosio/video-composition/craft/motion.md`, `transitions.md`, `kinetic-type.md`, `captions.md`, `camera.md`, `numbers.md`, `logo.md`, `sizes.md`. For a ready-made effect, `search_registry` then `get_registry_item`.
+4. Write the full HTML from the approved beats and the recipe's plan. The recipe gives the structure; the brand wins on colours, fonts, logo, words and motion feel. Change the example's text, colours, scenes and rhythm; never send it as is.
+5. `preview_composition` (free). If it is rejected, read `details.problems` (lint code, message, fix), fix, and send again. Review with `mosio/video/review.md` before and after.
+6. The user watches the preview in the card and presses "Buat video" themselves (credits equal to the duration), or "Buka di Studio". In apps without cards, call `render_composition` only after the user agrees, then `get_status`, and share the download link and `project_url`.
+7. A change to an existing video is a new version of the same video: `get_project` (current HTML, with the user's Studio edits, and its `version`), edit that HTML, keep element ids, then `preview_composition` and `render_composition` with `project_id` and `base_version`.
 
-## Sizes
-| Format | `data-width` × `data-height` | For |
-| --- | --- | --- |
-| Vertical 9:16 (default) | 1080 × 1920 | Reels, TikTok, Shorts, WhatsApp Status |
-| Portrait 4:5 | 1080 × 1350 | Instagram feed, ads |
-| Square 1:1 | 1080 × 1080 | Instagram and Facebook feeds, marketplaces |
-| Wide 16:9 | 1920 × 1080 | YouTube, websites, in-store screens |
+## Always
 
-- One brief can become several sizes: write one composition per size with the same scene order and duration. Re-lay each size out (e.g. text beside the visual at 16:9); do not just scale or crop.
-- Each size renders separately and spends credits equal to its duration. Offer before making several sizes at once.
-- Videos render without sound. If the user wants music, suggest adding it in the app they post to (Reels, TikTok).
-
-## Language
-On-screen text follows the user's language: Indonesian by default for Indonesian businesses (prices as `Rp25.000`). Reply to the user in their language.
-
-## Director's library
-`skill_library` starts with Mosio's own skills, which already follow the rules below: `mosio/video/` (the flow, brief, review, and video types: promo, ad, visual story, social content, explainer, app launch, chat story, photo slideshow) and `mosio/video-composition/craft/` (motion, transitions, kinetic type, captions, camera, numbers, logo, sizes). It also holds third-party skills you can read: official Hyperframes (the composition contract `hyperframes/hyperframes-core/SKILL.md`, motion rules, scene blueprints and transitions in `hyperframes/hyperframes-animation/`, creative direction in `hyperframes/hyperframes-creative/`), motion design, short-form structure, kinetic typography, GSAP, and copywriting. For ready-made effects (kinetic text, transitions, overlays, UI cards, charts), search the Hyperframes registry with `search_registry` (English keywords), fetch with `get_registry_item`, and paste it into your composition instead of starting from scratch. When a third-party skill says to run a CLI, use media, or another framework, follow the notes in the library index. The rules below are what apply on Mosio.
-
-## Technical rules (required, checked before render)
-- One HTML document. Root element: `<div id="root" data-composition-id="main" data-start="0" data-duration="15" data-width="1080" data-height="1920" data-fps="30">`. Suggested duration 6-30 seconds, at most 60 seconds. `html` and `body` are `data-width` × `data-height` (e.g. 1080×1920 px), and so is `<meta name="viewport">`; `#root` is `width: 100%; height: 100%; overflow: hidden` (the canvas size comes from `data-width`/`data-height`; do not hard-code it on `#root`).
-- All motion lives on one paused, registered GSAP timeline; the renderer plays it frame by frame:
-  ```js
-  const tl = gsap.timeline({ paused: true });
-  // ... tweens at explicit times: tl.from("#title", {...}, 0.4)
-  window.__timelines = window.__timelines || {};
-  window.__timelines["main"] = tl;
-  ```
-- Not allowed: `setTimeout`, `setInterval`, `requestAnimationFrame`, CSS animations or transitions, `Date.now()`, `new Date()`, `Math.random()`. None of them follows the timeline, so the render would differ from the preview. Need randomness? Use a small seeded PRNG (mulberry32). Need a loop? `repeat` with a fixed number, never `-1`.
-- Assets: `<script src="vendor/gsap.min.js"></script>` (GSAP 3.14), GSAP plugins as `vendor/<Name>.min.js` (CustomEase, CustomBounce, CustomWiggle, DrawSVGPlugin, EasePack, Flip, MorphSVGPlugin, MotionPathPlugin, Physics2DPlugin, PhysicsPropsPlugin, ScrambleTextPlugin, SplitText, TextPlugin; register them with `gsap.registerPlugin`), `vendor/mosio.js` (optional: `Mosio.readableOn(hex)` returns a black or white text colour that reads on it), the fonts below, inline SVG and CSS, and small `data:` images. GSAP CDN URLs (jsdelivr, cdnjs, unpkg) are swapped for the local copy automatically. Otherwise no http(s) URLs, iframes, video or audio: the render runs offline.
-- Write text straight into the HTML. Escape `&` and `<` in text. No `<br>` in body text (let it wrap with `max-width`); the only exception is a short headline deliberately set one word per line.
-- Do not give an element an initial CSS `transform` on a property GSAP tweens; set initial states on the timeline (`fromTo`, `xPercent`/`yPercent`).
-- Renders use the CPU: avoid WebGL, large `filter: blur` on full-screen elements, `backdrop-filter`, and hundreds of moving elements. Gradients, SVG, transforms, opacity and clip-path are cheap.
-- Move things with transforms (`x`, `y`, `xPercent`, `scale`, `rotation`) and `opacity`, not `top`/`left`/`width`.
-
-## Fonts
-Two options, identical in preview and render:
-- **Google Fonts**: link them as usual, e.g. `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;800&display=swap">`. Mosio downloads the Latin glyphs while checking and stores them with the project. Pick families that exist on Google Fonts.
-- **Bundled fonts** below, with no download. Declare the ones you use:
-```css
-@font-face { font-family: "Bebas Neue"; src: url("vendor/BebasNeue-400.woff2"); font-weight: 400; }
-```
-
-| Family | Weight | File | Feel |
-| --- | --- | --- | --- |
-| Bebas Neue | 400 | `vendor/BebasNeue-400.woff2` | tall condensed headlines, kinetic type, sport, promos |
-| Archivo Black | 400 | `vendor/ArchivoBlack-400.woff2` | heavy and loud: discounts, prices, big numbers |
-| Poppins | 500 | `vendor/Poppins-500.woff2` | friendly, modern body text |
-| Poppins | 800 | `vendor/Poppins-800.woff2` | modern geometric headlines |
-| Playfair Display | 700 | `vendor/PlayfairDisplay-700.woff2` | elegant: cafes, cakes, beauty, boutiques |
-| Playfair Display | 400 italic | `vendor/PlayfairDisplay-400-italic.woff2` | elegant italic accents |
-| Space Grotesk | 500 | `vendor/SpaceGrotesk-500.woff2` | tech, gadgets, digital services |
-| Space Grotesk | 700 | `vendor/SpaceGrotesk-700.woff2` | tech headlines |
-| Caveat | 700 | `vendor/Caveat-700.woff2` | handwriting: homemade, notes, a personal touch |
-| Noto Sans | 400 | `vendor/NotoSans-Regular.ttf` | neutral, a fallback for any text |
-| Noto Sans | 700 | `vendor/NotoSans-Bold.ttf` | neutral bold |
-
-Use at most two families per video: one for headlines, one for body text. When the brand names its fonts, use those.
-
-## The brand's logo
-When the brand has a logo, `get_brand` gives its path (`assets/brand/logo.png`, `.jpg`, `.webp` or `.svg`) and size. Show it with `<img src="assets/brand/logo.png" alt="...">` at that exact path and send the brand's `brand_id` with the composition; Mosio adds the file to the preview, Studio and the render. Keep its aspect ratio (set one of width or height), give it room, and do not recolour or distort it. Without a logo, set the business name as text; never draw a made-up logo.
-
-## Recipe and brand
-The recipe gives the structure: the scene order, the technique for each beat's role, and the tempo (seconds per weight). The brand makes the video theirs and wins over the example wherever the two differ:
-- Colours: put the brand's main, background and accent colours into the example's palette (most examples declare it on `:root` as `--utama`, `--latar` and `--aksen`), then check that all text still reads.
-- Fonts: the brand's headline and body fonts replace the example's.
-- Logo: the brand's logo on the ending (see The brand's logo), never the example's placeholder shape.
-- Words: on-screen text in the brand's voice (tone, how it addresses viewers, words to avoid), with its product names, prices and contact exactly as written.
-- Motion feel: the brand's motion style sets the easing and how lively each move is (calm: longer, softer eases and fewer things moving at once; energetic: snappier moves and pops; playful: bouncy eases; elegant: long smooth eases and masked reveals), inside the recipe's techniques and without changing the beat timings.
-
-## Layout and safe zones
-- Vertical 9:16: keep important text out of the top 250 px, the bottom 420 px (Reels/TikTok buttons and captions), and 80 px on the left and right.
-- Portrait 4:5 and square 1:1: keep 80 px clear on every edge.
-- Wide 16:9: keep 120 px clear left and right and 80 px top and bottom; text spans at most about half the screen, the rest is for visuals.
-- Headlines 120-260 px, supporting text 54-80 px, nothing smaller than 40 px. At most 7 words on screen at once.
-- Enough contrast: for text on a brand colour use `Mosio.readableOn`, or pick a colour that clearly reads.
-
-## Motion language (what makes it feel current)
-- A 15-second structure: an opening at 0-1.5 s that grabs at once (big motion, short text), 2-4 body scenes (one idea per scene, 2-4 s each), and an ending with the call to action, the name and the contact held still for at least 2 seconds.
-- Change scenes with a transition: a wipe or mask (`clipPath`), a slide, a zoom, or words leaving before new words enter. Never just appear and disappear.
-- Easing: enter with `expo.out` or `power3.out`, exit with `power2.in`, bounce with `back.out(1.6)` sparingly. Moves last 0.35-0.8 s. Stagger words or letters by 0.03-0.08 s.
-- Masked reveals: wrap text in `overflow: hidden`, then `from(span, { yPercent: 110 })`. The hallmark of tidy motion.
-- The background is always a little alive (a slowly drifting gradient or shape, a moving line), but text being read holds still for at least 1.2 seconds.
-- Counting numbers: tween an object `{ v: 0 }` with an `onUpdate` that writes formatted text (e.g. `Rp${Math.round(o.v).toLocaleString("id-ID")}`).
-- Colour: the brand's main colour, the background colour, and one accent. Derive shades with `color-mix()`.
-- Finish cleanly: hold the ending, then fade or scale out in the last 0.5 seconds.
-- More craft: `mosio/video-composition/craft/` in `skill_library`.
-
-## Before sending
-- All text fits and reads inside the safe zones; nothing is cut off.
-- Every element that appears later gets its initial state from `from`/`fromTo` on the timeline, not hidden with CSS.
-- The timeline length equals `data-duration`.
-
-## Recipes
-The styles the dashboard and the cards call recipes (`style` ids). Read the recipe's example before writing; treat it as a starting point, not a mold.
-
-- [kinetic-type](styles/kinetic-type.html): Big words take turns on a rhythm. For slogans, calls to action and announcements.
-- [product-hero](styles/product-hero.html): One product shown big with light, its name, and a price that counts up. For selling one product.
-- [flash-sale](styles/flash-sale.html): A bursting discount percent, a running ribbon, and a static deadline. For time-limited sales.
-- [menu-board](styles/menu-board.html): Menu items and prices appear in turn like a cafe menu board. For food and drink businesses.
-- [chat-testimoni](styles/chat-testimoni.html): A customer review typed out as chat bubbles, then stars and the business name.
-- [angka-capaian](styles/angka-capaian.html): Numbers count up and bar charts grow. For milestones, comparisons and social proof.
-- [peluncuran-aplikasi](styles/peluncuran-aplikasi.html): The problem is struck out, the app window slides in, a cursor clicks, and numbers rise. For apps, SaaS and digital products.
-- [dasbor-iklan](styles/dasbor-iklan.html): Metrics drop then rise, platform cards, and a chart line drawing itself. For ad services, agencies and digital services.
-- [explainer-isometrik](styles/explainer-isometrik.html): An isometric stage: the problem, the workload, then the solution and a chart. A 1920×1080 wide example for YouTube, websites and in-store screens.
-- [visual-story](styles/visual-story.html): A short explainer that feels like a film: one illustrated 2D world under a moving camera, word-by-word captions with a selection box on key words, computed numbers. For education and 'why' facts.
-
-## Craft
-- [camera.md](craft/camera.md): Camera: one 2D world
-- [captions.md](craft/captions.md): Captions: the word-by-word engine
-- [kinetic-type.md](craft/kinetic-type.md): Kinetic type
-- [logo.md](craft/logo.md): Logo and end card
-- [motion.md](craft/motion.md): Motion craft
-- [numbers.md](craft/numbers.md): Numbers and charts
-- [sizes.md](craft/sizes.md): One brief, several sizes
-- [transitions.md](craft/transitions.md): Transitions
+- One HTML file, one paused GSAP timeline registered as `window.__timelines["main"]`, no clock, randomness, CSS animations, audio, video, iframes or network; only the assets the guide lists.
+- Every size renders separately and spends credits equal to its duration; offer before making several.
+- Never invent prices, numbers, contacts or testimonials; label illustrations "Contoh" or "Ilustrasi". Never call Mosio an "AI video generator".

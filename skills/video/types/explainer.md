@@ -55,13 +55,13 @@ Open a gap, never a definition. Shapes that work silent, 7 words max: a question
 - Smooth long-tail settles (`power3.out`, `expo.out`) by default. Bounce and overshoot only for a deliberately playful moment.
 - Don't front-load: at t=0 only the first piece enters; the rest wait for their turn. A held still screen is fine; a screen dumped then frozen is not.
 - No looping "breathing" on cards or text and no slow pan or push during reading. Stillness beats bad motion. Background aliveness stays faint (guide).
-- Seams between steps: a velocity-matched cut. Outgoing hero `x: 0 to -230` over 0.3 s `power4.in`, fading out early; incoming `fromTo` from `x: 230` to 0, same duration, `power4.out`. For a chapter change, a zoom-through on the heading wrapper with blur 10 px or less on that small element only (CPU render, never full-screen). More: `../../video-composition/craft/transitions.md`, `../../video-composition/craft/motion.md`.
+- Seams between steps: a velocity-matched cut. Outgoing hero `x: 0 to -230` over 0.3 s `power4.in`, fading out early; incoming `fromTo` from `x: 230` to 0, same duration, `power4.out`. For a chapter change, a zoom-through on the heading wrapper with blur 10 px or less on that small element only (CPU render, never full-screen). More: `mosio/video-composition/craft/transitions.md`, `mosio/video-composition/craft/motion.md`.
 
-## Sizes: the `explainer-isometrik` style
+## Sizes: the `explainer-isometrik` recipe
 
 `explainer-isometrik` is 16:9 (1920x1080): text in the left half, an isometric SVG stage on the right, problem then workload then solution and a chart. It uses `bounce.out` and `back.out` on entrances; switch them to `power3.out` for a calm explainer.
 
-For **9:16**, rebuild the layout, don't scale it: set `data-width="1080" data-height="1920"`, the viewport meta and `html`/`body` to 1080x1920. Stack vertically: heading on top, below the guide's top safe zone; the SVG stage under it, about 900 px wide (roughly y 550 to 1350); the progress cue just above the bottom safe zone. Shorter heading lines, bigger type. Side-by-side splits (myth vs fact) become top/bottom. Keep the same scene order and timings. See `../../video-composition/craft/sizes.md`.
+For **9:16**, rebuild the layout, don't scale it: set `data-width="1080" data-height="1920"`, the viewport meta and `html`/`body` to 1080x1920. Stack vertically: heading on top, below the guide's top safe zone; the SVG stage under it, about 900 px wide (roughly y 550 to 1350); the progress cue just above the bottom safe zone. Shorter heading lines, bigger type. Side-by-side splits (myth vs fact) become top/bottom. Keep the same scene order and timings. See `mosio/video-composition/craft/sizes.md`.
 
 ## Before you send
 
@@ -76,4 +76,4 @@ More in `skill_library`: steps on one canvas `hyperframes/hyperframes-animation/
 
 - [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) (Apache-2.0, © HeyGen and HyperFrames contributors), commit `908f2d0`: `skills/faceless-explainer/SKILL.md`, `skills/faceless-explainer/references/story-design.md`, `skills/faceless-explainer/references/visual-design.md`, `skills/faceless-explainer/references/motion-language.md`, `skills/faceless-explainer/references/cut-catalog.md`.
 
-Changes by Mosio: condensed and adapted to Mosio's composition rules (one HTML file, paused GSAP timeline, no audio, no CDN). Narration, TTS, music, sound effects, captions, CLIs, scripts, frame presets and sub-agent workflow were dropped; voiceover-paced reveals became reading-time pacing (1.2 s plus 0.25 s per word), and Mosio added the education formats, the numbered progress cue, the recap screen and the 9:16 rebuild of the `explainer-isometrik` style. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.
+Changes by Mosio: condensed and adapted to Mosio's composition rules (one HTML file, paused GSAP timeline, no audio, no CDN). Narration, TTS, music, sound effects, captions, CLIs, scripts, frame presets and sub-agent workflow were dropped; voiceover-paced reveals became reading-time pacing (1.2 s plus 0.25 s per word), and Mosio added the education formats, the numbered progress cue, the recap screen and the 9:16 rebuild of the `explainer-isometrik` recipe. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.

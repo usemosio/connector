@@ -1,6 +1,6 @@
 # Chat story
 
-A story told in chat bubbles: one side asks, the other answers, and the last message becomes the CTA. Every flavour runs on the same engine; starting code is the `chat-testimoni` style.
+A story told in chat bubbles: one side asks, the other answers, and the last message becomes the CTA. Every flavour runs on the same engine; starting code is the `chat-testimoni` recipe.
 
 | Flavour                  | Asker (right)       | Answerer (left, types first) | Example                                              |
 | ------------------------ | ------------------- | ---------------------------- | ---------------------------------------------------- |

@@ -4,13 +4,13 @@ A 6-15 s spot that announces **one offer** and gets people to act now: the disco
 
 ## Pick the path
 
-| Need                                                | Path                                                                                                        |
-| --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| One product with price and old price, standard look | template `promo-produk` (`judul`, `harga`, `harga_coret`, `badge`, `ajakan`)                                |
-| Time-limited discount in percent                    | template `diskon-kilat` (`nama_usaha`, `persen`, `judul`, `produk`, `berlaku`, `ajakan`)                    |
-| Custom look, promo code, counting price             | composition from style `flash-sale` (percent blast, ticker tape) or `product-hero` (one product, big price) |
+| Need                                                | Path                                                                                                         |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| One product with price and old price, standard look | fill-in recipe `promo-produk` (`judul`, `harga`, `harga_coret`, `badge`, `ajakan`)                           |
+| Time-limited discount in percent                    | fill-in recipe `diskon-kilat` (`nama_usaha`, `persen`, `judul`, `produk`, `berlaku`, `ajakan`)               |
+| Custom look, promo code, counting price             | composition from recipe `flash-sale` (percent blast, ticker tape) or `product-hero` (one product, big price) |
 
-Template path: `show_templates`, then `preview_template` with the full id (e.g. `promo-produk@1`), then `render_template`. Neither style ships a strike-through price or a code chip: add them from the recipes below.
+Fill-in path: `show_recipes`, then `preview_recipe` with the full id (e.g. `promo-produk@1`), then `render_recipe`. Neither compose recipe ships a strike-through price or a code chip: add them from the recipes below.
 
 ## Ask before you start
 
@@ -125,18 +125,18 @@ Build one composition; per product change only the data: numbers in `HARGA`, mar
 - Prices exact in Rupiah from one source; strike first, price second. One offer, one code, one CTA; the discount is the biggest element.
 - The deadline is text that is true whenever watched, held 2 s or more. Prices, code, deadline and contact come from the user or the brand.
 
-More in `skill_library`: digit swaps `short-form/countdown-video/references/digit-flip.md`, count-up `hyperframes/hyperframes-animation/blueprints/dataviz-countup.md`, ticker tape `hyperframes/hyperframes-animation/blueprints/ticker-takeover.md`, CTA button `hyperframes/hyperframes-animation/blueprints/cta-morph-press.md`. Counting rules: `../../video-composition/craft/numbers.md`.
+More in `skill_library`: digit swaps `short-form/countdown-video/references/digit-flip.md`, count-up `hyperframes/hyperframes-animation/blueprints/dataviz-countup.md`, ticker tape `hyperframes/hyperframes-animation/blueprints/ticker-takeover.md`, CTA button `hyperframes/hyperframes-animation/blueprints/cta-morph-press.md`. Counting rules: `mosio/video-composition/craft/numbers.md`.
 
 ## Menus, services, openings and announcements
 
 The same one-message rule, without the price drop:
 
-| Kind                                        | Template                                          | Style to start from | The one thing that must read                   |
-| ------------------------------------------- | ------------------------------------------------- | ------------------- | ---------------------------------------------- |
-| Menu                                        | `menu-fnb` (2-4 items), `menu-spesial` (one item) | `menu-board`        | each item and its price, from the user         |
-| Service                                     | `jasa-layanan`                                    | `product-hero`      | the service, a "mulai dari" price, the contact |
-| Store or branch opening                     | `buka-baru`                                       | `kinetic-type`      | the date and a short address                   |
-| Announcement (closed, new hours, new stock) | `pengumuman`                                      | `kinetic-type`      | what changes and from when                     |
+| Kind                                        | Fill-in recipe                                    | Recipe to compose | The one thing that must read                   |
+| ------------------------------------------- | ------------------------------------------------- | ----------------- | ---------------------------------------------- |
+| Menu                                        | `menu-fnb` (2-4 items), `menu-spesial` (one item) | `menu-board`      | each item and its price, from the user         |
+| Service                                     | `jasa-layanan`                                    | `product-hero`    | the service, a "mulai dari" price, the contact |
+| Store or branch opening                     | `buka-baru`                                       | `kinetic-type`    | the date and a short address                   |
+| Announcement (closed, new hours, new stock) | `pengumuman`                                      | `kinetic-type`    | what changes and from when                     |
 
 - Dates, hours and addresses come only from the user. Write them the way customers read them ("Sabtu, 1 November", "Tutup 24-26 Desember").
 - The fact holds still at least 2 s; the ending still carries the name and contact.

@@ -1,6 +1,6 @@
 # Visual story
 
-A short vertical explainer that feels like a film, not slides: one illustrated world, a camera that moves through it, and the story told word by word in captions. It answers one "why" or "how come" question with a true number and a payoff. Run `../brief.md` first; technical rules come from `get_composition_guide`. Starting code: the `visual-story` style (`get_composition_guide` with `style: "visual-story"`), a silent 2D film about why bees build hexagons. Craft: `../../video-composition/craft/captions.md` (the caption engine) and `../../video-composition/craft/camera.md` (the 2D camera, flights, breakdowns).
+A short vertical explainer that feels like a film, not slides: one illustrated world, a camera that moves through it, and the story told word by word in captions. It answers one "why" or "how come" question with a true number and a payoff. Run `../brief.md` first; technical rules come from `get_composition_guide`. Starting code: the `visual-story` style (`get_composition_guide` with `style: "visual-story"`), a silent 2D film about why bees build hexagons. Craft: `mosio/video-composition/craft/captions.md` (the caption engine) and `mosio/video-composition/craft/camera.md` (the 2D camera, flights, breakdowns).
 
 ## When to use
 
@@ -51,7 +51,7 @@ For each sentence, plan one row:
 
 - The hook is always 2D and reads in one glance: rich illustration (gradients, texture, parallax, particles, soft shadows), not flat icons. Lesson learned: a 3D-looking box seen from the side in second one read as "a yellow box"; a comb on a branch with a bee building a cell read instantly.
 - **One world, a moving camera.** Never chain flat pages with dissolves. Elements change roles: the thing that matters flies into its next job.
-- Pseudo-depth (isometric tilt, extrusion) only when the idea needs it: a viewpoint change, going inside, a volume. Usually 1-3 middle beats. When you go into depth, the usual way in is to make the drawing already on screen stand up and lift the key element out of it, rather than cutting to new objects (see `../../video-composition/craft/camera.md` § Depth in 2D); use judgement, it is not required every time. End on the hook's own illustration, completed: the bookend closes the film.
+- Pseudo-depth (isometric tilt, extrusion) only when the idea needs it: a viewpoint change, going inside, a volume. Usually 1-3 middle beats. When you go into depth, the usual way in is to make the drawing already on screen stand up and lift the key element out of it, rather than cutting to new objects (see `mosio/video-composition/craft/camera.md` § Depth in 2D); use judgement, it is not required every time. End on the hook's own illustration, completed: the bookend closes the film.
 
 ## Layout zones (9:16, 1080 × 1920)
 
@@ -65,7 +65,7 @@ For each sentence, plan one row:
 | Footnote | 1760-1830 | "Ilustrasi · tidak sesuai skala", 40 px, left or centred: the one text allowed in the bottom zone, since nothing breaks if a platform button covers it |
 | Bottom   | 1500-1920 | the guide's bottom safe zone: world art may continue; no text except the footnote                                                                      |
 
-Other sizes: rebuild the zones, never scale (`../../video-composition/craft/sizes.md`).
+Other sizes: rebuild the zones, never scale (`mosio/video-composition/craft/sizes.md`).
 
 ## Silent pacing
 
@@ -95,7 +95,7 @@ Other sizes: rebuild the zones, never scale (`../../video-composition/craft/size
 | slate #a7b0c4           | "the others"                           |
 
 - Type: Inter (Google Fonts, 400/700/900) for captions, tags and counters; concept words living in the scene in Playfair Display italic (`vendor/`). Two families at most, so formulas use Inter with `tabular-nums`.
-- Counters start on the number's token, count 0.5-0.8 s with `power2.out`, weight 900, semantic colour, id-ID format ("4,56"; `../../video-composition/craft/numbers.md`).
+- Counters start on the number's token, count 0.5-0.8 s with `power2.out`, weight 900, semantic colour, id-ID format ("4,56"; `mosio/video-composition/craft/numbers.md`).
 - **Footnote** "Ilustrasi · tidak sesuai skala" ("Illustration · not to scale" in English) on every illustrative scene: 40 px, about 60% opacity, centred in its zone.
 
 ## Do not

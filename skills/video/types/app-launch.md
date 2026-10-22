@@ -92,7 +92,7 @@ Shorten by cutting features, not reading time. Cheap, clear changes: rows stagge
 
 ## Proof and numbers
 
-- Count up per `../../video-composition/craft/numbers.md`: `power3.out` 1.2-1.8 s, land exactly on the real figure, `tabular-nums` in a fixed-width box.
+- Count up per `mosio/video-composition/craft/numbers.md`: `power3.out` 1.2-1.8 s, land exactly on the real figure, `tabular-nums` in a fixed-width box.
 - Round down only ("12.000+" from 12,480); rounding up is inventing. Client logos only with permission, one at a time in one swapping shape, not a "trusted by" row.
 
 ## Ending: logo collapses into the button

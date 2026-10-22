@@ -1,12 +1,12 @@
 # Brief and storyboard
 
-Turn "buatkan video" into a short brief and a content storyboard in chat, before any HTML or template call. The guide's rules still apply and win on conflict. Start straight with the questions or the brief: no preamble, no explaining this skill.
+Turn "buatkan video" into a short brief and a content storyboard in chat, before any HTML or recipe call. The guide's rules still apply and win on conflict. Start straight with the questions or the brief: no preamble, no explaining this skill.
 
 ## Order
 
-1. Read the brand first: `list_brands`; with several, ask which one unless the request already names it (a prompt from the dashboard carries `brand_id`); then `get_brand` with that `brand_id`. What it sets is already answered (business, voice, colours, fonts, logo, contact, products and prices): show it in the brief and never ask it again. What it lists under "Not set" (or marks "not set; ask the user") goes on the question list. Pass the same `brand_id` to every tool that makes the video.
+1. Read the brand first: `list_brands`; with several, ask which one unless the request already names it (a prompt from the dashboard carries `brand_id`); then `get_brand` with that `brand_id`. What it sets is already answered (business, voice, colours, fonts, logo, contact, products and prices): show it in the brief and never ask it again. When the user's message gives a different value (a promo price, a new number), the user's value wins: use it, note the difference in one line, and do not ask about it. What it lists under "Not set" (or marks "not set; ask the user") goes on the question list. Pass the same `brand_id` to every tool that makes the video.
 2. Take everything the user already said (product, price, topic, platform, duration, liked examples), then ask what is missing in **one batch of at most 5 questions** and wait.
-3. Write the brief and the content storyboard, show it with `preview_storyboard`, and wait for approval and a recipe pick. Then write the style plan and take the path chosen in `SKILL.md`.
+3. Write the brief and the content storyboard, show it with `preview_storyboard`, and wait for approval and a recipe pick. Then write the recipe plan and take the path chosen in `SKILL.md`.
 
 ## Needed before the storyboard
 
@@ -79,7 +79,7 @@ Saran saya (perlu konfirmasi): 9:16 15 detik untuk Reels; sketsa recipe Produk u
 
 ## Storyboard in two layers
 
-**Layer 1, the content storyboard**, is what the user approves. It is style-neutral: it says what each beat says and shows, never how it moves.
+**Layer 1, the content storyboard**, is what the user approves. It is recipe-neutral: it says what each beat says and shows, never how it moves.
 
 - 3-6 beats (6-8 s: 3, 10-15 s: 4-5, 20-30 s: 5-6; the tool takes at most 8). One idea per beat.
 - **Role**, one of: `hook` (stop the scroll), `problem` (the pain), `fact` (one statement), `step` (one step of a how-to), `compare` (two things: before and after, myth and fact, old and new price), `number` (one real figure), `proof` (a review, a detail, a result), `offer` (what is sold and the deal), `cta` (the one action and contact), `payoff` (the closing answer or lesson). The type file lists the usual sequence. Start with `hook`; end with `cta` when selling, `payoff` when teaching or telling.
@@ -87,7 +87,7 @@ Saran saya (perlu konfirmasi): 9:16 15 detik untuk Reels; sketsa recipe Produk u
 - **Key word**: the word in that text where the beat lands.
 - **Data**: the facts or numbers from the user or the brand that the beat uses. Nothing invented; missing means `[belum ada]` and the beat goes without it.
 - **Subject**: what is shown, an object or idea ("the iced coffee glass"), not how it moves.
-- **Weight**: `short`, `medium` or `long`. Hook usually short, ending long. The chosen style's tempo turns weights into seconds later.
+- **Weight**: `short`, `medium` or `long`. Hook usually short, ending long. The chosen recipe's tempo turns weights into seconds later.
 - No motion or transition words ("slams in", "wipe", "zoom", "counts up") and no exact seconds: those belong to layer 2.
 
 Promo example (illustrative; prices and contacts come from the user):
@@ -104,20 +104,18 @@ Education example ("3 cara kemeja putih tetap putih"): `hook` "Kemeja putihmu mu
 
 ## Show it and pick a recipe
 
-The dashboard and the cards call the styles **recipes**; a recipe id is the `style` value.
-
-1. Call `preview_storyboard` with a short title, the beats, and in `styles` 1-3 recipes that fit the content (nearest recipe list below). When the user already chose a recipe (a prompt from the dashboard's Recipes names it, e.g. "dengan recipe Papan menu (menu-board)"), send only that one and offer another only if asked. It draws each beat as a hand-drawn sketch panel per recipe, with that recipe's timing. It is free and cheap: you send data, not HTML. Without a card (terminal, scripts), the same beats as a table in chat are enough.
+1. Call `preview_storyboard` with a short title, the beats, and in `recipes` 1-3 recipes that fit the content (nearest recipe list below). When the user already chose a recipe (a prompt from the dashboard's Recipes names it, e.g. "dengan recipe Papan menu (menu-board)"), send only that one and offer another only if asked. It draws each beat as a hand-drawn sketch panel per recipe, with that recipe's timing. It is free and cheap: you send data, not HTML. Without a card (terminal, scripts), the same beats as a table in chat are enough.
 2. Ask in one line: "Isinya sudah pas? Mau recipe yang mana?" (one recipe: "Isinya sudah pas?"). The user approves the content and picks a recipe, in the card or in chat.
 3. The card shows each recipe's total length. Far from the agreed duration: change weights or the number of beats, show again.
 
-Nearest recipe: one product and price `product-hero`, discount `flash-sale`, slogan `kinetic-type`, menu `menu-board`, testimonial `chat-testimoni`, numbers `angka-capaian`, app `peluncuran-aplikasi`, ad services `dasbor-iklan`, wide explainer `explainer-isometrik`, "why" story `visual-story`. Template path: the chosen template plays the role of the recipe.
+Nearest recipe: one product and price `product-hero`, discount `flash-sale`, slogan `kinetic-type`, menu `menu-board`, testimonial `chat-testimoni`, numbers `angka-capaian`, app `peluncuran-aplikasi`, ad services `dasbor-iklan`, wide explainer `explainer-isometrik`, "why" story `visual-story`. Fill-in path: the chosen fill-in recipe plays the role of the recipe.
 
-## Layer 2, the style plan
+## Layer 2, the recipe plan
 
-After approval and the recipe pick, call `get_composition_guide` with that recipe as `style`. Its "Style plan" section maps each role to a technique and gives the tempo: seconds per weight, endings at least 2 s. The plan sets the structure and the timing; the brand still wins on colours, fonts, logo, words and motion feel (the guide's "Recipe and brand").
+After approval and the recipe pick, call `get_composition_guide` with that `recipe`. Its "Recipe plan" section maps each role to a technique and gives the tempo: seconds per weight, endings at least 2 s. The plan sets the structure and the timing; the brand still wins on colours, fonts, logo, words and motion feel (the guide's "Recipe and brand").
 
 - Each beat gets its role's technique, and its weight becomes seconds. Seconds are contiguous: each beat starts where the last ended, and the total becomes `data-duration`.
-- Add the motion and transitions here, never in layer 1: the event lands on the key word, and each beat moves into the next (wipe, mask, zoom, slide, words out before new words in), never a plain appear and disappear. Craft: `../video-composition/craft/`.
+- Add the motion and transitions here, never in layer 1: the event lands on the key word, and each beat moves into the next (wipe, mask, zoom, slide, words out before new words in), never a plain appear and disappear. Craft: `mosio/video-composition/craft/`.
 - Frame 0 is already composed or moving. Text to read holds at least 1.2 s. The last beat holds at least 2 s and exits in the final 0.5 s.
 - Do not rewrite the content: text, key words, data and order stay as approved. If the plan seems to need a content change, ask first.
 - Each beat start becomes a timeline label, e.g. `tl.addLabel("b3", 4.6)`, with beat 3 tweens at `"b3"` or `"b3+=0.2"`.

@@ -64,7 +64,7 @@ The strongest proof can be checked: units sold, ratings, real testimonials, the 
 
 - The whole story works muted: hook, benefit and CTA all exist as on-screen text, with sizes and contrast from the guide (`Mosio.readableOn`).
 - 9:16 uses the guide's safe zones. On TikTok the right-side icon column covers roughly 140 px (device-dependent): keep key text centred, not hugging the right.
-- Keep hook, product and CTA inside the central 1080x1080 square so 4:5 and 1:1 versions only need re-layout, not cropping (see `../../video-composition/craft/sizes.md`).
+- Keep hook, product and CTA inside the central 1080x1080 square so 4:5 and 1:1 versions only need re-layout, not cropping (see `mosio/video-composition/craft/sizes.md`).
 - No music or voice-over in the plan. If the user wants music, add it in Ads Manager or the TikTok editor after render.
 
 ## Variants for A/B tests

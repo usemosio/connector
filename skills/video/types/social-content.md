@@ -71,7 +71,7 @@ Scene 2 (1.5-4.5)
 
 One look per video; borrow another for one scene at most:
 
-| Content                           | Look                                             | Nearest Mosio style              |
+| Content                           | Look                                             | Nearest Mosio recipe             |
 | --------------------------------- | ------------------------------------------------ | -------------------------------- |
 | Slogan, announcement, tips        | alternating full colour, big bold type           | `kinetic-type`, `flash-sale`     |
 | One product and price             | warm dark ground, glowing product centred        | `product-hero`                   |
@@ -79,7 +79,7 @@ One look per video; borrow another for one scene at most:
 | Facts, milestones, comparisons    | black, white, grey plus one colour, left-aligned | `angka-capaian`, `dasbor-iklan`  |
 | Home bakery, crafts, warm stories | paper colours, flat layers, 3-5 fixed colours    | `menu-board` as a starting point |
 
-Transitions (colour flood, shape morph, line reveal, zoom through, iris, match cut, cut on motion): see `../../video-composition/craft/transitions.md`. Avoid crossfade as default, blur-ins and 3D flips.
+Transitions (colour flood, shape morph, line reveal, zoom through, iris, match cut, cut on motion): see `mosio/video-composition/craft/transitions.md`. Avoid crossfade as default, blur-ins and 3D flips.
 
 ## Endings and loops
 
