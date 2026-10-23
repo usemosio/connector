@@ -8,7 +8,7 @@ Claude directs: it writes the on-screen text and the motion as an HTML compositi
 
 - The Mosio MCP server at `https://mcp.mosio.me/mcp`. You sign in with your Mosio account (OAuth).
 - `video` (`/mosio:video`): the entry skill for any video: brand first, brief and storyboard, the video types (`skills/video/types/`), the choice between a fill-in recipe and a composition, and a review checklist.
-- `video-composition`: how to write the video as an HTML composition.
+- One skill per step, each callable on its own: `brief` (`/mosio:brief`), `storyboard`, `recipe` (the gallery and fill-in recipes), `brand`, `composition` (writing the video as an HTML composition), `motion` (craft notes, Hyperframes and GSAP libraries, more than 200 ready-made effects), and `review` (stills and findings before you see the preview).
 
 The detailed rules, fonts, recipes with their example code, and the craft references are read from the Mosio server when Claude needs them (`get_composition_guide`, `list_recipes`, `skill_library`), so they are always current without a plugin update.
 
@@ -46,7 +46,7 @@ Guides and the REST API reference: https://docs.mosio.me
 
 ## Credits
 
-Parts of the `video` skill are adapted from these open-source skills: condensed and changed to fit Mosio's composition rules. Each file lists its sources and changes under "Adapted from", and `skills/video/NOTICE.md` carries the original licences.
+Parts of the `video`, `brief`, `storyboard` and `review` skills are adapted from these open-source skills: condensed and changed to fit Mosio's composition rules. Each file lists its sources and changes under "Adapted from", and `skills/video/NOTICE.md` carries the original licences.
 
 - [charlie947/motion-graphics-skills](https://github.com/charlie947/motion-graphics-skills) (MIT, © Charlie Hills)
 - [feicaiclub/video-spec-builder](https://github.com/feicaiclub/video-spec-builder) (MIT, © feicaiclub)

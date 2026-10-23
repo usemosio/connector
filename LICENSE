@@ -6,7 +6,7 @@ The files in this plugin may be installed and used with Claude to work with
 the Mosio service, and copied for that purpose. They may not be modified,
 redistributed or used to build another product without written permission.
 
-Parts of the `video` skill are adapted from open-source works under the MIT
+Parts of the `video`, `brief`, `storyboard` and `review` skills are adapted from open-source works under the MIT
 and Apache-2.0 licences. Those parts remain under their own licences; see
 skills/video/NOTICE.md for the sources, copyright holders and licence texts.
 
