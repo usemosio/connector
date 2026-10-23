@@ -36,6 +36,7 @@ Guides and the REST API reference: https://docs.mosio.me
 - The plugin runs nothing on your computer and reads no local files. It has no hooks, scripts or local servers.
 - Claude calls the Mosio server only for the tools you use. It sends the tool arguments: the brand id, a recipe id, on-screen text (for example a product name, a price, or a contact number you asked to show), the storyboard beats, the HTML composition Claude wrote, output size, and video ids. The rest of the conversation is not sent.
 - Claude also reads guidance from the Mosio server: the composition rules, your brand kit, the recipe list and example code, and the craft library. These are read-only.
+- When you ask, Claude adds a brand or changes one (name, voice, colours, fonts, contact, products and prices) in your Mosio workspace.
 - Before showing you a preview, Claude can ask Mosio to inspect the composition: Mosio opens it on its servers and returns still frames and layout findings to Claude. Inspections are free and deleted after a day.
 - Posting to social media (only when you ask): captions, planned times and drafts are stored in your Mosio workspace. When a post is published or scheduled, the video or the photos you uploaded, the caption and the chosen accounts go from Mosio to the platforms you connected (Instagram, Threads, TikTok) through Mosio's publishing partner. Accounts are connected and files uploaded in the Mosio dashboard, never in the chat.
 - Sign-in uses OAuth. This repository holds no passwords or tokens.

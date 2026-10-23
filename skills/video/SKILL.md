@@ -80,10 +80,11 @@ Ambiguous cases:
 
 ## Credits
 
-Each render costs credits equal to its duration, and each size is its own render (a 15 s video in 9:16 and 1:1 costs 30 s). Previews are free. Offer before making several sizes or versions; never make them unasked. Failed or cancelled videos cost nothing. Out of credits (`insufficient_credits`): suggest topping up in the Mosio dashboard.
+Each render costs credits equal to its duration, and each size is its own render (a 15 s video in 9:16 and 1:1 costs 30 s). Previews are free. Offer before making several sizes or versions; never make them unasked. Failed or cancelled videos cost nothing. Out of credits (`insufficient_credits`): say so plainly (the balance and what the video needs are in `details`; credits refill at the start of the next cycle) and keep the free preview. Do not push a plan or a purchase.
 
 ## Errors
 
+- No Mosio tools in this conversation (not connected or not signed in): ask the user to connect Mosio and sign in, then stop. Never claim a storyboard, preview or video exists.
 - `preview_composition` or `preview_recipe` rejected: read `details` (lint code, message, fix), fix, send again.
 - `invalid_variables`: fix the named variable, retry with a new `idempotency_key`.
 - `too_many_active_renders`: wait for the running video. Wrong video still rendering: `cancel_video`, then redo.
