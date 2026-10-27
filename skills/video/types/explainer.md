@@ -1,6 +1,6 @@
 # Explainer: education without a voice
 
-Education videos: how it works, 3 steps, myth vs fact, a glossary term, "did you know". Mosio renders are **silent**, so the explainer is carried by text and visuals alone: no narration, no voice, no audio. Run `../brief.md` first; technical rules come from `get_composition_guide`.
+Education videos: how it works, 3 steps, myth vs fact, a glossary term, "did you know". The explainer is carried by text and visuals alone: most people watch muted, and Mosio adds no narration or voice (a recording the user uploaded may play under it, but the text still carries every point). Run `../brief.md` first; technical rules come from `get_composition_guide`.
 
 ## Core rule
 

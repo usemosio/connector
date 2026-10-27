@@ -6,7 +6,7 @@ Everyday content for Reels, TikTok, Shorts and WhatsApp Status: tips, behind the
 
 1. **Transform, don't cut.** Scenes change through a shape that morphs, a colour that floods, text revealed from behind a line, a zoom through an object. Hard cuts only on decisive moments (price lands, before/after).
 2. **One background, one text colour, one accent.** One heading face and one body face (two families max).
-3. **On-screen text is the narration.** Renders are silent and most people watch muted.
+3. **On-screen text is the narration.** Most people watch muted, and sound comes only from the user's own media.
 4. **Something moves in the first 2 s**: a glass drops in, a chat arrives, a button is pressed. Not a gradient with a centred title fading in.
 5. **A new event every 2-4 s, but only one thing to read at a time.** Motion may be fast; meaning gets time.
 6. **The end echoes the start.** The last frame reuses the opening object, line or shape in its changed state.

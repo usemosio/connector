@@ -2,13 +2,13 @@
 
 Mosio turns a chat into a short motion video: promos, social content, explainers, ads and announcements as animated typography and motion graphics, vertical for Reels, TikTok and WhatsApp Status, or square, portrait and wide. Describe the video, approve the storyboard, check the moving preview in the chat, and get an MP4 back.
 
-Claude directs: it writes the on-screen text and the motion as an HTML composition from one of Mosio's **recipes** (looks with a plan per beat), or fills in a **fill-in recipe** (a ready design where only the text changes). Mosio checks, previews and renders it on its servers. Mosio does not use AI models to generate images, video or audio: the motion is written as code.
+Claude directs: it writes the on-screen text and the motion as an HTML composition from one of Mosio's **recipes** (looks with a plan per beat), or fills in a **fill-in recipe** (a ready design where only the text changes). Mosio checks, previews and renders it on its servers. Neither this plugin nor the connector uses AI models to generate images, video or audio: the motion is written as code.
 
 ## What's included
 
 - The Mosio MCP server at `https://mcp.mosio.me/mcp`. You sign in with your Mosio account (OAuth).
 - `video` (`/mosio:video`): the entry skill for any video: brand first, brief and storyboard, the video types (`skills/video/types/`), the choice between a fill-in recipe and a composition, and a review checklist.
-- One skill per step, each callable on its own: `brief` (`/mosio:brief`), `storyboard`, `recipe` (the gallery and fill-in recipes), `brand`, `composition` (writing the video as an HTML composition), `motion` (craft notes, Hyperframes and GSAP libraries, more than 200 ready-made effects), and `review` (stills and findings before you see the preview).
+- One skill per step, each callable on its own: `brief` (`/mosio:brief`), `storyboard`, `recipe` (the gallery and fill-in recipes), `brand`, `composition` (writing the video as an HTML composition), `motion` (craft notes, Hyperframes and GSAP libraries, more than 200 ready-made effects), `edit` (editing your own footage: cuts, reframing, zooms, subtitles), and `review` (stills and findings before you see the preview).
 
 The detailed rules, fonts, recipes with their example code, and the craft references are read from the Mosio server when Claude needs them (`get_composition_guide`, `list_recipes`, `skill_library`), so they are always current without a plugin update.
 
@@ -33,12 +33,15 @@ Guides and the REST API reference: https://docs.mosio.me
 
 ## Data sent to Mosio
 
-- The plugin runs nothing on your computer and reads no local files. It has no hooks, scripts or local servers.
-- Claude calls the Mosio server only for the tools you use. It sends the tool arguments: the brand id, a recipe id, on-screen text (for example a product name, a price, or a contact number you asked to show), the storyboard beats, the HTML composition Claude wrote, output size, and video ids. The rest of the conversation is not sent.
-- Claude also reads guidance from the Mosio server: the composition rules, your brand kit, the recipe list and example code, and the craft library. These are read-only.
+- The plugin itself runs nothing on your computer and reads no local files. It has no hooks, scripts or local servers.
+- Claude calls the Mosio server only for the tools you use. It sends the tool arguments: the brand id, a recipe id, on-screen text (for example a product name, a price, or a contact number you asked to show), the storyboard beats, the HTML composition Claude wrote, output size, and video and media ids. The rest of the conversation is not sent.
+- Claude also reads from the Mosio server: the composition rules, your brand kit, the recipe list and example code, the craft library, and the list of photos, footage and sound in your workspace's media (file name, kind, dimensions and length). These are read-only.
 - When you ask, Claude adds a brand or changes one (name, voice, colours, fonts, contact, products and prices) in your Mosio workspace.
+- Your own photos, footage and sound (only the files you choose): in the upload card in the chat you pick files on your device, and each goes straight from your device to your Mosio workspace's storage. In Claude Code, Claude can instead send a file from your computer with the upload command Mosio returns (a short-lived upload link), run like any shell command with your approval. Files can also be uploaded on the dashboard's Media page. Mosio prepares a copy of each file for video on its servers; the copy carries no metadata (location, device).
+- When Claude looks at one of your files, Mosio returns its length, a sheet of numbered stills, scene cuts, silences, loudness, and an automatic transcript of any speech, made on Mosio's servers with whisper.cpp speech recognition. Files, stills and transcripts stay in your workspace until you delete the file.
 - Before showing you a preview, Claude can ask Mosio to inspect the composition: Mosio opens it on its servers and returns still frames and layout findings to Claude. Inspections are free and deleted after a day.
-- Posting to social media (only when you ask): captions, planned times and drafts are stored in your Mosio workspace. When a post is published or scheduled, the video or the photos you uploaded, the caption and the chosen accounts go from Mosio to the platforms you connected (Instagram, Threads, TikTok) through Mosio's publishing partner. Accounts are connected and files uploaded in the Mosio dashboard, never in the chat.
+- In Claude Code, when you ask to check or render a video on your own computer, Mosio returns the packed composition and the commands to run Mosio's command-line tool (`@usemosio/frames` on npm); Claude runs them only with your approval.
+- Posting to social media (only when you ask): captions, planned times and drafts are stored in your Mosio workspace. When a post is published or scheduled, the video or the photos you uploaded, the caption and the chosen accounts go from Mosio to the platforms you connected (Instagram, Threads, TikTok) through Mosio's publishing partner. Accounts are connected in the Mosio dashboard, never in the chat.
 - Sign-in uses OAuth. This repository holds no passwords or tokens.
 - Videos are stored in your Mosio workspace. Download links expire after one hour.
 - Previews and storyboards are free; rendering spends credits equal to the video's length. Claude never renders before you have seen the preview and asked for it.
@@ -61,10 +64,15 @@ Parts of the `video`, `brief`, `storyboard` and `review` skills are adapted from
 - [AbubakrChan/product-launch-motion](https://github.com/AbubakrChan/product-launch-motion) (MIT, © Abubakr Chan)
 - [iart-ai/ecommerce-video-skills](https://github.com/iart-ai/ecommerce-video-skills) (MIT, © iart.ai)
 - [iart-ai/text-message-video-skills](https://github.com/iart-ai/text-message-video-skills) (MIT, © iart.ai)
+- [browser-use/video-use](https://github.com/browser-use/video-use) (MIT, © Browser Use)
+- [AgriciDaniel/claude-shorts](https://github.com/AgriciDaniel/claude-shorts) (MIT, © Daniel Agrici)
+- [iart-ai/b-roll-skills](https://github.com/iart-ai/b-roll-skills) (MIT, © iart.ai)
+- [kurbaitaev/ghost-editor](https://github.com/kurbaitaev/ghost-editor) (MIT, © kurbaitaev)
+- [kmilo93sd/agent-video-editor](https://github.com/kmilo93sd/agent-video-editor) (MIT, © kmilo93sd)
 - [crawfordxx/xiaoma-studio](https://github.com/crawfordxx/xiaoma-studio) (MIT, © xiaoma-studio contributors)
 
 "HyperFrames", "HeyGen" and "GSAP" are trademarks of their owners and are named here only as sources.
 
 ## Bahasa Indonesia
 
-Plugin ini menghubungkan Claude dengan Mosio untuk membuat video motion pendek bagi usaha kecil dan kreator: promo, konten, edukasi, iklan, dan pengumuman (vertikal, kotak, portrait, atau lebar) dari recipe Mosio. Pasang dari direktori plugin Claude (atau connector `https://mcp.mosio.me/mcp`), masuk dengan akun Mosio, lalu minta videonya lewat chat. Data yang dikirim hanya argumen tool seperti di atas. Kebijakan privasi: https://mosio.me/en/privacy/ · Syarat layanan: https://mosio.me/en/terms/
+Plugin ini menghubungkan Claude dengan Mosio untuk membuat video motion pendek bagi usaha kecil dan kreator: promo, konten, edukasi, iklan, dan pengumuman (vertikal, kotak, portrait, atau lebar) dari recipe Mosio. Pasang dari direktori plugin Claude (atau connector `https://mcp.mosio.me/mcp`), masuk dengan akun Mosio, lalu minta videonya lewat chat. Data yang dikirim hanya argumen tool seperti di atas, plus foto, video, dan suara yang kamu pilih sendiri untuk diunggah. Kebijakan privasi: https://mosio.me/en/privacy/ · Syarat layanan: https://mosio.me/en/terms/

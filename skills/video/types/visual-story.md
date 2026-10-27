@@ -10,7 +10,7 @@ A short vertical explainer that feels like a film, not slides: one illustrated w
 
 ## Silent by design
 
-- Mosio renders silent videos. **The captions are the voice**: every word of the script appears on screen, word by word, at reading pace.
+- Mosio adds no voice. **The captions are the voice**: every word of the script appears on screen, word by word, at reading pace.
 - No voice-over, TTS or generated audio, and do not offer one. If the user wants narration, they can record it and add it in the app they post to, or later when Mosio supports user-supplied audio. The approved script then doubles as their VO script.
 - True 3D (three.js, WebGL) is not available in Mosio today. Depth comes from 2D pseudo-depth: SVG isometric shapes, a parallax camera and shading (`camera.md`).
 

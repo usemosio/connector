@@ -2,22 +2,12 @@
 
 Turns 3-5 product photos (clothes, cakes, crafts, a boarding room, finished service work) into a video that feels filmed, not pasted: each photo moves gently in its own way, gets a name and price, and the video ends on a CTA.
 
-## Size budget: read this first
+## The photos: from the workspace's media
 
-Photos are allowed only as `data:` images inside the composition, and the whole composition is at most 200,000 characters. Base64 adds about a third to the file size:
-
-| Photos | Size per photo | Approx. image characters |
-| ------ | -------------- | ------------------------ |
-| 3      | max 35 KB      | about 145,000            |
-| 4      | max 30 KB      | about 165,000            |
-| 5      | max 25 KB      | about 172,000            |
-
-- Leave 12,000-20,000 characters for HTML, CSS and script. JPEG or WebP, 720 px wide (WebP is sharper at the same size), quality 55-70. Each photo appears **once**, in `<img src="data:image/webp;base64,...">`. Never reuse it (e.g. as a blurred backdrop): the size doubles.
-
-## Handling the photos
-
-- Ask for the best 3-5 photos, one product or one angle each. **With a code tool** (Python sandbox or similar): shrink them there as preparation, not as part of the render, e.g. Pillow `im.thumbnail((720, 1280)); im.save(buf, "WEBP", quality=62)`. Check the base64 length; lower quality or size until it fits. Use the user's real photos unaltered.
-- **Without a code tool** (plain chat): the assistant cannot shrink photos or write base64 reliably. Never type base64 by hand. Offer instead a fill-in recipe, which needs no photos (`list_recipes` with `kind: "fill_in"` or the `show_recipes` gallery, then `preview_recipe`), or an illustrated product card in SVG/CSS (shapes, brand colours, name, price) that clearly reads as an illustration, never as a product photo. Mosio makes and edits no images with AI models. Never promise "enhanced photos" or automatic background removal.
+- The user uploads the photos from the chat (`upload_media` shows the upload card; attachments ChatGPT passes as files go through `import_media`) or in the dashboard's Media page (any phone photo up to 8 MB; Mosio prepares each one, turned the right way up and without its location data). `list_media` lists them with the path a composition uses: `<img src="assets/media/upl_….jpg" alt="...">`. Use each photo once, as it is; no size budget applies.
+- Ask for the best 3-5 photos, one product or one angle each. When they are not in `list_media` yet, show the upload card (`upload_media` with `kind: "image"`) and wait for them; never pretend to have them.
+- **Fallback, a few small pictures without the dashboard:** with a code tool (Python sandbox or similar), shrink them there as preparation, e.g. Pillow `im.thumbnail((720, 1280)); im.save(buf, "WEBP", quality=62)`, and embed each once as `<img src="data:image/webp;base64,...">`; the whole composition stays under 200,000 characters (3 photos of at most 35 KB, 5 of at most 25 KB). Without a code tool, never type base64 by hand.
+- No photos at all: offer a fill-in recipe, which needs none (`list_recipes` with `kind: "fill_in"` or the `show_recipes` gallery, then `preview_recipe`), or an illustrated product card in SVG/CSS (shapes, brand colours, name, price) that clearly reads as an illustration, never as a product photo. Mosio makes and edits no images with AI models. Never promise "enhanced photos" or automatic background removal.
 
 ## One rule: no two photos move alike
 
@@ -38,7 +28,7 @@ Identical slow zoom-ins are the mark of an amateur slideshow. Vary direction, zo
 | Cover                        | ratios differ by less than about 15%                                        | `object-fit: cover`, Ken Burns on the `img`, `overflow: hidden` on the box                          |
 | Contain on a colour backdrop | landscape photo in 9:16, or photo with text (pack label, menu, certificate) | whole photo as a card with a soft shadow over a gradient of its dominant colour or the brand colour |
 
-- `contain` backdrop: a two-colour `color-mix` gradient, slow floating shapes or a line pattern. **Not** a blurred copy of the photo: heavy on the CPU render and it eats the character budget.
+- `contain` backdrop: a two-colour `color-mix` gradient, slow floating shapes or a line pattern. **Not** a blurred copy of the photo: heavy on the CPU render.
 - For `contain`, move the card (scale 1.00 to 1.06, pan 10-24 px); no edge can leak. Portrait photos in 9:16 almost always suit `cover`. Landscape ones go `contain` in the upper third to middle, caption below.
 
 ## Caption and price
@@ -47,7 +37,7 @@ Identical slow zoom-ins are the mark of an amateur slideshow. Vary direction, zo
 - Same position on every photo, e.g. y 1250-1480 in 9:16, clear of the guide's safe zones. Name 90-130 px, text 54-80 px, on a colour band or card so it reads over any photo.
 - Captions stay still while the photo moves. In 0.3 s after the photo shows (masked `yPercent: 110` reveal), out 0.3 s before it changes. A price may count up per `mosio/video-composition/craft/numbers.md`, landing exactly on the real price.
 
-## Silent pacing
+## Pacing (works on mute)
 
 | Part         | Time                                 | Note                                                                                           |
 | ------------ | ------------------------------------ | ---------------------------------------------------------------------------------------------- |
@@ -126,7 +116,7 @@ document.querySelectorAll(".slide").forEach((s, i) => {
 
 ## Check before sending
 
-- Whole HTML under 200,000 characters; each photo appears once. No two photos share a move (seeded PRNG); no stretched photo, no empty edge while panning.
+- Photos from `list_media` paths (or, as a fallback, `data:` within 200,000 characters); each photo appears once. No two photos share a move (seeded PRNG); no stretched photo, no empty edge while panning.
 - Captions fixed, inside the safe zones, at most 7 words; prices from the user. Ending holds 2 s+ and the timeline length equals `data-duration`.
 
 ## Adapted from
@@ -134,4 +124,4 @@ document.querySelectorAll(".slide").forEach((s, i) => {
 - [iart-ai/ecommerce-video-skills](https://github.com/iart-ai/ecommerce-video-skills) (MIT, © iart.ai), commit `2bd0dd1`: `skills/photo-slideshow/SKILL.md`, `skills/photo-slideshow/references/ken-burns.md`, `skills/photo-slideshow/references/aspect-and-layout.md`, `skills/photo-slideshow/references/timing-and-audio.md`, `skills/photo-slideshow/references/templating-folder.md`.
 - [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) (Apache-2.0, © HeyGen and HyperFrames contributors), commit `908f2d0`: `skills/slideshow/SKILL.md` (one idea per slide, minimum text sizes, `contain` for photos with text). Mosio's copy: `hyperframes/slideshow/SKILL.md` via `skill_library`; that skill is for interactive presentation decks, not video.
 
-Changes by Mosio: condensed and rewritten from Remotion to one paused GSAP timeline (Ken Burns as tweens, seeded mulberry32, no audio, no CDN). Music beat sync, librosa beat detection, blurred photo backdrops, folder manifests and EXIF, ffmpeg rendering and interactive decks were dropped; added the 200,000-character budget for `data:` photos, handling with and without a code tool, colour backdrops for `contain`, the safe pan limit, per-photo captions and prices, and silent pacing. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.
+Changes by Mosio: condensed and rewritten from Remotion to one paused GSAP timeline (Ken Burns as tweens, seeded mulberry32, no audio, no CDN). Music beat sync, librosa beat detection, blurred photo backdrops, folder manifests and EXIF, ffmpeg rendering and interactive decks were dropped; added the workspace's uploaded photos (`list_media`) with a `data:` fallback under a 200,000-character budget, colour backdrops for `contain`, the safe pan limit, per-photo captions and prices, and silent pacing. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.

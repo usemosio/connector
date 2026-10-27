@@ -49,7 +49,7 @@ Common client rejections: "too plain, just a picture then text", "lots of wasted
 
 ## Purpose on mute
 
-Mosio videos are always silent. A first-time viewer, on mute and at phone size, must be able to answer at the end:
+Most people watch on mute (and a video without the user's own footage or sound is silent). A first-time viewer, on mute and at phone size, must be able to answer at the end:
 
 - **Selling (promo, ad, launch):** what is sold and by whom (name visible), one reason to care (taste, price, ease, result), what to do now (chat WA, visit, link in bio, checkout).
 - **Teaching (explainer, tips):** the lesson in one sentence, the steps in order, who taught it and what to do next (save, try it, contact).
