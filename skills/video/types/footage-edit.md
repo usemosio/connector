@@ -37,6 +37,7 @@ Write the plan in plain words, 4-8 sentences, and wait for the user's OK (after 
 - Talking content, per line: the speaker alone (the opening, opinions, stories, the CTA), the speaker with an overlay toward the edges (a keyword, a price counting up, an arrow), or a full cover (b-roll, a chart or steps) while the voice carries on. No stretch of speaker-only longer than about 8 s; covers run 3-8 s and return to the speaker between them; full-screen b-roll at most about a quarter of the runtime.
 - Overlay timing: structure (cards, axes) enters about 6 frames early; a key fact (a price, a percentage) lands on the word that says it (its start from the transcript's `words`; otherwise on the phrase start); a punchline's reveal waits for the word.
 - The ending holds the CTA, name and contact at least 2 s (the guide's rule), over a held frame of the footage or the brand background.
+- Text behind the speaker (a big word their head and shoulders overlap, the hook or the price): `make_cutout` on that stretch (at most 6 s), then base clip, text and cutout clip as in `text-effects.md` 6a. Use it once per video, where it lands the point.
 
 ## 5. Picking a short cut from a long recording
 
