@@ -2,13 +2,13 @@
 
 Mosio turns a chat into a short motion video: promos, social content, explainers, ads and announcements as animated typography and motion graphics, vertical for Reels, TikTok and WhatsApp Status, or square, portrait and wide. Describe the video, approve the storyboard, check the moving preview in the chat, and get an MP4 back.
 
-Claude directs: it writes the on-screen text and the motion as an HTML composition from one of Mosio's **recipes** (looks with a plan per beat), or fills in a **fill-in recipe** (a ready design where only the text changes). Mosio checks, previews and renders it on its servers. Neither this plugin nor the connector uses AI models to generate images, video or audio: the motion is written as code.
+Claude directs: it writes the on-screen text and the motion as an HTML composition from one of Mosio's **recipes** (looks with a plan per beat). Mosio checks, previews and renders it on its servers. Neither this plugin nor the connector uses AI models to generate images, video or audio: the motion is written as code.
 
 ## What's included
 
 - The Mosio MCP server at `https://mcp.mosio.me/mcp`. You sign in with your Mosio account (OAuth).
-- `video` (`/mosio:video`): the entry skill for any video: brand first, brief and storyboard, the video types (`skills/video/types/`), the choice between a fill-in recipe and a composition, and a review checklist.
-- One skill per step, each callable on its own: `brief` (`/mosio:brief`), `storyboard`, `recipe` (the gallery and fill-in recipes), `brand`, `composition` (writing the video as an HTML composition), `motion` (craft notes, Hyperframes and GSAP libraries, more than 200 ready-made effects), `edit` (editing your own footage: cuts, reframing, zooms, subtitles), and `review` (stills and findings before you see the preview).
+- `video` (`/mosio:video`): the entry skill for any video: the goal first (sell, launch, a story, a lesson), then the brand when there is one, the brief, the concept and the storyboard, the video types (`skills/video/types/`), the recipe, and a review checklist.
+- One skill per step, each callable on its own: `brief` (`/mosio:brief`), `storyboard`, `recipe` (the gallery and picking a recipe), `brand`, `composition` (writing the video as an HTML composition), `motion` (craft notes, Hyperframes and GSAP libraries, more than 200 ready-made effects), `edit` (editing your own footage: cuts, reframing, zooms, subtitles), and `review` (stills and findings before you see the preview).
 
 The detailed rules, fonts, recipes with their example code, and the craft references are read from the Mosio server when Claude needs them (`get_composition_guide`, `list_recipes`, `skill_library`), so they are always current without a plugin update.
 

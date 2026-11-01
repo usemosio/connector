@@ -49,10 +49,13 @@ Common client rejections: "too plain, just a picture then text", "lots of wasted
 
 ## Purpose on mute
 
-Most people watch on mute (and a video without the user's own footage or sound is silent). A first-time viewer, on mute and at phone size, must be able to answer at the end:
+Most people watch on mute: the sound effects are a bonus for those who listen, never the message. A first-time viewer, on mute and at phone size, must be able to answer at the end:
 
 - **Selling (promo, ad, launch):** what is sold and by whom (name visible), one reason to care (taste, price, ease, result), what to do now (chat WA, visit, link in bio, checkout).
 - **Teaching (explainer, tips):** the lesson in one sentence, the steps in order, who taught it and what to do next (save, try it, contact).
+- **Launching:** what is new, why it matters, when and where to get it.
+- **Telling a story:** the question, the answer, and what changed between them; whose story or channel it is.
+- **A series episode:** this episode's one point, and which series it belongs to.
 - **Social content:** what happened or was shown, whose account it is, why to follow or come back.
 
 Test: rewrite the video's message from only the text and images on screen. Vague, or needs sound: the video fails, however good the motion.
@@ -72,28 +75,28 @@ Not bans. Each is fine when chosen with a one-sentence reason for this business;
 - A flat drawing followed by separate depth objects that pop in: often the same drawing could stand up in place and hand its key element over instead. Keep the cut if it is a deliberate new world.
 - House style as default: giant cropped words, circle wipes at every cut, typed titles with a caret, a dot that becomes the logo.
 - A storyboard with motion words ("slams in", "wipe", "zoom") instead of roles and subjects. The user approves content; techniques come from the recipe plan.
-- Content rewritten when only the recipe changed. Keep the approved beats; redo only the plan.
+- Facts or approved lines rewritten when only the recipe changed. Keep them; with the same kind of subject redo only the plan, with another kind re-fit only the subjects and say which beats changed.
 - A second recipe built without being asked. Offer it in one line instead.
 
 ## Checklist every round
 
 Mark each item **Pass** or **Fail**. A failed Critical item must be fixed before the user presses "Buat video".
 
-| #   | Item                                                                                                                                              | Level       |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| 1   | Honest: no invented prices, testimonials, numbers, facts or contacts; illustrations labeled "Contoh"                                              | Critical    |
-| 2   | Purpose on mute is clear at the end (see above for the type)                                                                                      | Critical    |
-| 3   | Ending: action, name, contact held at least 2 s, inside the safe zone, readable at phone size                                                     | Critical    |
-| 4   | Text inside the safe zone, at most 7 words at once, never cropped or colliding, including during transitions                                      | Critical    |
-| 5   | Frame 0 is already composed or moving; no empty frame longer than 3 frames, no white flash at cuts                                                | Critical    |
-| 6   | None of the never-ship items                                                                                                                      | Important   |
-| 7   | One hero per frame; with text covered, every scene still shows a picture                                                                          | Important   |
-| 8   | Cuts follow the vector law (axis, direction, speed, cut mid-motion), no crossfades                                                                | Important   |
-| 9   | Motion by role: entrances decelerate, exits accelerate; no 4 identical entrances; at most one visible spring                                      | Important   |
-| 10  | Timing: text readable at least 1.2 s; no fully frozen frame (background too) over 0.6 s except designed pauses and the ending; scene lengths vary | Important   |
-| 11  | Storyboard: beats have roles and subjects, no motion words; content unchanged when only the recipe changed; no second recipe built unasked        | Important   |
-| 12  | One system: one motion personality, one accent color, at most two font families                                                                   | Opportunity |
-| 13  | One screenshot-worthy frame, nameable by its second                                                                                               | Opportunity |
+| #   | Item                                                                                                                                               | Level       |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| 1   | Honest: no invented prices, testimonials, numbers, facts or contacts; illustrations labeled "Contoh"                                               | Critical    |
+| 2   | Purpose on mute is clear at the end (see above for the type)                                                                                       | Critical    |
+| 3   | Ending fits the goal (selling: action, name, contact; story or lesson: the payoff, then the name or handle) held at least 2 s, in the safe zone    | Critical    |
+| 4   | Text inside the safe zone, at most 7 words at once, never cropped or colliding, including during transitions                                       | Critical    |
+| 5   | Frame 0 is already composed or moving; no empty frame longer than 3 frames, no white flash at cuts                                                 | Critical    |
+| 6   | None of the never-ship items                                                                                                                       | Important   |
+| 7   | One hero per frame; with text covered, every scene still shows a picture                                                                           | Important   |
+| 8   | Cuts follow the vector law (axis, direction, speed, cut mid-motion), no crossfades                                                                 | Important   |
+| 9   | Motion by role: entrances decelerate, exits accelerate; no 4 identical entrances; at most one visible spring                                       | Important   |
+| 10  | Timing: text readable at least 1.2 s; no fully frozen frame (background too) over 0.6 s except designed pauses and the ending; scene lengths vary  | Important   |
+| 11  | Storyboard: roles and subjects, no motion words; facts and lines kept on a recipe change (subjects re-fitted only across kinds); no unasked recipe | Important   |
+| 12  | One system: one motion personality, one accent color, at most two font families                                                                    | Opportunity |
+| 13  | One screenshot-worthy frame, nameable by its second                                                                                                | Opportunity |
 
 Before the preview: run items 1-11 on the storyboard and code (tween positions, text sizes, colors). After it: run all 13, then compare with the last round, marking each old failure Fixed, Partial or Still there.
 

@@ -2,15 +2,14 @@
 
 A 6-15 s spot that announces **one offer** and gets people to act now: the discount lands, the old price is struck, the new price drops in, the code and deadline read, the CTA closes. Not a feature ad (see `ad.md`) and not a testimonial. Run `../brief.md` first; technical rules come from `get_composition_guide`.
 
-## Pick the path
+## Pick the recipe
 
-| Need                                                | Path                                                                                                         |
-| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| One product with price and old price, standard look | fill-in recipe `promo-produk`                                                                                |
-| Time-limited discount in percent                    | fill-in recipe `diskon-kilat`                                                                                |
-| Custom look, promo code, counting price             | composition from recipe `flash-sale` (percent blast, ticker tape) or `product-hero` (one product, big price) |
+| Need                                                         | Recipe to compose from                    |
+| ------------------------------------------------------------ | ----------------------------------------- |
+| One product with its price (and old price)                   | `product-hero` (one product, big price)   |
+| Time-limited discount in percent, promo code, counting price | `flash-sale` (percent blast, ticker tape) |
 
-Fill-in path: `show_recipes`, then `preview_recipe` with the full id and the variables from `list_recipes`, then `render_recipe`. Neither compose recipe ships a strike-through price or a code chip: add them from the recipes below.
+Neither recipe ships a strike-through price or a code chip: add them with the snippets below.
 
 ## Ask before you start
 
@@ -131,12 +130,12 @@ More in `skill_library`: digit swaps `short-form/countdown-video/references/digi
 
 The same one-message rule, without the price drop:
 
-| Kind                                        | Fill-in recipe                                    | Recipe to compose | The one thing that must read                   |
-| ------------------------------------------- | ------------------------------------------------- | ----------------- | ---------------------------------------------- |
-| Menu                                        | `menu-fnb` (2-4 items), `menu-spesial` (one item) | `menu-board`      | each item and its price, from the user         |
-| Service                                     | `jasa-layanan`                                    | `product-hero`    | the service, a "mulai dari" price, the contact |
-| Store or branch opening                     | `buka-baru`                                       | `kinetic-type`    | the date and a short address                   |
-| Announcement (closed, new hours, new stock) | `pengumuman`                                      | `kinetic-type`    | what changes and from when                     |
+| Kind                                        | Recipe to compose | The one thing that must read                   |
+| ------------------------------------------- | ----------------- | ---------------------------------------------- |
+| Menu                                        | `menu-board`      | each item and its price, from the user         |
+| Service                                     | `product-hero`    | the service, a "mulai dari" price, the contact |
+| Store or branch opening                     | `kinetic-type`    | the date and a short address                   |
+| Announcement (closed, new hours, new stock) | `kinetic-type`    | what changes and from when                     |
 
 - Dates, hours and addresses come only from the user. Write them the way customers read them ("Sabtu, 1 November", "Tutup 24-26 Desember").
 - The fact holds still at least 2 s; the ending still carries the name and contact.
@@ -145,4 +144,4 @@ The same one-message rule, without the price drop:
 
 - [iart-ai/ecommerce-video-skills](https://github.com/iart-ai/ecommerce-video-skills) (MIT, © iart.ai), commit `2bd0dd1`: `skills/promo-video/SKILL.md`, `skills/promo-video/references/promo-components.md`.
 
-Changes by Mosio: translated, condensed and adapted to Mosio's composition rules (one HTML file, paused GSAP timeline, no audio, no CDN); Remotion code replaced by a GSAP recipe and prices by Rupiah. The real-time countdown, batch scripts and file validation were dropped and replaced by a text deadline, a per-product data block and previews; added the template path and Indonesian campaign examples. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.
+Changes by Mosio: translated, condensed and adapted to Mosio's composition rules (one HTML file, paused GSAP timeline, no audio, no CDN); Remotion code replaced by a GSAP recipe and prices by Rupiah. The real-time countdown, batch scripts and file validation were dropped and replaced by a text deadline, a per-product data block and previews; added Indonesian campaign examples. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.

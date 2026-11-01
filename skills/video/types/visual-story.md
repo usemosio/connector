@@ -1,6 +1,6 @@
 # Visual story
 
-A short vertical explainer that feels like a film, not slides: one illustrated world, a camera that moves through it, and the story told word by word in captions. It answers one "why" or "how come" question with a true number and a payoff. Run `../brief.md` first; technical rules come from `get_composition_guide`. Starting code: the `visual-story` recipe (`get_composition_guide` with `recipe: "visual-story"`), a silent 2D film about why bees build hexagons. Craft: `mosio/video-composition/craft/captions.md` (the caption engine) and `mosio/video-composition/craft/camera.md` (the 2D camera, flights, breakdowns).
+A short vertical explainer that feels like a film, not slides: one illustrated world, a camera that moves through it, and the story told word by word in captions. It answers one "why" or "how come" question with a true number and a payoff. Run `../brief.md` first; technical rules come from `get_composition_guide`. Starting code: the `visual-story` recipe (`get_composition_guide` with `recipe: "visual-story"`), a 2D film about why bees build hexagons, told in captions at reading pace. Craft: `mosio/video-composition/craft/captions.md` (the caption engine) and `mosio/video-composition/craft/camera.md` (the 2D camera, flights, breakdowns).
 
 ## When to use
 
@@ -8,10 +8,13 @@ A short vertical explainer that feels like a film, not slides: one illustrated w
 - It needs a subject you can draw and a number that is true: computed from a formula, counted in the picture, or given by the user.
 - Steps, how-to, tips and myth vs fact are an Explainer (`explainer.md`). A visual story is one question, one answer, one world.
 
-## Silent by design
+## Captions, or the user's own voice
 
-- Mosio adds no voice. **The captions are the voice**: every word of the script appears on screen, word by word, at reading pace.
-- No voice-over, TTS or generated audio, and do not offer one. If the user wants narration, they can record it and add it in the app they post to, or later when Mosio supports user-supplied audio. The approved script then doubles as their VO script.
+Ask once, in the brief's question batch: "Mau pakai suaramu sendiri (rekam naskahnya di HP) atau teks saja?"
+
+- **Captions only** (the default). **The captions are the voice**: every word of the script appears on screen, word by word, at reading pace. Sound effects from Mosio's library follow the camera and the reveals (`sound.md`).
+- **Narrated**, when the user has a recording of the script in their media (`list_media`) or records one: they read the approved script aloud, then upload it from the chat (`upload_media`). The recording sets the clock: word times from `inspect_media` replace the reading-pace plan (`mosio/video-composition/craft/captions.md`, "Timed to a recording"), every word still appears on screen as it is said, and the motion lands on the spoken word. The voice plays as `<audio id="voice">`; sound effects go at half level under it.
+- The words on screen are the words in the recording. When the user changed the script while reading, follow the recording and show them the changed lines.
 - True 3D (three.js, WebGL) is not available in Mosio today. Depth comes from 2D pseudo-depth: SVG isometric shapes, a parallax camera and shading (`camera.md`).
 
 ## Script first (gate)
@@ -25,7 +28,7 @@ A short vertical explainer that feels like a film, not slides: one illustrated w
 | 5   | Payoff that flips the question | "Lebah nggak perlu rumus. Segi enam udah paling efisien."              |
 | 6   | CTA (optional)                 | name and contact, the guide's ending held 2 s or more                  |
 
-- **One sentence = one beat = one visual metaphor.** 5-8 beats, 18-30 s in total, inside the plan's limit.
+- **One sentence = one beat = one visual metaphor.** 5-8 beats, 18-30 s in total with captions only; narrated, the recording's length. Both inside the plan's limit.
 - **Write natively per language.** A casual register reads well ("nggak", "udah", "Cuma ada tiga bentuk yang bisa nutup rapat"). Never translate a pun literally: "The shape does" becomes "Segi enam udah paling efisien", not "Bentuknya yang berhitung".
 - Short sentences: about 10 words at most, so each splits into phrases of 1-5 tokens (`captions.md`).
 - **Facts are true, numbers are computed.** Show the working in the brief: equal-area cells (area 1) have perimeters 4,56 (triangle), 4,00 (square), 3,72 (hexagon), so the hexagon needs about 7% less wall than the square. No source and not common knowledge: ask, or keep the claim qualitative. Never invent.
@@ -81,6 +84,8 @@ Other sizes: rebuild the zones, never scale (`mosio/video-composition/craft/size
 | Ending           | the payoff phrase holds, then the ending (or last frame) 2 s or more  |
 | Words on screen  | the guide's 7-word cap covers caption, tag and counter label together |
 
+Narrated: token and phrase times come from the recording, not from the reading pace. Keep the phrase sizes, the 1.2 s minimum on screen and the 2 s ending; a long pause in the recording gets a camera move or a reveal, never a frozen frame.
+
 ## Colour and type
 
 - **Warm dark world**: `radial-gradient` #2a1d0e to #0d0a07 with a faint 40 px grid (about 2% white). A light world (#fafafa, grid about 3.5% black) is allowed between worlds.
@@ -104,7 +109,7 @@ Other sizes: rebuild the zones, never scale (`mosio/video-composition/craft/size
 - Use three.js, WebGL or a canvas over text; force depth, or open on an object from an unusual angle.
 - Cut to a new diagram to show "what's inside"; open the object instead.
 - Invent numbers or facts, or use stock photos of real people as heroes.
-- Write a voice-over, call TTS, or suggest generating audio.
+- Promise a voice the user did not give: Mosio plays only a recording the user uploads.
 
 ## Before you send
 
@@ -116,4 +121,4 @@ Other sizes: rebuild the zones, never scale (`mosio/video-composition/craft/size
 
 ## Adapted from
 
-Original to Mosio: adapted from the team's own visual-story skill (the bees and hexagon explainer). Changes by Mosio: made silent (captions carry the story, timed at reading pace, no voice-over or TTS), 2D only (no three.js or WebGL), 30 fps, and fitted to Mosio's composition rules and tools; the Python, CLI and voice pipeline was dropped.
+Original to Mosio: adapted from the team's own visual-story skill (the bees and hexagon explainer). Changes by Mosio: captions carry the story, timed at reading pace or to the user's own recording; 2D only (no three.js or WebGL), 30 fps, and fitted to Mosio's composition rules and tools; the Python, CLI and voice pipeline was dropped.

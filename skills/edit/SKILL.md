@@ -8,11 +8,11 @@ metadata:
 
 # Edit the user's footage
 
-This is one step of the `video` skill's flow (brand, goal, type, brief, storyboard, recipe, build, review, preview, render). Do this step, then offer the next one; never render before the user has seen a preview and agreed.
+This is one step of the `video` skill's flow (goal, brand, type, brief, concept (the recipe), storyboard, build, review, preview, render). Do this step, then offer the next one; never render before the user has seen a preview and agreed.
 
 The type file is `types/footage-edit.md` in the `video` skill (or `skill_library` `mosio/video/types/footage-edit.md`): read it first.
 
-1. **Brand and goal**, as in the `video` skill: `list_brands`, `get_brand`, what the edit is for and where it is posted.
+1. **Goal and brand**, as in the `video` skill: what the edit is for and where it is posted, then `list_brands`, `get_brand`.
 2. **The clips.** `list_media` lists what is ready. Not there yet: `upload_media` shows the upload card in the chat, where the user picks the clips from their device (attachments passed as files: `import_media`; agents with a shell: `create_media_upload` then `complete_media_upload`), and wait until `list_media` lists them; never pretend to have footage.
 3. **Look before planning.** `inspect_media` on every clip you might use: numbered stills with their times, hard cuts, silences, loudness, and what was said (an automatic transcript: phrases with times, and each word's start and end with `words`). Tell the user in one line per clip what you see and hear. You cannot watch or hear the clip: the words come from that transcript or from the user (a script, or an SRT from CapCut or YouTube; theirs wins); never invent them. The transcript can mishear names, prices and brand words: check those with the user before they go on screen. A file still being transcribed says so: inspect it again in a few minutes.
 4. **Plan, then wait.** The edit plan in 4-8 plain sentences (shots by clip, frame and time; cuts; reframing; zooms; subtitles; music level; length) and at most one batch of questions. Wait for the user's OK.

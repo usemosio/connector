@@ -1,6 +1,6 @@
 ---
 name: brief
-description: "Write a short video brief with the user before anything is built: the one thing sold, taught or shown, for whom, the one action, contact, size, duration and feel. Reads the brand first and asks what is missing in one batch of at most 5 questions. Use when the user wants help deciding what the video should say (bantu susun brief, bingung mau bikin video apa, briefing video)."
+description: "Write a short video brief with the user before anything is built: the goal, the one thing sold, launched, taught or told, for whom, how it ends (an action and contact when selling, a payoff when telling or teaching), size, duration and feel. Starts from the goal, reads the brand when there is one, and asks what is missing in one batch of at most 5 questions. Use when the user wants help deciding what the video should say (bantu susun brief, bingung mau bikin video apa, briefing video)."
 license: "Proprietary; adapted parts are MIT or Apache-2.0, see NOTICE.md"
 metadata:
   brand: Mosio
@@ -8,11 +8,11 @@ metadata:
 
 # Video brief
 
-This is one step of the `video` skill's flow (brand, goal, type, brief, storyboard, recipe, build, review, preview, render). Do this step, then offer the next one; never render before the user has seen a preview and agreed.
+This is one step of the `video` skill's flow (goal, brand, type, brief, concept (the recipe), storyboard, build, review, preview, render). Do this step, then offer the next one; never render before the user has seen a preview and agreed.
 
 `brief.md` beside this file is the reference: read "Order", "Needed before the storyboard", "Questions: one short batch", "Push to shot level", "Combined check" and "Brief format".
 
-1. **Brand first.** `list_brands`; with several, ask which one unless the request names it. Then always `get_brand` with that `brand_id`, before writing anything about the business (the examples in `brief.md` are illustrations, never this brand): what it sets is answered and never asked again; what it lists as not set goes on the question list.
+1. **Goal, then brand.** Know what the video is for (sell, launch, a story, a lesson, a channel's series, an announcement). Then `list_brands`; with several, ask which one unless the request names it. Then always `get_brand` with that `brand_id`, before writing anything about the business (the examples in `brief.md` are illustrations, never this brand): what it sets is answered and never asked again; what it lists as not set goes on the question list. No brand and the video is a story, a lesson or a creator's post: go on without one.
 2. **Take what the user said**, then ask what is missing in one numbered batch of at most 5 short questions, and wait.
 3. **Write the brief** in the "Brief format". Pick the video type with the table in the `video` skill and read its type file (`types/<type>.md` in the `video` skill, or `skill_library` `mosio/video/types/<type>.md`).
 4. **Next:** offer the content storyboard (the `storyboard` skill). Build nothing yet.
