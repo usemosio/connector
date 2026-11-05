@@ -8,7 +8,7 @@ metadata:
 
 # Making a video with Mosio
 
-Mosio renders short videos from HTML for small Indonesian businesses and creators, with sound effects from Mosio's bundled library (synthesized in code) on the motion, plus the user's own footage or sound when they have it (`list_media`). You direct; Mosio checks, previews and renders. The hard rules live in `get_composition_guide` and win over anything here. Every look is a **recipe** (the dashboard's Recipes page): you write the HTML from the recipe's plan and example. `list_recipes` lists them with their ids; never hardcode them. Say "recipe" to the user; when the user says "template", they mean a recipe.
+Mosio renders short videos from HTML for small Indonesian businesses and creators, with sound effects from Mosio's bundled library (synthesized in code, and CC0 recordings) on the motion, plus the user's own footage or sound when they have it (`list_media`). You direct; Mosio checks, previews and renders. The hard rules live in `get_composition_guide` and win over anything here. Every look is a **recipe** (the dashboard's Recipes page): you write the HTML from the recipe's plan and example. `list_recipes` lists them with their ids; never hardcode them. Say "recipe" to the user; when the user says "template", they mean a recipe.
 
 ## Language
 
@@ -20,7 +20,7 @@ Mosio renders short videos from HTML for small Indonesian businesses and creator
 1. **Understand the goal.** What the video is for (sell, launch something new, tell a story, teach in one video or a channel's series, announce, edit the user's footage), for whom, where it is posted, and what the viewer should do or feel after watching. Take everything the user already said; do not ask again.
 2. **Find who it speaks for.** `list_brands`; with several, ask which one unless the request already names it (a prompt from the dashboard carries `brand_id`). Read `get_brand`: voice, colours, fonts, logo, contact, products and prices. Never ask for what it already says, and pass the same `brand_id` to every tool that makes the video. A brand can be a business, a product line or a creator's channel. No brand: for a business video, offer to save one (`create_brand`); for a story, a lesson or a creator's post, go on without one (a name or handle set as text is enough).
 3. **Pick the type** (table below) and read `types/<type>.md` (beside this file, or `skill_library` `mosio/video/types/<type>.md`). Route once: match the deliverable, not a word said in passing.
-4. **Brief and concept** in chat, following `brief.md`: one batch of at most 5 questions, then the brief, then the look before the beats ("Concept"). A recipe brings its own world, kind of subject, text per beat and tempo, so beats written before it is known fit some recipes and break in others. A quick sale whose facts decide it needs no separate step; a story, a lesson or a launch gets 2-3 concepts that differ in idea, and the user picks one.
+4. **Brief and concept** in chat, following `brief.md`: one batch of at most 5 questions, then the brief, then the look before the beats ("Concept"). A recipe brings its own world, kind of subject, text per beat and tempo, so beats written before it is known fit some recipes and break in others. A quick sale whose facts decide it needs no separate step; a story, a lesson or a launch gets 2-3 concepts that differ in idea, and the user picks one. A reference video the user shares is broken down first and shapes the concepts and the rhythm; it never goes on screen (`brief.md`, "A reference video").
 5. **Storyboard for that look, and show it** with `preview_storyboard` (free): the beats (role, text, subject, weight; no motion) written for the chosen recipe, and in `recipes` that recipe, or for a quick sale 1-3 recipes of the same kind of subject (the card plays them as looks and offers the rest). A recipe the user already chose (a prompt from the dashboard's Recipes names it, e.g. "dengan recipe Produk utama (product-hero)") is the concept. Wait for content approval. A later switch to a recipe with another kind of subject keeps every fact and approved line but re-fits the subjects, with one more approval (`brief.md`, "Revisions").
 6. **Build** a composition (below): `get_composition_guide` with the chosen `recipe`, then the HTML from the approved beats and that recipe's plan. The recipe gives the structure; the brand wins on colours, fonts, logo, words and motion feel (the guide's "Recipe and brand").
 7. **Review** with `review.md` before the preview, and again after it.
@@ -59,7 +59,7 @@ Ambiguous cases:
 - Build with the `composition` skill: `get_composition_guide` with the chosen `recipe`, then `skill_library` `mosio/video-composition/craft/` (motion, transitions, kinetic type, captions, camera, numbers, logo, sizes; for the user's footage: editing, reframe, zooms, subtitles; text effects). Tools: `inspect_composition`, `preview_composition`, `render_composition`.
 - The recipe's plan and example are a reference, never a mold: change text, color, rhythm, shapes and scenes to fit the brand and the storyboard.
 - Unsure which the user wants, or they ask what exists: `show_recipes`. Do not list recipes in chat when a card can show them.
-- For a ready effect (kinetic text, transition, overlay, UI card, chart), try `search_registry` (English keywords) and `get_registry_item` before hand-building it.
+- For a ready effect (kinetic text, transition, overlay, UI card, chart) or a whole scene (lower third, scene transition, code or chart scene), and for word-timed captions or animated icons, try `search_registry` (English keywords) and `get_registry_item` before hand-building it. Blocks are whole scenes, mostly 1920×1080: use them as they are in a landscape video only.
 
 ## Composition essentials
 
@@ -72,7 +72,7 @@ Ambiguous cases:
 - Never invent prices, discounts, testimonials, ratings, numbers, contacts, addresses or opening hours. Ask, or leave them out of the video.
 - What the user says in this conversation wins over the brand (its prices may be out of date, or this is a promo). Use the user's facts, mention the difference in one line in the brief ("di brand tercatat Rp18.000; saya pakai Rp25.000 dari kakak"), and keep going: never hold the storyboard for it.
 - Label every illustration on screen: "Contoh" or "Ilustrasi" (sample chats, sample numbers, mock UI).
-- Never call Mosio an "AI video generator". Mosio uses no AI models to make images, video or audio; the motion is written as code.
+- Never call Mosio an "AI video generator". Mosio uses no AI models to make images or video; the motion is written as code (a voice-over is spoken with the user's own Gemini or ElevenLabs key).
 
 ## Credits
 

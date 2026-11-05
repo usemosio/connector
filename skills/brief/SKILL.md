@@ -13,7 +13,7 @@ This is one step of the `video` skill's flow (goal, brand, type, brief, concept 
 `brief.md` beside this file is the reference: read "Order", "Needed before the storyboard", "Questions: one short batch", "Push to shot level", "Combined check" and "Brief format".
 
 1. **Goal, then brand.** Know what the video is for (sell, launch, a story, a lesson, a channel's series, an announcement). Then `list_brands`; with several, ask which one unless the request names it. Then always `get_brand` with that `brand_id`, before writing anything about the business (the examples in `brief.md` are illustrations, never this brand): what it sets is answered and never asked again; what it lists as not set goes on the question list. No brand and the video is a story, a lesson or a creator's post: go on without one.
-2. **Take what the user said**, then ask what is missing in one numbered batch of at most 5 short questions, and wait.
+2. **Take what the user said**, then ask what is missing in one numbered batch of at most 5 short questions, and wait. A reference video the user shares: get it in and break it down first (`brief.md`, "A reference video"); a link alone cannot be watched.
 3. **Write the brief** in the "Brief format". Pick the video type with the table in the `video` skill and read its type file (`types/<type>.md` in the `video` skill, or `skill_library` `mosio/video/types/<type>.md`).
 4. **Next:** offer the content storyboard (the `storyboard` skill). Build nothing yet.
 

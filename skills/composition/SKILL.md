@@ -27,4 +27,4 @@ Everything below is read from the Mosio server when you need it, so it is always
 
 - One HTML file, one paused GSAP timeline registered as `window.__timelines["main"]`, no clock, randomness, CSS animations, audio, video, iframes or network; only the assets the guide lists.
 - Every size renders separately and spends credits equal to its duration; offer before making several.
-- Never invent prices, numbers, contacts or testimonials; label illustrations "Contoh" or "Ilustrasi". Never call Mosio an "AI video generator".
+- Never invent prices, numbers, contacts or testimonials; label illustrations "Contoh" or "Ilustrasi". A reference video the user shared is never placed in the composition, and nothing of it is copied but its structure, rhythm and kinds of motion. Never call Mosio an "AI video generator".

@@ -45,7 +45,8 @@ Common client rejections: "too plain, just a picture then text", "lots of wasted
 - Never invent prices, discounts, testimonials, customer names, ratings, units sold, followers, certifications, guarantees, addresses, hours, contacts, or facts in a lesson. All from the user; if missing, ask or leave it out.
 - Every illustration carries a readable "Contoh" or "Ilustrasi" label: made-up chats, sample numbers, mock UI, sample reviews.
 - Never copy the exact look or logo of another app (WhatsApp, Shopee, Tokopedia). A similar generic style is fine.
-- On-screen claims must be true for this business ("dikirim hari ini" only if the user said so). Statements about the video too: never call it AI made. Mosio uses no AI models for images, video or audio; the motion is written as code.
+- From a reference video, only its structure, rhythm and kinds of motion: never its logo, text, characters, footage, music or a frame as is, and the reference file is not in the composition.
+- On-screen claims must be true for this business ("dikirim hari ini" only if the user said so). Statements about the video too: never call it AI made. Mosio uses no AI models for images or video; the motion is written as code.
 
 ## Purpose on mute
 

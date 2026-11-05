@@ -77,7 +77,7 @@ Adjectives and estimates are not answers. Offer two picturable options and their
 | "Terserah kamu"                   | Decide, list it under "Saran saya" with a one-line reason. Facts are still never guessed.                                                                      |
 
 **Core message**: one sentence, at most 7 words, that works as a poster headline ("Kopi gula aren asli, Rp18.000", "Kemeja putih tanpa pemutih"). Three messages? Pick one with the user; the others are other videos.
-**Examples from other brands**: take the motion only, never their logo, copy or colors. Colors come only from typed hex values or the brand; from a blurry screenshot, ask.
+**Examples from other brands** (a video or screenshots the user wants it to look like): follow "A reference video" below. Take the structure and motion only, never their logo, copy or colors. Colors come only from typed hex values or the brand; from a blurry screenshot, ask.
 
 ## Combined check
 
@@ -122,6 +122,17 @@ A recipe is not a skin. Each brings a world and a kind of subject (one object, a
 - **A quick sale whose facts decide it** (one product, its price, a contact): the concept is the 1-3 recipes with the same kind of subject that you send with the storyboard. No separate step.
 - **A story, a lesson, a launch, or a user who is unsure**: offer 2-3 concepts in one message. Each is a recipe plus the world or metaphor, the main subject, the 3-second hook, and captions only or the user's voice. They differ in idea, not only in colour (for the heart: a house of four rooms whose doors slam / a chalkboard diagram of the flow / one big counter of millilitres per beat). Recommend one in a line; `show_recipes` can show the recipes moving.
 - The pick is **locked**: the storyboard is written for that recipe (its kind of subject, text per beat and tempo; narrated, the recording's length), and `preview_storyboard` sketches it in that recipe.
+
+## A reference video
+
+A video the user wants theirs to look like ("kayak gini", "referensinya ini", "contohnya") is a reference: you study it, and it never goes into the video.
+
+- **Getting it in.** A link alone (TikTok, Instagram, YouTube) cannot be opened or watched: ask for the file, or for 3-6 screenshots of its key moments. A video file comes in through the upload card (`upload_media`; `import_media` where the chat passes attachments as files), then `inspect_media` gives its numbered stills, hard cuts, silences and words. Screenshots attached in the chat you can see directly; they do not need to be in the media library. A file attached in the chat is not in the media library until it comes in one of those ways.
+- **Reference or footage?** When it is not clear whether the user wants the file on screen (their own footage: `types/footage-edit.md`) or only its look, ask once. A reference never appears in the composition.
+- **Break it down** in 4-6 lines before any concept: its length and number of scenes (from the hard cuts), the seconds per scene, where the hook lands, how text appears (size, words at once, how it enters), camera and transitions, colour logic, how it ends, and whether it has a voice or music. Say what stills cannot show (the motion between them, the exact easing), and do not guess it.
+- **The concepts start from it** ("Concept"): one as close as possible (the nearest recipe by kind of subject and motion, given the reference's number of scenes and rhythm), one with the reference's structure in another look, and one different idea. Name the recipe each builds on. When no recipe is close, the closest concept is composed from the breakdown alone: say that its look is new, and sketch the storyboard in the nearest recipe (the card needs one).
+- **The storyboard inherits its rhythm**: the same number of beats where the content allows, weights matched to the reference's scene lengths, the hook at the same moment.
+- **What may be taken**: the structure, the rhythm, kinds of motion, the camera grammar, layout ideas. **Never**: its logo, text or slogans, characters or mascots, footage, music or voice, a distinctive illustration, or one of its frames as is. Colours come from the brand or typed hex values, never sampled from the reference. The reference file is never placed in the composition (no `assets/media/` path of it).
 
 ## Storyboard in two layers
 
