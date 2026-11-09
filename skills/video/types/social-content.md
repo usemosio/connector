@@ -6,7 +6,7 @@ Everyday content for Reels, TikTok, Shorts and WhatsApp Status: tips, behind the
 
 1. **Transform, don't cut.** Scenes change through a shape that morphs, a colour that floods, text revealed from behind a line, a zoom through an object. Hard cuts only on decisive moments (price lands, before/after).
 2. **One background, one text colour, one accent.** One heading face and one body face (two families max).
-3. **On-screen text is the narration.** Most people watch muted, and sound comes only from the user's own media.
+3. **On-screen text carries the message.** Most people watch muted. Sound is Mosio's effects plus the user's own media: their voice, when they record one, is timed to the words on screen.
 4. **Something moves in the first 2 s**: a glass drops in, a chat arrives, a button is pressed. Not a gradient with a centred title fading in.
 5. **A new event every 2-4 s, but only one thing to read at a time.** Motion may be fast; meaning gets time.
 6. **The end echoes the start.** The last frame reuses the opening object, line or shape in its changed state.
@@ -27,12 +27,12 @@ One video, one idea. If the point does not fit in one sentence, it is not ready.
 
 ## Structure and time budget
 
-| Part   | Job                                                 | 15 s video      |
-| ------ | --------------------------------------------------- | --------------- |
-| Hook   | open one question or promise, moving from frame one | 0-1.5           |
-| Body   | 2-4 scenes, one idea each, the question stays open  | 1.5-12          |
-| Answer | close the hook's question: product, price, result   | last body scene |
-| Ending | CTA, business name, contact, held 2 s or more       | 12-15           |
+| Part   | Job                                                      | 15 s video      |
+| ------ | -------------------------------------------------------- | --------------- |
+| Hook   | open one question or promise, moving from frame one      | 0-1.5           |
+| Body   | 2-4 scenes, one idea each, the question stays open       | 1.5-12          |
+| Answer | close the hook's question: product, price, result        | last body scene |
+| Ending | CTA, name, contact (a creator: handle, why follow), 2 s+ | 12-15           |
 
 - Usual roles: hook → fact → fact → payoff → cta. Tips use one `step` per tip; before/after uses `compare`.
 - A 30 s video grows the body. The hook stays about 1.5 s.

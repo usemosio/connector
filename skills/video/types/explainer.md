@@ -1,6 +1,6 @@
-# Explainer: education without a voice
+# Explainer: education that teaches on mute
 
-Education videos: how it works, 3 steps, myth vs fact, a glossary term, "did you know". The explainer is carried by text and visuals alone: most people watch muted, and Mosio adds no narration or voice (a recording the user uploaded may play under it, but the text still carries every point). Run `../brief.md` first; technical rules come from `get_composition_guide`.
+Education videos: how it works, 3 steps, myth vs fact, a glossary term, "did you know". Most people watch muted, so text and visuals carry every point. The user's own narration is welcome: when they record the script (`list_media`, or `upload_media` from the chat), it plays as `<audio id="voice">`, each step starts on its spoken words (word times from `inspect_media`; `mosio/video-composition/craft/subtitles.md`), and the screen still teaches without it. Run `../brief.md` first; technical rules come from `get_composition_guide`.
 
 ## Core rule
 
@@ -32,12 +32,14 @@ One structure per video. Two topics means two videos. For myth vs fact, the fact
 
 Open a gap, never a definition. Shapes that work silent, 7 words max: a question ("Kenapa roti cepat berjamur?"), a counter-intuitive claim ("Cuci piring air panas belum tentu bersih"), pain validation ("Bingung bedanya PPN dan PPh?"), a concept announcement ("Namanya: harga pokok penjualan"), a scenario ("Bayangkan stok habis pas ramai"). A number only if the user gave it.
 
-## Silent pacing rules
+## Pacing rules
+
+Without a recording, the reading time below sets every hold. With one, the voice sets it: a step holds until its words end, and never shorter than the reading time.
 
 - **One concept or step per screen.** The next appears only after the previous one has been read.
 - **Reading time**: text holds still at least **1.2 s + 0.25 s per word**. "Rendam 10 menit" (3 words) holds about 2 s; with a 0.5 s entrance and 0.8 s before the transition, that step is about 3.3 s.
 - **Numbered progress cue** in a fixed spot for the whole body: a "1/3" chip, dots or a stepper bar that fills one segment per step (tween `scaleX` on the fill, `transform-origin: left center` in CSS).
-- **Recap screen at the end**: all steps or the thesis in one view, 7 words max (icons plus one-word labels: "Rendam · Kucek · Bilas"), held at least the reading time. Then the guide's ending (name, CTA, contact) held 2 s or more.
+- **Recap screen at the end**: all steps or the thesis in one view, 7 words max (icons plus one-word labels: "Rendam · Kucek · Bilas"), held at least the reading time. Then the ending held 2 s or more: the payoff and the name, handle or series; a CTA and contact only when the lesson sells something.
 - Typical length: hook 2 s, 3 steps of about 3.5 s, recap 3 s, ending 2.5 s, so 18-20 s. Stay inside the plan's limit; cut items before squeezing reading time.
 
 ## Visuals
@@ -76,4 +78,4 @@ More in `skill_library`: steps on one canvas `hyperframes/hyperframes-animation/
 
 - [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) (Apache-2.0, © HeyGen and HyperFrames contributors), commit `908f2d0`: `skills/faceless-explainer/SKILL.md`, `skills/faceless-explainer/references/story-design.md`, `skills/faceless-explainer/references/visual-design.md`, `skills/faceless-explainer/references/motion-language.md`, `skills/faceless-explainer/references/cut-catalog.md`.
 
-Changes by Mosio: condensed and adapted to Mosio's composition rules (one HTML file, paused GSAP timeline, no audio, no CDN). Narration, TTS, music, sound effects, captions, CLIs, scripts, frame presets and sub-agent workflow were dropped; voiceover-paced reveals became reading-time pacing (1.2 s plus 0.25 s per word), and Mosio added the education formats, the numbered progress cue, the recap screen and the 9:16 rebuild of the `explainer-isometrik` recipe. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.
+Changes by Mosio: condensed and adapted to Mosio's composition rules (one HTML file, paused GSAP timeline, no audio, no CDN). The source's voice pipeline, music, captions, CLIs, scripts, frame presets and sub-agent workflow were dropped; voiceover-paced reveals became reading-time pacing (1.2 s plus 0.25 s per word), or the user's own recording when they give one, and Mosio added the education formats, the numbered progress cue, the recap screen and the 9:16 rebuild of the `explainer-isometrik` recipe. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.

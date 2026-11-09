@@ -24,7 +24,7 @@ A video with any of these is not done. Remove the element; do not defend it.
 6. **Same fade-up everywhere:** four or more elements with identical entrances (same opacity and y, duration, ease); the same stagger on every list; a pulse or glow repeated on many elements.
 7. **Empty web page:** a small card (about 0.3 screen width) floating on a flat background; flat color with no light, shape or texture; one small object centered for over 1.5 s.
 8. **Web-footer ending:** logo, tagline, button and URL stacked like a page footer for no story reason. The Mosio ending is still required (action, name, contact, held at least 2 s), but as the story's last beat: brought in by the previous object or motion, one specific action ("Pesan lewat WA"), no extra tagline.
-9. **Crossfades between scenes** (two transparent scenes stacked) and white or black flashes at cuts.
+9. **Crossfades between scenes** (two transparent scenes stacked) and white or black flashes at cuts. Mid-crossfade, both scenes show at half strength, so the frame is muddy and neither line can be read; a flash reads as a glitch.
 
 The source caps the end card at 1.4 s. Not in Mosio: the ending holds at least 2 s so the contact can be read and screenshotted.
 
@@ -45,14 +45,18 @@ Common client rejections: "too plain, just a picture then text", "lots of wasted
 - Never invent prices, discounts, testimonials, customer names, ratings, units sold, followers, certifications, guarantees, addresses, hours, contacts, or facts in a lesson. All from the user; if missing, ask or leave it out.
 - Every illustration carries a readable "Contoh" or "Ilustrasi" label: made-up chats, sample numbers, mock UI, sample reviews.
 - Never copy the exact look or logo of another app (WhatsApp, Shopee, Tokopedia). A similar generic style is fine.
-- On-screen claims must be true for this business ("dikirim hari ini" only if the user said so). Statements about the video too: never call it AI made. Mosio uses no AI models for images, video or audio; the motion is written as code.
+- From a reference video, only its structure, rhythm and kinds of motion: never its logo, text, characters, footage, music or a frame as is, and the reference file is not in the composition.
+- On-screen claims must be true for this business ("dikirim hari ini" only if the user said so). Statements about the video too: never call it AI made. Mosio uses no AI models for images or video; the motion is written as code.
 
 ## Purpose on mute
 
-Most people watch on mute (and a video without the user's own footage or sound is silent). A first-time viewer, on mute and at phone size, must be able to answer at the end:
+Most people watch on mute: the sound effects are a bonus for those who listen, never the message. A first-time viewer, on mute and at phone size, must be able to answer at the end:
 
 - **Selling (promo, ad, launch):** what is sold and by whom (name visible), one reason to care (taste, price, ease, result), what to do now (chat WA, visit, link in bio, checkout).
 - **Teaching (explainer, tips):** the lesson in one sentence, the steps in order, who taught it and what to do next (save, try it, contact).
+- **Launching:** what is new, why it matters, when and where to get it.
+- **Telling a story:** the question, the answer, and what changed between them; whose story or channel it is.
+- **A series episode:** this episode's one point, and which series it belongs to.
 - **Social content:** what happened or was shown, whose account it is, why to follow or come back.
 
 Test: rewrite the video's message from only the text and images on screen. Vague, or needs sound: the video fails, however good the motion.
@@ -72,32 +76,32 @@ Not bans. Each is fine when chosen with a one-sentence reason for this business;
 - A flat drawing followed by separate depth objects that pop in: often the same drawing could stand up in place and hand its key element over instead. Keep the cut if it is a deliberate new world.
 - House style as default: giant cropped words, circle wipes at every cut, typed titles with a caret, a dot that becomes the logo.
 - A storyboard with motion words ("slams in", "wipe", "zoom") instead of roles and subjects. The user approves content; techniques come from the recipe plan.
-- Content rewritten when only the recipe changed. Keep the approved beats; redo only the plan.
+- Facts or approved lines rewritten when only the recipe changed. Keep them; with the same kind of subject redo only the plan, with another kind re-fit only the subjects and say which beats changed.
 - A second recipe built without being asked. Offer it in one line instead.
 
 ## Checklist every round
 
 Mark each item **Pass** or **Fail**. A failed Critical item must be fixed before the user presses "Buat video".
 
-| #   | Item                                                                                                                                              | Level       |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| 1   | Honest: no invented prices, testimonials, numbers, facts or contacts; illustrations labeled "Contoh"                                              | Critical    |
-| 2   | Purpose on mute is clear at the end (see above for the type)                                                                                      | Critical    |
-| 3   | Ending: action, name, contact held at least 2 s, inside the safe zone, readable at phone size                                                     | Critical    |
-| 4   | Text inside the safe zone, at most 7 words at once, never cropped or colliding, including during transitions                                      | Critical    |
-| 5   | Frame 0 is already composed or moving; no empty frame longer than 3 frames, no white flash at cuts                                                | Critical    |
-| 6   | None of the never-ship items                                                                                                                      | Important   |
-| 7   | One hero per frame; with text covered, every scene still shows a picture                                                                          | Important   |
-| 8   | Cuts follow the vector law (axis, direction, speed, cut mid-motion), no crossfades                                                                | Important   |
-| 9   | Motion by role: entrances decelerate, exits accelerate; no 4 identical entrances; at most one visible spring                                      | Important   |
-| 10  | Timing: text readable at least 1.2 s; no fully frozen frame (background too) over 0.6 s except designed pauses and the ending; scene lengths vary | Important   |
-| 11  | Storyboard: beats have roles and subjects, no motion words; content unchanged when only the recipe changed; no second recipe built unasked        | Important   |
-| 12  | One system: one motion personality, one accent color, at most two font families                                                                   | Opportunity |
-| 13  | One screenshot-worthy frame, nameable by its second                                                                                               | Opportunity |
+| #   | Item                                                                                                                                               | Level       |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| 1   | Honest: no invented prices, testimonials, numbers, facts or contacts; illustrations labeled "Contoh"                                               | Critical    |
+| 2   | Purpose on mute is clear at the end (see above for the type)                                                                                       | Critical    |
+| 3   | Ending fits the goal (selling: action, name, contact; story or lesson: the payoff, then the name or handle) held at least 2 s, in the safe zone    | Critical    |
+| 4   | Text inside the safe zone, at most 7 words at once, never cropped or colliding, including during transitions                                       | Critical    |
+| 5   | Frame 0 is already composed or moving; no empty frame longer than 3 frames, no white flash at cuts                                                 | Critical    |
+| 6   | None of the never-ship items                                                                                                                       | Important   |
+| 7   | One hero per frame; with text covered, every scene still shows a picture                                                                           | Important   |
+| 8   | Cuts follow the vector law (axis, direction, speed, cut mid-motion), no crossfades                                                                 | Important   |
+| 9   | Motion by role: entrances decelerate, exits accelerate; no 4 identical entrances; at most one visible spring                                       | Important   |
+| 10  | Timing: text readable at least 1.2 s; no fully frozen frame (background too) over 0.6 s except designed pauses and the ending; scene lengths vary  | Important   |
+| 11  | Storyboard: roles and subjects, no motion words; facts and lines kept on a recipe change (subjects re-fitted only across kinds); no unasked recipe | Important   |
+| 12  | One system: one motion personality, one accent color, at most two font families                                                                    | Opportunity |
+| 13  | One screenshot-worthy frame, nameable by its second                                                                                                | Opportunity |
 
 Before the preview: run items 1-11 on the storyboard and code (tween positions, text sizes, colors). After it: run all 13, then compare with the last round, marking each old failure Fixed, Partial or Still there.
 
-Report briefly in the user's language, e.g. "Review putaran 2: 11 dari 13 lulus. Gagal: #5 (kilat putih di 6,2 s karena `#root` tanpa latar), #9 (lima kartu menu masuk dengan fade-up yang sama). Saya perbaiki dua itu dulu." Fix at most the three worst failures per round, biggest impact first. Two or three rounds are usually enough; stop when fixes turn cosmetic.
+Report briefly in the user's language, e.g. "Review putaran 2: 11 dari 13 lulus. Gagal: #5 (kilat putih di 6,2 s karena `#root` tanpa latar), #9 (lima kartu menu masuk dengan fade-up yang sama). Saya perbaiki dua itu dulu." Fix at most the three worst failures per round, biggest impact first: fixing everything at once hides which change broke something new. At most two inspection rounds before the preview (see "How to look"), fewer when the fixes turn cosmetic; the user's comments on the preview start the next round.
 
 ## Adapted from
 
