@@ -8,7 +8,7 @@ metadata:
 
 # Video brief
 
-This is one step of the `video` skill's flow (goal, brand, type, brief, concept (the recipe), storyboard, build, review, preview, render). Do this step, then offer the next one; never render before the user has seen a preview and agreed.
+This is one step of the `video` skill's flow (workspace, goal, brand, material (Notes, research, Discover, references), type, brief, look (the recipe), storyboard, build, review, preview, render, post). Do this step, then offer the next one; never render before the user has seen a preview and agreed.
 
 `brief.md` beside this file is the reference: read "Order", "Needed before the storyboard", "Questions: one short batch", "Push to shot level", "Combined check" and "Brief format".
 

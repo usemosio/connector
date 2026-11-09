@@ -5,8 +5,8 @@ Turn "buatkan video" into a short brief and a content storyboard in chat, before
 ## Order
 
 1. Know the goal first (`SKILL.md`, Flow), then read the brand: `list_brands`; with several, ask which one unless the request already names it (a prompt from the dashboard carries `brand_id`); then `get_brand` with that `brand_id`. What it sets is already answered (business, voice, colours, fonts, logo, contact, products and prices): show it in the brief and never ask it again. When the user's message gives a different value (a promo price, a new number), the user's value wins: use it, note the difference in one line, and do not ask about it. What it lists under "Not set" (or marks "not set; ask the user") goes on the question list. Pass the same `brand_id` to every tool that makes the video. No brand and the video is a story, a lesson or a creator's post: go on without one and never ask for a business name.
-2. Take everything the user already said (product, price, topic, platform, duration, liked examples), then ask what is missing in **one batch of at most 5 questions** and wait.
-3. Write the brief and the content storyboard, show it with `preview_storyboard`, and wait for approval and a recipe pick. Then write the recipe plan and take the path chosen in `SKILL.md`.
+2. Take everything the user already said (product, price, topic, platform, duration, liked examples) and what the workspace already holds (`get_workspace_context`, `list_notes`: research from another app, saved Discover posts, figures), then ask only what is still missing in **one batch of at most 5 questions** and wait. Asking for what a note already says makes the user repeat work they did elsewhere.
+3. Write the brief and save it with `save_production_plan`; link the notes it came from with `promote_notes`. Then the look (`recommend_recipes`), the content storyboard for it, `preview_storyboard`, and wait for approval. Then write the recipe plan and build as `SKILL.md` says.
 
 ## Needed before the storyboard
 
