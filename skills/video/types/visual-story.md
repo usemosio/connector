@@ -28,7 +28,7 @@ Ask once, in the brief's question batch: "Mau pakai suaramu sendiri (rekam naska
 | 5   | Payoff that flips the question | "Lebah nggak perlu rumus. Segi enam udah paling efisien."              |
 | 6   | CTA (optional)                 | name and contact, the guide's ending held 2 s or more                  |
 
-- **One sentence = one beat = one visual metaphor.** 5-8 beats, 18-30 s in total with captions only; narrated, the recording's length. Both inside the plan's limit.
+- **One sentence = one beat = one visual metaphor.** 5-8 beats. With captions only, the length follows from the caption pace below and the recipe's tempo; narrated, the recording's length. Both inside the plan's limit.
 - **Write natively per language.** A casual register reads well ("nggak", "udah", "Cuma ada tiga bentuk yang bisa nutup rapat"). Never translate a pun literally: "The shape does" becomes "Segi enam udah paling efisien", not "Bentuknya yang berhitung".
 - Short sentences: about 10 words at most, so each splits into phrases of 1-5 tokens (`captions.md`).
 - **Facts are true, numbers are computed.** Show the working in the brief: equal-area cells (area 1) have perimeters 4,56 (triangle), 4,00 (square), 3,72 (hexagon), so the hexagon needs about 7% less wall than the square. No source and not common knowledge: ask, or keep the claim qualitative. Never invent.

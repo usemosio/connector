@@ -40,7 +40,7 @@ Without a recording, the reading time below sets every hold. With one, the voice
 - **Reading time**: text holds still at least **1.2 s + 0.25 s per word**. "Rendam 10 menit" (3 words) holds about 2 s; with a 0.5 s entrance and 0.8 s before the transition, that step is about 3.3 s.
 - **Numbered progress cue** in a fixed spot for the whole body: a "1/3" chip, dots or a stepper bar that fills one segment per step (tween `scaleX` on the fill, `transform-origin: left center` in CSS).
 - **Recap screen at the end**: all steps or the thesis in one view, 7 words max (icons plus one-word labels: "Rendam · Kucek · Bilas"), held at least the reading time. Then the ending held 2 s or more: the payoff and the name, handle or series; a CTA and contact only when the lesson sells something.
-- Typical length: hook 2 s, 3 steps of about 3.5 s, recap 3 s, ending 2.5 s, so 18-20 s. Stay inside the plan's limit; cut items before squeezing reading time.
+- Length: the recipe's tempo, but never below the reading time above for each step. Stay inside the plan's limit; cut items before squeezing reading time, because a step the viewer cannot read teaches nothing.
 
 ## Visuals
 
