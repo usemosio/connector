@@ -5,8 +5,8 @@ Turn "buatkan video" into a short brief and a content storyboard in chat, before
 ## Order
 
 1. Know the goal first (`SKILL.md`, Flow), then read the brand: `list_brands`; with several, ask which one unless the request already names it (a prompt from the dashboard carries `brand_id`); then `get_brand` with that `brand_id`. What it sets is already answered (business, voice, colours, fonts, logo, contact, products and prices): show it in the brief and never ask it again. When the user's message gives a different value (a promo price, a new number), the user's value wins: use it, note the difference in one line, and do not ask about it. What it lists under "Not set" (or marks "not set; ask the user") goes on the question list. Pass the same `brand_id` to every tool that makes the video. No brand and the video is a story, a lesson or a creator's post: go on without one and never ask for a business name.
-2. Take everything the user already said (product, price, topic, platform, duration, liked examples), then ask what is missing in **one batch of at most 5 questions** and wait.
-3. Write the brief and the content storyboard, show it with `preview_storyboard`, and wait for approval and a recipe pick. Then write the recipe plan and take the path chosen in `SKILL.md`.
+2. Take everything the user already said (product, price, topic, platform, duration, liked examples) and what the workspace already holds (`get_workspace_context`, `list_notes`: research from another app, saved Discover posts, figures), then ask only what is still missing in **one batch of at most 5 questions** and wait. Asking for what a note already says makes the user repeat work they did elsewhere.
+3. Write the brief and save it with `save_production_plan`; link the notes it came from with `promote_notes`. Then the look (`recommend_recipes`), the content storyboard for it, `preview_storyboard`, and wait for approval. Then write the recipe plan and build as `SKILL.md` says.
 
 ## Needed before the storyboard
 
@@ -17,10 +17,10 @@ Turn "buatkan video" into a short brief and a content storyboard in chat, before
 | Ending   | what the last beat leaves, by goal (table below)                                                             | "Pesan lewat WhatsApp" / "Simpan video ini" / "Deg-deg itu pintu yang ditutup darah"                   |
 | Contact  | only when the video sells or launches: exactly as customers use it (from the brand when set)                 | WA number, @account, Shopee store name, short address                                                  |
 | Size     | from where it is posted (the guide's sizes)                                                                  | Reels and TikTok: 9:16                                                                                 |
-| Duration | seconds                                                                                                      | 15 s                                                                                                   |
+| Duration | only when the user or the platform fixes one (an ad slot, "pas 15 detik"); otherwise the recipe sets it      | "pas 15 detik" / (not asked: the recipe's tempo)                                                       |
 | Feel     | at most 3: warm, premium, cheerful, urgent, calm, bold, modern (the brand's voice and motion style when set) | "hangat, ceria"                                                                                        |
 
-You may suggest size and duration if marked as a suggestion: 9:16 by default; 10-20 s to sell or announce, 15-30 s to launch, 30-60 s for a story or a lesson, inside the plan's limit. Prices, numbers, contacts, addresses, hours, testimonials, ratings and claims in a lesson (doses, results, times) come only from the user or the brand.
+You may suggest the size if marked as a suggestion (9:16 by default). Do not propose a length: the chosen recipe's tempo turns the beats' weights into seconds and the storyboard card shows the total, so a number picked before the recipe would fight it. When the user or the platform fixes a length, keep it and fit the beats and weights to it; with a narrated video, the recording sets it. Every length stays inside the plan's limit. Prices, numbers, contacts, addresses, hours, testimonials, ratings and claims in a lesson (doses, results, times) come only from the user or the brand.
 
 ### By goal
 
@@ -43,7 +43,7 @@ Biar videonya pas, 4 hal dulu:
 1. Menu mana yang mau ditonjolkan? Di brand ada Es Kopi Susu Gula Aren (Rp18.000) dan Es Kopi Pandan (Rp20.000).
 2. Siapa yang paling sering beli? (misal: mahasiswa sekitar kampus)
 3. Setelah nonton, orang harus ngapain: chat WA, datang, atau pesan di GoFood?
-4. Diunggah di mana? Saran saya Reels/TikTok, vertikal 15 detik.
+4. Diunggah di mana? Saran saya Reels/TikTok, vertikal.
 Nama usaha, warna, kontak, dan gaya bahasa saya ambil dari brand Kopi Senja.
 ```
 
@@ -55,7 +55,7 @@ Biar ceritanya kena, 5 hal dulu:
 2. Di akhir penonton harus merasa apa: kaget, paham, atau penasaran episode berikutnya?
 3. Fakta dan angkanya dari mana? Yang belum ada sumbernya saya tandai sebagai ilustrasi.
 4. Mau pakai suaramu sendiri (rekam naskahnya di HP) atau teks saja?
-5. Diunggah di mana? Saran saya TikTok/Reels, vertikal 30-45 detik.
+5. Diunggah di mana? Saran saya TikTok/Reels, vertikal.
 ```
 
 For a tips video, ask instead for the points in the owner's own words and whether each is true for their business. Empty answer: ask once more. Still empty: **never guess**. Write `[belum ada]` in the brief and leave that part out of the video (an ending without a number beats an invented one).
@@ -67,12 +67,12 @@ Adjectives and estimates are not answers. Offer two picturable options and their
 | User says                         | Reply with                                                                                                                                                     |
 | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | "Yang kekinian aja"               | "Kekinian yang mana: kata besar bergantian cepat seperti promo sneakers, atau putih bersih dengan satu produk besar dan banyak ruang kosong?"                  |
-| "Sekitar 15 detikan"              | "Saya kunci 15 detik: 5 bagian, satu ide per bagian. Oke?"                                                                                                     |
+| "Sekitar 15 detikan"              | "Saya kunci 15 detik, dan isinya saya sesuaikan. Oke?"                                                                                                         |
 | "Buat semua orang"                | "Siapa yang paling sering beli? Satu saja, nanti bahasanya saya sesuaikan."                                                                                    |
 | "Biar viral"                      | "Kalau berhasil, penonton melakukan apa: chat WA, datang, simpan, atau follow?" For a story: "Di akhir mereka harus merasa apa: kaget, paham, atau penasaran?" |
 | "Pokoknya edukatif"               | "Satu pertanyaan apa yang dijawab? Satu kalimat."                                                                                                              |
 | "Bikin yang bercerita"            | "Ceritanya tentang siapa atau apa, dan di akhir apa yang berubah?"                                                                                             |
-| "Masukin semua menu / semua tips" | "15 detik muat 3 yang terbaca. Mana 3 andalan? Sisanya bisa jadi video kedua."                                                                                 |
+| "Masukin semua menu / semua tips" | "Satu video muat 3 yang terbaca. Mana 3 andalan? Sisanya bisa jadi video kedua."                                                                               |
 | "Pokoknya ada diskon"             | "Diskonnya berapa, dari harga berapa, dan sampai kapan?"                                                                                                       |
 | "Terserah kamu"                   | Decide, list it under "Saran saya" with a one-line reason. Facts are still never guessed.                                                                      |
 
@@ -83,7 +83,7 @@ Adjectives and estimates are not answers. Offer two picturable options and their
 
 Before the storyboard, read all answers together and flag problems that only appear combined, in one sentence with a fix.
 
-- 6 s but 4 products or 5 tips: one item, or 15 s. "Calm" for a flash sale: "bold", or two videos.
+- A short length the user fixed (6 s) but 4 products or 5 tips: one item, or a longer video. "Calm" for a flash sale: "bold", or two videos.
 - 1:1 ending with address, number and hours: WA number only. 16:9 for WhatsApp status: 9:16.
 - Price and discount disagree (Rp100.000 to Rp70.000 called "diskon 50%"): ask which is right.
 
@@ -97,9 +97,9 @@ Brief
 - Untuk: mahasiswa sekitar kampus, Reels sore hari
 - Pesan inti: Kopi gula aren asli, Rp18.000
 - Ajakan: Pesan lewat WhatsApp · Kontak: [dari brand]
-- Ukuran: 9:16, 1080×1920 · Durasi: 15 detik · Rasa: hangat, santai
+- Ukuran: 9:16, 1080×1920 · Durasi: ikut tempo recipe · Rasa: hangat, santai
 Dari kamu dan brand: inti, untuk, ajakan, kontak, warna.
-Saran saya (perlu konfirmasi): 9:16 15 detik untuk Reels; sketsa recipe Produk utama (product-hero) dan Kinetic type karena satu produk dengan harga.
+Saran saya (perlu konfirmasi): 9:16 untuk Reels; sketsa recipe Produk utama (product-hero) dan Kinetic type karena satu produk dengan harga.
 ```
 
 A story brief has no offer or contact (illustrative):
@@ -111,8 +111,8 @@ Brief (cerita)
 - Payoff: deg-deg itu bunyi katup yang ditutup darah, bukan bunyi otot
 - Fakta: ±70 ml darah per detak (resmi: buku anatomi) · "sekitar ⅓ gelas" (dimodelkan, ditandai ilustrasi)
 - Penutup: payoff, lalu "coba dengar di dada kiri temanmu"
-- Suara: suaramu sendiri (rekam naskah) · Ukuran: 9:16 · Durasi: ±40 detik
-Dari kamu: pertanyaan, untuk, suara. Saran saya (perlu konfirmasi): payoff, penutup, durasi.
+- Suara: suaramu sendiri (rekam naskah) · Ukuran: 9:16 · Durasi: panjang rekamannya
+Dari kamu: pertanyaan, untuk, suara. Saran saya (perlu konfirmasi): payoff, penutup.
 ```
 
 ## Concept: the look before the beats
@@ -127,7 +127,7 @@ A recipe is not a skin. Each brings a world and a kind of subject (one object, a
 
 A video the user wants theirs to look like ("kayak gini", "referensinya ini", "contohnya") is a reference: you study it, and it never goes into the video.
 
-- **Getting it in.** A link alone (TikTok, Instagram, YouTube) cannot be opened or watched: ask for the file, or for 3-6 screenshots of its key moments. A video file comes in through the upload card (`upload_media`; `import_media` where the chat passes attachments as files), then `inspect_media` gives its numbered stills, hard cuts, silences and words. Screenshots attached in the chat you can see directly; they do not need to be in the media library. A file attached in the chat is not in the media library until it comes in one of those ways.
+- **Getting it in.** A public social video link goes through `import_reference`; wait for preparation, then `inspect_media` gives stills, cuts, timing and transcript. If the platform refuses it, ask for the file or 3-6 screenshots of key moments. A video file comes in through the upload card (`upload_media`; `import_media` where the chat passes attachments as files), then `inspect_media` gives its numbered stills, hard cuts, silences and words. Screenshots attached in the chat you can see directly; they do not need to be in the media library. A file attached in the chat is not in the media library until it comes in one of those ways.
 - **Reference or footage?** When it is not clear whether the user wants the file on screen (their own footage: `types/footage-edit.md`) or only its look, ask once. A reference never appears in the composition.
 - **Break it down** in 4-6 lines before any concept: its length and number of scenes (from the hard cuts), the seconds per scene, where the hook lands, how text appears (size, words at once, how it enters), camera and transitions, colour logic, how it ends, and whether it has a voice or music. Say what stills cannot show (the motion between them, the exact easing), and do not guess it.
 - **The concepts start from it** ("Concept"): one as close as possible (the nearest recipe by kind of subject and motion, given the reference's number of scenes and rhythm), one with the reference's structure in another look, and one different idea. Name the recipe each builds on. When no recipe is close, the closest concept is composed from the breakdown alone: say that its look is new, and sketch the storyboard in the nearest recipe (the card needs one).
@@ -138,7 +138,7 @@ A video the user wants theirs to look like ("kayak gini", "referensinya ini", "c
 
 **Layer 1, the content storyboard**, is what the user approves. It says what each beat says and shows, never how it moves, and its subjects live in the chosen concept's world.
 
-- 3-6 beats (6-8 s: 3, 10-15 s: 4-5, 20-30 s: 5-6; the tool takes at most 8). One idea per beat.
+- 3-6 beats (the tool takes at most 8). One idea per beat. Fewer, longer beats beat many rushed ones: each beat must leave time to read its line. With a length the user fixed, fit the count to it.
 - **Role**, one of: `hook` (stop the scroll), `problem` (the pain), `fact` (one statement), `step` (one step of a how-to), `compare` (two things: before and after, myth and fact, old and new price), `number` (one real figure), `proof` (a review, a detail, a result), `offer` (what is sold and the deal), `cta` (the one action and contact), `payoff` (the closing answer or lesson). The type file lists the usual sequence. Start with `hook`; end with `cta` when selling, `cta` with the date or a `payoff` when launching, `payoff` when teaching or telling.
 - **On-screen text**: exactly as it will show, at most 7 words, in quotes.
 - **Key word**: the word in that text where the beat lands.
@@ -175,7 +175,7 @@ After approval and the recipe pick, call `get_composition_guide` with that `reci
 
 - Each beat gets its role's technique, and its weight becomes seconds. Seconds are contiguous: each beat starts where the last ended, and the total becomes `data-duration`.
 - Add the motion and transitions here, never in layer 1: the event lands on the key word, and each beat moves into the next (wipe, mask, zoom, slide, words out before new words in), never a plain appear and disappear. Craft: `mosio/video-composition/craft/`.
-- Frame 0 is already composed or moving. Text to read holds at least 1.2 s. The last beat holds at least 2 s and exits in the final 0.5 s.
+- Frame 0 is already composed or moving: feeds autoplay from frame 0 and often take it as the default cover, so an empty first frame looks like a broken video and gets scrolled past. Text to read holds at least 1.2 s, the time a short line needs to be read once on a phone. The last beat holds at least 2 s, so the contact can be read or screenshotted, and exits in the final 0.5 s.
 - Do not rewrite the content: text, key words, data and order stay as approved. If the plan seems to need a content change, ask first.
 - Each beat start becomes a timeline label, e.g. `tl.addLabel("b3", 4.6)`, with beat 3 tweens at `"b3"` or `"b3+=0.2"`.
 

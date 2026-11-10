@@ -8,7 +8,7 @@ metadata:
 
 # Brand
 
-This is one step of the `video` skill's flow (goal, brand, type, brief, concept (the recipe), storyboard, build, review, preview, render). Do this step, then offer the next one; never render before the user has seen a preview and agreed.
+This is one step of the `video` skill's flow (workspace, goal, brand, material (Notes, research, Discover, references), type, brief, look (the recipe), storyboard, build, review, preview, render, post). Do this step, then offer the next one; never render before the user has seen a preview and agreed.
 
 1. `list_brands`. One brand: use it. Several: ask which one, unless the request already names it (a prompt from the dashboard carries `brand_id`). A video tool that answers `brand_required` lists the brands in `details.brands`: ask the user, never pick one yourself.
 2. `get_brand` with that `brand_id`: business, voice (tone, how it addresses customers, words to avoid), colours, heading and body fonts, motion style, contact, products with prices, and the logo. What it sets is answered: never ask it again. What it lists as not set: ask when the video needs it, or choose freely when it does not (a colour, a font).

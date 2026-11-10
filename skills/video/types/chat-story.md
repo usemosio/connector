@@ -44,7 +44,7 @@ const messages = [
 ## 7 words, pacing
 
 - One bubble holds at most 7 words; split longer answers into 2-3 bubbles from the same sender (0.2-0.3 s apart, no indicator). Education answers usually need this. When a bubble lands, the one two steps back dims to opacity 0.35-0.45 or has scrolled out: only the latest exchange reads clearly.
-- One message, one beat: pause, typing (answerer only), bubble. Never the whole chat at 0 s. 4-8 messages for 15-25 s; more means cut the story.
+- One message, one beat: pause, typing (answerer only), bubble. Never the whole chat at 0 s. 4-8 messages; more means cut the story, since each one needs its own pause, typing and read.
 
 | Part         | Value                  | Note                                      |
 | ------------ | ---------------------- | ----------------------------------------- |
@@ -118,7 +118,7 @@ The answerer's last bubble carries it: "Pesan sekarang, Kak" with the user's rea
 ## Variations and components
 
 - **Order flow**: small cards between bubbles (order summary, SVG product illustration, total), in with `back.out` like a bubble. Prices only from the user.
-- **FAQ or education Q&A**: each question followed by its answer, longer read pause on answers; 3 questions fill 20 s. A myth-vs-fact twist works as a surprise answer.
+- **FAQ or education Q&A**: each question followed by its answer, longer read pause on answers; three questions are plenty for one video. A myth-vs-fact twist works as a surprise answer.
 - **Real chat testimonial**: the `chat-testimoni` pattern (bubble typed letter by letter, then stars). Stars and scores only with a real rating.
 - **Surprise answer**: typing runs 1.5-2.5 s, then the punchline bubble lands slightly bigger.
 - Components: `search_registry` "chat" or "typing" returns `chat-message`, `chat-thread`, `typing-indicator`; they imitate iMessage (tail, "Delivered"), so restyle to the generic look first. Letter-by-letter typing: `hyperframes/hyperframes-animation/blueprints/typewriter-reveal.md` via `skill_library`.

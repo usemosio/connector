@@ -1,6 +1,6 @@
 # Social content: regular posts that get watched to the end
 
-Everyday content for Reels, TikTok, Shorts and WhatsApp Status: tips, behind the scenes, before/after, a series of posts, trends. Usually 9:16 and 6-30 s. Use this when planning the storyboard (`../brief.md`) and when judging the preview (`../review.md`). Sizes, safe zones and technical rules come from `get_composition_guide`. In one line: every frame is a function of timeline time, and every second must earn the next.
+Everyday content for Reels, TikTok, Shorts and WhatsApp Status: tips, behind the scenes, before/after, a series of posts, trends. 9:16 by default; the length comes from the recipe's tempo. Use this when planning the storyboard (`../brief.md`) and when judging the preview (`../review.md`). Sizes, safe zones and technical rules come from `get_composition_guide`. In one line: every frame is a function of timeline time, and every second must earn the next.
 
 ## Seven ground rules
 
@@ -27,15 +27,15 @@ One video, one idea. If the point does not fit in one sentence, it is not ready.
 
 ## Structure and time budget
 
-| Part   | Job                                                      | 15 s video      |
-| ------ | -------------------------------------------------------- | --------------- |
-| Hook   | open one question or promise, moving from frame one      | 0-1.5           |
-| Body   | 2-4 scenes, one idea each, the question stays open       | 1.5-12          |
-| Answer | close the hook's question: product, price, result        | last body scene |
-| Ending | CTA, name, contact (a creator: handle, why follow), 2 s+ | 12-15           |
+| Part   | Job                                                      | Weight            |
+| ------ | -------------------------------------------------------- | ----------------- |
+| Hook   | open one question or promise, moving from frame one      | short             |
+| Body   | 2-4 scenes, one idea each, the question stays open       | medium each       |
+| Answer | close the hook's question: product, price, result        | the last body one |
+| Ending | CTA, name, contact (a creator: handle, why follow), 2 s+ | long              |
 
 - Usual roles: hook → fact → fact → payoff → cta. Tips use one `step` per tip; before/after uses `compare`.
-- A 30 s video grows the body. The hook stays about 1.5 s.
+- A longer video grows the body (more scenes), never the hook: the hook is short so the scroll stops before the viewer decides to move on.
 - Never open with a lone logo, a greeting ("Halo kak"), or black for more than 0.3 s.
 
 ## Read points
