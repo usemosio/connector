@@ -9,18 +9,18 @@ For videos that will run with budget on Meta Ads (Facebook, Instagram) or TikTok
 
 ## Anatomy
 
-| Beat    | Job                                            | 15 s  | 30 s  |
-| ------- | ---------------------------------------------- | ----- | ----- |
-| Hook    | stop the thumb: problem, surprise or promise   | 0-2.5 | 0-3   |
-| Context | make the viewer feel the problem               | 2.5-5 | 3-8   |
-| Payoff  | product as the answer, one clear benefit       | 5-9   | 8-18  |
-| Proof   | one real number, demo or result                | 9-12  | 18-25 |
-| CTA     | one action, matches the hook, held 2 s or more | 12-15 | 25-30 |
+| Beat    | Job                                            | Weight |
+| ------- | ---------------------------------------------- | ------ |
+| Hook    | stop the thumb: problem, surprise or promise   | short  |
+| Context | make the viewer feel the problem               | medium |
+| Payoff  | product as the answer, one clear benefit       | long   |
+| Proof   | one real number, demo or result                | medium |
+| CTA     | one action, matches the hook, held 2 s or more | long   |
 
 - Usual roles: hook → problem → offer → proof → cta.
 - The hook trigger (key word or main image) must read before 2 s; viewers decide in one or two seconds.
-- 6 s bumper: hook 0-2, payoff 2-4, CTA 4-6. Drop context and proof.
-- Length guide: Meta Feed 6-15 s, Reels and Stories 8-15 s, TikTok In-Feed 15-30 s. Mosio default 10-20 s.
+- A bumper slot (6 s): hook, payoff, CTA only; drop context and proof.
+- Ad slots fix the length, so ask where the ad runs: Meta Feed 6-15 s, Reels and Stories 8-15 s, TikTok In-Feed 15-30 s. Fit the beats and weights to the slot; without a slot, the recipe's tempo sets it.
 - The hook moves cost per result most. Test hooks first, then offer, then CTA.
 
 ## Hook: one line, one image

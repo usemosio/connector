@@ -1,6 +1,6 @@
 # Promo: sale, discount, strike-through price
 
-A 6-15 s spot that announces **one offer** and gets people to act now: the discount lands, the old price is struck, the new price drops in, the code and deadline read, the CTA closes. Not a feature ad (see `ad.md`) and not a testimonial. Run `../brief.md` first; technical rules come from `get_composition_guide`.
+A short spot that announces **one offer** and gets people to act now: the discount lands, the old price is struck, the new price drops in, the code and deadline read, the CTA closes. Not a feature ad (see `ad.md`) and not a testimonial. Run `../brief.md` first; technical rules come from `get_composition_guide`.
 
 ## Pick the recipe
 
@@ -17,14 +17,16 @@ Everything comes from the user; guess nothing: original and promo price (or orig
 
 ## Beats
 
-| Beat              | Job                                                 | 6 s               | 10 s             | 15 s    |
-| ----------------- | --------------------------------------------------- | ----------------- | ---------------- | ------- |
-| Hook              | moment and shop name hit ("PROMO GAJIAN")           | 0-1               | 0-1.5            | 0-1.5   |
-| Discount          | big number lands ("40%")                            | 1-2.5             | 1.5-4            | 1.5-4.5 |
-| Strike price      | old price struck, new price drops                   | 2.5-4             | 4-7              | 4.5-8.5 |
-| Product           | one product visual                                  | (cut)             | under price, 4-7 | 8.5-11  |
-| Code and deadline | code chip and deadline, held still                  | (merged into CTA) | 7-8              | 11-12.5 |
-| CTA               | "Belanja sekarang", shop, contact, held 2 s or more | 4-6               | 8-10             | 12.5-15 |
+| Beat              | Job                                                 | Weight | In a short cut      |
+| ----------------- | --------------------------------------------------- | ------ | ------------------- |
+| Hook              | moment and shop name hit ("PROMO GAJIAN")           | short  | kept                |
+| Discount          | big number lands ("40%")                            | medium | kept                |
+| Strike price      | old price struck, new price drops                   | medium | kept                |
+| Product           | one product visual                                  | medium | cut                 |
+| Code and deadline | code chip and deadline, held still                  | short  | merged into the CTA |
+| CTA               | "Belanja sekarang", shop, contact, held 2 s or more | long   | kept                |
+
+The recipe's tempo turns these weights into seconds. When the recipe or a length the user fixed leaves little time, drop the rows marked cut or merged before squeezing any reading time.
 
 - Usual roles: hook → offer → proof → number → cta. A sale with a strike-through price: hook → number → compare → offer → cta.
 - One beat, one job. The hook never grows; longer cuts give each beat more breath. The discount number is the biggest thing on screen (Archivo Black or Bebas Neue).

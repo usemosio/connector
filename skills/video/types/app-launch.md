@@ -11,13 +11,13 @@ For a POS app, online shop, booking app, local SaaS, online course or a new feat
 
 ## Scene flow
 
-| Act      | 15 s              | 25 s  | Content                                                                       |
-| -------- | ----------------- | ----- | ----------------------------------------------------------------------------- |
-| Problem  | 0-2.3             | 0-3   | A familiar chore, no product ("Masih catat pesanan manual?"), then struck out |
-| Product  | 2.3-4.5           | 3-6   | Window or phone slides in, cursor enters from off screen                      |
-| Features | 4.5-10            | 6-17  | 2-3 beats (max 4), each one click and one result                              |
-| Proof    | (inside features) | 17-20 | A real number rises, or a clear "done" state                                  |
-| CTA      | 10.5-15           | 20-25 | Logo collapses into a button, cursor presses, name and contact hold 2 s+      |
+| Act      | Weight                          | Content                                                                       |
+| -------- | ------------------------------- | ----------------------------------------------------------------------------- |
+| Problem  | short                           | A familiar chore, no product ("Masih catat pesanan manual?"), then struck out |
+| Product  | medium                          | Window or phone slides in, cursor enters from off screen                      |
+| Features | medium each                     | 2-3 beats (max 4), each one click and one result                              |
+| Proof    | medium (inside features if short) | A real number rises, or a clear "done" state                                |
+| CTA      | long                            | Logo collapses into a button, cursor presses, name and contact hold 2 s+      |
 
 Usual roles: hook → fact → step → step → number → cta (the struck-out chore is the hook, the app reveal a fact, each feature a step).
 
@@ -119,4 +119,4 @@ Shorten by cutting features, not reading time. Cheap, clear changes: rows stagge
 - [iart-ai/ecommerce-video-skills](https://github.com/iart-ai/ecommerce-video-skills) (MIT, © iart.ai), commit `2bd0dd1`: `skills/product-demo-video/SKILL.md`, `skills/product-demo-video/references/annotation-and-transitions.md`, `skills/product-demo-video/references/screenshot-demo.md`.
 - [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) (Apache-2.0, © HeyGen and HyperFrames contributors), commit `908f2d0`: `.claude/skills/oversized-cursor/SKILL.md`, `skills/hyperframes-animation/blueprints/cursor-ui-demo.md`, `skills/hyperframes-animation/blueprints/cta-morph-press.md`.
 
-Changes by Mosio: condensed and merged into one flow that fits Mosio's composition rules (paused GSAP timeline, transforms instead of `left`/`top`, no audio, no CDN). Music and SFX, beat grids, the Playwright/ffmpeg pipeline, closed-form `seek(t)` springs, screenshots and browser frames with URLs, and content-swap blur were dropped or replaced with GSAP eases and opacity; added act tables for 15 and 25 s, honesty rules for small businesses (number list, real features, sample labels) and Indonesian examples. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.
+Changes by Mosio: condensed and merged into one flow that fits Mosio's composition rules (paused GSAP timeline, transforms instead of `left`/`top`, no audio, no CDN). Music and SFX, beat grids, the Playwright/ffmpeg pipeline, closed-form `seek(t)` springs, screenshots and browser frames with URLs, and content-swap blur were dropped or replaced with GSAP eases and opacity; added act weights, honesty rules for small businesses (number list, real features, sample labels) and Indonesian examples. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.
