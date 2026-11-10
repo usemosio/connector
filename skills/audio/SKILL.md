@@ -12,6 +12,8 @@ This is one step of the `video` skill's flow (workspace, goal, brand, material (
 
 A voice-over is spoken by the user's own Gemini or ElevenLabs account and billed there, not in credits; a wrong take costs them money and clutters their media. So the script is approved before it is spoken.
 
+The voice tools are on only where the server has them enabled. No `create_voiceover` in this conversation: say so, and offer the user's own recording instead (read the approved script on the phone, then `upload_media`); never claim a voice-over was made. Sound effects from the bundled library work either way.
+
 1. **Script first.** Write it in the brand's voice and the video's language, sized to the video: about 12-15 characters a second, so a 20 s video holds about 240-300 characters. Longer and the speaker rushes or the video overruns. Write it as it is spoken: numbers and abbreviations spelled out ("dua puluh ribu", not "20rb"). Show it and wait for a yes.
 2. **Voice.** `list_voices` shows a card where the user plays samples and picks one (the pick arrives as their next message); call it when they want to choose or describe a voice ("suara cewek yang ceria"). Gemini also has Indonesian and Javanese voices (`language`). No key: the result gives `settings_url`; send them there. Never ask for a key in the chat.
 3. **Speak it.** `create_voiceover` with the script (and `project_id` when the video exists). Delivery, a few tags only, where a person would:

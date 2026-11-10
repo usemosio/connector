@@ -11,13 +11,13 @@ For a POS app, online shop, booking app, local SaaS, online course or a new feat
 
 ## Scene flow
 
-| Act      | Weight                          | Content                                                                       |
-| -------- | ------------------------------- | ----------------------------------------------------------------------------- |
-| Problem  | short                           | A familiar chore, no product ("Masih catat pesanan manual?"), then struck out |
-| Product  | medium                          | Window or phone slides in, cursor enters from off screen                      |
-| Features | medium each                     | 2-3 beats (max 4), each one click and one result                              |
-| Proof    | medium (inside features if short) | A real number rises, or a clear "done" state                                |
-| CTA      | long                            | Logo collapses into a button, cursor presses, name and contact hold 2 s+      |
+| Act      | Weight                            | Content                                                                       |
+| -------- | --------------------------------- | ----------------------------------------------------------------------------- |
+| Problem  | short                             | A familiar chore, no product ("Masih catat pesanan manual?"), then struck out |
+| Product  | medium                            | Window or phone slides in, cursor enters from off screen                      |
+| Features | medium each                       | 2-3 beats (max 4), each one click and one result                              |
+| Proof    | medium (inside features if short) | A real number rises, or a clear "done" state                                  |
+| CTA      | long                              | Logo collapses into a button, cursor presses, name and contact hold 2 s+      |
 
 Usual roles: hook → fact → step → step → number → cta (the struck-out chore is the hook, the app reveal a fact, each feature a step).
 

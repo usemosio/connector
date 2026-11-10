@@ -12,6 +12,8 @@ This is one step of the `video` skill's flow (workspace, goal, brand, material (
 
 Posts go out in the user's own name, publicly, and cannot be changed from here once published. So nothing is published, replied to or hidden without the user's approval of the exact text, accounts and time.
 
+The social tools are on only where the workspace's server has posting enabled. No `list_social_accounts` in this conversation: say posting is not available here, give the finished video's link to post by hand, and never claim a post was made or scheduled.
+
 1. **Accounts.** `list_social_accounts`. None: send the `connect_url` (the dashboard, with each platform's own sign-in). Never ask for passwords.
 2. **What to post.** A finished video (`get_status` reports `done`; a draft full preview is never posted), the user's photos and videos (`list_social_uploads`), or text alone.
 3. **When.** `get_social_calendar` for what is already planned and the free slots (WIB by default); `get_social_best_times` for when that audience is active. Spread posts over free slots instead of stacking them.

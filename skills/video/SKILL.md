@@ -25,21 +25,21 @@ workspace → goal → brand → material (Notes · research · Discover · refe
 → fast preview → (full preview) → render → post → insights → next brief
 ```
 
-| #   | Step       | Do                                                                                                                                                         | Skill        |
-| --- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| 1   | Workspace  | `get_workspace_context` at the start and on "lanjutin yang kemarin"; name what you found in one line and build on it                                        | `research`   |
-| 2   | Goal       | what it is for, for whom, where it is posted, what the viewer does or feels after; take what the user said, never ask it again                              |              |
-| 3   | Brand      | `list_brands`, ask which when several, `get_brand`; same `brand_id` everywhere. None and it is a story, a lesson or a creator's post: go on without one      | `brand`      |
-| 4   | Material   | only the doors opened: notes and figures, cited research, what works for others, a reference video (for the look, never the content), the user's own media | `research`, `discover`, `edit` |
-| 5   | Type       | the table below; read `types/<type>.md`                                                                                                                     |              |
-| 6   | Brief      | `brief.md`: one batch of at most 5 questions; save with `save_production_plan`, link notes with `promote_notes`                                            | `brief`      |
-| 7   | Look       | `recommend_recipes` (2-3 with why); a story, a lesson or a launch gets 2-3 concepts to pick from                                                            | `recipe`     |
-| 8   | Storyboard | beats for that look, `preview_storyboard` (free), wait for approval                                                                                         | `storyboard` |
+| #   | Step       | Do                                                                                                                                                         | Skill                            |
+| --- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| 1   | Workspace  | `get_workspace_context` at the start and on "lanjutin yang kemarin"; name what you found in one line and build on it                                       | `research`                       |
+| 2   | Goal       | what it is for, for whom, where it is posted, what the viewer does or feels after; take what the user said, never ask it again                             |                                  |
+| 3   | Brand      | `list_brands`, ask which when several, `get_brand`; same `brand_id` everywhere. None and it is a story, a lesson or a creator's post: go on without one    | `brand`                          |
+| 4   | Material   | only the doors opened: notes and figures, cited research, what works for others, a reference video (for the look, never the content), the user's own media | `research`, `discover`, `edit`   |
+| 5   | Type       | the table below; read `types/<type>.md`                                                                                                                    |                                  |
+| 6   | Brief      | `brief.md`: one batch of at most 5 questions; save with `save_production_plan`, link notes with `promote_notes`                                            | `brief`                          |
+| 7   | Look       | `recommend_recipes` (2-3 with why); a story, a lesson or a launch gets 2-3 concepts to pick from                                                           | `recipe`                         |
+| 8   | Storyboard | beats for that look, `preview_storyboard` (free), wait for approval                                                                                        | `storyboard`                     |
 | 9   | Build      | `get_composition_guide` with the recipe, then the HTML; voice or music through `audio`                                                                     | `composition`, `motion`, `audio` |
-| 10  | Review     | `inspect_composition`, at most two rounds                                                                                                                   | `review`     |
-| 11  | Preview    | fast preview (`preview_composition`, free) every time; full preview (`quality: "draft"`, costs credits) only offered                                        | `composition` |
-| 12  | Render     | the user presses "Buat video" or agrees in chat; `get_status`, link, `project_url`; save `project_id` in the plan                                           | `composition` |
-| 13  | Post       | only when asked: calendar, caption, approval, then publish; insights feed the next brief                                                                    | `publish`    |
+| 10  | Review     | `inspect_composition`, at most two rounds                                                                                                                  | `review`                         |
+| 11  | Preview    | fast preview (`preview_composition`, free) every time; full preview (`quality: "draft"`, costs credits) only offered                                       | `composition`                    |
+| 12  | Render     | the user presses "Buat video" or agrees in chat; `get_status`, link, `project_url`; save `project_id` in the plan                                          | `composition`                    |
+| 13  | Post       | only when asked: calendar, caption, approval, then publish; insights feed the next brief                                                                   | `publish`                        |
 
 Why this order:
 
