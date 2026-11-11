@@ -10,15 +10,15 @@ Turn "buatkan video" into a short brief and a content storyboard in chat, before
 
 ## Needed before the storyboard
 
-| Field    | Accepted answer                                                                                              | Examples (promo / tips / social post)                                                                  |
-| -------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| Core     | one thing sold, taught or shown, with real numbers (the brand's products and prices when it is one of them)  | "Es kopi susu gula aren, Rp18.000" / "3 cara kemeja putih tetap putih" / "Roti dipanggang jam 4 subuh" |
-| For whom | one specific person, and where they watch                                                                    | office workers on Reels at lunch / moms washing at home, TikTok / the bakery's followers, IG Stories   |
-| Ending   | what the last beat leaves, by goal (table below)                                                             | "Pesan lewat WhatsApp" / "Simpan video ini" / "Deg-deg itu pintu yang ditutup darah"                   |
-| Contact  | only when the video sells or launches: exactly as customers use it (from the brand when set)                 | WA number, @account, Shopee store name, short address                                                  |
-| Size     | from where it is posted (the guide's sizes)                                                                  | Reels and TikTok: 9:16                                                                                 |
-| Duration | only when the user or the platform fixes one (an ad slot, "pas 15 detik"); otherwise the recipe sets it      | "pas 15 detik" / (not asked: the recipe's tempo)                                                       |
-| Feel     | at most 3: warm, premium, cheerful, urgent, calm, bold, modern (the brand's voice and motion style when set) | "hangat, ceria"                                                                                        |
+| Field    | Accepted answer                                                                                                                                            | Examples (promo / tips / social post)                                                                  |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| Core     | one thing sold, taught or shown, with real numbers (the brand's products and prices when it is one of them)                                                | "Es kopi susu gula aren, Rp18.000" / "3 cara kemeja putih tetap putih" / "Roti dipanggang jam 4 subuh" |
+| For whom | one specific person, and where they watch                                                                                                                  | office workers on Reels at lunch / moms washing at home, TikTok / the bakery's followers, IG Stories   |
+| Ending   | what the last beat leaves, by goal (table below)                                                                                                           | "Pesan lewat WhatsApp" / "Simpan video ini" / "Deg-deg itu pintu yang ditutup darah"                   |
+| Contact  | only when the video sells or launches: exactly as customers use it (from the brand when set), and the action that fits where it is posted (`platforms.md`) | WA number, @account, Shopee store name, short address                                                  |
+| Size     | from where it is posted (the guide's sizes)                                                                                                                | Reels and TikTok: 9:16                                                                                 |
+| Duration | only when the user or the platform fixes one (an ad slot, "pas 15 detik"); otherwise the recipe sets it                                                    | "pas 15 detik" / (not asked: the recipe's tempo)                                                       |
+| Feel     | at most 3: warm, premium, cheerful, urgent, calm, bold, modern (the brand's voice and motion style when set)                                               | "hangat, ceria"                                                                                        |
 
 You may suggest the size if marked as a suggestion (9:16 by default). Do not propose a length: the chosen recipe's tempo turns the beats' weights into seconds and the storyboard card shows the total, so a number picked before the recipe would fight it. When the user or the platform fixes a length, keep it and fit the beats and weights to it; with a narrated video, the recording sets it. Every length stays inside the plan's limit. Prices, numbers, contacts, addresses, hours, testimonials, ratings and claims in a lesson (doses, results, times) come only from the user or the brand.
 
@@ -36,7 +36,7 @@ A story, a lesson or a series has no price and needs no contact: never ask for t
 
 ## Questions: one short batch
 
-Owners are busy and answer on a phone. One message, numbered, at most 5, each answerable in one line. Factual questions (size, duration) get options with your suggestion first. Creative questions (feel, core message) stay open with one example, so you do not steer the answer.
+Users are busy and often answer on a phone. One message, numbered, at most 5, each answerable in one line. Factual questions (size, duration) get options with your suggestion first. Creative questions (feel, core message) stay open with one example, so you do not steer the answer.
 
 ```
 Biar videonya pas, 4 hal dulu:
@@ -58,7 +58,17 @@ Biar ceritanya kena, 5 hal dulu:
 5. Diunggah di mana? Saran saya TikTok/Reels, vertikal.
 ```
 
-For a tips video, ask instead for the points in the owner's own words and whether each is true for their business. Empty answer: ask once more. Still empty: **never guess**. Write `[belum ada]` in the brief and leave that part out of the video (an ending without a number beats an invented one).
+**Feel words become a choice.** "Yang elegan", "yang rame", "kekinian" mean different things to different owners. Turn the word into an A-or-B on one axis and add its "but not": "Elegan itu lebih ke gerak pelan dan banyak ruang kosong, atau huruf serif dan warna kalem? Elegan tapi jangan dingin, ya?" The brand's motion style answers most of these already; ask only when it does not.
+
+| The user says          | Ask which they mean                                                     | A guardrail to offer           |
+| ---------------------- | ----------------------------------------------------------------------- | ------------------------------ |
+| elegan, mewah, premium | slow eases and space / refined type / a restrained palette / soft light | elegan tapi jangan dingin      |
+| rame, heboh, nendang   | faster cuts / saturated colour / big scale jumps / more sound           | rame tapi tetap kebaca         |
+| simpel, clean          | one idea per scene / two things moving at most / few colours            | simpel tapi jangan sepi        |
+| kekinian, modern       | bold type / snappy cuts / a trend shape ("POV:")                        | kekinian tapi tetap brand kita |
+| lucu, playful          | bouncy eases / bright colours / a mascot or drawings                    | lucu tapi jangan kekanakan     |
+
+For a tips video, ask instead for the points in the user's own words and whether each is true for them. Empty answer: ask once more. Still empty: **never guess**. Write `[belum ada]` in the brief and leave that part out of the video (an ending without a number beats an invented one).
 
 ## Push to shot level
 
@@ -120,7 +130,7 @@ Dari kamu: pertanyaan, untuk, suara. Saran saya (perlu konfirmasi): payoff, penu
 A recipe is not a skin. Each brings a world and a kind of subject (one object, an illustrated world, characters, a conversation, an object's layers, type only, data, the user's footage), how much text a beat holds, and a tempo. Its plan in `get_composition_guide` and its description in `list_recipes` show which: "the subject stays, a numbered caption swaps below it" wants one object; "one short bubble per step" a conversation; "one part of the drawing per step, the camera following" an illustrated world. Beats written before the look is known fit some recipes and break in others, so the concept comes first.
 
 - **A quick sale whose facts decide it** (one product, its price, a contact): the concept is the 1-3 recipes with the same kind of subject that you send with the storyboard. No separate step.
-- **A story, a lesson, a launch, or a user who is unsure**: offer 2-3 concepts in one message. Each is a recipe plus the world or metaphor, the main subject, the 3-second hook, and captions only or the user's voice. They differ in idea, not only in colour (for the heart: a house of four rooms whose doors slam / a chalkboard diagram of the flow / one big counter of millilitres per beat). Recommend one in a line; `show_recipes` can show the recipes moving.
+- **A story, a lesson, a launch, or a user who is unsure**: offer 2-3 concepts in one message. Each is a recipe plus the world or metaphor, the main subject, the 3-second hook (`hooks.md`), and captions only or the user's voice. They differ in idea, not only in colour (for the heart: a house of four rooms whose doors slam / a chalkboard diagram of the flow / one big counter of millilitres per beat). Recommend one in a line; `show_recipes` can show the recipes moving.
 - The pick is **locked**: the storyboard is written for that recipe (its kind of subject, text per beat and tempo; narrated, the recording's length), and `preview_storyboard` sketches it in that recipe.
 
 ## A reference video
@@ -139,7 +149,7 @@ A video the user wants theirs to look like ("kayak gini", "referensinya ini", "c
 **Layer 1, the content storyboard**, is what the user approves. It says what each beat says and shows, never how it moves, and its subjects live in the chosen concept's world.
 
 - 3-6 beats (the tool takes at most 8). One idea per beat. Fewer, longer beats beat many rushed ones: each beat must leave time to read its line. With a length the user fixed, fit the count to it.
-- **Role**, one of: `hook` (stop the scroll), `problem` (the pain), `fact` (one statement), `step` (one step of a how-to), `compare` (two things: before and after, myth and fact, old and new price), `number` (one real figure), `proof` (a review, a detail, a result), `offer` (what is sold and the deal), `cta` (the one action and contact), `payoff` (the closing answer or lesson). The type file lists the usual sequence. Start with `hook`; end with `cta` when selling, `cta` with the date or a `payoff` when launching, `payoff` when teaching or telling.
+- **Role**, one of: `hook` (stop the scroll), `problem` (the pain), `fact` (one statement), `step` (one step of a how-to), `compare` (two things: before and after, myth and fact, old and new price), `number` (one real figure), `proof` (a review, a detail, a result), `offer` (what is sold and the deal), `cta` (the one action and contact), `payoff` (the closing answer or lesson). The type file lists the usual sequence. Start with `hook`; a video over about 15 s may carry a second `hook` in the middle as its re-hook (`hooks.md`); end with `cta` when selling, `cta` with the date or a `payoff` when launching, `payoff` when teaching or telling.
 - **On-screen text**: exactly as it will show, at most 7 words, in quotes.
 - **Key word**: the word in that text where the beat lands.
 - **Data**: the facts or numbers from the user or the brand that the beat uses. Nothing invented; missing means `[belum ada]` and the beat goes without it.
@@ -161,6 +171,15 @@ Education example ("3 cara kemeja putih tetap putih"): `hook` "Kemeja putihmu mu
 
 Story example ("Kenapa jantung bunyi deg-deg?"): `hook` "Deg-deg itu bukan suara otot?", `fact` "4 ruang, 4 pintu", two `step` beats (the first and the second valve closing), `number` "Sekali deg: ±70 ml" with its source in Data, then a `payoff` "Deg-deg = pintu ditutup darah". No `offer`, no `cta`, no contact.
 
+### Story tests before showing it
+
+- **Each row is an action, not a fact.** It says what moves and what it becomes, and what it carries in from the row before (an object, a shape, the camera). Two rows in a row that carry nothing are two slides.
+- **One line to remember.** Write the sentence the viewer should leave repeating next to the beats. A video that only informs plays as a brochure.
+- **The brand arrives as the answer.** After the problem, the product or the shop shows up as what solves it, ideally built from the thing that just acted (the WA bubble becomes the order button). Test: "why does the logo appear now?" answered from what is on screen.
+- **Say each fact once.** The same number in the hook and on a card is one fact told twice; cut one.
+- **One landing.** The last thing on screen is the ending, never ending, extra joke, ending again.
+- **A story states its change in two words with an arrow** (kusam → putih, sepi → antre). A list of looks is not a story yet.
+
 ## Show it and pick a recipe
 
 1. Call `preview_storyboard` with a short title, the beats, and in `recipes` the chosen concept's recipe, or for a quick sale the 1-3 recipes with the same kind of subject (how to pick them below; required). When the user already chose a recipe (a prompt from the dashboard's Recipes names it, e.g. "dengan recipe Papan menu (menu-board)"), send only that one. The card draws each beat as a hand-drawn sketch panel of its content, then offers your recipes as looks, each playing in the brand's colours, with every other recipe behind "Lihat recipe lain"; under each panel it shows how the picked look moves that beat and when. It is free and cheap: you send data, not HTML. Without a card (terminal, scripts), the same beats as a table in chat are enough.
@@ -174,7 +193,7 @@ Nearest recipe: `list_recipes` says what each recipe is for (its description, ta
 After approval and the recipe pick, call `get_composition_guide` with that `recipe`. Its "Recipe plan" section maps each role to a technique and gives the tempo: seconds per weight, endings at least 2 s. The plan sets the structure and the timing; the brand still wins on colours, fonts, logo, words and motion feel (the guide's "Recipe and brand").
 
 - Each beat gets its role's technique, and its weight becomes seconds. Seconds are contiguous: each beat starts where the last ended, and the total becomes `data-duration`.
-- Add the motion and transitions here, never in layer 1: the event lands on the key word, and each beat moves into the next (wipe, mask, zoom, slide, words out before new words in), never a plain appear and disappear. Craft: `mosio/video-composition/craft/`.
+- Add the motion and transitions here, never in layer 1: the event lands on the key word, and each beat moves into the next (wipe, mask, zoom, slide, words out before new words in), never a plain appear and disappear (a hard cut is a choice between footage shots and on a kinetic-type beat, not a missing transition). Craft: `mosio/video-composition/craft/`.
 - Frame 0 is already composed or moving: feeds autoplay from frame 0 and often take it as the default cover, so an empty first frame looks like a broken video and gets scrolled past. Text to read holds at least 1.2 s, the time a short line needs to be read once on a phone. The last beat holds at least 2 s, so the contact can be read or screenshotted, and exits in the final 0.5 s.
 - Do not rewrite the content: text, key words, data and order stay as approved. If the plan seems to need a content change, ask first.
 - Each beat start becomes a timeline label, e.g. `tl.addLabel("b3", 4.6)`, with beat 3 tweens at `"b3"` or `"b3+=0.2"`.
@@ -182,6 +201,7 @@ After approval and the recipe pick, call `get_composition_guide` with that `reci
 ## Revisions
 
 - A revision is not approval: show the new version and ask again.
+- **A vague note** ("kurang greget", "kok kayak murahan", "terlalu rame", "kurang mewah") is never a reason to change the code yet. Ask three things in one line: where (which second or scene), which axis (pace, colour, type, size, sound or message), and compared to what (a moment in this video, or a reference, that already feels right). Then change only that. Common answers: "terlalu cepat" slows the zooms and pans to about 0.7× and nothing else; "kayak slide" enters the next scene through an object already on screen; "tulisannya gerak terus" lands the titles and holds them still.
 - **Content edit** (text, data, order, a beat added or removed, a weight): change only those beats, call `preview_storyboard` again, ask again.
 - **Recipe change**, now or after the preview. Read the new recipe's plan with `get_composition_guide` first, then:
   - **Same kind of subject** (one big-type look for another, one product look for another): keep the beats as they are and redo only the plan. No new content approval.
@@ -197,5 +217,8 @@ After approval and the recipe pick, call `get_composition_guide` with that `reci
 - [feicaiclub/video-spec-builder](https://github.com/feicaiclub/video-spec-builder) (MIT, © feicaiclub), commit `9e73275`: `SKILL.md`, `references/workflow-0-1.md`, `references/question-bank.md`, `references/scene-breakdown.md`, `references/pacing-rules.md`, `templates/video-spec-template.md`.
 - [gloweaseco-leo/hyperdirector](https://github.com/gloweaseco-leo/hyperdirector) (Apache-2.0, © HyperDirector Contributors), commit `220fa2a`: `hyperdirector/prompts/02-intake-brief.md`, `hyperdirector/prompts/03-storyboard-generator.md`.
 - [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) (Apache-2.0, © HeyGen and HyperFrames contributors), commit `908f2d0`: `skills/hyperframes/references/brief-contract.md`, `skills/hyperframes/references/intent-interview.md`, `skills/hyperframes/references/storyboard-format.md`.
+- [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) (Apache-2.0, © HeyGen and HyperFrames contributors), commit `b12365d`: `skills/hyperframes/references/motion.md` (what to change for "too fast", "it feels like slides", "the titles move").
+- [alexgreensh/anidoodle](https://github.com/alexgreensh/anidoodle) (Apache-2.0, © Alex Greenshpun), commit `4ae27d2`: `skills/anidoodle/references/storytelling.md` (a row is an action, the message line, the brand as the answer, say each fact once, one landing, the change as two words with an arrow).
+- [iart-ai/freelance-motion-skills](https://github.com/iart-ai/freelance-motion-skills) (MIT, © iart.ai), commit `d85c2b4`: `skills/creative-brief/references/vague-translator.md`, `skills/client-revisions/references/feedback-translator.md`.
 
-Changes by Mosio: translated and condensed into one chat flow (no brand.md, MOTION.md, video-spec.md, BRIEF.md or JSON files), questions cut to one batch of at most 5 for small businesses, and the workspace brand from `get_brand` used first (its products, prices and contact are never asked again). Dropped voice, TTS, 3D, shaders, asset search and the 4-phase score; durations and text rules follow Mosio's guide (no audio, paused GSAP timeline, 2 s held ending), and examples cover Indonesian promos, tips and social posts. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.
+Changes by Mosio: translated and condensed into one chat flow (no brand.md, MOTION.md, video-spec.md, BRIEF.md or JSON files), questions cut to one batch of at most 5 for businesses and creators, and the workspace brand from `get_brand` used first (its products, prices and contact are never asked again). Dropped voice, TTS, 3D, shaders, asset search and the 4-phase score; durations and text rules follow Mosio's guide (no audio pipeline, paused GSAP timeline, 2 s held ending), and examples cover Indonesian promos, tips and social posts. Later added: the story tests before showing a storyboard, feel words turned into A-or-B questions with Indonesian guardrails, and a three-question decode for vague revision notes. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.

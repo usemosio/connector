@@ -61,6 +61,8 @@ Parts of the `video`, `brief`, `storyboard` and `review` skills are adapted from
 - [feicaiclub/video-spec-builder](https://github.com/feicaiclub/video-spec-builder) (MIT, © feicaiclub)
 - [gloweaseco-leo/hyperdirector](https://github.com/gloweaseco-leo/hyperdirector) (Apache-2.0, © HyperDirector Contributors)
 - [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) (Apache-2.0, © HeyGen and HyperFrames contributors)
+- [alexgreensh/anidoodle](https://github.com/alexgreensh/anidoodle) (Apache-2.0, © Alex Greenshpun)
+- [iart-ai/freelance-motion-skills](https://github.com/iart-ai/freelance-motion-skills) (MIT, © iart.ai)
 - [Tejashmakwana/motionmaxxing](https://github.com/Tejashmakwana/motionmaxxing) (Apache-2.0, © Tejas Makwana)
 - [echris6/motion-video-kit](https://github.com/echris6/motion-video-kit) (MIT, © echris6)
 - [kylezantos/design-motion-principles](https://github.com/kylezantos/design-motion-principles) (MIT, © Kyle Zantos)
@@ -80,4 +82,4 @@ Parts of the `video`, `brief`, `storyboard` and `review` skills are adapted from
 
 ## Bahasa Indonesia
 
-Plugin ini menghubungkan Claude dengan Mosio untuk membuat video motion pendek bagi usaha kecil dan kreator: promo, konten, edukasi, iklan, dan pengumuman (vertikal, kotak, portrait, atau lebar) dari recipe Mosio. Pasang dari direktori plugin Claude (atau connector `https://mcp.mosio.me/mcp`), masuk dengan akun Mosio, lalu minta videonya lewat chat. Data yang dikirim hanya argumen tool seperti di atas, plus foto, video, dan suara yang kamu pilih sendiri untuk diunggah. Kebijakan privasi: https://mosio.me/en/privacy/ · Syarat layanan: https://mosio.me/en/terms/
+Plugin ini menghubungkan Claude dengan Mosio untuk membuat video motion pendek bagi usaha, brand, kreator, dan pendidik: promo, konten, edukasi, iklan, dan pengumuman (vertikal, kotak, portrait, atau lebar) dari recipe Mosio. Pasang dari direktori plugin Claude (atau connector `https://mcp.mosio.me/mcp`), masuk dengan akun Mosio, lalu minta videonya lewat chat. Data yang dikirim hanya argumen tool seperti di atas, plus foto, video, dan suara yang kamu pilih sendiri untuk diunggah. Kebijakan privasi: https://mosio.me/en/privacy/ · Syarat layanan: https://mosio.me/en/terms/

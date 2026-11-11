@@ -8,12 +8,12 @@ metadata:
 
 # Making a video with Mosio
 
-Mosio renders short videos from HTML for small Indonesian businesses and creators, with sound effects from Mosio's bundled library (synthesized in code, and CC0 recordings) on the motion, plus the user's own footage or sound when they have it (`list_media`). You direct; Mosio checks, previews and renders. The hard rules live in `get_composition_guide` and win over anything here. Every look is a **recipe** (the dashboard's Recipes page): you write the HTML from the recipe's plan and example. `list_recipes` lists every current one with its id and what it is for: pick from that list, not from memory, because recipes are added and retired between plugin versions. The ids named in these files are starting points that exist today. Say "recipe" to the user; when the user says "template", they mean a recipe.
+Mosio renders short videos from HTML for businesses of any size, brands, creators and educators (Indonesian by default, not only), with sound effects from Mosio's bundled library (synthesized in code, and CC0 recordings) on the motion, plus the user's own footage or sound when they have it (`list_media`). You direct; Mosio checks, previews and renders. The hard rules live in `get_composition_guide` and win over anything here. Every look is a **recipe** (the dashboard's Recipes page): you write the HTML from the recipe's plan and example. `list_recipes` lists every current one with its id and what it is for: pick from that list, not from memory, because recipes are added and retired between plugin versions. The ids named in these files are starting points that exist today. Say "recipe" to the user; when the user says "template", they mean a recipe.
 
 ## Language
 
 - These instructions are English. Reply in the user's language.
-- On-screen text defaults to Indonesian for Indonesian businesses, otherwise it follows the user's language. Write it the way the owner talks to customers ("Pesan lewat WhatsApp", "Rp18.000", "Cek di Shopee").
+- On-screen text defaults to Indonesian for Indonesian users, otherwise it follows the user's language. Write it the way the user talks to their audience ("Pesan lewat WhatsApp", "Rp18.000", "Cek di Shopee"). Register, prices, phone numbers, the selling calendar and the ending per platform: [platforms.md](platforms.md).
 
 ## Flow
 
@@ -25,21 +25,21 @@ workspace → goal → brand → material (Notes · research · Discover · refe
 → fast preview → (full preview) → render → post → insights → next brief
 ```
 
-| #   | Step       | Do                                                                                                                                                         | Skill                            |
-| --- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| 1   | Workspace  | `get_workspace_context` at the start and on "lanjutin yang kemarin"; name what you found in one line and build on it                                       | `research`                       |
-| 2   | Goal       | what it is for, for whom, where it is posted, what the viewer does or feels after; take what the user said, never ask it again                             |                                  |
-| 3   | Brand      | `list_brands`, ask which when several, `get_brand`; same `brand_id` everywhere. None and it is a story, a lesson or a creator's post: go on without one    | `brand`                          |
-| 4   | Material   | only the doors opened: notes and figures, cited research, what works for others, a reference video (for the look, never the content), the user's own media | `research`, `discover`, `edit`   |
-| 5   | Type       | the table below; read `types/<type>.md`                                                                                                                    |                                  |
-| 6   | Brief      | `brief.md`: one batch of at most 5 questions; save with `save_production_plan`, link notes with `promote_notes`                                            | `brief`                          |
-| 7   | Look       | `recommend_recipes` (2-3 with why); a story, a lesson or a launch gets 2-3 concepts to pick from                                                           | `recipe`                         |
-| 8   | Storyboard | beats for that look, `preview_storyboard` (free), wait for approval                                                                                        | `storyboard`                     |
-| 9   | Build      | `get_composition_guide` with the recipe, then the HTML; voice or music through `audio`                                                                     | `composition`, `motion`, `audio` |
-| 10  | Review     | `inspect_composition`, at most two rounds                                                                                                                  | `review`                         |
-| 11  | Preview    | fast preview (`preview_composition`, free) every time; full preview (`quality: "draft"`, costs credits) only offered                                       | `composition`                    |
-| 12  | Render     | the user presses "Buat video" or agrees in chat; `get_status`, link, `project_url`; save `project_id` in the plan                                          | `composition`                    |
-| 13  | Post       | only when asked: calendar, caption, approval, then publish; insights feed the next brief                                                                   | `publish`                        |
+| #   | Step       | Do                                                                                                                                                                                                                                           | Skill                            |
+| --- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| 1   | Workspace  | `get_workspace_context` at the start and on "lanjutin yang kemarin"; name what you found in one line and build on it                                                                                                                         | `research`                       |
+| 2   | Goal       | what it is for, for whom, where it is posted, what the viewer does or feels after; take what the user said, never ask it again. Never propose a length: the recipe sets it. A story or a lesson never asks for a price, contact or shop name |                                  |
+| 3   | Brand      | `list_brands`, ask which when several, `get_brand`; same `brand_id` everywhere. None and it is a story, a lesson or a creator's post: go on without one                                                                                      | `brand`                          |
+| 4   | Material   | only the doors opened: notes and figures, cited research, what works for others, a reference video (for the look, never the content), the user's own media                                                                                   | `research`, `discover`, `edit`   |
+| 5   | Type       | the table below; read `types/<type>.md`                                                                                                                                                                                                      |                                  |
+| 6   | Brief      | `brief.md`: one batch of at most 5 questions; save with `save_production_plan`, link notes with `promote_notes`; the hook from `hooks.md`                                                                                                    | `brief`                          |
+| 7   | Look       | `recommend_recipes` (2-3 with why); a story, a lesson or a launch gets 2-3 concepts to pick from                                                                                                                                             | `recipe`                         |
+| 8   | Storyboard | beats for that look, `preview_storyboard` (free), wait for approval                                                                                                                                                                          | `storyboard`                     |
+| 9   | Build      | `get_composition_guide` with the recipe, then `edit_composition` (`start` or `html` once, `edits` after); voice or music through `audio`                                                                                                     | `composition`, `motion`, `audio` |
+| 10  | Review     | `inspect_composition`, at most two rounds                                                                                                                                                                                                    | `review`                         |
+| 11  | Preview    | fast preview (`preview_composition`, free) every time; full preview (`quality: "draft"`, costs credits) only offered                                                                                                                         | `composition`                    |
+| 12  | Render     | the user presses "Buat video" or agrees in chat; `get_status`, link, `project_url`; save `project_id` in the plan                                                                                                                            | `composition`                    |
+| 13  | Post       | only when asked: calendar, caption, approval, then publish; insights feed the next brief                                                                                                                                                     | `publish`                        |
 
 Why this order:
 
@@ -86,7 +86,7 @@ Ambiguous cases:
 ## Composition essentials
 
 - The guide's technical rules are checked before render: one HTML file, one paused GSAP timeline, no clock, randomness or CDN, the user's own photos, footage and sound only at the paths `list_media` gives, small `data:` images otherwise, under 200,000 characters, CPU render.
-- Every type keeps: the guide's sizes and safe zones, at most 7 words on screen at once, an ending (CTA, name, contact) held at least 2 s.
+- Every type keeps: the guide's sizes and safe zones, at most 7 words on screen at once, a first second that hooks ([hooks.md](hooks.md)), an ending (CTA, name, contact) held at least 2 s, no more than 3 flashes a second.
   - 7 words: a viewer scrolling on a phone reads one glance per beat; a longer line is still being read when the beat changes, so the message is lost.
   - Safe zones: Reels and TikTok cover the edges with the caption, buttons and account name; text there is hidden on the real post even when the preview shows it.
   - 2 s ending: the contact is what turns a view into an order; viewers need time to read it or take a screenshot.
@@ -94,8 +94,10 @@ Ambiguous cases:
 
 ## Truth
 
-- Never invent prices, discounts, testimonials, ratings, numbers, contacts, addresses or opening hours. Ask, or leave them out of the video. The owner posts the video under their own name: a wrong price has to be honoured or explained to customers, and a made-up review misleads customers and breaks consumer-protection and platform ad rules. A missing detail costs nothing.
+- Never invent prices, discounts, testimonials, ratings, numbers, contacts, addresses or opening hours. Ask, or leave them out of the video. The user posts the video under their own name: a wrong price has to be honoured or explained to customers, and a made-up review misleads customers and breaks consumer-protection and platform ad rules. A missing detail costs nothing.
 - What the user says in this conversation wins over the brand (its prices may be out of date, or this is a promo). Use the user's facts, mention the difference in one line in the brief ("di brand tercatat Rp18.000; saya pakai Rp25.000 dari kakak"), and keep going: never hold the storyboard for it.
+- Halal, BPOM, health results and other claims that need proof: only as the user gives them ([platforms.md](platforms.md), "Claims that need proof").
+- No running countdown clock ("sisa 02:59:59" ticking down): the video is watched hours or days later, so the time left would be false, and fake urgency gets ads rejected. Write the real deadline ("Berakhir 12.12 pukul 23.59") or use a short "3, 2, 1" count-in.
 - Label every illustration on screen: "Contoh" or "Ilustrasi" (sample chats, sample numbers, mock UI).
 - Never call Mosio an "AI video generator". Mosio uses no AI models to make images or video; the motion is written as code (a voice-over is spoken with the user's own Gemini or ElevenLabs key).
 
@@ -113,4 +115,4 @@ Each render costs credits equal to its duration and cannot be undone, which is w
 
 - [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) (Apache-2.0, © HeyGen and HyperFrames contributors), commit `908f2d0`: `skills/hyperframes/SKILL.md`.
 
-Changes by Mosio: kept only the routing idea (one entry point, route once by the requested deliverable, first matching row, explicit tie-breakers) and rewrote it for Mosio's video types and its composition path, with Mosio's composition rules (paused GSAP timeline, no audio, no CDN). Dropped project state, CLI install and usage checks, media, audio and Studio routing. Added the flow (with the brand step and recipes), the language, truth and credit rules. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.
+Changes by Mosio: kept only the routing idea (one entry point, route once by the requested deliverable, first matching row, explicit tie-breakers) and rewrote it for Mosio's video types and its composition path, with Mosio's composition rules (paused GSAP timeline, no audio pipeline, no CDN). Dropped project state, CLI install and usage checks, media, audio and Studio routing. Added the flow (with the brand step and recipes), the language, truth and credit rules. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.

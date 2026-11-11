@@ -18,7 +18,7 @@ In the one batch of questions from `brief.md`, ask only what the clips and the b
 - the length and size (default 9:16, 15-30 s for a montage or promo, 20-45 s for talking content);
 - moments that must stay and moments to cut ("yang bagian ketawa jangan dibuang");
 - subtitles yes or no, and the spoken words if yes;
-- music: their own uploaded track, or the clip's own sound only (Mosio adds no music).
+- music: their own uploaded track, the clip's own sound only, or a bed made with their own ElevenLabs key through the `audio` skill when that is connected.
 
 ## 3. The edit plan, then wait
 
@@ -58,4 +58,4 @@ From the transcript (or the user's own text), score each candidate passage of 15
 - [kurbaitaev/ghost-editor](https://github.com/kurbaitaev/ghost-editor) (MIT, © kurbaitaev), commit `8b9a3c5`: `references/broll.md` (budgets: full-screen b-roll at most 25% of the runtime, the speaker on screen at least 65%).
 - [kmilo93sd/agent-video-editor](https://github.com/kmilo93sd/agent-video-editor) (MIT, © kmilo93sd), commit `8e32c0a`: `skills/editing-videos/recipes/talking-head.md` (hook without a greeting or logo intro, sections that open with a mini-hook).
 
-Changes by Mosio: rewritten as a Mosio video type for small businesses and creators: footage uploaded from the chat or the workspace's Media page, eyes through `inspect_media`, spoken words from Mosio's automatic transcript (checked with the user) or the user's own script, the edit plan as the storyboard, recipes only for the graphics layer, Mosio's credits, consent and truth rules. Dropped the sources' own transcription steps, face tracking, generated b-roll and narration, scripts and render commands. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.
+Changes by Mosio: rewritten as a Mosio video type for businesses and creators: footage uploaded from the chat or the workspace's Media page, eyes through `inspect_media`, spoken words from Mosio's automatic transcript (checked with the user) or the user's own script, the edit plan as the storyboard, recipes only for the graphics layer, Mosio's credits, consent and truth rules. Dropped the sources' own transcription steps, face tracking, generated b-roll and narration, scripts and render commands. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.

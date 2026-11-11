@@ -7,21 +7,21 @@ Everyday content for Reels, TikTok, Shorts and WhatsApp Status: tips, behind the
 1. **Transform, don't cut.** Scenes change through a shape that morphs, a colour that floods, text revealed from behind a line, a zoom through an object. Hard cuts only on decisive moments (price lands, before/after).
 2. **One background, one text colour, one accent.** One heading face and one body face (two families max).
 3. **On-screen text carries the message.** Most people watch muted. Sound is Mosio's effects plus the user's own media: their voice, when they record one, is timed to the words on screen.
-4. **Something moves in the first 2 s**: a glass drops in, a chat arrives, a button is pressed. Not a gradient with a centred title fading in.
+4. **The first second hooks** (`mosio/video/hooks.md`): frame 0 is already composed, something changes by 0.5 s (a glass drops in, a chat arrives, a button is pressed), the hook line reads by 1 s. Not a gradient with a centred title fading in.
 5. **A new event every 2-4 s, but only one thing to read at a time.** Motion may be fast; meaning gets time.
 6. **The end echoes the start.** The last frame reuses the opening object, line or shape in its changed state.
 7. **Facts need a source.** Numbers, ratings, customer counts and claims only from the user. No number? No number.
 
 ## Pick the format
 
-| Format            | Shape                                                                                     | Watch for                                                                                                               |
-| ----------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Tips              | hook "3 cara ..." then one tip per screen, numbered ("1/3"), then recap or CTA            | 3 tips is strongest; each tip 7 words max                                                                               |
-| Behind the scenes | process steps in order (dough, oven, packing), one step per scene                         | no photos? SVG shapes labelled "Ilustrasi"                                                                              |
-| Before/after      | same framing both sides, a wipe or hard cut on the turn, then the result held             | only the user's own photos; never fake a result                                                                         |
-| Series            | same opening frame, colours and layout every episode; "Bagian 2/5" chip                   | one composition, swap only text per episode; each episode stands alone; end with "Besok: ..." only if the user plans it |
-| Trend             | a text-led trend shape ("POV: ...", "Hal yang saya tahu setelah ...") in the brand's look | trend audio is added in the app after render; never promise motion synced to a song                                     |
-| WhatsApp Status   | contacts who already know the shop; one tap skips it                                      | hook works in 1 s; direct CTA "Balas status ini untuk pesan"; keep it short                                             |
+| Format            | Shape                                                                                     | Watch for                                                                                                                                                                  |
+| ----------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tips              | hook "3 cara ..." then one tip per screen, numbered ("1/3"), then recap or CTA            | 3 tips is strongest; each tip 7 words max                                                                                                                                  |
+| Behind the scenes | process steps in order (dough, oven, packing), one step per scene                         | no photos? SVG shapes labelled "Ilustrasi"                                                                                                                                 |
+| Before/after      | same framing both sides, a wipe or hard cut on the turn, then the result held             | only the user's own photos; never fake a result                                                                                                                            |
+| Series            | same opening frame, colours and layout every episode; "Bagian 2/5" chip                   | one composition, swap only text per episode; each episode stands alone; end with "Besok: ..." only if the user plans it                                                    |
+| Trend             | a text-led trend shape ("POV: ...", "Hal yang saya tahu setelah ...") in the brand's look | trend audio is added in the app after render, so never promise motion synced to that song; cut on a neutral 0.5 s grid (120 BPM) so most trend sounds can land on the cuts |
+| WhatsApp Status   | contacts who already know the shop; one tap skips it                                      | hook works in 1 s; direct CTA "Balas status ini untuk pesan"; keep it short                                                                                                |
 
 One video, one idea. If the point does not fit in one sentence, it is not ready. A second idea is a second video.
 
@@ -64,7 +64,7 @@ Scene 2 (1.5-4.5)
 ## Text density and look
 
 - 7 words on screen max: one heading plus at most two short support lines, sizes from the guide. Lines that carry information (strikes, charts) at least 2 px.
-- No full stop at the end of on-screen lines; ? and ! are fine. Small labels in caps, tracked 0.2-0.4 em. Numbers in `tabular-nums`.
+- No full stop at the end of on-screen lines; ? and ! are fine. A small label (a series chip, a category) may be caps tracked 0.1-0.2 em, one per screen at most, never as decoration on every scene. Numbers in `tabular-nums`.
 - Accent only on the most important thing in that second, about 10% of the screen or less. A second accent only for the opponent: old price, "sebelum", a mistake.
 - Dark backgrounds are tinted black (`#0b0a08`, `#0b080b`), light ones paper (`#f4f2ee`, `#ece4d4`); derive from the brand with `color-mix()`. Flipping dark to light at the turn (problem to solution) is a cheap, strong rhythm tool.
 - Glow only on the hero (product, number). Vignette with `radial-gradient`; no full-screen blur or `backdrop-filter`.
@@ -79,7 +79,7 @@ One look per video; borrow another for one scene at most:
 | Facts, milestones, comparisons    | black, white, grey plus one colour, left-aligned | `angka-capaian`, `dasbor-iklan`  |
 | Home bakery, crafts, warm stories | paper colours, flat layers, 3-5 fixed colours    | `menu-board` as a starting point |
 
-Transitions (colour flood, shape morph, line reveal, zoom through, iris, match cut, cut on motion): see `mosio/video-composition/craft/transitions.md`. Avoid crossfade as default, blur-ins and 3D flips.
+Transitions (colour flood, shape morph, line reveal, zoom through, iris, match cut, cut on motion): see `mosio/video-composition/craft/transitions.md`. Avoid crossfade as default, blur-ins on big text or whole scenes (a brief blur on a small element is fine, `craft/kinetic-type.md`) and 3D flips.
 
 ## Endings and loops
 
@@ -92,7 +92,7 @@ Gradient-plus-centred-title openers; every element with the same fade; generic p
 
 ## Judge the preview
 
-After `preview_composition`, score 1-10: first-2-s hook, readable on a phone, motion quality, event density, look consistency. Fix the worst three and preview again until all are 8 or more. Then check: something moves at 0-2 s; one event per scene with no stacked read points; every scene change has a transition; the ending echoes the opener and holds 2 s.
+Judge it with `review.md`: its checklist, at most two inspection rounds, the three worst failures first. For social content, weigh three things hardest: the first-second hook, an event every few seconds, one consistent look. Then check: something changes by 0.5 s; one event per scene with no stacked read points; every scene change has a transition; the ending echoes the opener and holds 2 s.
 
 More (hook patterns, pattern interrupts, platform safe zones): `skill_library` `short-form/short-form-video/SKILL.md` and `short-form/short-form-video/references/retention-pacing.md`. Their examples are Remotion; translate them to tweens on the Mosio timeline.
 
@@ -100,4 +100,4 @@ More (hook patterns, pattern interrupts, platform safe zones): `skill_library` `
 
 - [crawfordxx/xiaoma-studio](https://github.com/crawfordxx/xiaoma-studio) (MIT, © xiaoma-studio contributors), commit `6f7b492`: `SKILL.md`, `references/aesthetics.md`, `references/storyboard.md`, `references/motion.md`, `templates/STORYBOARD.md`.
 
-Changes by Mosio: translated from Chinese, condensed and adapted to Mosio's composition rules (paused GSAP timeline, no audio, no CDN) for Indonesian small businesses on Reels, TikTok, Shorts and WhatsApp Status. The render engine, CLIs, audio, music, voice, bilingual subtitles, image and video models, web and slide parts were dropped, and the 10 original archetypes were reduced to five looks mapped to Mosio styles; added the ending rule, WhatsApp Status, preview scoring and the social formats (tips, behind the scenes, before/after, series, trends). Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.
+Changes by Mosio: translated from Chinese, condensed and adapted to Mosio's composition rules (paused GSAP timeline, no audio pipeline, no CDN) for Indonesian brands and creators on Reels, TikTok, Shorts and WhatsApp Status. The render engine, CLIs, audio, music, voice, bilingual subtitles, image and video models, web and slide parts were dropped, and the 10 original archetypes were reduced to five looks mapped to Mosio styles; added the ending rule, WhatsApp Status, preview scoring and the social formats (tips, behind the scenes, before/after, series, trends). Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.

@@ -89,7 +89,7 @@ Narrated: token and phrase times come from the recording, not from the reading p
 ## Colour and type
 
 - **Warm dark world**: `radial-gradient` #2a1d0e to #0d0a07 with a faint 40 px grid (about 2% white). A light world (#fafafa, grid about 3.5% black) is allowed between worlds.
-- **Semantic colour**, the same meaning for the whole film. The colour change tells the story: three wall bars tint red, amber, green on "paling sedikit.".
+- **Semantic colour**, the same meaning for the whole film. The colour change tells the story: three wall bars tint red, amber, green on "paling sedikit.". Colour is never the only cue: about one man in twelve cannot tell red from green, so each bar also carries its number, and the best one its position or a check.
 
 | Colour                  | Means                                  |
 | ----------------------- | -------------------------------------- |
@@ -101,7 +101,7 @@ Narrated: token and phrase times come from the recording, not from the reading p
 
 - Type: Inter (Google Fonts, 400/700/900) for captions, tags and counters; concept words living in the scene in Playfair Display italic (`vendor/`). Two families at most, so formulas use Inter with `tabular-nums`.
 - Counters start on the number's token, count 0.5-0.8 s with `power2.out`, weight 900, semantic colour, id-ID format ("4,56"; `mosio/video-composition/craft/numbers.md`).
-- **Footnote** "Ilustrasi · tidak sesuai skala" ("Illustration · not to scale" in English) on every illustrative scene: 40 px, about 60% opacity, centred in its zone.
+- **Footnote** "Ilustrasi · tidak sesuai skala" ("Illustration · not to scale" in English) on every illustrative scene: 40 px, about 75% opacity so it still reads against the dark world, centred in its zone.
 
 ## Do not
 
@@ -109,7 +109,7 @@ Narrated: token and phrase times come from the recording, not from the reading p
 - Use three.js, WebGL or a canvas over text; force depth, or open on an object from an unusual angle.
 - Cut to a new diagram to show "what's inside"; open the object instead.
 - Invent numbers or facts, or use stock photos of real people as heroes.
-- Promise a voice the user did not give: Mosio plays only a recording the user uploads.
+- Add a voice the user did not ask for: a voice-over is the user's recording, or made with their own key through the `audio` skill on request; the captions still tell the whole story on mute.
 
 ## Before you send
 

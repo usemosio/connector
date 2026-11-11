@@ -51,7 +51,7 @@ const messages = [
 | Pause before | 0.3-0.5 s              |                                           |
 | Typing       | 0.5-0.9 s              | 1.5-2.5 s before a surprise or key answer |
 | Bubble in    | 0.35-0.45 s            | `back.out(1.6)` from the sender corner    |
-| Read         | 1.2 s + 0.2 s per word | the guide's 1.2 s minimum                 |
+| Read         | 0.5 s + 0.3 s per word | the guide's rule, never under 1.2 s       |
 | Ending       | 2 s+ held              | CTA, name, contact                        |
 
 ## Core code
@@ -133,4 +133,4 @@ The answerer's last bubble carries it: "Pesan sekarang, Kak" with the user's rea
 
 - [iart-ai/text-message-video-skills](https://github.com/iart-ai/text-message-video-skills) (MIT, © iart.ai), commit `3a800e1`: `skills/text-message-animation/SKILL.md`, `skills/text-message-animation/references/bubble-recipes.md`, `skills/text-message-animation/references/data-driven.md`.
 
-Changes by Mosio: condensed and rewritten from Remotion to one paused GSAP timeline (auto-scroll as a tween, bubble height from data, no audio, no CDN). Per-message sounds, iMessage/WhatsApp look-alikes, CSV batch rendering and render commands were dropped; added honesty rules ("Ilustrasi" label, testimonials only from real chats, correct answers for education), the 7-word bubble rule, the CTA from the last message, the education Q&A flavour and Indonesian examples. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.
+Changes by Mosio: condensed and rewritten from Remotion to one paused GSAP timeline (auto-scroll as a tween, bubble height from data, no audio pipeline, no CDN). Per-message sounds, iMessage/WhatsApp look-alikes, CSV batch rendering and render commands were dropped; added honesty rules ("Ilustrasi" label, testimonials only from real chats, correct answers for education), the 7-word bubble rule, the CTA from the last message, the education Q&A flavour and Indonesian examples. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.

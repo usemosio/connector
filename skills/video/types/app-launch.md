@@ -92,8 +92,8 @@ Shorten by cutting features, not reading time. Cheap, clear changes: rows stagge
 
 ## Proof and numbers
 
-- Count up per `mosio/video-composition/craft/numbers.md`: `power3.out` 1.2-1.8 s, land exactly on the real figure, `tabular-nums` in a fixed-width box.
-- Round down only ("12.000+" from 12,480); rounding up is inventing. Client logos only with permission, one at a time in one swapping shape, not a "trusted by" row.
+- Count up per `mosio/video-composition/craft/numbers.md`: `power3.out` over the hero-number range there, land exactly on the real figure, `tabular-nums` in a fixed-width box.
+- The exact figure the user gave. "12.000+" from 12.480 only when the user agrees to round (`craft/numbers.md`), and then only down: rounding up is inventing. Client logos only with permission, one at a time in one swapping shape, not a "trusted by" row.
 
 ## Ending: logo collapses into the button
 
@@ -119,4 +119,4 @@ Shorten by cutting features, not reading time. Cheap, clear changes: rows stagge
 - [iart-ai/ecommerce-video-skills](https://github.com/iart-ai/ecommerce-video-skills) (MIT, © iart.ai), commit `2bd0dd1`: `skills/product-demo-video/SKILL.md`, `skills/product-demo-video/references/annotation-and-transitions.md`, `skills/product-demo-video/references/screenshot-demo.md`.
 - [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) (Apache-2.0, © HeyGen and HyperFrames contributors), commit `908f2d0`: `.claude/skills/oversized-cursor/SKILL.md`, `skills/hyperframes-animation/blueprints/cursor-ui-demo.md`, `skills/hyperframes-animation/blueprints/cta-morph-press.md`.
 
-Changes by Mosio: condensed and merged into one flow that fits Mosio's composition rules (paused GSAP timeline, transforms instead of `left`/`top`, no audio, no CDN). Music and SFX, beat grids, the Playwright/ffmpeg pipeline, closed-form `seek(t)` springs, screenshots and browser frames with URLs, and content-swap blur were dropped or replaced with GSAP eases and opacity; added act weights, honesty rules for small businesses (number list, real features, sample labels) and Indonesian examples. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.
+Changes by Mosio: condensed and merged into one flow that fits Mosio's composition rules (paused GSAP timeline, transforms instead of `left`/`top`, no audio pipeline, no CDN). Music and SFX, beat grids, the Playwright/ffmpeg pipeline, closed-form `seek(t)` springs, screenshots and browser frames with URLs, and content-swap blur were dropped or replaced with GSAP eases and opacity; added act weights, honesty rules for businesses and creators (number list, real features, sample labels) and Indonesian examples. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.

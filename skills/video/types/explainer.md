@@ -37,7 +37,7 @@ Open a gap, never a definition. Shapes that work silent, 7 words max: a question
 Without a recording, the reading time below sets every hold. With one, the voice sets it: a step holds until its words end, and never shorter than the reading time.
 
 - **One concept or step per screen.** The next appears only after the previous one has been read.
-- **Reading time**: text holds still at least **1.2 s + 0.25 s per word**. "Rendam 10 menit" (3 words) holds about 2 s; with a 0.5 s entrance and 0.8 s before the transition, that step is about 3.3 s.
+- **Reading time**: text holds still for the guide's **0.5 s + 0.3 s per word**, never under 1.2 s. "Rendam 10 menit" (3 words) holds 1.4 s; a lesson is new to the viewer, so give a step that must be remembered about 0.5 s more. With a 0.5 s entrance and 0.8 s before the transition, that step is about 3.2 s.
 - **Numbered progress cue** in a fixed spot for the whole body: a "1/3" chip, dots or a stepper bar that fills one segment per step (tween `scaleX` on the fill, `transform-origin: left center` in CSS).
 - **Recap screen at the end**: all steps or the thesis in one view, 7 words max (icons plus one-word labels: "Rendam · Kucek · Bilas"), held at least the reading time. Then the ending held 2 s or more: the payoff and the name, handle or series; a CTA and contact only when the lesson sells something.
 - Length: the recipe's tempo, but never below the reading time above for each step. Stay inside the plan's limit; cut items before squeezing reading time, because a step the viewer cannot read teaches nothing.
@@ -68,7 +68,7 @@ For **9:16**, rebuild the layout, don't scale it: set `data-width="1080" data-he
 ## Before you send
 
 - One structure, one thesis; order follows understanding, not the source text.
-- Every screen holds one concept, still for 1.2 s + 0.25 s per word; the progress cue advances once per step.
+- Every screen holds one concept, still for the guide's reading time (0.5 s + 0.3 s per word, at least 1.2 s); the progress cue advances once per step.
 - The diagram grows one part per screen, labels beside their parts; the hero is 40-60% of the frame.
 - A recap screen, then the ending held 2 s or more. Every fact and number comes from the user; examples labelled "Contoh".
 
@@ -78,4 +78,4 @@ More in `skill_library`: steps on one canvas `hyperframes/hyperframes-animation/
 
 - [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) (Apache-2.0, © HeyGen and HyperFrames contributors), commit `908f2d0`: `skills/faceless-explainer/SKILL.md`, `skills/faceless-explainer/references/story-design.md`, `skills/faceless-explainer/references/visual-design.md`, `skills/faceless-explainer/references/motion-language.md`, `skills/faceless-explainer/references/cut-catalog.md`.
 
-Changes by Mosio: condensed and adapted to Mosio's composition rules (one HTML file, paused GSAP timeline, no audio, no CDN). The source's voice pipeline, music, captions, CLIs, scripts, frame presets and sub-agent workflow were dropped; voiceover-paced reveals became reading-time pacing (1.2 s plus 0.25 s per word), or the user's own recording when they give one, and Mosio added the education formats, the numbered progress cue, the recap screen and the 9:16 rebuild of the `explainer-isometrik` recipe. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.
+Changes by Mosio: condensed and adapted to Mosio's composition rules (one HTML file, paused GSAP timeline, no audio pipeline, no CDN). The source's voice pipeline, music, captions, CLIs, scripts, frame presets and sub-agent workflow were dropped; voiceover-paced reveals became reading-time pacing (1.2 s plus 0.25 s per word), or the user's own recording when they give one, and Mosio added the education formats, the numbered progress cue, the recap screen and the 9:16 rebuild of the `explainer-isometrik` recipe. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.

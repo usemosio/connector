@@ -25,7 +25,7 @@ For videos that will run with budget on Meta Ads (Facebook, Instagram) or TikTok
 
 ## Hook: one line, one image
 
-Most people watch ads muted, and Mosio adds no music or voice of its own. The hook has two parts that complement, not repeat:
+Most people watch ads muted, so the picture and the on-screen line carry the ad; a voice-over or music is a bonus for those who listen. The hook has two parts that complement, not repeat:
 
 - **Visual motion** at 0-2 s: product drops into frame, price gets struck, a chat arrives, a creased shirt turns crisp.
 - **On-screen text**: the claim, 7 words max, big, inside the safe zone.
@@ -65,7 +65,7 @@ The strongest proof can be checked: units sold, ratings, real testimonials, the 
 - The whole story works muted: hook, benefit and CTA all exist as on-screen text, with sizes and contrast from the guide (`Mosio.readableOn`).
 - 9:16 uses the guide's safe zones. On TikTok the right-side icon column covers roughly 140 px (device-dependent): keep key text centred, not hugging the right.
 - Keep hook, product and CTA inside the central 1080x1080 square so 4:5 and 1:1 versions only need re-layout, not cropping (see `mosio/video-composition/craft/sizes.md`).
-- No music or voice-over in the plan unless the user uploaded their own (`list_media`). Licensed or trending music is added in Ads Manager or the TikTok editor after render.
+- Music or a voice-over only when the user asks: their own upload (`list_media`), or made with their own key through the `audio` skill. Licensed or trending music is added in Ads Manager or the TikTok editor after render.
 
 ## Variants for A/B tests
 
@@ -96,4 +96,4 @@ Test order: (1) **hook**, 3-5 hooks of different types with the same body and CT
 
 - [iart-ai/ad-video-skills](https://github.com/iart-ai/ad-video-skills) (MIT, © iart.ai), commit `0de0f2a`: `skills/ad-creative-video/SKILL.md`, `skills/ad-creative-video/references/platform-specs.md`, `skills/ad-creative-video/references/batch-ad-pipeline.md`.
 
-Changes by Mosio: translated, condensed and adapted to Mosio's composition rules (one HTML file, paused GSAP timeline, no audio, no CDN). Remotion code, the CSV parser and batch render scripts were dropped and replaced by variant markers in the HTML and per-variant previews; hook examples were rewritten for Indonesian small businesses, and message match to WhatsApp and marketplaces plus honest-proof rules were added. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.
+Changes by Mosio: translated, condensed and adapted to Mosio's composition rules (one HTML file, paused GSAP timeline, no audio pipeline, no CDN). Remotion code, the CSV parser and batch render scripts were dropped and replaced by variant markers in the HTML and per-variant previews; hook examples were rewritten for Indonesian brands and creators, and message match to WhatsApp and marketplaces plus honest-proof rules were added. Full licence texts: `skills/licenses/` in the Mosio repo, or NOTICE.md beside this skill in the plugin.
