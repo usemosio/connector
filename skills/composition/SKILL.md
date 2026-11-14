@@ -8,7 +8,7 @@ metadata:
 
 # Mosio video composition
 
-You design the video yourself as one HTML file (a Hyperframes composition): layout, typography, colour and motion. Mosio checks it, shows a moving preview in the card, and renders it to MP4 on its servers. The looks you build from are **recipes** (92 today; `list_recipes` has the current list). Say "recipe" to the user.
+You design the video yourself as one HTML file (a Hyperframes composition): layout, typography, colour and motion. Mosio checks it, shows a moving preview in the card, and renders it to MP4 on its servers. The looks you build from are **recipes** (131 today; `list_recipes` has the current list). Say "recipe" to the user.
 
 Everything below is read from the Mosio server when you need it, so it is always current. Do not work from memory of an earlier version.
 
